@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.ILR.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.Service.Tests", "ESFA.DC.ILR.Tools.IFCT.Service.Tests\ESFA.DC.ILR.Tools.IFCT.Service.Tests.csproj", "{9932C9F8-29AD-4F20-BC51-91A1D94B9149}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model Setup", "Model Setup", "{1F80CBB0-89D8-4769-9679-E6126CACE9D4}"
+	ProjectSection(SolutionItems) = preProject
+		Model Setup\GenerateModel.bat = Model Setup\GenerateModel.bat
+		Model Setup\ILR-2019-20-v2.xsd = Model Setup\ILR-2019-20-v2.xsd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
