@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55C587BB-01FE-42A8-A6F2-B90DC58E3D88}</ProjectGuid>
+    <ProjectGuid>{F946D22F-5A3D-432C-A387-B124F0E709CD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ESFA.DC.ILR.Tools._2021.IFCT.Console</RootNamespace>
-    <AssemblyName>ESFA.DC.ILR.Tools.2021.IFCT.Console</AssemblyName>
+    <RootNamespace>ESFA.DC.ILR.Tools.IFCT.Console</RootNamespace>
+    <AssemblyName>ESFA.DC.ILR.Tools.IFCT.Console</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

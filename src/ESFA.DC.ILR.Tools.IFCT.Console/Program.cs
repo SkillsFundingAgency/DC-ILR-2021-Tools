@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESFA.DC.ILR.Tools._2021.IFCT.Console
+namespace ESFA.DC.ILR.Tools.IFCT.Console
 {
     class Program
     {
