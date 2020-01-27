@@ -3,14 +3,16 @@ name: $(GitVersion_NuGetVersion)
 resources:
 - repo: self
   fetchDepth: 30
-
 pool:
   name: DCT
   demands:
-  - IsBuildServer
-  - msbuild
-  - visualstudio
-  - vstest
+  - IsNewBuildServer
+
+#  demands:
+#  - IsBuildServer
+#  - msbuild
+#  - visualstudio
+#  - vstest
 
 variables:
 - group: 'CodeSign KV'
@@ -24,7 +26,6 @@ variables:
   value: 'Any CPU'
 - name: ConsoleTool
   value: 'ESFA.DC.ILR.Tools.IFCT.Console'
-
 
 steps:
 - task: gittools.gitversion.gitversion-task.GitVersion@5
