@@ -20,10 +20,10 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("Message", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("Message", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute("Message", Namespace="ESFA/ILR/2019-20")]
+    [System.Xml.Serialization.XmlRootAttribute("Message", Namespace="ESFA/ILR/2020-21")]
     public partial class Message : System.ComponentModel.INotifyPropertyChanged
     {
         
@@ -37,7 +37,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeader _header;
         
-        [System.Xml.Serialization.XmlElementAttribute("Header", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Header", Namespace="ESFA/ILR/2020-21")]
         public MessageHeader Header
         {
             get
@@ -59,8 +59,8 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageSourceFilesSourceFile> _sourceFiles;
         
-        [System.Xml.Serialization.XmlArrayAttribute("SourceFiles", Namespace="ESFA/ILR/2019-20")]
-        [System.Xml.Serialization.XmlArrayItemAttribute("SourceFile", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlArrayAttribute("SourceFiles", Namespace="ESFA/ILR/2020-21")]
+        [System.Xml.Serialization.XmlArrayItemAttribute("SourceFile", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageSourceFilesSourceFile> SourceFiles
         {
             get
@@ -106,7 +106,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageLearningProvider _learningProvider;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearningProvider", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearningProvider", Namespace="ESFA/ILR/2020-21")]
         public MessageLearningProvider LearningProvider
         {
             get
@@ -128,7 +128,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearner> _learner;
         
-        [System.Xml.Serialization.XmlElementAttribute("Learner", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Learner", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearner> Learner
         {
             get
@@ -163,7 +163,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerDestinationandProgression> _learnerDestinationandProgression;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearnerDestinationandProgression", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnerDestinationandProgression", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerDestinationandProgression> LearnerDestinationandProgression
         {
             get
@@ -198,7 +198,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeader", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeader", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageHeader : System.ComponentModel.INotifyPropertyChanged
@@ -214,7 +214,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeaderCollectionDetails _collectionDetails;
         
-        [System.Xml.Serialization.XmlElementAttribute("CollectionDetails", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("CollectionDetails", Namespace="ESFA/ILR/2020-21")]
         public MessageHeaderCollectionDetails CollectionDetails
         {
             get
@@ -236,7 +236,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeaderSource _source;
         
-        [System.Xml.Serialization.XmlElementAttribute("Source", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Source", Namespace="ESFA/ILR/2020-21")]
         public MessageHeaderSource Source
         {
             get
@@ -258,7 +258,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetails", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetails", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageHeaderCollectionDetails : System.ComponentModel.INotifyPropertyChanged
@@ -274,7 +274,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeaderCollectionDetailsCollection _collection;
         
-        [System.Xml.Serialization.XmlElementAttribute("Collection", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Collection", Namespace="ESFA/ILR/2020-21")]
         public MessageHeaderCollectionDetailsCollection Collection
         {
             get
@@ -294,7 +294,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeaderCollectionDetailsYear _year;
         
-        [System.Xml.Serialization.XmlElementAttribute("Year", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Year", Namespace="ESFA/ILR/2020-21")]
         public MessageHeaderCollectionDetailsYear Year
         {
             get
@@ -314,7 +314,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.DateTime _filePreparationDate;
         
-        [System.Xml.Serialization.XmlElementAttribute("FilePreparationDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("FilePreparationDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime FilePreparationDate
         {
             get
@@ -334,7 +334,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetailsCollection", Namespace="ESFA/ILR/2019-20")]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetailsCollection", Namespace="ESFA/ILR/2020-21")]
     public enum MessageHeaderCollectionDetailsCollection
     {
         
@@ -343,7 +343,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetailsYear", Namespace="ESFA/ILR/2019-20")]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderCollectionDetailsYear", Namespace="ESFA/ILR/2020-21")]
     public enum MessageHeaderCollectionDetailsYear
     {
         
@@ -353,7 +353,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderSource", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderSource", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageHeaderSource : System.ComponentModel.INotifyPropertyChanged
@@ -369,7 +369,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private MessageHeaderSourceProtectiveMarking _protectiveMarking;
         
-        [System.Xml.Serialization.XmlElementAttribute("ProtectiveMarking", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProtectiveMarking", Namespace="ESFA/ILR/2020-21")]
         public MessageHeaderSourceProtectiveMarking ProtectiveMarking
         {
             get
@@ -394,7 +394,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum inclusive value: 99999999 .</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.RangeAttribute(typeof(int), "10000000", "99999999 ")]
-        [System.Xml.Serialization.XmlElementAttribute("UKPRN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("UKPRN", Namespace="ESFA/ILR/2020-21")]
         public int UKPRN
         {
             get
@@ -420,7 +420,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(40)]
-        [System.Xml.Serialization.XmlElementAttribute("SoftwareSupplier", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SoftwareSupplier", Namespace="ESFA/ILR/2020-21")]
         public string SoftwareSupplier
         {
             get
@@ -448,7 +448,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(30)]
-        [System.Xml.Serialization.XmlElementAttribute("SoftwarePackage", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SoftwarePackage", Namespace="ESFA/ILR/2020-21")]
         public string SoftwarePackage
         {
             get
@@ -476,7 +476,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(20)]
-        [System.Xml.Serialization.XmlElementAttribute("Release", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Release", Namespace="ESFA/ILR/2020-21")]
         public string Release
         {
             get
@@ -502,7 +502,7 @@ namespace Loose
         /// <para xml:lang="en">Pattern: [0-9]{1,2}.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[0-9]{1,2}")]
-        [System.Xml.Serialization.XmlElementAttribute("SerialNo", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SerialNo", Namespace="ESFA/ILR/2020-21")]
         public string SerialNo
         {
             get
@@ -524,7 +524,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.DateTime _dateTime;
         
-        [System.Xml.Serialization.XmlElementAttribute("DateTime", Namespace="ESFA/ILR/2019-20", DataType="dateTime")]
+        [System.Xml.Serialization.XmlElementAttribute("DateTime", Namespace="ESFA/ILR/2020-21", DataType="dateTime")]
         public System.DateTime DateTime
         {
             get
@@ -550,7 +550,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("ReferenceData", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ReferenceData", Namespace="ESFA/ILR/2020-21")]
         public string ReferenceData
         {
             get
@@ -578,7 +578,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(20)]
-        [System.Xml.Serialization.XmlElementAttribute("ComponentSetVersion", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ComponentSetVersion", Namespace="ESFA/ILR/2020-21")]
         public string ComponentSetVersion
         {
             get
@@ -600,7 +600,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderSourceProtectiveMarking", Namespace="ESFA/ILR/2019-20")]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageHeaderSourceProtectiveMarking", Namespace="ESFA/ILR/2020-21")]
     public enum MessageHeaderSourceProtectiveMarking
     {
         
@@ -610,7 +610,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageSourceFiles", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageSourceFiles", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageSourceFiles : System.ComponentModel.INotifyPropertyChanged
@@ -626,7 +626,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageSourceFilesSourceFile> _sourceFile;
         
-        [System.Xml.Serialization.XmlElementAttribute("SourceFile", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SourceFile", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageSourceFilesSourceFile> SourceFile
         {
             get
@@ -657,7 +657,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageSourceFilesSourceFile", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageSourceFilesSourceFile", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageSourceFilesSourceFile : System.ComponentModel.INotifyPropertyChanged
@@ -679,7 +679,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(50)]
-        [System.Xml.Serialization.XmlElementAttribute("SourceFileName", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SourceFileName", Namespace="ESFA/ILR/2020-21")]
         public string SourceFileName
         {
             get
@@ -701,7 +701,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.DateTime _filePreparationDate;
         
-        [System.Xml.Serialization.XmlElementAttribute("FilePreparationDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("FilePreparationDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime FilePreparationDate
         {
             get
@@ -727,7 +727,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(40)]
-        [System.Xml.Serialization.XmlElementAttribute("SoftwareSupplier", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SoftwareSupplier", Namespace="ESFA/ILR/2020-21")]
         public string SoftwareSupplier
         {
             get
@@ -755,7 +755,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(30)]
-        [System.Xml.Serialization.XmlElementAttribute("SoftwarePackage", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SoftwarePackage", Namespace="ESFA/ILR/2020-21")]
         public string SoftwarePackage
         {
             get
@@ -783,7 +783,7 @@ namespace Loose
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(20)]
-        [System.Xml.Serialization.XmlElementAttribute("Release", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Release", Namespace="ESFA/ILR/2020-21")]
         public string Release
         {
             get
@@ -809,7 +809,7 @@ namespace Loose
         /// <para xml:lang="en">Pattern: [0-9]{1,2}.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[0-9]{1,2}")]
-        [System.Xml.Serialization.XmlElementAttribute("SerialNo", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SerialNo", Namespace="ESFA/ILR/2020-21")]
         public string SerialNo
         {
             get
@@ -832,7 +832,7 @@ namespace Loose
         private System.DateTime _dateTime;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("DateTime", Namespace="ESFA/ILR/2019-20", DataType="dateTime")]
+        [System.Xml.Serialization.XmlElementAttribute("DateTime", Namespace="ESFA/ILR/2020-21", DataType="dateTime")]
         public System.DateTime DateTimeValue
         {
             get
@@ -886,7 +886,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearningProvider", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearningProvider", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearningProvider : System.ComponentModel.INotifyPropertyChanged
@@ -907,7 +907,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum inclusive value: 99999999.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.RangeAttribute(typeof(int), "10000000", "99999999")]
-        [System.Xml.Serialization.XmlElementAttribute("UKPRN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("UKPRN", Namespace="ESFA/ILR/2020-21")]
         public int UKPRN
         {
             get
@@ -927,7 +927,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearner", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearner", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearner : System.ComponentModel.INotifyPropertyChanged
@@ -947,7 +947,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnRefNumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnRefNumber", Namespace="ESFA/ILR/2020-21")]
         public string LearnRefNumber
         {
             get
@@ -973,7 +973,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("PrevLearnRefNumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PrevLearnRefNumber", Namespace="ESFA/ILR/2020-21")]
         public string PrevLearnRefNumber
         {
             get
@@ -999,7 +999,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PrevUKPRN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PrevUKPRN", Namespace="ESFA/ILR/2020-21")]
         public long PrevUKPRNValue
         {
             get
@@ -1060,7 +1060,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PMUKPRN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PMUKPRN", Namespace="ESFA/ILR/2020-21")]
         public long PMUKPRNValue
         {
             get
@@ -1121,7 +1121,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("CampId", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("CampId", Namespace="ESFA/ILR/2020-21")]
         public string CampId
         {
             get
@@ -1147,7 +1147,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ULN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ULN", Namespace="ESFA/ILR/2020-21")]
         public long ULNValue
         {
             get
@@ -1208,7 +1208,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("FamilyName", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FamilyName", Namespace="ESFA/ILR/2020-21")]
         public string FamilyName
         {
             get
@@ -1234,7 +1234,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("GivenNames", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("GivenNames", Namespace="ESFA/ILR/2020-21")]
         public string GivenNames
         {
             get
@@ -1257,7 +1257,7 @@ namespace Loose
         private System.DateTime _dateOfBirth;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("DateOfBirth", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("DateOfBirth", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime DateOfBirthValue
         {
             get
@@ -1315,7 +1315,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("Ethnicity", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Ethnicity", Namespace="ESFA/ILR/2020-21")]
         public long EthnicityValue
         {
             get
@@ -1376,7 +1376,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("Sex", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Sex", Namespace="ESFA/ILR/2020-21")]
         public string Sex
         {
             get
@@ -1402,7 +1402,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LLDDHealthProb", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LLDDHealthProb", Namespace="ESFA/ILR/2020-21")]
         public long LLDDHealthProbValue
         {
             get
@@ -1463,7 +1463,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("NINumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("NINumber", Namespace="ESFA/ILR/2020-21")]
         public string NINumber
         {
             get
@@ -1489,7 +1489,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PriorAttain", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PriorAttain", Namespace="ESFA/ILR/2020-21")]
         public long PriorAttainValue
         {
             get
@@ -1550,7 +1550,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("Accom", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Accom", Namespace="ESFA/ILR/2020-21")]
         public long AccomValue
         {
             get
@@ -1611,7 +1611,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ALSCost", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ALSCost", Namespace="ESFA/ILR/2020-21")]
         public long ALSCostValue
         {
             get
@@ -1672,7 +1672,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PlanLearnHours", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PlanLearnHours", Namespace="ESFA/ILR/2020-21")]
         public long PlanLearnHoursValue
         {
             get
@@ -1733,7 +1733,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PlanEEPHours", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PlanEEPHours", Namespace="ESFA/ILR/2020-21")]
         public long PlanEEPHoursValue
         {
             get
@@ -1794,7 +1794,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("MathGrade", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("MathGrade", Namespace="ESFA/ILR/2020-21")]
         public string MathGrade
         {
             get
@@ -1820,7 +1820,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("EngGrade", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EngGrade", Namespace="ESFA/ILR/2020-21")]
         public string EngGrade
         {
             get
@@ -1846,7 +1846,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("PostcodePrior", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PostcodePrior", Namespace="ESFA/ILR/2020-21")]
         public string PostcodePrior
         {
             get
@@ -1872,7 +1872,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("Postcode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Postcode", Namespace="ESFA/ILR/2020-21")]
         public string Postcode
         {
             get
@@ -1898,7 +1898,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("AddLine1", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AddLine1", Namespace="ESFA/ILR/2020-21")]
         public string AddLine1
         {
             get
@@ -1924,7 +1924,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("AddLine2", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AddLine2", Namespace="ESFA/ILR/2020-21")]
         public string AddLine2
         {
             get
@@ -1950,7 +1950,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("AddLine3", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AddLine3", Namespace="ESFA/ILR/2020-21")]
         public string AddLine3
         {
             get
@@ -1976,7 +1976,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("AddLine4", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AddLine4", Namespace="ESFA/ILR/2020-21")]
         public string AddLine4
         {
             get
@@ -2002,7 +2002,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("TelNo", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("TelNo", Namespace="ESFA/ILR/2020-21")]
         public string TelNo
         {
             get
@@ -2028,7 +2028,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("Email", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Email", Namespace="ESFA/ILR/2020-21")]
         public string Email
         {
             get
@@ -2050,7 +2050,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerContactPreference> _contactPreference;
         
-        [System.Xml.Serialization.XmlElementAttribute("ContactPreference", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ContactPreference", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerContactPreference> ContactPreference
         {
             get
@@ -2100,7 +2100,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLLDDandHealthProblem> _lLDDandHealthProblem;
         
-        [System.Xml.Serialization.XmlElementAttribute("LLDDandHealthProblem", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LLDDandHealthProblem", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLLDDandHealthProblem> LLDDandHealthProblem
         {
             get
@@ -2135,7 +2135,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearnerFAM> _learnerFAM;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearnerFAM", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnerFAM", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearnerFAM> LearnerFAM
         {
             get
@@ -2170,7 +2170,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerProviderSpecLearnerMonitoring> _providerSpecLearnerMonitoring;
         
-        [System.Xml.Serialization.XmlElementAttribute("ProviderSpecLearnerMonitoring", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProviderSpecLearnerMonitoring", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerProviderSpecLearnerMonitoring> ProviderSpecLearnerMonitoring
         {
             get
@@ -2205,7 +2205,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearnerEmploymentStatus> _learnerEmploymentStatus;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearnerEmploymentStatus", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnerEmploymentStatus", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearnerEmploymentStatus> LearnerEmploymentStatus
         {
             get
@@ -2240,7 +2240,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearnerHE> _learnerHE;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearnerHE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnerHE", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearnerHE> LearnerHE
         {
             get
@@ -2275,7 +2275,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDelivery> _learningDelivery;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearningDelivery", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearningDelivery", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDelivery> LearningDelivery
         {
             get
@@ -2310,7 +2310,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerContactPreference", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerContactPreference", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerContactPreference : System.ComponentModel.INotifyPropertyChanged
@@ -2330,7 +2330,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("ContPrefType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ContPrefType", Namespace="ESFA/ILR/2020-21")]
         public string ContPrefType
         {
             get
@@ -2356,7 +2356,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ContPrefCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ContPrefCode", Namespace="ESFA/ILR/2020-21")]
         public long ContPrefCodeValue
         {
             get
@@ -2413,7 +2413,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLLDDandHealthProblem", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLLDDandHealthProblem", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLLDDandHealthProblem : System.ComponentModel.INotifyPropertyChanged
@@ -2433,7 +2433,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LLDDCat", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LLDDCat", Namespace="ESFA/ILR/2020-21")]
         public long LLDDCatValue
         {
             get
@@ -2494,7 +2494,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PrimaryLLDD", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PrimaryLLDD", Namespace="ESFA/ILR/2020-21")]
         public long PrimaryLLDDValue
         {
             get
@@ -2551,7 +2551,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerFAM", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerFAM", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearnerFAM : System.ComponentModel.INotifyPropertyChanged
@@ -2571,7 +2571,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnFAMType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnFAMType", Namespace="ESFA/ILR/2020-21")]
         public string LearnFAMType
         {
             get
@@ -2597,7 +2597,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnFAMCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnFAMCode", Namespace="ESFA/ILR/2020-21")]
         public long LearnFAMCodeValue
         {
             get
@@ -2654,7 +2654,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerProviderSpecLearnerMonitoring", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerProviderSpecLearnerMonitoring", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerProviderSpecLearnerMonitoring : System.ComponentModel.INotifyPropertyChanged
@@ -2674,7 +2674,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("ProvSpecLearnMonOccur", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProvSpecLearnMonOccur", Namespace="ESFA/ILR/2020-21")]
         public string ProvSpecLearnMonOccur
         {
             get
@@ -2700,7 +2700,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("ProvSpecLearnMon", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProvSpecLearnMon", Namespace="ESFA/ILR/2020-21")]
         public string ProvSpecLearnMon
         {
             get
@@ -2722,7 +2722,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerEmploymentStatus", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerEmploymentStatus", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearnerEmploymentStatus : System.ComponentModel.INotifyPropertyChanged
@@ -2742,7 +2742,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("EmpStat", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EmpStat", Namespace="ESFA/ILR/2020-21")]
         public long EmpStatValue
         {
             get
@@ -2800,7 +2800,7 @@ namespace Loose
         private System.DateTime _dateEmpStatApp;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("DateEmpStatApp", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("DateEmpStatApp", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime DateEmpStatAppValue
         {
             get
@@ -2858,7 +2858,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("EmpId", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EmpId", Namespace="ESFA/ILR/2020-21")]
         public long EmpIdValue
         {
             get
@@ -2913,35 +2913,9 @@ namespace Loose
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private string _agreeId;
-        
-        /// <summary>
-        /// <para xml:lang="en">Maximum length: 100.</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("AgreeId", Namespace="ESFA/ILR/2019-20")]
-        public string AgreeId
-        {
-            get
-            {
-                return _agreeId;
-            }
-            set
-            {
-                if (_agreeId == value)
-                    return;
-                if (_agreeId == null || value == null || !_agreeId.Equals(value))
-                {
-                    _agreeId = value;
-                    OnPropertyChanged(nameof(AgreeId));
-                }
-            }
-        }
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearnerEmploymentStatusEmploymentStatusMonitoring> _employmentStatusMonitoring;
         
-        [System.Xml.Serialization.XmlElementAttribute("EmploymentStatusMonitoring", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EmploymentStatusMonitoring", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearnerEmploymentStatusEmploymentStatusMonitoring> EmploymentStatusMonitoring
         {
             get
@@ -2985,7 +2959,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerEmploymentStatusEmploymentStatusMonitoring", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerEmploymentStatusEmploymentStatusMonitoring", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearnerEmploymentStatusEmploymentStatusMonitoring : System.ComponentModel.INotifyPropertyChanged
@@ -3005,7 +2979,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("ESMType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ESMType", Namespace="ESFA/ILR/2020-21")]
         public string ESMType
         {
             get
@@ -3031,7 +3005,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ESMCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ESMCode", Namespace="ESFA/ILR/2020-21")]
         public long ESMCodeValue
         {
             get
@@ -3088,7 +3062,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerHE", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerHE", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearnerHE : System.ComponentModel.INotifyPropertyChanged
@@ -3108,7 +3082,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("UCASPERID", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("UCASPERID", Namespace="ESFA/ILR/2020-21")]
         public string UCASPERID
         {
             get
@@ -3134,7 +3108,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("TTACCOM", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("TTACCOM", Namespace="ESFA/ILR/2020-21")]
         public long TTACCOMValue
         {
             get
@@ -3191,7 +3165,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearnerHELearnerHEFinancialSupport> _learnerHEFinancialSupport;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearnerHEFinancialSupport", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnerHEFinancialSupport", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearnerHELearnerHEFinancialSupport> LearnerHEFinancialSupport
         {
             get
@@ -3235,7 +3209,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerHELearnerHEFinancialSupport", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearnerHELearnerHEFinancialSupport", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearnerHELearnerHEFinancialSupport : System.ComponentModel.INotifyPropertyChanged
@@ -3255,7 +3229,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FINTYPE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FINTYPE", Namespace="ESFA/ILR/2020-21")]
         public long FINTYPEValue
         {
             get
@@ -3316,7 +3290,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FINAMOUNT", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FINAMOUNT", Namespace="ESFA/ILR/2020-21")]
         public long FINAMOUNTValue
         {
             get
@@ -3373,7 +3347,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDelivery", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDelivery", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDelivery : System.ComponentModel.INotifyPropertyChanged
@@ -3393,7 +3367,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnAimRef", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnAimRef", Namespace="ESFA/ILR/2020-21")]
         public string LearnAimRef
         {
             get
@@ -3419,7 +3393,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AimType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AimType", Namespace="ESFA/ILR/2020-21")]
         public long AimTypeValue
         {
             get
@@ -3480,7 +3454,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AimSeqNumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AimSeqNumber", Namespace="ESFA/ILR/2020-21")]
         public long AimSeqNumberValue
         {
             get
@@ -3538,7 +3512,7 @@ namespace Loose
         private System.DateTime _learnStartDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnStartDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnStartDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime LearnStartDateValue
         {
             get
@@ -3593,7 +3567,7 @@ namespace Loose
         private System.DateTime _origLearnStartDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OrigLearnStartDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("OrigLearnStartDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime OrigLearnStartDateValue
         {
             get
@@ -3648,7 +3622,7 @@ namespace Loose
         private System.DateTime _learnPlanEndDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnPlanEndDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnPlanEndDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime LearnPlanEndDateValue
         {
             get
@@ -3706,7 +3680,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FundModel", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FundModel", Namespace="ESFA/ILR/2020-21")]
         public long FundModelValue
         {
             get
@@ -3767,7 +3741,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PHours", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PHours", Namespace="ESFA/ILR/2020-21")]
         public long PHoursValue
         {
             get
@@ -3822,13 +3796,77 @@ namespace Loose
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
+        private int _oTJActhours;
+        
+        /// <summary>
+        /// <para xml:lang="en">Minimum inclusive value: 0.</para>
+        /// <para xml:lang="en">Maximum inclusive value: 9999.</para>
+        /// </summary>
+        [System.ComponentModel.DataAnnotations.RangeAttribute(typeof(int), "0", "9999")]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlElementAttribute("OTJActhours", Namespace="ESFA/ILR/2020-21")]
+        public int OTJActhoursValue
+        {
+            get
+            {
+                return _oTJActhours;
+            }
+            set
+            {
+                if (!_oTJActhours.Equals(value))
+                {
+                    _oTJActhours = value;
+                    OnPropertyChanged(nameof(OTJActhoursValue));
+                }
+            }
+        }
+        
+        /// <summary>
+        /// <para xml:lang="de">Ruft einen Wert ab, der angibt, ob die OTJActhours-Eigenschaft spezifiziert ist, oder legt diesen fest.</para>
+        /// <para xml:lang="en">Gets or sets a value indicating whether the OTJActhours property is specified.</para>
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        public bool OTJActhoursValueSpecified { get; set; }
+        
+        /// <summary>
+        /// <para xml:lang="en">Minimum inclusive value: 0.</para>
+        /// <para xml:lang="en">Maximum inclusive value: 9999.</para>
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public System.Nullable<int> OTJActhours
+        {
+            get
+            {
+                if (this.OTJActhoursValueSpecified)
+                {
+                    return this.OTJActhoursValue;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (((this.OTJActhoursValue.Equals(value.GetValueOrDefault()) == false) 
+                            || (this.OTJActhoursValueSpecified.Equals(value.HasValue) == false)))
+                {
+                    this.OTJActhoursValue = value.GetValueOrDefault();
+                    this.OTJActhoursValueSpecified = value.HasValue;
+                    OnPropertyChanged("OTJActhours");
+                }
+            }
+        }
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         private long _progType;
         
         /// <summary>
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ProgType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProgType", Namespace="ESFA/ILR/2020-21")]
         public long ProgTypeValue
         {
             get
@@ -3889,7 +3927,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FworkCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FworkCode", Namespace="ESFA/ILR/2020-21")]
         public long FworkCodeValue
         {
             get
@@ -3950,7 +3988,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PwayCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PwayCode", Namespace="ESFA/ILR/2020-21")]
         public long PwayCodeValue
         {
             get
@@ -4011,7 +4049,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("StdCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("StdCode", Namespace="ESFA/ILR/2020-21")]
         public long StdCodeValue
         {
             get
@@ -4072,7 +4110,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PartnerUKPRN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PartnerUKPRN", Namespace="ESFA/ILR/2020-21")]
         public long PartnerUKPRNValue
         {
             get
@@ -4133,7 +4171,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("DelLocPostCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("DelLocPostCode", Namespace="ESFA/ILR/2020-21")]
         public string DelLocPostCode
         {
             get
@@ -4159,7 +4197,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("LSDPostcode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LSDPostcode", Namespace="ESFA/ILR/2020-21")]
         public string LSDPostcode
         {
             get
@@ -4185,7 +4223,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AddHours", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AddHours", Namespace="ESFA/ILR/2020-21")]
         public long AddHoursValue
         {
             get
@@ -4246,7 +4284,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PriorLearnFundAdj", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PriorLearnFundAdj", Namespace="ESFA/ILR/2020-21")]
         public long PriorLearnFundAdjValue
         {
             get
@@ -4307,7 +4345,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OtherFundAdj", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherFundAdj", Namespace="ESFA/ILR/2020-21")]
         public long OtherFundAdjValue
         {
             get
@@ -4368,7 +4406,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("ConRefNumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ConRefNumber", Namespace="ESFA/ILR/2020-21")]
         public string ConRefNumber
         {
             get
@@ -4394,7 +4432,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("EPAOrgID", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EPAOrgID", Namespace="ESFA/ILR/2020-21")]
         public string EPAOrgID
         {
             get
@@ -4420,7 +4458,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("EmpOutcome", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("EmpOutcome", Namespace="ESFA/ILR/2020-21")]
         public long EmpOutcomeValue
         {
             get
@@ -4481,7 +4519,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("CompStatus", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("CompStatus", Namespace="ESFA/ILR/2020-21")]
         public long CompStatusValue
         {
             get
@@ -4539,7 +4577,7 @@ namespace Loose
         private System.DateTime _learnActEndDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnActEndDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnActEndDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime LearnActEndDateValue
         {
             get
@@ -4597,7 +4635,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WithdrawReason", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("WithdrawReason", Namespace="ESFA/ILR/2020-21")]
         public long WithdrawReasonValue
         {
             get
@@ -4658,7 +4696,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("Outcome", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("Outcome", Namespace="ESFA/ILR/2020-21")]
         public long OutcomeValue
         {
             get
@@ -4716,7 +4754,7 @@ namespace Loose
         private System.DateTime _achDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AchDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("AchDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime AchDateValue
         {
             get
@@ -4774,7 +4812,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("OutGrade", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("OutGrade", Namespace="ESFA/ILR/2020-21")]
         public string OutGrade
         {
             get
@@ -4800,7 +4838,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("SWSupAimId", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SWSupAimId", Namespace="ESFA/ILR/2020-21")]
         public string SWSupAimId
         {
             get
@@ -4822,7 +4860,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryFAM> _learningDeliveryFAM;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryFAM", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryFAM", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryFAM> LearningDeliveryFAM
         {
             get
@@ -4870,7 +4908,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement> _learningDeliveryWorkPlacement;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryWorkPlacement", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryWorkPlacement", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement> LearningDeliveryWorkPlacement
         {
             get
@@ -4905,7 +4943,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDeliveryAppFinRecord> _appFinRecord;
         
-        [System.Xml.Serialization.XmlElementAttribute("AppFinRecord", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AppFinRecord", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDeliveryAppFinRecord> AppFinRecord
         {
             get
@@ -4940,7 +4978,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDeliveryProviderSpecDeliveryMonitoring> _providerSpecDeliveryMonitoring;
         
-        [System.Xml.Serialization.XmlElementAttribute("ProviderSpecDeliveryMonitoring", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProviderSpecDeliveryMonitoring", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDeliveryProviderSpecDeliveryMonitoring> ProviderSpecDeliveryMonitoring
         {
             get
@@ -4975,7 +5013,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryHE> _learningDeliveryHE;
         
-        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryHE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearningDeliveryHE", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerLearningDeliveryLearningDeliveryHE> LearningDeliveryHE
         {
             get
@@ -5010,7 +5048,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryFAM", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryFAM", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDeliveryLearningDeliveryFAM : System.ComponentModel.INotifyPropertyChanged
@@ -5030,7 +5068,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMType", Namespace="ESFA/ILR/2020-21")]
         public string LearnDelFAMType
         {
             get
@@ -5056,7 +5094,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMCode", Namespace="ESFA/ILR/2020-21")]
         public string LearnDelFAMCode
         {
             get
@@ -5079,7 +5117,7 @@ namespace Loose
         private System.DateTime _learnDelFAMDateFrom;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMDateFrom", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMDateFrom", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime LearnDelFAMDateFromValue
         {
             get
@@ -5134,7 +5172,7 @@ namespace Loose
         private System.DateTime _learnDelFAMDateTo;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMDateTo", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnDelFAMDateTo", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime LearnDelFAMDateToValue
         {
             get
@@ -5188,7 +5226,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement : System.ComponentModel.INotifyPropertyChanged
@@ -5205,7 +5243,7 @@ namespace Loose
         private System.DateTime _workPlaceStartDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceStartDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceStartDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime WorkPlaceStartDateValue
         {
             get
@@ -5260,7 +5298,7 @@ namespace Loose
         private System.DateTime _workPlaceEndDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceEndDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceEndDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime WorkPlaceEndDateValue
         {
             get
@@ -5318,7 +5356,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceHours", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceHours", Namespace="ESFA/ILR/2020-21")]
         public long WorkPlaceHoursValue
         {
             get
@@ -5379,7 +5417,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceMode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceMode", Namespace="ESFA/ILR/2020-21")]
         public long WorkPlaceModeValue
         {
             get
@@ -5440,7 +5478,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceEmpId", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("WorkPlaceEmpId", Namespace="ESFA/ILR/2020-21")]
         public long WorkPlaceEmpIdValue
         {
             get
@@ -5497,7 +5535,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryAppFinRecord", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryAppFinRecord", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDeliveryAppFinRecord : System.ComponentModel.INotifyPropertyChanged
@@ -5517,7 +5555,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("AFinType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AFinType", Namespace="ESFA/ILR/2020-21")]
         public string AFinType
         {
             get
@@ -5543,7 +5581,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AFinCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AFinCode", Namespace="ESFA/ILR/2020-21")]
         public long AFinCodeValue
         {
             get
@@ -5601,7 +5639,7 @@ namespace Loose
         private System.DateTime _aFinDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AFinDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("AFinDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime AFinDateValue
         {
             get
@@ -5659,7 +5697,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("AFinAmount", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("AFinAmount", Namespace="ESFA/ILR/2020-21")]
         public long AFinAmountValue
         {
             get
@@ -5716,7 +5754,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryProviderSpecDeliveryMonitoring", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryProviderSpecDeliveryMonitoring", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDeliveryProviderSpecDeliveryMonitoring : System.ComponentModel.INotifyPropertyChanged
@@ -5736,7 +5774,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("ProvSpecDelMonOccur", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProvSpecDelMonOccur", Namespace="ESFA/ILR/2020-21")]
         public string ProvSpecDelMonOccur
         {
             get
@@ -5762,7 +5800,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("ProvSpecDelMon", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ProvSpecDelMon", Namespace="ESFA/ILR/2020-21")]
         public string ProvSpecDelMon
         {
             get
@@ -5784,7 +5822,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryHE", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerLearningDeliveryLearningDeliveryHE", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerLearningDeliveryLearningDeliveryHE : System.ComponentModel.INotifyPropertyChanged
@@ -5804,7 +5842,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("NUMHUS", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("NUMHUS", Namespace="ESFA/ILR/2020-21")]
         public string NUMHUS
         {
             get
@@ -5830,7 +5868,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("SSN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SSN", Namespace="ESFA/ILR/2020-21")]
         public string SSN
         {
             get
@@ -5856,7 +5894,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("QUALENT3", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("QUALENT3", Namespace="ESFA/ILR/2020-21")]
         public string QUALENT3
         {
             get
@@ -5882,7 +5920,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("SOC2000", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SOC2000", Namespace="ESFA/ILR/2020-21")]
         public long SOC2000Value
         {
             get
@@ -5943,7 +5981,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("SEC", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SEC", Namespace="ESFA/ILR/2020-21")]
         public long SECValue
         {
             get
@@ -6004,7 +6042,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("UCASAPPID", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("UCASAPPID", Namespace="ESFA/ILR/2020-21")]
         public string UCASAPPID
         {
             get
@@ -6030,7 +6068,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("TYPEYR", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("TYPEYR", Namespace="ESFA/ILR/2020-21")]
         public long TYPEYRValue
         {
             get
@@ -6091,7 +6129,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("MODESTUD", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("MODESTUD", Namespace="ESFA/ILR/2020-21")]
         public long MODESTUDValue
         {
             get
@@ -6152,7 +6190,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FUNDLEV", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FUNDLEV", Namespace="ESFA/ILR/2020-21")]
         public long FUNDLEVValue
         {
             get
@@ -6213,7 +6251,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("FUNDCOMP", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("FUNDCOMP", Namespace="ESFA/ILR/2020-21")]
         public long FUNDCOMPValue
         {
             get
@@ -6274,7 +6312,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 32.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("STULOAD", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("STULOAD", Namespace="ESFA/ILR/2020-21")]
         public decimal STULOADValue
         {
             get
@@ -6335,7 +6373,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("YEARSTU", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("YEARSTU", Namespace="ESFA/ILR/2020-21")]
         public long YEARSTUValue
         {
             get
@@ -6396,7 +6434,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("MSTUFEE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("MSTUFEE", Namespace="ESFA/ILR/2020-21")]
         public long MSTUFEEValue
         {
             get
@@ -6457,7 +6495,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 32.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PCOLAB", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PCOLAB", Namespace="ESFA/ILR/2020-21")]
         public decimal PCOLABValue
         {
             get
@@ -6518,7 +6556,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 32.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PCFLDCS", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PCFLDCS", Namespace="ESFA/ILR/2020-21")]
         public decimal PCFLDCSValue
         {
             get
@@ -6579,7 +6617,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 32.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PCSLDCS", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PCSLDCS", Namespace="ESFA/ILR/2020-21")]
         public decimal PCSLDCSValue
         {
             get
@@ -6640,7 +6678,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 32.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("PCTLDCS", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("PCTLDCS", Namespace="ESFA/ILR/2020-21")]
         public decimal PCTLDCSValue
         {
             get
@@ -6701,7 +6739,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("SPECFEE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("SPECFEE", Namespace="ESFA/ILR/2020-21")]
         public long SPECFEEValue
         {
             get
@@ -6762,7 +6800,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("NETFEE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("NETFEE", Namespace="ESFA/ILR/2020-21")]
         public long NETFEEValue
         {
             get
@@ -6823,7 +6861,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("GROSSFEE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("GROSSFEE", Namespace="ESFA/ILR/2020-21")]
         public long GROSSFEEValue
         {
             get
@@ -6884,7 +6922,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("DOMICILE", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("DOMICILE", Namespace="ESFA/ILR/2020-21")]
         public string DOMICILE
         {
             get
@@ -6910,7 +6948,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ELQ", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ELQ", Namespace="ESFA/ILR/2020-21")]
         public long ELQValue
         {
             get
@@ -6971,7 +7009,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 1000.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(1000)]
-        [System.Xml.Serialization.XmlElementAttribute("HEPostCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("HEPostCode", Namespace="ESFA/ILR/2020-21")]
         public string HEPostCode
         {
             get
@@ -6993,7 +7031,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerDestinationandProgression", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerDestinationandProgression", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerDestinationandProgression : System.ComponentModel.INotifyPropertyChanged
@@ -7013,7 +7051,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("LearnRefNumber", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("LearnRefNumber", Namespace="ESFA/ILR/2020-21")]
         public string LearnRefNumber
         {
             get
@@ -7039,7 +7077,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("ULN", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("ULN", Namespace="ESFA/ILR/2020-21")]
         public long ULNValue
         {
             get
@@ -7096,7 +7134,7 @@ namespace Loose
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.Generic.List<MessageLearnerDestinationandProgressionDPOutcome> _dPOutcome;
         
-        [System.Xml.Serialization.XmlElementAttribute("DPOutcome", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("DPOutcome", Namespace="ESFA/ILR/2020-21")]
         public System.Collections.Generic.List<MessageLearnerDestinationandProgressionDPOutcome> DPOutcome
         {
             get
@@ -7140,7 +7178,7 @@ namespace Loose
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerDestinationandProgressionDPOutcome", Namespace="ESFA/ILR/2019-20", AnonymousType=true)]
+    [System.Xml.Serialization.XmlTypeAttribute("MessageLearnerDestinationandProgressionDPOutcome", Namespace="ESFA/ILR/2020-21", AnonymousType=true)]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class MessageLearnerDestinationandProgressionDPOutcome : System.ComponentModel.INotifyPropertyChanged
@@ -7160,7 +7198,7 @@ namespace Loose
         /// <para xml:lang="en">Maximum length: 100.</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MaxLengthAttribute(100)]
-        [System.Xml.Serialization.XmlElementAttribute("OutType", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("OutType", Namespace="ESFA/ILR/2020-21")]
         public string OutType
         {
             get
@@ -7186,7 +7224,7 @@ namespace Loose
         /// <para xml:lang="en">Total number of digits: 18.</para>
         /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OutCode", Namespace="ESFA/ILR/2019-20")]
+        [System.Xml.Serialization.XmlElementAttribute("OutCode", Namespace="ESFA/ILR/2020-21")]
         public long OutCodeValue
         {
             get
@@ -7244,7 +7282,7 @@ namespace Loose
         private System.DateTime _outStartDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OutStartDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("OutStartDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime OutStartDateValue
         {
             get
@@ -7299,7 +7337,7 @@ namespace Loose
         private System.DateTime _outEndDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OutEndDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("OutEndDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime OutEndDateValue
         {
             get
@@ -7354,7 +7392,7 @@ namespace Loose
         private System.DateTime _outCollDate;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Xml.Serialization.XmlElementAttribute("OutCollDate", Namespace="ESFA/ILR/2019-20", DataType="date")]
+        [System.Xml.Serialization.XmlElementAttribute("OutCollDate", Namespace="ESFA/ILR/2020-21", DataType="date")]
         public System.DateTime OutCollDateValue
         {
             get
