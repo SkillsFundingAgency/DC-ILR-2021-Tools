@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model Setup", "Model Setup"
 	ProjectSection(SolutionItems) = preProject
 		Model Setup\GenerateModel.bat = Model Setup\GenerateModel.bat
 		Model Setup\ILR-2019-20-v2.xsd = Model Setup\ILR-2019-20-v2.xsd
+		Model Setup\ILR-2020-21-v1-loose.xsd = Model Setup\ILR-2020-21-v1-loose.xsd
 	EndProjectSection
 EndProject
 Global
