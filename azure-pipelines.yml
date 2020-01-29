@@ -78,7 +78,18 @@ stages:
         feedsToUse: 'select'
         vstsFeed: 'dct-pkg'
 
+    - task: VSBuild@1
+      displayName: 'Build solution **\*.sln'
+      inputs:
+        solution: '$(Parameters.solution)'
+        msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        vstsFeed: '$(Parameters.nugetFeedName)'
+        clean: true
+
     - task: DotNetCoreCLI@2
+      enabled: true
       displayName: 'Build Solution'
       inputs:
         command: 'build'
