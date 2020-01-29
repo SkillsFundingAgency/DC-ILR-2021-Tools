@@ -7,6 +7,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [Fact]
         public void TestMethod1()
         {
+            Assert.True(true);
         }
     }
 }
