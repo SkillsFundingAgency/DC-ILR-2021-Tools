@@ -30,6 +30,17 @@ stages:
       - IsNewBuildServer
 
     steps:
+    - task: DotNetCoreInstaller@2
+      inputs:
+        version: 2.2.110
+      displayName: 'Use .NET Core sdk 2.2.8 (VS2019 = 2.2.207) | (VS2017 = 2.2.110)'
+
+    - task: NuGetToolInstaller@0
+      displayName: 'Use NuGet >=5.3.1'
+      enabled: false
+      inputs:
+        versionSpec: '>=5.3.1'
+
     - task: gittools.gitversion.gitversion-task.GitVersion@5
       displayName: GitVersion
       enabled: true
@@ -51,43 +62,15 @@ stages:
          write-output "Name: $($v.Name)  | Value : $($v.Value)"
          }
 
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet >=5.3.1'
-      inputs:
-        versionSpec: '>=5.3.1'
-
-    - task: DotNetCoreInstaller@2
-      inputs:
-        version: 2.2.207
-      displayName: 'Use .NET Core sdk 2.2.7 (VS2019 = 2.2.207)'
-
-    # Generate the report using ReportGenerator (https://github.com/danielpalme/ReportGenerator)
-    # First install the tool on the machine, then run it
-    - script: |
-            dotnet tool install -g dotnet-reportgenerator-globaltool --version 4.3.6
-      displayName: Install dotnet-reportgenerator-globaltool
-      continueOnError: true  
-      enabled: false
-
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
-      enabled: true
+      enabled: false
       inputs:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
 
-    - task: VSBuild@1
-      displayName: 'Build solution **\*.sln'
-      enabled: false
-      inputs:
-        solution: '$(Parameters.solution)'
-        msbuildArgs: '/p:version=$(GitVersion.AssemblySemVer) /p:FileVersion=$(BGitVersion.AssemblySemFileVer)'
-        platform: '$(BuildPlatform)'
-        configuration: '$(BuildConfiguration)'
-        clean: true
-        maximumCpuCount: true
-
     - task: DotNetCoreCLI@2
+      enabled: true
       displayName: 'Restore Nuget packages'
       inputs:
         command: 'restore'
@@ -213,7 +196,6 @@ stages:
         codeCoverageTool: Cobertura
         summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
         reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
-
      
     #********************************************************************************
     # Publish Artifacts
