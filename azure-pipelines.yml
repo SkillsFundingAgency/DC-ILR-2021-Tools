@@ -64,19 +64,10 @@ stages:
 
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
-      enabled: false
+      enabled: true
       inputs:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
-
-    - task: DotNetCoreCLI@2
-      enabled: true
-      displayName: 'Restore Nuget packages'
-      inputs:
-        command: 'restore'
-        projects: '**/*.csproj'
-        feedsToUse: 'select'
-        vstsFeed: 'dct-pkg'
 
     - task: VSBuild@1
       displayName: 'Build solution **\*.sln'
@@ -89,7 +80,16 @@ stages:
         clean: true
 
     - task: DotNetCoreCLI@2
-      enabled: true
+      enabled: false
+      displayName: 'Restore Nuget packages'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+        feedsToUse: 'select'
+        vstsFeed: 'dct-pkg'
+        
+    - task: DotNetCoreCLI@2
+      enabled: false
       displayName: 'Build Solution'
       inputs:
         command: 'build'
