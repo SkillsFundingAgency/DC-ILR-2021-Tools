@@ -16,21 +16,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         {
             var config = new MapperConfiguration(cfg =>
             {
-                if (_annualMapperConfiguration.SanitizeStrings)
-                {
-                    //Ensure that all strings are not null and are sanitized to remove stray characters
-                    cfg.CreateMap<string, string>().ConvertUsing(str => string.IsNullOrWhiteSpace(str) ? null : str.Sanitize());
-                }
-
-                //The below mappings can be broken out into injectable resources as and when some customisation is required for that specific classes mapping
-                //Until then, just leave then in the list below.
+                // The below mappings can be broken out into injectable resources as and when some customisation is required for that specific classes mapping
+                // Until then, just leave then in the list below.
                 cfg.CreateMap<Loose.Previous.Message, Loose.Message>();
                 cfg.CreateMap<Loose.Previous.MessageHeader, Loose.MessageHeader>();
-
-                //Add a year to the file preperation date.
-                cfg.CreateMap<Loose.Previous.MessageHeaderCollectionDetails, Loose.MessageHeaderCollectionDetails>()
-                    .ForMember(dst => dst.FilePreparationDate, opt => opt.MapFrom(source => source.FilePreparationDate.AddYears(1)));
-
+                cfg.CreateMap<Loose.Previous.MessageHeaderCollectionDetails, Loose.MessageHeaderCollectionDetails>();
                 cfg.CreateMap<Loose.Previous.MessageHeaderSource, Loose.MessageHeaderSource>();
                 cfg.CreateMap<Loose.Previous.MessageSourceFiles, Loose.MessageSourceFiles>();
                 cfg.CreateMap<Loose.Previous.MessageSourceFilesSourceFile, Loose.MessageSourceFilesSourceFile>();

@@ -1,9 +1,9 @@
-﻿using ESFA.DC.FileService.Interface;
-using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
-using ESFA.DC.Serialization.Interfaces;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using ESFA.DC.FileService.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.Serialization.Interfaces;
 using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
@@ -16,8 +16,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly ILogger _logger;
 
         public AnnualMapper(
-            IFileService fileService, 
-            IXmlSerializationService xmlSerializationService, 
+            IFileService fileService,
+            IXmlSerializationService xmlSerializationService,
             IMap<Loose.Previous.Message, Loose.Message> mapper,
             ILogger logger)
         {
@@ -36,29 +36,35 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
             try
             {
-                var sourceStream = await _fileService.OpenReadStreamAsync(source, null, new System.Threading.CancellationToken());
-                _logger.LogVerbose($"Read in {timer.ElapsedMilliseconds}ms");
-                timer.Restart();
+                Loose.Previous.Message sourceMessage = null;
 
-                var sourceMessage = _xmlSerializationService.Deserialize<Loose.Previous.Message>(sourceStream);
-                _logger.LogVerbose($"Deserialize in {timer.ElapsedMilliseconds}ms");
-                timer.Restart();
+                using (var sourceStream = await _fileService.OpenReadStreamAsync(source, null, new System.Threading.CancellationToken()))
+                {
+                    _logger.LogVerbose($"Read in {timer.ElapsedMilliseconds}ms");
+                    timer.Restart();
+
+                    sourceMessage = _xmlSerializationService.Deserialize<Loose.Previous.Message>(sourceStream);
+                    _logger.LogVerbose($"Deserialize in {timer.ElapsedMilliseconds}ms");
+                    timer.Restart();
+                }
 
                 var targetMessage = _mapper.Map(sourceMessage);
                 _logger.LogVerbose($"Mapped in {timer.ElapsedMilliseconds}ms");
                 timer.Restart();
 
-                var targetStream = await _fileService.OpenWriteStreamAsync(target, null, new System.Threading.CancellationToken());
-                _logger.LogVerbose($"Get Out Stream in {timer.ElapsedMilliseconds}ms");
-                timer.Restart();
+                using (var targetStream = await _fileService.OpenWriteStreamAsync(target, null, new System.Threading.CancellationToken()))
+                {
+                    _logger.LogVerbose($"Get Out Stream in {timer.ElapsedMilliseconds}ms");
+                    timer.Restart();
 
-                _xmlSerializationService.Serialize<Loose.Message>(targetMessage, targetStream);
-                _logger.LogVerbose($"Serialize in {timer.ElapsedMilliseconds}ms");
-                timer.Restart();
+                    _xmlSerializationService.Serialize<Loose.Message>(targetMessage, targetStream);
+                    _logger.LogVerbose($"Serialize in {timer.ElapsedMilliseconds}ms");
+                    timer.Restart();
 
-                await targetStream.FlushAsync();
-                _logger.LogVerbose($"Flush in {timer.ElapsedMilliseconds}ms");
-                timer.Restart();
+                    await targetStream.FlushAsync();
+                    _logger.LogVerbose($"Flush in {timer.ElapsedMilliseconds}ms");
+                    timer.Restart();
+                }
             }
             catch (Exception ex)
             {

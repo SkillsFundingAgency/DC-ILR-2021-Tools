@@ -7,6 +7,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
     public class MessageMapper : AbstractMap<Loose.Previous.Message, Loose.Message>
     {
         private readonly IMapper autoMapper;
+
         public MessageMapper(IMapperProvider mappingProvider)
         {
             autoMapper = mappingProvider.GetMapper();

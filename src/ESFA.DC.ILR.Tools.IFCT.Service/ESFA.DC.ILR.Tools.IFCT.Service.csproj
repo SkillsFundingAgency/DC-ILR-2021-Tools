@@ -2,21 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <CodeAnalysisRuleSet>..\ESFA.DC.ILR.Tools.2021.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Greg\Source\Repos\DC-ILR-2021-Tools\src\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.xml</DocumentationFile>
+    <NoWarn>1591;1701;1702</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.0.0" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="CommandLineParser" Version="2.7.82" />
     <PackageReference Include="ESFA.DC.FileService.Interface" Version="0.1.27-beta0001" />
     <PackageReference Include="ESFA.DC.Logging.Interfaces" Version="0.1.8-beta0001" />
     <PackageReference Include="ESFA.DC.Serialization.Interfaces" Version="0.1.6-beta0001" />
+    <PackageReference Include="ESFA.DC.Serialization.Xml" Version="0.1.6-beta0001" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Context\" />
   </ItemGroup>
 
 </Project>

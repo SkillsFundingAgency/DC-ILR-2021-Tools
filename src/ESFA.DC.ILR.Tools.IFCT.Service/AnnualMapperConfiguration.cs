@@ -26,6 +26,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             {
                 return settingParsed;
             }
+
             return defaultValue;
         }
 

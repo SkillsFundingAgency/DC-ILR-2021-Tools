@@ -8,11 +8,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Abstract
         {
             if (model == null)
             {
-                return default(TCurrent);
+                return default;
             }
 
             return MapModel(model);
-
         }
 
         protected abstract TCurrent MapModel(TPrevious model);

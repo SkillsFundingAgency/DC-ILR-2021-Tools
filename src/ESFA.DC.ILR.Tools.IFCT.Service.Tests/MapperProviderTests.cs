@@ -1,13 +1,14 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+﻿using System;
+using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using FluentAssertions;
 using Moq;
-using System;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
     public class MapperProviderTests
     {
+        /*
         [Theory]
         [InlineData(true, "Hello there")]
         [InlineData(false, "Hello &#13;there")]
@@ -47,5 +48,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Assert
             targetMessageHeaderCollectionDetails.FilePreparationDate.Should().Be(refDate.AddYears(1));
         }
+        */
     }
 }

@@ -1,24 +1,24 @@
-﻿using Autofac;
-using CommandLine;
-using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
-using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Autofac;
+using CommandLine;
+using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
+using ESFA.DC.ILR.Tools.IFCT.Service;
+using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using Microsoft.Extensions.Configuration;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Console
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Parser.Default.ParseArguments<CommandLineArguments>(args)
                 .WithParsed(async a =>
                 {
                     try
-                    {
+                    { // ArgumentException for parameters ??????
                         using (var container = BuildContainerBuilder().Build())
                         {
                             var annualMapper = container.Resolve<IAnnualMapper>();
@@ -97,6 +97,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             containerBuilder.RegisterInstance<IConfiguration>(config);
 
             containerBuilder.RegisterModule<ConsoleServicesModule>();
+            containerBuilder.RegisterModule<ConsoleModule>();
 
             return containerBuilder;
         }
