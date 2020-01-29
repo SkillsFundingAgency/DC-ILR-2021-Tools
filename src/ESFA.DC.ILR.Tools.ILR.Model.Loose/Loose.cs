@@ -347,8 +347,8 @@ namespace Loose
     public enum MessageHeaderCollectionDetailsYear
     {
         
-        [System.Xml.Serialization.XmlEnumAttribute("1920")]
-        Item1920,
+        [System.Xml.Serialization.XmlEnumAttribute("2021")]
+        Item2021,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.0.0")]
