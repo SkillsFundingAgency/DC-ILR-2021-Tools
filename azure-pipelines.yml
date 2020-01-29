@@ -62,6 +62,7 @@ stages:
          write-output "Name: $($v.Name)  | Value : $($v.Value)"
          }
 
+    ## Restoer & Build 
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       enabled: true
@@ -79,22 +80,23 @@ stages:
         vstsFeed: '$(Parameters.nugetFeedName)'
         clean: true
 
-    - task: DotNetCoreCLI@2
-      enabled: false
-      displayName: 'Restore Nuget packages'
-      inputs:
-        command: 'restore'
-        projects: '**/*.csproj'
-        feedsToUse: 'select'
-        vstsFeed: 'dct-pkg'
+    ## Restoer & Build using dotnet cli
+    #- task: DotNetCoreCLI@2
+    #  enabled: false
+    #  displayName: 'Restore Nuget packages'
+    #  inputs:
+    #    command: 'restore'
+    #    projects: '**/*.csproj'
+    #    feedsToUse: 'select'
+    #    vstsFeed: 'dct-pkg'
         
-    - task: DotNetCoreCLI@2
-      enabled: false
-      displayName: 'Build Solution'
-      inputs:
-        command: 'build'
-        projects: '**/*.sln'
-        arguments: '-c $(BuildConfiguration) -p:version="$(GitVersion.AssemblySemVer)" -p:FileVersion="$(GitVersion.AssemblySemFileVer)"'
+    #- task: DotNetCoreCLI@2
+    #  enabled: false
+    #  displayName: 'Build Solution'
+    #  inputs:
+    #    command: 'build'
+    #    projects: '**/*.sln'
+    #    arguments: '-c $(BuildConfiguration) -p:version="$(GitVersion.AssemblySemVer)" -p:FileVersion="$(GitVersion.AssemblySemFileVer)"'
 
     #********************************************************************************
     # Copy Files into Aftifact Folder before test.
