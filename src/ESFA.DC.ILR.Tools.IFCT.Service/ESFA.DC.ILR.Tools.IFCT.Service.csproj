@@ -18,6 +18,10 @@
     <PackageReference Include="ESFA.DC.Logging.Interfaces" Version="0.1.8-beta0001" />
     <PackageReference Include="ESFA.DC.Serialization.Interfaces" Version="0.1.6-beta0001" />
     <PackageReference Include="ESFA.DC.Serialization.Xml" Version="0.1.6-beta0001" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.1" />
@@ -30,10 +34,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Context\" />
   </ItemGroup>
 
 </Project>

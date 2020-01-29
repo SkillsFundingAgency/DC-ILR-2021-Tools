@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
 using Autofac;
 using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
@@ -10,41 +8,34 @@ using Microsoft.Extensions.Configuration;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Console
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
             Parser.Default.ParseArguments<CommandLineArguments>(args)
-                .WithParsed(async a =>
+                .WithParsed(async cla =>
                 {
                     try
                     { // ArgumentException for parameters ??????
                         using (var container = BuildContainerBuilder().Build())
                         {
-                            var annualMapper = container.Resolve<IAnnualMapper>();
+                            var consoleService = container.Resolve<IConsoleService>();
 
-                            var validSingeSourceFile = !string.IsNullOrWhiteSpace(a.SourceFile) && File.Exists(a.SourceFile);
-                            var validSingleTargetFile = !string.IsNullOrWhiteSpace(a.TargetFile);
-
-                            if (validSingeSourceFile && validSingleTargetFile)
-                            { // process single file
-                                await ProcessSingleFile(a.SourceFile, a.TargetFile, annualMapper);
-                            }
-                            else
+                            // possible factory here
+                            var context = new FileConversionContext
                             {
-                                var validsourceFolder = !string.IsNullOrWhiteSpace(a.SourceFolder) && Directory.Exists(a.SourceFolder);
-                                var validTargetFolder = !string.IsNullOrWhiteSpace(a.TargetFolder) && Directory.Exists(a.TargetFolder);
+                                SourceFile = cla.SourceFile,
+                                TargetFile = cla.TargetFile,
+                                SourceFolder = cla.SourceFolder,
+                                TargetFolder = cla.TargetFolder
+                            };
 
-                                if (validsourceFolder && validTargetFolder)
-                                {
-                                    ProcessFolder(a.SourceFolder, a.TargetFolder, annualMapper);
-                                }
-                                else
-                                { // There is not a valid set of files or folders to be able to progess further.
-                                    DisplayArgumentsError();
-                                }
-                            }
+                            await consoleService.ProcessFiles(context);
                         }
+                    }
+                    catch (ArgumentException)
+                    {
+                        DisplayArgumentsError();
                     }
                     catch (Exception ex)
                     {
@@ -55,17 +46,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             // Remove this !
             System.Console.WriteLine("Press any key");
             System.Console.Read();
-        }
-
-        private static void ProcessFolder(string sourceFolder, string targetFolder, IAnnualMapper annualMapper)
-        {
-            System.Console.WriteLine($"To be implemented - process all files in {sourceFolder} to {targetFolder} using {annualMapper}");
-            throw new NotImplementedException();
-        }
-
-        private static async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
-        {
-            await annualMapper.MapFileAsync(sourceFile, targetFile);
         }
 
         private static void DisplayArgumentsError()

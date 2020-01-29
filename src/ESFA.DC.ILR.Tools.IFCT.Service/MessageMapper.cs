@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using ESFA.DC.ILR.Tools.IFCT.Service.Abstract;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 
@@ -10,6 +11,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
         public MessageMapper(IMapperProvider mappingProvider)
         {
+            if (mappingProvider == null)
+            {
+                throw new ArgumentNullException(nameof(mappingProvider));
+            }
+
             autoMapper = mappingProvider.GetMapper();
         }
 
