@@ -30,7 +30,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                                 TargetFolder = cla.TargetFolder
                             };
 
-                            await consoleService.ProcessFiles(context);
+                            await consoleService.ProcessFilesAsync(context);
                         }
                     }
                     catch (ArgumentException)

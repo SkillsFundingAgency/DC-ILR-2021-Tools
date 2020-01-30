@@ -29,7 +29,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
         public async Task<bool> MapFileAsync(string source, string target)
         {
-            _logger.LogInfo($"Mappiing {source} to {target}");
+            _logger.LogInfo($"Mapping {source} to {target}");
 
             var timer = new Stopwatch();
             timer.Start();
@@ -68,7 +68,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
             catch (Exception ex)
             {
-                _logger.LogFatal($"Failed mappiing {source} to {target}", ex);
+                _logger.LogFatal($"Failed mapping {source} to {target}", ex);
                 return false;
             }
 

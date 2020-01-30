@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Service
+namespace ESFA.DC.ILR.Tools.IFCT.Console
 {
     public class CommandLineArguments
     {

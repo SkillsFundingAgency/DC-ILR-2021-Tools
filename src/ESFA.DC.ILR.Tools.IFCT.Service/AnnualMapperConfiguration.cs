@@ -6,6 +6,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
     public class AnnualMapperConfiguration : IAnnualMapperConfiguration
     {
+        public static readonly string SanitizeStringsId = "SanitizeStrings";
+
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
 
@@ -17,7 +19,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             LogConfiguration();
         }
 
-        public bool SanitizeStrings => ReadSettingAsBool("SanitizeStrings", true);
+        public bool SanitizeStrings => ReadSettingAsBool(SanitizeStringsId, true);
 
         private bool ReadSettingAsBool(string setting, bool defaultValue)
         {
@@ -32,7 +34,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
         public void LogConfiguration()
         {
-            _logger.LogInfo(GetConfigItemForLog("SanitizeStrings"));
+            _logger.LogInfo(GetConfigItemForLog(SanitizeStringsId));
         }
 
         private string GetConfigItemForLog(string setting)

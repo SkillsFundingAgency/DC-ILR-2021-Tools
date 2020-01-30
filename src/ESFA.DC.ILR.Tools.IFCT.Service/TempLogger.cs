@@ -7,7 +7,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
     public class TempLogger : ILogger
     {
         /*
-         * Temp placeholder until the desktop logging nuget sis available.
+         * Temp placeholder until the desktop logging nuget is available.
          */
 
         // Flag: Has Dispose already been called?
