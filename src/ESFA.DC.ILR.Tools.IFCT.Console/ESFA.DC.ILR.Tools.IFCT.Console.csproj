@@ -50,6 +50,7 @@
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="FileConversionContext.cs" />
     <Compile Include="Modules\ConsoleModule.cs" />
+    <Compile Include="Modules\ConsoleServicesModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,16 +4,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
 {
     public class CommandLineArguments
     {
-        [Option('s', "sourcefile", Required = false)]
+        [Option('s', "sourcefile", Required = true)]
         public string SourceFile { get; set; }
 
-        [Option('t', "targetfile", Required = false)]
+        [Option('t', "targetfile", Required = true)]
         public string TargetFile { get; set; }
-
-        [Option('f', "sourcefolder", Required = false)]
-        public string SourceFolder { get; set; }
-
-        [Option('r', "resultfolder", Required = false)]
-        public string TargetFolder { get; set; }
     }
 }

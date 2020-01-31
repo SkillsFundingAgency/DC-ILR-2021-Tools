@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using ESFA.DC.FileService.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Console;
-using ESFA.DC.ILR.Tools.IFCT.Service.Context;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using FluentAssertions;
 using Moq;

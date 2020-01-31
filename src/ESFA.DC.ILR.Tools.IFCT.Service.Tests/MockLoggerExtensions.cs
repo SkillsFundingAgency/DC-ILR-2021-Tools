@@ -27,21 +27,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 
         public static bool VerifyInfo(this Mock<ILogger> loggerMock, string expectedLogString, Times times)
         {
-            return string.IsNullOrWhiteSpace(expectedLogString) ?
+            return expectedLogString == null ?
                 CheckLog(loggerMock, v => v.LogInfo(It.IsAny<string>(), default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times)
                 : CheckLog(loggerMock, v => v.LogInfo(expectedLogString, default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times);
         }
 
         public static bool VerifyVerbose(this Mock<ILogger> loggerMock, string expectedLogString, Times times)
         {
-            return string.IsNullOrWhiteSpace(expectedLogString) ?
+            return expectedLogString == null ?
                 CheckLog(loggerMock, v => v.LogVerbose(It.IsAny<string>(), default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times)
                 : CheckLog(loggerMock, v => v.LogVerbose(expectedLogString, default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times);
         }
 
         public static bool VerifyFatal(this Mock<ILogger> loggerMock, string expectedLogString, Times times)
         {
-            return string.IsNullOrWhiteSpace(expectedLogString) ?
+            return expectedLogString == null ?
                 CheckLog(loggerMock, v => v.LogFatal(It.IsAny<string>(), It.IsAny<Exception>(), default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times)
                 : CheckLog(loggerMock, v => v.LogFatal(expectedLogString, It.IsAny<Exception>(), default, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), times);
         }

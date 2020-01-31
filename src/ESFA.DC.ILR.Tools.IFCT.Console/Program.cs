@@ -26,8 +26,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                             {
                                 SourceFile = cla.SourceFile,
                                 TargetFile = cla.TargetFile,
-                                SourceFolder = cla.SourceFolder,
-                                TargetFolder = cla.TargetFolder
                             };
 
                             await consoleService.ProcessFilesAsync(context);
@@ -54,16 +52,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             System.Console.WriteLine(@"IFCT Console");
             System.Console.WriteLine();
             System.Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.WriteLine(@"Either a matching source and target file or a source and target folder are required.");
+            System.Console.WriteLine(@"A matching source and target file required.");
             System.Console.ForegroundColor = ConsoleColor.White;
             System.Console.WriteLine(@"
   -s, --source          Required. Provide File Path for source ILR File.
 
-  -t, --target          Provide File Path for target ILR File.
-
-  -f, --sourcefolder    Provide File Path for source folder of ILR Files.
-
-  -r, --resultfolder    Provide File Path for result folder of ILR Files.");
+  -t, --target          Reuired. Provide File Path for target ILR File.");
         }
 
         private static ContainerBuilder BuildContainerBuilder()

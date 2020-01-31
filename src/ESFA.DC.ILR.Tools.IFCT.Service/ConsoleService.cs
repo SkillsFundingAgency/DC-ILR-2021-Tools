@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using ESFA.DC.FileService.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Service.Context
+namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
     public class ConsoleService : IConsoleService
     {
@@ -35,25 +35,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Context
             }
             else
             {
-                // IFileService will need to be extended to have ContainerExists and IterateContainerContents type functionality for this to work for both drives and blob stores
-                var validsourceFolder = !string.IsNullOrWhiteSpace(fileConversionContext.SourceFolder) && Directory.Exists(fileConversionContext.SourceFolder);
-                var validTargetFolder = !string.IsNullOrWhiteSpace(fileConversionContext.TargetFolder) && Directory.Exists(fileConversionContext.TargetFolder);
-
-                if (validsourceFolder && validTargetFolder)
-                {
-                    ProcessFolder(fileConversionContext.SourceFolder, fileConversionContext.TargetFolder, _annualMapper);
-                }
-                else
-                { // There is not a valid set of files or folders to be able to progess further.
-                    throw new ArgumentException("Invalid command line parameters supplied");
-                }
+                // There is not a valid set of files or folders to be able to progess further.
+                throw new ArgumentException("Invalid command line parameters supplied");
             }
-        }
-
-        private static void ProcessFolder(string sourceFolder, string targetFolder, IAnnualMapper annualMapper)
-        {
-            System.Console.WriteLine($"To be implemented - process all files in {sourceFolder} to {targetFolder} using {annualMapper}");
-            throw new NotImplementedException();
         }
 
         private static async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)

@@ -5,9 +5,5 @@
         string SourceFile { get; }
 
         string TargetFile { get; }
-
-        string SourceFolder { get; }
-
-        string TargetFolder { get; }
     }
 }
