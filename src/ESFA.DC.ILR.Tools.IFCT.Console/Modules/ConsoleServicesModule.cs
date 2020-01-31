@@ -18,8 +18,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
             containerBuilder.RegisterType<MessageMapper>().As<IMap<Loose.Previous.Message, Loose.Message>>();
             containerBuilder.RegisterType<AnnualMapper>().As<IAnnualMapper>();
 
-            containerBuilder.RegisterType<TempLogger>().As<ILogger>();
-
             containerBuilder.RegisterType<XmlSerializationService>().As<IXmlSerializationService>();
         }
     }

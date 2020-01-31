@@ -2,8 +2,8 @@
 using Autofac;
 using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
-using ESFA.DC.ILR.Tools.IFCT.Service;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.Logging.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Console
@@ -12,13 +12,15 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
     {
         public static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<CommandLineArguments>(args)
-                .WithParsed(async cla =>
-                {
-                    try
-                    { // ArgumentException for parameters ??????
-                        using (var container = BuildContainerBuilder().Build())
+            using (var container = BuildContainerBuilder().Build())
+            {
+                var logger = container.Resolve<ILogger>();
+                Parser.Default.ParseArguments<CommandLineArguments>(args)
+                    .WithParsed(async cla =>
+                    {
+                        try
                         {
+                            // ArgumentException for parameters ??????
                             var consoleService = container.Resolve<IConsoleService>();
 
                             // possible factory here
@@ -27,19 +29,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                                 SourceFile = cla.SourceFile,
                                 TargetFile = cla.TargetFile,
                             };
-
+                            logger.LogDebug("Starting processing");
                             await consoleService.ProcessFilesAsync(context);
                         }
-                    }
-                    catch (ArgumentException)
-                    {
-                        DisplayArgumentsError();
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Console.WriteLine($"Error - {ex.Message}");
-                    }
-                });
+                        catch (ArgumentException ae)
+                        {
+                            logger.LogError("No Arguments found", ae);
+                            DisplayArgumentsError();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogError("An Error has occurred", ex);
+                            System.Console.WriteLine($"Error - {ex.Message}");
+                        }
+                    });
+            }
 
             // Remove this !
             System.Console.WriteLine("Press any key");
@@ -69,9 +73,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             var config = configBuilder.Build();
 
             containerBuilder.RegisterInstance<IConfiguration>(config);
-
+            var loggerSettings = config.GetSection("Logging");
             containerBuilder.RegisterModule<ConsoleServicesModule>();
             containerBuilder.RegisterModule<ConsoleModule>();
+            containerBuilder.RegisterModule(new LoggingModule(null));
 
             return containerBuilder;
         }
