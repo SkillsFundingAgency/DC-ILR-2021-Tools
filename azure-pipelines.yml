@@ -37,7 +37,7 @@ stages:
 
     - task: NuGetToolInstaller@0
       displayName: 'Use NuGet >=5.3.1'
-      enabled: false
+      enabled: true
       inputs:
         versionSpec: '>=5.3.1'
 
