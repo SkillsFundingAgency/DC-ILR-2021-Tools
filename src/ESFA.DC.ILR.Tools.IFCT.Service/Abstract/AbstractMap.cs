@@ -8,7 +8,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Abstract
         {
             if (model == null)
             {
-                return default;
+                return default(TCurrent);
             }
 
             return MapModel(model);
