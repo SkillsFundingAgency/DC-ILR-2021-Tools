@@ -62,7 +62,7 @@ stages:
          write-output "Name: $($v.Name)  | Value : $($v.Value)"
          }
 
-    ## Restoer & Build 
+    ## Restore & Build 
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       enabled: true
@@ -80,7 +80,7 @@ stages:
         vstsFeed: '$(Parameters.nugetFeedName)'
         clean: true
 
-    ## Restoer & Build using dotnet cli
+    ## Restore & Build using dotnet cli
     #- task: DotNetCoreCLI@2
     #  enabled: false
     #  displayName: 'Restore Nuget packages'
