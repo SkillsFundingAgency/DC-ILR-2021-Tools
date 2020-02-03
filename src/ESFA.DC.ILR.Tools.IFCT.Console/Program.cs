@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
@@ -6,7 +7,6 @@ using ESFA.DC.Logging.Desktop.Config;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;
 using ESFA.DC.Logging.Interfaces;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Console
 {

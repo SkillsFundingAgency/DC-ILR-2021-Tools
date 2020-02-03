@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Microsoft Managed Recommended Rules" Description="These rules focus on the most critical problems in your code, including potential security holes, application crashes, and other important logic and design errors. It is recommended to include this rule set in any custom rule set you create for your projects." ToolsVersion="10.0">
+<RuleSet Name="Microsoft Managed Recommended Rules" Description="These rules focus on the most critical problems in your code, including potential security holes, application crashes, and other important logic and design errors. It is recommended to include this rule set in any custom rule set you create for your projects." ToolsVersion="16.0">
   <Localization ResourceAssembly="Microsoft.VisualStudio.CodeAnalysis.RuleSets.Strings.dll" ResourceBaseName="Microsoft.VisualStudio.CodeAnalysis.RuleSets.Strings.Localized">
     <Name Resource="MinimumRecommendedRules_Name" />
     <Description Resource="MinimumRecommendedRules_Description" />
@@ -8,7 +8,6 @@
     <Rule Id="CA1001" Action="Warning" />
     <Rule Id="CA1009" Action="Warning" />
     <Rule Id="CA1016" Action="Warning" />
-    <Rule Id="CA1031" Action="None" />
     <Rule Id="CA1033" Action="Warning" />
     <Rule Id="CA1049" Action="Warning" />
     <Rule Id="CA1060" Action="Warning" />
@@ -16,7 +15,6 @@
     <Rule Id="CA1063" Action="Warning" />
     <Rule Id="CA1065" Action="Warning" />
     <Rule Id="CA1301" Action="Warning" />
-    <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1400" Action="Warning" />
     <Rule Id="CA1401" Action="Warning" />
     <Rule Id="CA1403" Action="Warning" />
@@ -24,7 +22,6 @@
     <Rule Id="CA1405" Action="Warning" />
     <Rule Id="CA1410" Action="Warning" />
     <Rule Id="CA1415" Action="Warning" />
-    <Rule Id="CA1707" Action="None" />
     <Rule Id="CA1821" Action="Warning" />
     <Rule Id="CA1900" Action="Warning" />
     <Rule Id="CA1901" Action="Warning" />
@@ -72,6 +69,12 @@
     <Rule Id="CA2241" Action="Warning" />
     <Rule Id="CA2242" Action="Warning" />
   </Rules>
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers">
+    <Rule Id="CA1707" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers">
+    <Rule Id="CA1303" Action="None" />
+  </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA1000" Action="Error" />
     <Rule Id="SA1001" Action="Error" />
@@ -111,11 +114,11 @@
     <Rule Id="SA1513" Action="Error" />
     <Rule Id="SA1516" Action="Error" />
     <Rule Id="SA1517" Action="Error" />
+    <Rule Id="SA1600" Action="None" />
+    <Rule Id="SA1602" Action="None" />
     <Rule Id="SA1623" Action="None" />
     <Rule Id="SA1633" Action="None" />
     <Rule Id="SA1649" Action="Error" />
     <Rule Id="SA1652" Action="None" />
-    <Rule Id="SA1600" Action="None" />
-    <Rule Id="SA1602" Action="None" />
   </Rules>
 </RuleSet>
