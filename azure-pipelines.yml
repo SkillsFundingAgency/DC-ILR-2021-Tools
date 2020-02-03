@@ -170,6 +170,7 @@ stages:
 
     - task: DotNetCoreCLI@2
       displayName: Run unit tests
+      enabled: false
       inputs:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
@@ -178,7 +179,7 @@ stages:
 
     - task: VSTest@2
       displayName: 'Run Unit Tests'
-      enabled: false
+      enabled: true
       inputs:
         testAssemblyVer2: |
          **\$(BuildConfiguration)\*test*.dll
