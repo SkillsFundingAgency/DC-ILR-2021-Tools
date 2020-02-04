@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.Service", "ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj", "{9CB39EBC-3D07-4E7F-87CE-F4420B4410F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.Interface", "ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj", "{94F33A93-4109-486F-B4B4-7BAC6CE632C9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.Console", "ESFA.DC.ILR.Tools.IFCT.Console\ESFA.DC.ILR.Tools.IFCT.Console.csproj", "{F946D22F-5A3D-432C-A387-B124F0E709CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.ILR.Model.Loose", "ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj", "{BEB1779B-9BF6-4C84-90C4-E2C2C0D97CC9}"
@@ -22,11 +20,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.Service.Tests", "ESFA.DC.ILR.Tools.IFCT.Service.Tests\ESFA.DC.ILR.Tools.IFCT.Service.Tests.csproj", "{95FE053F-DD1D-47D6-91AA-F8CBB1EBAB8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.Common", "ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj", "{124E2A64-B948-4C10-A3A6-29C1863BDC9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.Common", "ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj", "{124E2A64-B948-4C10-A3A6-29C1863BDC9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.FileValidation", "ESFA.DC.ILR.Tools.IFCT.FileValidation\ESFA.DC.ILR.Tools.IFCT.FileValidation.csproj", "{DDD5ABEE-57A8-4080-8358-2A28D0202A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.FileValidation", "ESFA.DC.ILR.Tools.IFCT.FileValidation\ESFA.DC.ILR.Tools.IFCT.FileValidation.csproj", "{DDD5ABEE-57A8-4080-8358-2A28D0202A8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests", "ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests\ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests.csproj", "{C018019A-15BE-43FF-9487-E1484FC81DAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces", "ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj", "{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.ILR.Tools.IFCT.Interface", "ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj", "{9244FAE1-54B8-4679-B27C-9BB37D727711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +40,6 @@ Global
 		{9CB39EBC-3D07-4E7F-87CE-F4420B4410F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CB39EBC-3D07-4E7F-87CE-F4420B4410F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CB39EBC-3D07-4E7F-87CE-F4420B4410F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94F33A93-4109-486F-B4B4-7BAC6CE632C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94F33A93-4109-486F-B4B4-7BAC6CE632C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94F33A93-4109-486F-B4B4-7BAC6CE632C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94F33A93-4109-486F-B4B4-7BAC6CE632C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F946D22F-5A3D-432C-A387-B124F0E709CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F946D22F-5A3D-432C-A387-B124F0E709CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F946D22F-5A3D-432C-A387-B124F0E709CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -70,6 +68,14 @@ Global
 		{C018019A-15BE-43FF-9487-E1484FC81DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C018019A-15BE-43FF-9487-E1484FC81DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C018019A-15BE-43FF-9487-E1484FC81DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9244FAE1-54B8-4679-B27C-9BB37D727711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9244FAE1-54B8-4679-B27C-9BB37D727711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9244FAE1-54B8-4679-B27C-9BB37D727711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9244FAE1-54B8-4679-B27C-9BB37D727711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

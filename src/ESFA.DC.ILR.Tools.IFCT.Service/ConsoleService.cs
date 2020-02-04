@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ESFA.DC.FileService.Interface;
+using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
@@ -11,11 +12,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
     {
         private readonly IAnnualMapper _annualMapper;
         private readonly IFileService _fileService;
+        private readonly IXsdValidationService _xsdValidationService;
 
-        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService)
+        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService, IXsdValidationService xsdValidationService)
         {
             _annualMapper = annualMapper;
             _fileService = fileService;
+            _xsdValidationService = xsdValidationService;
         }
 
         public async Task ProcessFilesAsync(IFileConversionContext fileConversionContext)
@@ -30,9 +33,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             var validSingleTargetFile = !string.IsNullOrWhiteSpace(fileConversionContext.TargetFile);
 
             if (validSingeSourceFile && validSingleTargetFile)
-            { // process single file
-                // TODO: validate source file
-                await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
+            {
+                // process single file
+                if (await ValidateSchema(fileConversionContext.SourceFile, _fileService, _xsdValidationService))
+                {
+                    await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
+                }
             }
             else
             {
@@ -46,9 +52,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             await annualMapper.MapFileAsync(sourceFile, targetFile);
         }
 
-        private static bool ValidateSchema(string sourceFile, string xsdSchema)
+        private static async Task<bool> ValidateSchema(string sourceFile, IFileService fileService, IXsdValidationService xsdValidationService)
         {
-
+            using (Stream xmlStream = await fileService.OpenReadStreamAsync(sourceFile, null, new CancellationToken()))
+            {
+                xsdValidationService.Validate(xmlStream);
+                return true;
+            }
         }
     }
 }

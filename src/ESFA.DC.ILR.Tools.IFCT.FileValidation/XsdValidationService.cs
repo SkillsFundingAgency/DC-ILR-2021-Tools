@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace ESFA.DC.ILR.FileValidationService.Service
+namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 {
     public class XsdValidationService : IXsdValidationService
     {

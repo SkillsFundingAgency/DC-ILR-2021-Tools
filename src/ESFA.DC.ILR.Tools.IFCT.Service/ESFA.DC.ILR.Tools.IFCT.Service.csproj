@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation\ESFA.DC.ILR.Tools.IFCT.FileValidation.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj" />
   </ItemGroup>

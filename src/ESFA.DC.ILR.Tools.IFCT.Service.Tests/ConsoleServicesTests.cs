@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using ESFA.DC.FileService.Interface;
+﻿using ESFA.DC.FileService.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Console;
+using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using FluentAssertions;
 using Moq;
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
@@ -21,7 +23,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, null);
+            var consoleService = new ConsoleService(annualMapperMock.Object, null, null);
             FileConversionContext fileConversionContext = null;
 
             // Act & Assert
@@ -44,8 +46,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
             var fileServiceMock = new Mock<IFileService>();
+            var xsdValidationMock = new Mock<IXsdValidationService>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourceFile,
@@ -65,9 +68,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
             var fileServiceMock = new Mock<IFileService>();
+            var xsdValidationServiceMock = new Mock<IXsdValidationService>();
+            xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(false);
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
@@ -88,9 +93,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
             var fileServiceMock = new Mock<IFileService>();
+            var xsdValidationServiceMock = new Mock<IXsdValidationService>();
+            xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
@@ -101,6 +108,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             await consoleService.ProcessFilesAsync(fileConversionContext);
 
             // Assert
+            xsdValidationServiceMock.Verify(v => v.Validate(It.IsAny<Stream>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
             annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, targetfileName), Times.Once);
         }

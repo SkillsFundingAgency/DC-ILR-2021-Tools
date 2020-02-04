@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -51,6 +51,7 @@
     <Compile Include="FileConversionContext.cs" />
     <Compile Include="Modules\ConsoleModule.cs" />
     <Compile Include="Modules\ConsoleServicesModule.cs" />
+    <Compile Include="Modules\FileValidationModule.cs" />
     <Compile Include="Modules\LoggingModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj">
+      <Project>{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation\ESFA.DC.ILR.Tools.IFCT.FileValidation.csproj">
+      <Project>{DDD5ABEE-57A8-4080-8358-2A28D0202A8D}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>

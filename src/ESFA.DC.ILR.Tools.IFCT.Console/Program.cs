@@ -46,10 +46,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                         }
                     });
             }
-
-            // Remove this !
-            System.Console.WriteLine("Press any key");
-            System.Console.Read();
         }
 
         private static void DisplayArgumentsError()
@@ -82,6 +78,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             containerBuilder.RegisterModule<ConsoleServicesModule>();
             containerBuilder.RegisterModule<ConsoleModule>();
             containerBuilder.RegisterModule(new LoggingModule(settings));
+            containerBuilder.RegisterModule<FileValidationModule>();
 
             return containerBuilder;
         }

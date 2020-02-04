@@ -1,12 +1,11 @@
-﻿using ESFA.DC.ILR.FileValidationService.Service;
-using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using Xunit;
+using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 
 namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
 {
