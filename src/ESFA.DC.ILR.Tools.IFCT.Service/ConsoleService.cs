@@ -31,6 +31,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
             if (validSingeSourceFile && validSingleTargetFile)
             { // process single file
+                // TODO: validate source file
                 await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
             }
             else
@@ -43,6 +44,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private static async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
         {
             await annualMapper.MapFileAsync(sourceFile, targetFile);
+        }
+
+        private static bool ValidateSchema(string sourceFile, string xsdSchema)
+        {
+
         }
     }
 }
