@@ -6,6 +6,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
     public class AnnualMapperConfiguration : IAnnualMapperConfiguration
     {
+        // TODO - GH Use the Configuration Base class rather than repeat the base code, just where to put it?
         public static readonly string SanitizeStringsId = "SanitizeStrings";
 
         private readonly IConfiguration _configuration;

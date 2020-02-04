@@ -2,7 +2,6 @@
 using Autofac;
 using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
-using ESFA.DC.ILR.Tools.IFCT.Service;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using Microsoft.Extensions.Configuration;
 

@@ -150,6 +150,10 @@
       <Project>{F946D22F-5A3D-432C-A387-B124F0E709CD}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Console</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj">
+      <Project>{94F33A93-4109-486F-B4B4-7BAC6CE632C9}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9CB39EBC-3D07-4E7F-87CE-F4420B4410F2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>

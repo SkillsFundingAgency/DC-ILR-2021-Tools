@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.Serialization.Interfaces;

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using ESFA.DC.FileService.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.Serialization.Interfaces;
 using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
