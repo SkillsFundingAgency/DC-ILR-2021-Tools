@@ -1,4 +1,4 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.Abstract;
+﻿using ESFA.DC.ILR.Tools.IFCT.Common.Abstract;
 using ESFA.DC.ILR.Tools.YearUpdate.Interface;
 
 namespace ESFA.DC.ILR.Tools.YearUpdate

@@ -1,6 +1,6 @@
 ﻿using ESFA.DC.ILR.Tools.IFCT.Interface;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Abstract
+namespace ESFA.DC.ILR.Tools.IFCT.Common.Abstract
 {
     public abstract class AbstractProcess<TCurrent> : IProcess<TCurrent>
     {

@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ESFA.DC.Logging.Interfaces;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
 namespace ESFA.DC.ILR.Tools.YearUpdate
 {
     public abstract class ConfigurationBase
     {
-        protected readonly IConfiguration _configuration;
-        protected readonly ILogger _logger;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger _logger;
 
         public ConfigurationBase(IConfiguration configuration, ILogger logger)
         {
             _configuration = configuration;
             _logger = logger;
         }
+
+        protected IConfiguration Configuration => _configuration;
+
+        protected ILogger Logger => _logger;
 
         protected bool ReadSettingAsBool(string setting, bool defaultValue)
         {

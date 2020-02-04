@@ -18,7 +18,7 @@ namespace ESFA.DC.ILR.Tools.YearUpdate
 
         public void LogConfiguration()
         {
-            _logger.LogInfo(GetConfigItemForLog(AddOneToDatesId));
+            Logger.LogInfo(GetConfigItemForLog(AddOneToDatesId));
         }
     }
 }

@@ -96,7 +96,7 @@
       <Version>0.1.10-beta0001</Version>
     </PackageReference>
     <PackageReference Include="ESFA.DC.Logging.Interfaces">
-      <Version>0.1.8-beta0001</Version>
+      <Version>0.1.9-beta0001</Version>
     </PackageReference>
     <PackageReference Include="ESFA.DC.Serialization.Xml">
       <Version>0.1.6-beta0001</Version>
@@ -107,7 +107,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration">
-      <Version>3.1.0</Version>
+      <Version>3.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder">
       <Version>3.1.0</Version>
