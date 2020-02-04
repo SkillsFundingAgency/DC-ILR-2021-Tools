@@ -7,7 +7,7 @@ using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 
 namespace ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.FileValidation
 {
-    public class IlrLooseXmlSchemaProvider : IIlrLooseXmlSchemaProvider
+    public class XmlSchemaProvider : IXmlSchemaProvider
     {
         public XmlSchema Provide()
         {

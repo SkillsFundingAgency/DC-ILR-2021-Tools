@@ -8,20 +8,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 {
     public class XsdValidationService : IXsdValidationService
     {
-        private readonly IIlrLooseXmlSchemaProvider _xmlSchemaProvider;
+        private readonly IXmlSchemaProvider _xmlSchemaProvider;
         private readonly IValidationErrorHandler _validationErrorHandler;
         private readonly IValidationErrorMetadataService _validationErrorMetadataService;
 
-        public XsdValidationService(IIlrLooseXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler, IValidationErrorMetadataService validationErrorMetadataService)
+        public XsdValidationService(IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler, IValidationErrorMetadataService validationErrorMetadataService)
         {
             _xmlSchemaProvider = xmlSchemaProvider;
             _validationErrorHandler = validationErrorHandler;
             _validationErrorMetadataService = validationErrorMetadataService;
         }
 
-        public void Validate(Stream stream)
+        // TODO: Add xsd schema as param
+        // TODO: Add callback for error
+        public void Validate(Stream stream, XmlSchemaSet xmlSchemaSet)
         {
-            var xmlSchemaSet = BuildXmlSchemaSet();
             var xmlReaderSettings = BuildXmlReaderSettings(xmlSchemaSet);
 
             ValidateNamespace(stream, xmlSchemaSet);
@@ -37,7 +38,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
                 }
                 catch (XmlException xmlException)
                 {
-                    _validationErrorHandler.XmlValidationErrorHandler(xmlException);
                     throw;
                 }
             }
@@ -57,8 +57,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
                 }
                 catch (XmlException xmlException)
                 {
-                    _validationErrorHandler.XmlValidationErrorHandler(xmlException);
-                    throw;
+                    throw xmlException;
                 }
             }
 
@@ -72,21 +71,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             {
                 throw new XmlSchemaException("Supplied XML does not conform to the XSD, see Validation Errors for Detailed Results.");
             }
-        }
-
-        public XmlSchemaSet BuildXmlSchemaSet()
-        {
-            var xmlSchemaSet = new XmlSchemaSet()
-            {
-                CompilationSettings = new XmlSchemaCompilationSettings()
-            };
-
-            var xmlSchema = _xmlSchemaProvider.Provide();
-
-            xmlSchemaSet.Add(xmlSchema);
-            xmlSchemaSet.Compile();
-
-            return xmlSchemaSet;
         }
 
         public XmlReaderSettings BuildXmlReaderSettings(XmlSchemaSet xmlSchemaSet)

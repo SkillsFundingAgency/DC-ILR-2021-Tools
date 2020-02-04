@@ -2,7 +2,7 @@
 
 namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces
 {
-    public interface IIlrLooseXmlSchemaProvider
+    public interface IXmlSchemaProvider
     {
         XmlSchema Provide();
     }
