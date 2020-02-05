@@ -41,7 +41,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
         {
             var settings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            int flag = (int)settings.ValidationFlags;
             return settings;
         }
 
