@@ -12,7 +12,7 @@ namespace ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.FileValidation
         public XmlSchema Provide()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var xsdResourceName = assembly.GetManifestResourceNames().First(n => n.EndsWith(".xsd"));
+            var xsdResourceName = assembly.GetManifestResourceNames().First(n => n.EndsWith(".xsd", System.StringComparison.OrdinalIgnoreCase));
 
             using (Stream xsdStream = assembly.GetManifestResourceStream(xsdResourceName))
             {

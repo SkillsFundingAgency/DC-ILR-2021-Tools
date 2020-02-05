@@ -1,10 +1,14 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
 using ESFA.DC.FileService.Interface;
 using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.Logging.Interfaces;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
@@ -13,12 +17,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly IAnnualMapper _annualMapper;
         private readonly IFileService _fileService;
         private readonly IXsdValidationService _xsdValidationService;
+        private readonly IXmlSchemaProvider _xmlSchemaProvider;
+        private readonly IValidationErrorHandler _validationErrorHandler;
 
-        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService, IXsdValidationService xsdValidationService)
+        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService, IXsdValidationService xsdValidationService, IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler)
         {
             _annualMapper = annualMapper;
             _fileService = fileService;
             _xsdValidationService = xsdValidationService;
+            _xmlSchemaProvider = xmlSchemaProvider;
+            _validationErrorHandler = validationErrorHandler;
+        }
+
+        private static string RetrieveRootElement(XmlSchema xmlSchema)
+        {
+            return xmlSchema.Items.OfType<XmlSchemaElement>().FirstOrDefault()?.Name;
         }
 
         public async Task ProcessFilesAsync(IFileConversionContext fileConversionContext)
@@ -35,7 +48,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFile)
             {
                 // process single file
-                if (await ValidateSchema(fileConversionContext.SourceFile, _fileService, _xsdValidationService))
+                if (await ValidateSchema(fileConversionContext.SourceFile))
                 {
                     await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
                 }
@@ -47,16 +60,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
         }
 
-        private static async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
+        private async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
         {
             await annualMapper.MapFileAsync(sourceFile, targetFile);
         }
 
-        private static async Task<bool> ValidateSchema(string sourceFile, IFileService fileService, IXsdValidationService xsdValidationService)
+        private async Task<bool> ValidateSchema(string sourceFile)
         {
-            using (Stream xmlStream = await fileService.OpenReadStreamAsync(sourceFile, null, new CancellationToken()))
+            XmlSchema schema = _xmlSchemaProvider.Provide();
+            XmlSchemaSet xmlSchemaSet = new XmlSchemaSet();
+            xmlSchemaSet.Add(schema);
+            xmlSchemaSet.Compile();
+            using (Stream xmlStream = await _fileService.OpenReadStreamAsync(sourceFile, null, new CancellationToken()))
             {
-                xsdValidationService.Validate(xmlStream);
+                _xsdValidationService.ValidateNamespace(xmlStream, xmlSchemaSet, RetrieveRootElement(schema), _validationErrorHandler.XsdNsValidationErrorHandler);
+                _xsdValidationService.Validate(xmlStream, xmlSchemaSet, _validationErrorHandler.XsdValidationErrorHandler);
                 return true;
             }
         }

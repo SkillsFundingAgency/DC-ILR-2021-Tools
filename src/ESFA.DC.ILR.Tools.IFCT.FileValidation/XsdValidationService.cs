@@ -1,6 +1,5 @@
 ﻿using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using System.IO;
-using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -8,85 +7,45 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 {
     public class XsdValidationService : IXsdValidationService
     {
-        private readonly IXmlSchemaProvider _xmlSchemaProvider;
-        private readonly IValidationErrorHandler _validationErrorHandler;
-        private readonly IValidationErrorMetadataService _validationErrorMetadataService;
-
-        public XsdValidationService(IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler, IValidationErrorMetadataService validationErrorMetadataService)
+        public void Validate(Stream stream, XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
-            _xmlSchemaProvider = xmlSchemaProvider;
-            _validationErrorHandler = validationErrorHandler;
-            _validationErrorMetadataService = validationErrorMetadataService;
-        }
-
-        // TODO: Add xsd schema as param
-        // TODO: Add callback for error
-        public void Validate(Stream stream, XmlSchemaSet xmlSchemaSet)
-        {
-            var xmlReaderSettings = BuildXmlReaderSettings(xmlSchemaSet);
-
-            ValidateNamespace(stream, xmlSchemaSet);
+            var xmlReaderSettings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
 
             stream.Position = 0;
             using (var xmlReader = XmlReader.Create(stream, xmlReaderSettings))
             {
-                try
+                while (xmlReader.Read())
                 {
-                    while (xmlReader.Read())
-                    {
-                    }
-                }
-                catch (XmlException xmlException)
-                {
-                    throw;
                 }
             }
-
-            AssertValidity();
         }
 
-        public void ValidateNamespace(Stream stream, XmlSchemaSet xmlSchemaSet)
+        public void ValidateNamespace(Stream stream, XmlSchemaSet xmlSchemaSet, string rootElementName, ValidationEventHandler validationEventHandler = null)
         {
-            var xmlReaderSettings = BuildXmlNsReaderSettings(xmlSchemaSet);
+            var xmlReaderSettings = BuildXmlNsReaderSettings(xmlSchemaSet, validationEventHandler);
 
             using (var xmlReader = XmlReader.Create(stream, xmlReaderSettings))
             {
                 try
                 {
-                    xmlReader.ReadToFollowing(this.RetrieveRootElementName());
+                    xmlReader.ReadToFollowing(rootElementName);
                 }
                 catch (XmlException xmlException)
                 {
                     throw xmlException;
                 }
             }
-
-            AssertValidity();
         }
 
-
-        public void AssertValidity()
+        private XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
-            if (!_validationErrorMetadataService.IsSchemaValid(_validationErrorHandler.ValidationErrors))
-            {
-                throw new XmlSchemaException("Supplied XML does not conform to the XSD, see Validation Errors for Detailed Results.");
-            }
-        }
-
-        public XmlReaderSettings BuildXmlReaderSettings(XmlSchemaSet xmlSchemaSet)
-        {
-            return BuildReaderSettings(xmlSchemaSet, _validationErrorHandler.XsdValidationErrorHandler);
-        }
-
-        public XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet)
-        {
-            var settings = BuildReaderSettings(xmlSchemaSet, _validationErrorHandler.XsdNsValidationErrorHandler);
+            var settings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-
+            int flag = (int) settings.ValidationFlags;
             return settings;
         }
 
-        public XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler)
+        private XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
             var settings = new XmlReaderSettings
             {
@@ -99,12 +58,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             settings.ValidationEventHandler += validationEventHandler;
 
             return settings;
-        }
-
-        public string RetrieveRootElementName()
-        {
-            var xmlSchema = _xmlSchemaProvider.Provide();
-            return xmlSchema.Items.OfType<XmlSchemaElement>().FirstOrDefault()?.Name;
         }
     }
 }

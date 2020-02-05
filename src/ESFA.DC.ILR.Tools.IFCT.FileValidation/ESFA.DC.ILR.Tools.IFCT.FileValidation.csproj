@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ESFA.DC.Logging.Desktop" Version="0.1.10-beta0001" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj" />
   </ItemGroup>
 

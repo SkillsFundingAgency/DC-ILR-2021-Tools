@@ -63,6 +63,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj">
+      <Project>{124e2a64-b948-4c10-a3a6-29c1863bdc9a}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj">
       <Project>{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces</Name>

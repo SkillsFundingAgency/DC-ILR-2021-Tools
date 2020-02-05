@@ -46,6 +46,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                         }
                     });
             }
+
+            System.Console.Write("Press any key to continue...");
+            System.Console.ReadKey();
         }
 
         private static void DisplayArgumentsError()
