@@ -41,12 +41,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
         {
             var settings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            int flag = (int) settings.ValidationFlags;
+            int flag = (int)settings.ValidationFlags;
             return settings;
         }
 
         private XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
+
             var settings = new XmlReaderSettings
             {
                 CloseInput = false,
@@ -55,7 +56,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
                 ValidationFlags = XmlSchemaValidationFlags.ProcessIdentityConstraints
             };
 
-            settings.ValidationEventHandler += validationEventHandler;
+            if (validationEventHandler is null)
+            {
+                settings.ValidationEventHandler += validationEventHandler;
+            }
 
             return settings;
         }
