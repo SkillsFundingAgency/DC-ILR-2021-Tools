@@ -14,8 +14,15 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             stream.Position = 0;
             using (var xmlReader = XmlReader.Create(stream, xmlReaderSettings))
             {
-                while (xmlReader.Read())
+                try
                 {
+                    while (xmlReader.Read())
+                    {
+                    }
+                }
+                catch (XmlException)
+                {
+                    throw;
                 }
             }
         }
@@ -37,14 +44,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             }
         }
 
-        private XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
+        public XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
             var settings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             return settings;
         }
 
-        private XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
+        public XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
 
             var settings = new XmlReaderSettings
@@ -55,7 +62,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
                 ValidationFlags = XmlSchemaValidationFlags.ProcessIdentityConstraints
             };
 
-            if (validationEventHandler is null)
+            if (validationEventHandler != null)
             {
                 settings.ValidationEventHandler += validationEventHandler;
             }
