@@ -1,10 +1,6 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
-using FluentAssertions;
-using Moq;
-using System;
-using System.IO;
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Schema;
+using FluentAssertions;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
@@ -15,7 +11,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
         public void BuildXmlReaderSettings()
         {
             var xmlSchemaSet = new XmlSchemaSet();
-
 
             var xmlReaderSettings = NewService().BuildReaderSettings(xmlSchemaSet);
 
@@ -29,6 +24,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
         public void BuildXmlNsReaderSettings()
         {
             var schemaSet = new XmlSchemaSet();
+
             var xmlReaderSettings = NewService().BuildXmlNsReaderSettings(schemaSet);
 
             xmlReaderSettings.CloseInput.Should().BeFalse();
@@ -36,6 +32,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
             xmlReaderSettings.Schemas.Should().Be(schemaSet);
             xmlReaderSettings.ValidationFlags.Should().Be(XmlSchemaValidationFlags.ProcessIdentityConstraints | XmlSchemaValidationFlags.ReportValidationWarnings);
         }
+
         private XsdValidationService NewService()
         {
             return new XsdValidationService();

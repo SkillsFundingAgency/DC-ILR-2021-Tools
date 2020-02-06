@@ -1,8 +1,8 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
-using ESFA.DC.Logging.Interfaces;
-using System;
+﻿using System;
 using System.Xml;
 using System.Xml.Schema;
+using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
+using ESFA.DC.Logging.Interfaces;
 
 namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 {
@@ -21,7 +21,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             {
                 if (sender is IXmlLineInfo xmlMessageInfo)
                 {
-                    Console.WriteLine("Uh Oh, something is wrong in the namespace. check the logs for more information");
+                    Console.WriteLine("Supplied XML does not conform to the XSD, see Validation Errors for Detailed Results.");
                     _logger.LogError(e.Message, e.Exception, callerLineNumber: xmlMessageInfo.LineNumber);
                 }
             }

@@ -1,7 +1,7 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Schema;
+using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 
 namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 {
@@ -53,7 +53,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
 
         public XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
-
             var settings = new XmlReaderSettings
             {
                 CloseInput = false,
