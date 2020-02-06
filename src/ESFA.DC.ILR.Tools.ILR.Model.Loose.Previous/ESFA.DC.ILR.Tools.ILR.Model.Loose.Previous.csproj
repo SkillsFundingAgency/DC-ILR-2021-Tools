@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ILR-2019-20-v2.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ILR-2019-20-v2.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +23,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj" />
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj" />
   </ItemGroup>
   
 </Project>
