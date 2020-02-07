@@ -2,9 +2,9 @@
 using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.ILR.Tools.YearUpdate;
 using ESFA.DC.Serialization.Interfaces;
 using ESFA.DC.Serialization.Xml;
-using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
 {
@@ -18,6 +18,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
             containerBuilder.RegisterType<MapperProvider>().As<IMapperProvider>();
             containerBuilder.RegisterType<MessageMapper>().As<IMap<Loose.Previous.Message, Loose.Message>>();
             containerBuilder.RegisterType<AnnualMapper>().As<IAnnualMapper>();
+            containerBuilder.RegisterType<YearUpdater>().As<IProcess<Loose.Message>>();
 
             containerBuilder.RegisterType<XmlSerializationService>().As<IXmlSerializationService>();
         }

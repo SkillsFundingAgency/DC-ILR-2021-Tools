@@ -82,6 +82,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             containerBuilder.RegisterModule<ConsoleServicesModule>();
             containerBuilder.RegisterModule<ConsoleModule>();
             containerBuilder.RegisterModule(new LoggingModule(settings));
+            containerBuilder.RegisterModule<YearUplifterModule>();
 
             return containerBuilder;
         }

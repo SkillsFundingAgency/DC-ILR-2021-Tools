@@ -15,17 +15,20 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly IXmlSerializationService _xmlSerializationService;
         private readonly IMap<Loose.Previous.Message, Loose.Message> _mapper;
         private readonly ILogger _logger;
+        private readonly IProcess<Loose.Message> _yearUplifter;
 
         public AnnualMapper(
             IFileService fileService,
             IXmlSerializationService xmlSerializationService,
             IMap<Loose.Previous.Message, Loose.Message> mapper,
-            ILogger logger)
+            ILogger logger,
+            IProcess<Loose.Message> yearUplifter)
         {
             _fileService = fileService;
             _xmlSerializationService = xmlSerializationService;
             _mapper = mapper;
             _logger = logger;
+            _yearUplifter = yearUplifter;
         }
 
         public async Task<bool> MapFileAsync(string source, string target)
@@ -53,12 +56,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                 _logger.LogVerbose($"Mapped in {timer.ElapsedMilliseconds}ms");
                 timer.Restart();
 
+                var upliftedMessage = _yearUplifter.Process(targetMessage);
+                _logger.LogVerbose($"Uplifted in {timer.ElapsedMilliseconds}ms");
+                timer.Restart();
+
                 using (var targetStream = await _fileService.OpenWriteStreamAsync(target, null, new System.Threading.CancellationToken()))
                 {
                     _logger.LogVerbose($"Get Out Stream in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
 
-                    _xmlSerializationService.Serialize<Loose.Message>(targetMessage, targetStream);
+                    _xmlSerializationService.Serialize<Loose.Message>(upliftedMessage, targetStream);
                     _logger.LogVerbose($"Serialize in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
 

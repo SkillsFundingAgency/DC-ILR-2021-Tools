@@ -4,16 +4,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.Common.Abstract
 {
     public abstract class AbstractProcess<TCurrent> : IProcess<TCurrent>
     {
-        public bool Process(TCurrent model)
+        public TCurrent Process(TCurrent model)
         {
             if (model == null)
             {
-                return false;
+                return default(TCurrent);
             }
 
             return ProcessModel(model);
         }
 
-        protected abstract bool ProcessModel(TCurrent model);
+        protected abstract TCurrent ProcessModel(TCurrent model);
     }
 }

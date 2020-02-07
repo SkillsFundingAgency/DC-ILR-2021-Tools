@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ESFA.DC.ILR.Tools.IFCT.Service.Tests")]
+[assembly: AssemblyTitle("ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ESFA.DC.ILR.Tools.IFCT.Service.Tests")]
+[assembly: AssemblyProduct("ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("95fe053f-dd1d-47d6-91aa-f8cbb1ebab8f")]
+[assembly: Guid("9358f5f7-67c5-4a1d-96e1-f1fd68a133bd")]
 
 // Version information for an assembly consists of the following four values:
 //

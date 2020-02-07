@@ -52,6 +52,7 @@
     <Compile Include="Modules\ConsoleModule.cs" />
     <Compile Include="Modules\ConsoleServicesModule.cs" />
     <Compile Include="Modules\LoggingModule.cs" />
+    <Compile Include="Modules\YearUplifterModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.YearUpdate\ESFA.DC.ILR.Tools.IFCT.YearUpdate.csproj">
+      <Project>{308C2001-C661-48EF-8DCB-5B4CA4BFD68C}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.YearUpdate</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj">
       <Project>{1C031595-C41D-4A3B-8D7A-6798C43E39B3}</Project>

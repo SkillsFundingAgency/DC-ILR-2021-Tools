@@ -1,7 +1,7 @@
 ﻿namespace ESFA.DC.ILR.Tools.IFCT.Interface
 {
-    public interface IProcess<in TCurrent>
+    public interface IProcess<TCurrent>
     {
-        bool Process(TCurrent model);
+        TCurrent Process(TCurrent model);
     }
 }

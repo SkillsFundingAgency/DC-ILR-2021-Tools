@@ -1,24 +1,31 @@
 ﻿using ESFA.DC.ILR.Tools.IFCT.Common.Abstract;
+using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using ESFA.DC.ILR.Tools.YearUpdate.Interface;
+using Loose;
 
 namespace ESFA.DC.ILR.Tools.YearUpdate
 {
     public class YearUpdater : AbstractProcess<Loose.Message>
     {
         private readonly IYearUpdateConfiguration _yearUpdateConfiguration;
+        private readonly IUplifter<Message> _messageUplifter;
 
-        public YearUpdater(IYearUpdateConfiguration yearUpdateConfiguration)
+        public YearUpdater(IYearUpdateConfiguration yearUpdateConfiguration, IUplifter<Message> messageUplifter)
         {
             _yearUpdateConfiguration = yearUpdateConfiguration;
+            _messageUplifter = messageUplifter;
         }
 
-        protected override bool ProcessModel(Loose.Message model)
+        protected override Message ProcessModel(Message model)
         {
-            /* How to iterate through the classes in the ILR file to update the yearly settings
-             * Do we want an interface / class for each model that needs to be altered?
-             */
+            if (model == null)
+            {
+                return null;
+            }
 
-            throw new System.NotImplementedException();
+            var result = _messageUplifter.Uplift(model);
+
+            return result;
         }
     }
 }
