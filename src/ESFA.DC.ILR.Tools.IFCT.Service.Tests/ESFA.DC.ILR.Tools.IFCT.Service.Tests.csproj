@@ -131,8 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Console\ESFA.DC.ILR.Tools.IFCT.Console.csproj">
-      <Project>{F946D22F-5A3D-432C-A387-B124F0E709CD}</Project>
+      <Project>{f946d22f-5a3d-432c-a387-b124f0e709cd}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces\ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces.csproj">
+      <Project>{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj">
       <Project>{94F33A93-4109-486F-B4B4-7BAC6CE632C9}</Project>
@@ -143,7 +147,7 @@
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj">
-      <Project>{1C031595-C41D-4A3B-8D7A-6798C43E39B3}</Project>
+      <Project>{1c031595-c41d-4a3b-8d7a-6798c43e39b3}</Project>
       <Name>ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj">
