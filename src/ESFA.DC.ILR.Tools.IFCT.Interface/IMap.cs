@@ -1,4 +1,4 @@
-﻿namespace ESFA.DC.ILR.Tools.IFCT.Service.Interface
+﻿namespace ESFA.DC.ILR.Tools.IFCT.Interface
 {
     public interface IMap<in TPrevious, out TCurrent>
     {

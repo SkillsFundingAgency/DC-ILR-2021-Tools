@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using ESFA.DC.ILR.Tools.IFCT.Service.Abstract;
+using ESFA.DC.ILR.Tools.IFCT.Common.Abstract;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ESFA.DC.FileService.Interface;
-using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.Logging.Interfaces;
 using ESFA.DC.Serialization.Interfaces;
 using FluentAssertions;
@@ -30,8 +26,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var xmlSerializationServiceMock = new Mock<IXmlSerializationService>();
             var iMapMock = new Mock<IMap<Loose.Previous.Message, Loose.Message>>();
             var loggerMock = new Mock<ILogger>();
+            var yearUplifterMock = new Mock<IProcess<Loose.Message>>();
+            yearUplifterMock.Setup(s => s.Process(It.IsAny<Loose.Message>())).Returns<Loose.Message>(x => x);
 
-            var annualMapper = new AnnualMapper(fileServiceMock.Object, xmlSerializationServiceMock.Object, iMapMock.Object, loggerMock.Object);
+            var annualMapper = new AnnualMapper(fileServiceMock.Object, xmlSerializationServiceMock.Object, iMapMock.Object, loggerMock.Object, yearUplifterMock.Object);
 
             // Act
             var result = await annualMapper.MapFileAsync(sourcefileName, targetfileName);
@@ -39,7 +37,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Assert
             result.Should().BeTrue();
             loggerMock.VerifyInfo($"Mapping {sourcefileName} to {targetfileName}", Times.Once()).Should().BeTrue();
-            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(6)).Should().BeTrue();
+            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(7)).Should().BeTrue();
 
             targetStream.Dispose();
         }
@@ -53,7 +51,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var iMapMock = new Mock<IMap<Loose.Previous.Message, Loose.Message>>();
             var loggerMock = new Mock<ILogger>();
 
-            var annualMapper = new AnnualMapper(fileServiceMock.Object, xmlSerializationServiceMock.Object, iMapMock.Object, loggerMock.Object);
+            var annualMapper = new AnnualMapper(fileServiceMock.Object, xmlSerializationServiceMock.Object, iMapMock.Object, loggerMock.Object, null);
 
             // Act
             var result = await annualMapper.MapFileAsync(sourcefileName, targetfileName);

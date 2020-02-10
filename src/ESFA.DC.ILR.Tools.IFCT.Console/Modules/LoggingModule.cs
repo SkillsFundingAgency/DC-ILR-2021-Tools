@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using ESFA.DC.Logging.Desktop;
-using ESFA.DC.Logging.Desktop.Config;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;
 using ESFA.DC.Logging.Interfaces;
 

@@ -1,6 +1,6 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+﻿using ESFA.DC.ILR.Tools.IFCT.Interface;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Service.Abstract
+namespace ESFA.DC.ILR.Tools.IFCT.Common.Abstract
 {
     public abstract class AbstractMap<TPrevious, TCurrent> : IMap<TPrevious, TCurrent>
     {

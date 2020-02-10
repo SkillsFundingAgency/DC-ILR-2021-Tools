@@ -138,6 +138,10 @@
       <Project>{33B61070-E39D-4141-BE61-EFFFE6DBAC4E}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj">
+      <Project>{94F33A93-4109-486F-B4B4-7BAC6CE632C9}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>

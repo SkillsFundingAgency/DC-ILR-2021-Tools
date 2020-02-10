@@ -53,6 +53,7 @@
     <Compile Include="Modules\ConsoleServicesModule.cs" />
     <Compile Include="Modules\FileValidationModule.cs" />
     <Compile Include="Modules\LoggingModule.cs" />
+    <Compile Include="Modules\YearUplifterModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,9 +76,17 @@
       <Project>{DDD5ABEE-57A8-4080-8358-2A28D0202A8D}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.FileValidation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj">
+      <Project>{94F33A93-4109-486F-B4B4-7BAC6CE632C9}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.YearUpdate\ESFA.DC.ILR.Tools.IFCT.YearUpdate.csproj">
+      <Project>{308C2001-C661-48EF-8DCB-5B4CA4BFD68C}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.YearUpdate</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj">
       <Project>{1C031595-C41D-4A3B-8D7A-6798C43E39B3}</Project>
@@ -105,7 +114,7 @@
       <Version>0.1.10-beta0001</Version>
     </PackageReference>
     <PackageReference Include="ESFA.DC.Logging.Interfaces">
-      <Version>0.1.8-beta0001</Version>
+      <Version>0.1.9-beta0001</Version>
     </PackageReference>
     <PackageReference Include="ESFA.DC.Serialization.Xml">
       <Version>0.1.6-beta0001</Version>
