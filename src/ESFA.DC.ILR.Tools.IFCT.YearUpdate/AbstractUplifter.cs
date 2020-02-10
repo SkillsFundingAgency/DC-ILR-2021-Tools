@@ -48,8 +48,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
             if (inputValue != null)
             {
                 var value = rule.Invoke(inputValue);
-                var prop = (PropertyInfo)((MemberExpression)selector.Body).Member;
 
+                var prop = (PropertyInfo)((MemberExpression)selector.Body).Member;
                 prop.SetValue(entity, value);
             }
         }

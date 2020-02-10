@@ -78,6 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\AbstractUplifterTests.cs" />
+    <Compile Include="Abstract\TestChildModelClass.cs" />
+    <Compile Include="Abstract\TestChildModelUplifter.cs" />
+    <Compile Include="Abstract\TestModelClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\StandardDateUplifterRuleTests.cs" />
     <Compile Include="Uplifters\HeaderSourceUplifterTests.cs" />
@@ -86,6 +90,10 @@
     <Compile Include="Uplifters\LearnerDestinationandProgressionDPOutcomeUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerDestinationandProgressionUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerLearnerEmploymentStatusUplifterTests.cs" />
+    <Compile Include="Uplifters\LearnerLearningDeliveryAppFinRecordUplifterTests.cs" />
+    <Compile Include="Uplifters\LearnerLearningDeliveryLearningDeliveryFAMUplifterTests.cs" />
+    <Compile Include="Uplifters\LearnerLearningDeliveryLearningDeliveryWorkPlacementUplifterTests.cs" />
+    <Compile Include="Uplifters\LearnerLearningDeliveryUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerUplifterTests.cs" />
     <Compile Include="Uplifters\MessageUplifterTests.cs" />
     <Compile Include="Uplifters\SourceFilesSourceFileUplifterTests.cs" />
@@ -108,9 +116,7 @@
       <Name>ESFA.DC.ILR.Tools.ILR.Model.Loose</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
