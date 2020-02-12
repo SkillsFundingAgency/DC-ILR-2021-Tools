@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="FileConversionContext.cs" />
+    <Compile Include="Modules\AnonymiserModule.cs" />
     <Compile Include="Modules\ConsoleModule.cs" />
     <Compile Include="Modules\ConsoleServicesModule.cs" />
     <Compile Include="Modules\FileValidationModule.cs" />
@@ -64,6 +65,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Anonymise\ESFA.DC.ILR.Tools.IFCT.Anonymise.csproj">
+      <Project>{17BC373E-0539-4166-82D9-50D8B7DAADB6}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Anonymise</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj">
       <Project>{124e2a64-b948-4c10-a3a6-29c1863bdc9a}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Common</Name>
