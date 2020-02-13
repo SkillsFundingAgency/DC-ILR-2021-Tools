@@ -21,7 +21,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
             // Register any classes from ESFA.DC.ILR.Tools.IFCT.YearUpdate that implement IUpLifter<T>
             containerBuilder.RegisterAssemblyTypes(typeof(MessageUplifter).Assembly)
               .Where(x => x.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IUplifter<>)))
-              .AsImplementedInterfaces();
+              .AsImplementedInterfaces().InstancePerLifetimeScope();
 
             containerBuilder.RegisterType<RuleProvider>().As<IRuleProvider>();
         }

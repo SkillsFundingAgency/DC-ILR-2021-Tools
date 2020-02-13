@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,26 +9,23 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
         : AbstractUplifter<MessageLearner>, IUplifter<MessageLearner>
     {
         private readonly IRuleProvider _ruleProvider;
-        private readonly IUplifter<MessageLearnerLearnerEmploymentStatus> _learnerLearnerEmploymentStatusUplifter;
-        private readonly IUplifter<MessageLearnerLearningDelivery> _learnerLearningDeliveryUplifter;
+        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+
+        private readonly Expression<Func<MessageLearner, DateTime?>> _selecterFuncDateOfBirth = s => s.DateOfBirth;
+        private readonly Func<MessageLearner, DateTime?> _compiledSelectorDateOfBirth;
 
         public LearnerUplifter(
-            IRuleProvider ruleProvider,
-            IUplifter<MessageLearnerLearnerEmploymentStatus> learnerLearnerEmploymentStatusUplifter,
-            IUplifter<MessageLearnerLearningDelivery> learnerLearningDeliveryUplifter)
+            IRuleProvider ruleProvider)
         {
             _ruleProvider = ruleProvider;
-            _learnerLearnerEmploymentStatusUplifter = learnerLearnerEmploymentStatusUplifter;
-            _learnerLearningDeliveryUplifter = learnerLearningDeliveryUplifter;
+            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+
+            _compiledSelectorDateOfBirth = _selecterFuncDateOfBirth.Compile();
         }
 
-        public MessageLearner Uplift(MessageLearner model)
+        public MessageLearner Process(MessageLearner model)
         {
-            var standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
-
-            ApplyRule(s => s.DateOfBirth, standardNullableDateUplifter.Definition, model);
-            ApplyGroupChildRule(s => s.LearnerEmploymentStatus, _learnerLearnerEmploymentStatusUplifter, model);
-            ApplyGroupChildRule(s => s.LearningDelivery, _learnerLearningDeliveryUplifter, model);
+            ApplyCompiledRule(_selecterFuncDateOfBirth, _compiledSelectorDateOfBirth, _standardNullableDateUplifter.Definition, model);
 
             return model;
         }

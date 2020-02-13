@@ -23,7 +23,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             };
 
             // Act
-            var result = headerCollectionDetailsUplifter.Uplift(messageHeaderCollectionDetails);
+            var result = headerCollectionDetailsUplifter.Process(messageHeaderCollectionDetails);
 
             // Assert
             result.Should().NotBeNull();

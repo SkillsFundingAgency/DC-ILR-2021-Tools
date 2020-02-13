@@ -17,7 +17,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise
         {
             if (model == null)
             {
-                return default(Message);
+                return null;
             }
 
             _modelRecurser.RecurseAndProcessModel(model, typeof(IAnonymise<>));

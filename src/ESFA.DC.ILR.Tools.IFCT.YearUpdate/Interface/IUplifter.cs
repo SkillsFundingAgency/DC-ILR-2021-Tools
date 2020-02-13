@@ -2,6 +2,6 @@
 {
     public interface IUplifter<T>
     {
-        T Uplift(T model);
+        T Process(T model);
     }
 }

@@ -24,7 +24,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             };
 
             // Act
-            var result = sourceFilesSourceFileUplifter.Uplift(messageSourceFilesSourceFile);
+            var result = sourceFilesSourceFileUplifter.Process(messageSourceFilesSourceFile);
 
             // Arrange
             result.Should().NotBeNull();

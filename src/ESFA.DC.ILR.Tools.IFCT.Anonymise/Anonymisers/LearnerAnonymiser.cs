@@ -6,7 +6,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
 {
     public class LearnerAnonymiser : IAnonymise<Loose.MessageLearner>
     {
-        private static int NewLearnRefNumber = 1;
+        private static int NewLearnRefNumber = 0;
         private readonly IAnonymiseLog _anonymiseLog;
 
         public LearnerAnonymiser(IAnonymiseLog anonymiseLog)
@@ -21,19 +21,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
                 return null;
             }
 
-            //Find next valid 
-            bool ok = false;
-            long NewULN = 0;
-            while (!ok)
+            //Find next valid ULN
+            long NewULN = -1;
+            while (NewULN < 0)
             {
-                try
-                {
-                    NewULN = ULN(NewLearnRefNumber++);
-                    ok = true;
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                }
+                NewULN = ULN(++NewLearnRefNumber);
             }
 
             var logEntry = new AnonymiseLogEntry { FieldName = "LearnRefNumber", OldValue = model.LearnRefNumber, NewValue = $"{NewLearnRefNumber}" };
@@ -42,7 +34,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
             _anonymiseLog.Add(logEntry);
 
             model.LearnRefNumber = logEntry.NewValue;
-            model.ULN = NewLearnRefNumber;
+            model.ULN = NewULN; ;
 
             model.FamilyName = "Mary Jane";
             model.GivenNames = "Sméth";
@@ -75,13 +67,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
             long multiplier = 10;
             for (int i = 0; i != s.Length; ++i)
             {
-                result += multiplier-- * (s[i] - '0');
+                // result += multiplier-- * (s[i] - '0');
+                result += multiplier-- * ((int)s[i] - 48);
             }
 
             long mod11 = result % 11;
             if (mod11 == 0)
             {
-                throw new ArgumentOutOfRangeException();
+                return -1;
             }
 
             long check = 10 - mod11;

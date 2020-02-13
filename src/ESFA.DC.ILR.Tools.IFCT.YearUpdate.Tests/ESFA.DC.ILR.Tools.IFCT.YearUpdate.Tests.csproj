@@ -86,9 +86,7 @@
     <Compile Include="Rules\StandardDateUplifterRuleTests.cs" />
     <Compile Include="Uplifters\HeaderSourceUplifterTests.cs" />
     <Compile Include="Uplifters\HeaderCollectionDetailsUplifterTests.cs" />
-    <Compile Include="Uplifters\HeaderUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerDestinationandProgressionDPOutcomeUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerDestinationandProgressionUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerLearnerEmploymentStatusUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerLearningDeliveryAppFinRecordUplifterTests.cs" />
     <Compile Include="Uplifters\LearnerLearningDeliveryLearningDeliveryFAMUplifterTests.cs" />
