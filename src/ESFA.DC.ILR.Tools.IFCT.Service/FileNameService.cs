@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
@@ -9,6 +11,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private const string YEAR_PARSER = "yyyyMMdd";
         private const string SERIAL_DEAFULT = "99";
         private const string DELIMETER = "-";
+        private const string FILE_PATH_DELIMETER = @"\";
         private const int ADD_MODIFIER = 1;
         private const int YEAR_LENGTH = 4;
         private const int SERIAL_LENGTH = 2;
