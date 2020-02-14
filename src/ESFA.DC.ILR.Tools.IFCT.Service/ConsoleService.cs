@@ -19,14 +19,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly IXsdValidationService _xsdValidationService;
         private readonly IXmlSchemaProvider _xmlSchemaProvider;
         private readonly IValidationErrorHandler _validationErrorHandler;
+        private readonly IFileNameService _fileNameService;
 
-        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService, IXsdValidationService xsdValidationService, IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler)
+        public ConsoleService(IAnnualMapper annualMapper, IFileNameService fileNameService, IFileService fileService, IXsdValidationService xsdValidationService, IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler)
         {
             _annualMapper = annualMapper;
             _fileService = fileService;
             _xsdValidationService = xsdValidationService;
             _xmlSchemaProvider = xmlSchemaProvider;
             _validationErrorHandler = validationErrorHandler;
+            _fileNameService = fileNameService;
         }
 
         private static string RetrieveRootElement(XmlSchema xmlSchema)
@@ -48,9 +50,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFile)
             {
                 // process single file
+                string extension = Path.GetExtension(fileConversionContext.SourceFile);
+                string fileName = _fileNameService.NameGeneration(Path.GetFileNameWithoutExtension(fileConversionContext.SourceFile));
+
+                string targetFilename = fileName + extension;
+
                 if (await ValidateSchema(fileConversionContext.SourceFile))
                 {
-                    await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
+                    await ProcessSingleFile(fileConversionContext.SourceFile, targetFilename, _annualMapper);
                 }
             }
             else

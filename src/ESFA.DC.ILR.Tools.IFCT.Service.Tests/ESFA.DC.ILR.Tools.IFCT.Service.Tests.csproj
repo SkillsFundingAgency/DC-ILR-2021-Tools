@@ -117,6 +117,7 @@
     <Compile Include="AnnualMapperConfigurationTests.cs" />
     <Compile Include="AnnualMapperTests.cs" />
     <Compile Include="ConsoleServicesTests.cs" />
+    <Compile Include="FileNameServiceTests.cs" />
     <Compile Include="MapperProviderTests.cs" />
     <Compile Include="MockLoggerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
