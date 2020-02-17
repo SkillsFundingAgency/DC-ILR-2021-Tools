@@ -23,7 +23,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             };
 
             // Act
-            var result = learnerLearnerEmploymentStatusUplifter.Uplift(messageLearnerLearnerEmploymentStatus);
+            var result = learnerLearnerEmploymentStatusUplifter.Process(messageLearnerLearnerEmploymentStatus);
 
             // Assert
             result.Should().NotBeNull();

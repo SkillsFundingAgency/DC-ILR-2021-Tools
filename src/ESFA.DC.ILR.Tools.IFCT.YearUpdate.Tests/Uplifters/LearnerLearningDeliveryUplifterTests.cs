@@ -17,15 +17,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             // Arrange
             var ruleProvider = new RuleProvider();
 
-            var learnerLearningDeliveryLearningDeliveryFAMUplifter = new Mock<IUplifter<MessageLearnerLearningDeliveryLearningDeliveryFAM>>();
-            var learnerLearningDeliveryLearningDeliveryWorkPlacementUplifter = new Mock<IUplifter<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement>>();
-            var learnerLearningDeliveryAppFinRecordUplifter = new Mock<IUplifter<MessageLearnerLearningDeliveryAppFinRecord>>();
-
-            var learnerLearningDeliveryUplifter = new LearnerLearningDeliveryUplifter(
-                ruleProvider,
-                learnerLearningDeliveryLearningDeliveryFAMUplifter.Object,
-                learnerLearningDeliveryLearningDeliveryWorkPlacementUplifter.Object,
-                learnerLearningDeliveryAppFinRecordUplifter.Object);
+            var learnerLearningDeliveryUplifter = new LearnerLearningDeliveryUplifter(ruleProvider);
 
             var messageLearnerLearningDelivery = new MessageLearnerLearningDelivery
             {
@@ -40,7 +32,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             messageLearnerLearningDelivery.AppFinRecord.Add(new MessageLearnerLearningDeliveryAppFinRecord());
 
             // Act
-            var result = learnerLearningDeliveryUplifter.Uplift(messageLearnerLearningDelivery);
+            var result = learnerLearningDeliveryUplifter.Process(messageLearnerLearningDelivery);
 
             // Assert
             result.Should().NotBeNull();
@@ -50,10 +42,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             result.LearnPlanEndDate.Should().Be(new DateTime(2001, 01, 23));
             result.LearnActEndDate.Should().Be(new DateTime(2001, 01, 24));
             result.AchDate.Should().Be(new DateTime(2001, 01, 25));
-
-            learnerLearningDeliveryLearningDeliveryFAMUplifter.Verify(v => v.Uplift(It.IsAny<MessageLearnerLearningDeliveryLearningDeliveryFAM>()), Times.Once);
-            learnerLearningDeliveryLearningDeliveryWorkPlacementUplifter.Verify(v => v.Uplift(It.IsAny<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement>()), Times.Once);
-            learnerLearningDeliveryAppFinRecordUplifter.Verify(v => v.Uplift(It.IsAny<MessageLearnerLearningDeliveryAppFinRecord>()), Times.Once);
         }
     }
 }

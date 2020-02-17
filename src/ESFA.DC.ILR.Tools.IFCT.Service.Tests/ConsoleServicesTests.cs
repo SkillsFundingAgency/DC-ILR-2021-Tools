@@ -121,7 +121,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Assert
             xsdValidationServiceMock.Verify(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
-            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, targetfileName), Times.Once);
+            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, string.Empty), Times.Once);
         }
     }
 }

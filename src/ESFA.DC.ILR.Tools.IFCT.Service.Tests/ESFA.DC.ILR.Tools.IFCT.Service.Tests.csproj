@@ -130,6 +130,10 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Anonymise\ESFA.DC.ILR.Tools.IFCT.Anonymise.csproj">
+      <Project>{17BC373E-0539-4166-82D9-50D8B7DAADB6}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Anonymise</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Console\ESFA.DC.ILR.Tools.IFCT.Console.csproj">
       <Project>{f946d22f-5a3d-432c-a387-b124f0e709cd}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Console</Name>

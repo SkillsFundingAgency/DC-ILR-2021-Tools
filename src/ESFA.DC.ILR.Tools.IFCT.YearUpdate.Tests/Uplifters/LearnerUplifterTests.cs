@@ -17,10 +17,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             // Arrange
             var ruleProvider = new RuleProvider();
 
-            var learnerLearnerEmploymentStatusUplifter = new Mock<IUplifter<MessageLearnerLearnerEmploymentStatus>>();
-            var learnerLearningDeliveryUplifter = new Mock<IUplifter<MessageLearnerLearningDelivery>>();
-
-            var learnerUplifter = new LearnerUplifter(ruleProvider, learnerLearnerEmploymentStatusUplifter.Object, learnerLearningDeliveryUplifter.Object);
+            var learnerUplifter = new LearnerUplifter(ruleProvider);
 
             var messageLearner = new MessageLearner
             {
@@ -30,13 +27,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             messageLearner.LearningDelivery.Add(new MessageLearnerLearningDelivery());
 
             // Act
-            var result = learnerUplifter.Uplift(messageLearner);
+            var result = learnerUplifter.Process(messageLearner);
 
             // Assert
             result.Should().NotBeNull();
             result.DateOfBirth.Should().Be(new DateTime(2001, 01, 02));
-            learnerLearnerEmploymentStatusUplifter.Verify(v => v.Uplift(It.IsAny<MessageLearnerLearnerEmploymentStatus>()), Times.Once);
-            learnerLearningDeliveryUplifter.Verify(v => v.Uplift(It.IsAny<MessageLearnerLearningDelivery>()), Times.Once);
         }
     }
 }

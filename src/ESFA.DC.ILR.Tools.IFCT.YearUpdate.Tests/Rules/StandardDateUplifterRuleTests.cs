@@ -7,16 +7,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Rules
 {
     public class StandardDateUplifterRuleTests
     {
-        [Fact]
-        public void StandardDateUplifterRule_DateTime_UpliftsAsExpected()
-        {
-            var rule = new StandardDateUplifterRule<DateTime>();
-
-            var result = rule.Definition(new DateTime(2019, 1, 1));
-
-            Assert.Equal(result, new DateTime(2020, 1, 1));
-        }
-
         public static IEnumerable<object[]> NullableDateTimeData()
         {
             yield return new object[] { null, null };
@@ -32,6 +22,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Rules
             var result = rule.Definition(source);
 
             Assert.Equal(result, expectedResult);
+        }
+
+        [Fact]
+        public void StandardDateUplifterRule_DateTime_UpliftsAsExpected()
+        {
+            var rule = new StandardDateUplifterRule<DateTime>();
+
+            var result = rule.Definition(new DateTime(2019, 1, 1));
+
+            Assert.Equal(result, new DateTime(2020, 1, 1));
         }
     }
 }

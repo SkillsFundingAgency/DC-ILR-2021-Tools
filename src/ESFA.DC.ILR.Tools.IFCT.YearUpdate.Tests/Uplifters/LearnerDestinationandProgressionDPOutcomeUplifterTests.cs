@@ -25,7 +25,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters
             };
 
             // Act
-            var result = learnerDestinationandProgressionDPOutcomeUplifter.Uplift(messageLearnerDestinationandProgressionDPOutcome);
+            var result = learnerDestinationandProgressionDPOutcomeUplifter.Process(messageLearnerDestinationandProgressionDPOutcome);
 
             // Assert
             result.Should().NotBeNull();

@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9358F5F7-67C5-4A1D-96E1-F1FD68A133BD}</ProjectGuid>
+    <ProjectGuid>{DDE35C51-1A5F-4325-99F0-D27EBB1F05FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests</RootNamespace>
@@ -78,23 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\AbstractUplifterTests.cs" />
-    <Compile Include="Abstract\TestChildModelClass.cs" />
-    <Compile Include="Abstract\TestChildModelUplifter.cs" />
-    <Compile Include="Abstract\TestModelClass.cs" />
+    <Compile Include="Anonymisers\LearnerAnonymiserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules\StandardDateUplifterRuleTests.cs" />
-    <Compile Include="Uplifters\HeaderSourceUplifterTests.cs" />
-    <Compile Include="Uplifters\HeaderCollectionDetailsUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerDestinationandProgressionDPOutcomeUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerLearnerEmploymentStatusUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerLearningDeliveryAppFinRecordUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerLearningDeliveryLearningDeliveryFAMUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerLearningDeliveryLearningDeliveryWorkPlacementUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerLearningDeliveryUplifterTests.cs" />
-    <Compile Include="Uplifters\LearnerUplifterTests.cs" />
-    <Compile Include="Uplifters\MessageUplifterTests.cs" />
-    <Compile Include="Uplifters\SourceFilesSourceFileUplifterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -105,6 +90,10 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Anonymise\ESFA.DC.ILR.Tools.IFCT.Anonymise.csproj">
+      <Project>{17BC373E-0539-4166-82D9-50D8B7DAADB6}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Anonymise</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.YearUpdate\ESFA.DC.ILR.Tools.IFCT.YearUpdate.csproj">
       <Project>{308C2001-C661-48EF-8DCB-5B4CA4BFD68C}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.YearUpdate</Name>

@@ -62,7 +62,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
         private async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
         {
-            await annualMapper.MapFileAsync(sourceFile, targetFile);
+            await annualMapper.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), Path.GetFileName(targetFile), Path.GetDirectoryName(targetFile));
         }
 
         private async Task<bool> ValidateSchema(string sourceFile)

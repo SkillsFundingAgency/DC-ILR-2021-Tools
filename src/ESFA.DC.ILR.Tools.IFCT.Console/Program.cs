@@ -1,7 +1,9 @@
 ﻿using System;
 using Autofac;
 using CommandLine;
+using ESFA.DC.ILR.Tools.IFCT.Common;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
+using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.Logging.Desktop.Config;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;
@@ -46,6 +48,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                         }
                     });
             }
+
+            System.Console.WriteLine("Completed - press enter");
+
+            System.Console.ReadLine();
         }
 
         private static void DisplayArgumentsError()
@@ -75,11 +81,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             containerBuilder.RegisterInstance<IConfiguration>(config);
             containerBuilder.RegisterInstance<IDesktopLoggerSettings>(settings);
 
+            containerBuilder.RegisterType<ModelRecurser>().As<IModelRecurser>();
+
             containerBuilder.RegisterModule<ConsoleServicesModule>();
             containerBuilder.RegisterModule<ConsoleModule>();
             containerBuilder.RegisterModule(new LoggingModule(settings));
             containerBuilder.RegisterModule<FileValidationModule>();
             containerBuilder.RegisterModule<YearUplifterModule>();
+            containerBuilder.RegisterModule<AnonymiserModule>();
 
             return containerBuilder;
         }
