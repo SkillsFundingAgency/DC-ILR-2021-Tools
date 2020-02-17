@@ -97,6 +97,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                         targetStream.Write(newLineBytes, 0, newLineBytes.Length);
                     }
 
+                    _anonymiseLog.Clear();
+
                     await targetStream.FlushAsync();
                 }
             }

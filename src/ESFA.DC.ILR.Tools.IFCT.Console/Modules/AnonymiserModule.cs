@@ -14,7 +14,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
             containerBuilder.RegisterType<Anonymiser>().As<IAnonymise<Message>>();
 
             // Single instance of the logger so that it records across class instances
-            containerBuilder.RegisterInstance(new AnonymiseLog()).As<IAnonymiseLog>();
+            containerBuilder.RegisterType<AnonymiseLog>().As<IAnonymiseLog>().InstancePerLifetimeScope();
 
             // Register any classes from ESFA.DC.ILR.Tools.IFCT.Anonymise that implement IAnonymise<T> - These anonymise by class
             containerBuilder.RegisterAssemblyTypes(typeof(Anonymiser).Assembly)

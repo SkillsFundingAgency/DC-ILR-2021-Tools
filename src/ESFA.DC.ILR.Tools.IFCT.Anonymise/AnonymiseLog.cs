@@ -12,6 +12,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise
             log.Add(entry);
         }
 
+        public void Clear()
+        {
+            log.Clear();
+        }
+
         public IList<IAnonymiseLogEntry> Log => log;
     }
 }

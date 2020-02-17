@@ -6,7 +6,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
 {
     public class LearnerAnonymiser : IAnonymise<Loose.MessageLearner>
     {
-        private static int NewLearnRefNumber = 0;
+        private static int LrnGeneratorCount = 0;
+        private static int UlnGeneratorCount = 0;
         private readonly IAnonymiseLog _anonymiseLog;
 
         public LearnerAnonymiser(IAnonymiseLog anonymiseLog)
@@ -25,15 +26,15 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
             long NewULN = -1;
             while (NewULN < 0)
             {
-                NewULN = ULN(++NewLearnRefNumber);
+                NewULN = ULN(++UlnGeneratorCount);
             }
 
-            var logEntry = new AnonymiseLogEntry { FieldName = "LearnRefNumber", OldValue = model.LearnRefNumber, NewValue = $"{NewLearnRefNumber}" };
+            var logEntry = new AnonymiseLogEntry { FieldName = "LearnRefNumber", OldValue = model.LearnRefNumber, NewValue = $"{++LrnGeneratorCount}" };
             _anonymiseLog.Add(logEntry);
             logEntry = new AnonymiseLogEntry { FieldName = "ULN", OldValue = model.ULN?.ToString(), NewValue = $"{NewULN}" };
             _anonymiseLog.Add(logEntry);
 
-            model.LearnRefNumber = logEntry.NewValue;
+            model.LearnRefNumber = LrnGeneratorCount.ToString(); ;
             model.ULN = NewULN; ;
 
             model.FamilyName = "Mary Jane";

@@ -8,21 +8,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
 {
     public class AbstractUplifter<T>
     {
-        //protected void ApplyRule<TValue>(Expression<Func<T, TValue>> selector, Func<TValue, TValue> rule, T entity)
-        //{
-        //    var selectorFunc = selector.Compile();
-
-        //    var inputValue = selectorFunc.Invoke(entity);
-
-        //    if (inputValue != null)
-        //    {
-        //        var value = rule.Invoke(inputValue);
-
-        //        var prop = (PropertyInfo)((MemberExpression)selector.Body).Member;
-        //        prop.SetValue(entity, value);
-        //    }
-        //}
-
         protected void ApplyCompiledRule<TValue>(Expression<Func<T, TValue>> selector, Func<T, TValue> compiledSelector, Func<TValue, TValue> rule, T entity)
         {
             var inputValue = compiledSelector.Invoke(entity);
