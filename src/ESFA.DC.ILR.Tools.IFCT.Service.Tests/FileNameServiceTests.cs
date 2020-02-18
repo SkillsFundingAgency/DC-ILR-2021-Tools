@@ -79,8 +79,30 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         {
             var sut = NewService();
             string result = sut.NameGeneration("ILR-10006341-1920-20190210-120000-01");
-            result.Should().Be("ILR-10006341-2021-20200210-120000-99");
+            result.Should().Be("ILR-10006341-2021-20190210-120000-01");
 
+        }
+
+        [Theory]
+        [InlineData("120000", "120001")]
+        [InlineData("235959", "000000")]
+        public void TimeStampUpdateValidInput(string input, string expected)
+        {
+            var sut = NewService();
+            string result = sut.TimeStampUpdate(input);
+            result.Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        [InlineData("1200000")]
+        [InlineData("12000")]
+        public void TimeStampUpdateInvalidInput(string date)
+        {
+            var sut = NewService();
+            Action result = () => sut.TimeStampUpdate(date);
+            result.Should().Throw<ArgumentException>();
         }
 
         private FileNameService NewService()
