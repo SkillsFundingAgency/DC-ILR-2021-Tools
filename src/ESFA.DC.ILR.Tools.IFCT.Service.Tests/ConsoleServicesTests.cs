@@ -16,8 +16,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
     public class ConsoleServicesTests
     {
-        private readonly string sourcefileName = "sourceFile.xml";
-        private readonly string targetfileName = "targetFile.xml";
+        private readonly string sourcefileName = "C:\\sourceFile.xml";
+        private readonly string targetfileName = "C:\\targetFile.xml";
+        private readonly string targetFilePath = "C:\\";
 
         [Fact]
         public void ConsoleService_ProcessFiles_NullParamaterThrowsArgumentNullException()
@@ -25,7 +26,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, null, null, null, null);
+            var consoleService = new ConsoleService(annualMapperMock.Object, null, null, null, null, null);
             FileConversionContext fileConversionContext = null;
 
             // Act & Assert
@@ -47,12 +48,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         {
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
+            var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
             var xsdValidationMock = new Mock<IXsdValidationService>();
             var xmlProviderMock = new Mock<IXmlSchemaProvider>();
             var validationErrorMock = new Mock<IValidationErrorHandler>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourceFile,
@@ -71,6 +73,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         {
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
+            var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
             var xsdValidationServiceMock = new Mock<IXsdValidationService>();
             var xmlProviderMock = new Mock<IXmlSchemaProvider>();
@@ -79,7 +82,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(false);
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
@@ -99,26 +102,29 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         {
             // Arrange
             var annualMapperMock = new Mock<IAnnualMapper>();
+            var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
             var xsdValidationServiceMock = new Mock<IXsdValidationService>();
             var xmlProviderMock = new Mock<IXmlSchemaProvider>();
             var validationErrorMock = new Mock<IValidationErrorHandler>();
 
+            fileNameServiceMock.Setup(x => x.NameGeneration(It.IsAny<string>())).Returns("targetFile");
             xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(true);
             xmlProviderMock.Setup(p => p.Provide()).Returns(new XmlSchema());
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
-                TargetFile = targetfileName,
+                TargetFile = targetFilePath,
             };
 
             // Act
             await consoleService.ProcessFilesAsync(fileConversionContext);
 
             // Assert
+            fileNameServiceMock.Verify(fn => fn.NameGeneration(It.IsAny<string>()), Times.Once);
             xsdValidationServiceMock.Verify(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
             annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, string.Empty), Times.Once);

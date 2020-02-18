@@ -19,14 +19,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly IXsdValidationService _xsdValidationService;
         private readonly IXmlSchemaProvider _xmlSchemaProvider;
         private readonly IValidationErrorHandler _validationErrorHandler;
+        private readonly IFileNameService _fileNameService;
 
-        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService, IXsdValidationService xsdValidationService, IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler)
+        public ConsoleService(IAnnualMapper annualMapper, IFileNameService fileNameService, IFileService fileService, IXsdValidationService xsdValidationService, IXmlSchemaProvider xmlSchemaProvider, IValidationErrorHandler validationErrorHandler)
         {
             _annualMapper = annualMapper;
             _fileService = fileService;
             _xsdValidationService = xsdValidationService;
             _xmlSchemaProvider = xmlSchemaProvider;
             _validationErrorHandler = validationErrorHandler;
+            _fileNameService = fileNameService;
         }
 
         private static string RetrieveRootElement(XmlSchema xmlSchema)
@@ -48,9 +50,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFile)
             {
                 // process single file
+                string targetFilename = fileConversionContext.TargetFile + GenerateOutputName(fileConversionContext.SourceFile);
+
                 if (await ValidateSchema(fileConversionContext.SourceFile))
                 {
-                    await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFile, _annualMapper);
+                    await ProcessSingleFile(fileConversionContext.SourceFile, targetFilename, _annualMapper);
                 }
             }
             else
@@ -58,6 +62,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                 // There is not a valid set of files or folders to be able to progess further.
                 throw new ArgumentException("Invalid command line parameters supplied");
             }
+        }
+
+        private string GenerateOutputName(string currentFile)
+        {
+            string fileExtension = Path.GetExtension(currentFile);
+            string fileName = _fileNameService.Generate(Path.GetFileNameWithoutExtension(Path.GetFileName(currentFile)));
+            return fileName + fileExtension;
         }
 
         private async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
