@@ -6,6 +6,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Interface
 {
     public interface IFileNameService
     {
-        string NameGeneration(string currentFileName);
+        string Generate(string currentFileName);
     }
 }
