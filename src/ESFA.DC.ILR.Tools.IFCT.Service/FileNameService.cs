@@ -73,7 +73,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         /// </summary>
         /// <param name="currentFileName">Either the XML or ZIP file name.</param>
         /// <returns>Uplifted file name.</returns>
-        public string NameGeneration(string currentFileName)
+        public string Generate(string currentFileName)
         {
             string[] ilrParts = currentFileName.Split(DELIMETER);
             ilrParts[2] = YearUpdate(ilrParts[2]);

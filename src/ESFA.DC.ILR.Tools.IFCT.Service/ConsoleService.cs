@@ -67,7 +67,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private string GenerateOutputName(string currentFile)
         {
             string fileExtension = Path.GetExtension(currentFile);
-            string fileName = _fileNameService.NameGeneration(Path.GetFileNameWithoutExtension(Path.GetFileName(currentFile)));
+            string fileName = _fileNameService.Generate(Path.GetFileNameWithoutExtension(Path.GetFileName(currentFile)));
             return fileName + fileExtension;
         }
 
