@@ -16,8 +16,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
     public class ConsoleServicesTests
     {
-        private readonly string sourcefileName = "sourceFile.xml";
-        private readonly string targetfileName = "targetFile.xml";
+        private readonly string sourcefileName = "C:\\sourceFile.xml";
+        private readonly string targetfileName = "C:\\targetFile.xml";
+        private readonly string targetFilePath = "C:\\";
 
         [Fact]
         public void ConsoleService_ProcessFiles_NullParamaterThrowsArgumentNullException()
@@ -116,7 +117,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
-                TargetFile = targetfileName,
+                TargetFile = targetFilePath,
             };
 
             // Act
