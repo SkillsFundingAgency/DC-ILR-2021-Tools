@@ -50,8 +50,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFile)
             {
                 // process single file
-
-                string targetFilename = GenerateOutputName(fileConversionContext.SourceFile);
+                string targetFilename = fileConversionContext.TargetFile + GenerateOutputName(fileConversionContext.SourceFile);
 
                 if (await ValidateSchema(fileConversionContext.SourceFile))
                 {
@@ -67,10 +66,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
         private string GenerateOutputName(string currentFile)
         {
-            string filePath = Path.GetDirectoryName(currentFile);
             string fileExtension = Path.GetExtension(currentFile);
-            string fileName = _fileNameService.NameGeneration(Path.GetFileName(currentFile));
-            return filePath + fileName + fileExtension;
+            string fileName = _fileNameService.NameGeneration(Path.GetFileNameWithoutExtension(Path.GetFileName(currentFile)));
+            return fileName + fileExtension;
         }
 
         private async Task ProcessSingleFile(string sourceFile, string targetFile, IAnnualMapper annualMapper)
