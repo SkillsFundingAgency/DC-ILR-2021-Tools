@@ -108,7 +108,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var xmlProviderMock = new Mock<IXmlSchemaProvider>();
             var validationErrorMock = new Mock<IValidationErrorHandler>();
 
-            fileNameServiceMock.Setup(x => x.NameGeneration(It.IsAny<string>())).Returns("targetFile");
+            fileNameServiceMock.Setup(x => x.Generate(It.IsAny<string>())).Returns("targetFile");
             xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(true);
             xmlProviderMock.Setup(p => p.Provide()).Returns(new XmlSchema());
@@ -124,7 +124,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             await consoleService.ProcessFilesAsync(fileConversionContext);
 
             // Assert
-            fileNameServiceMock.Verify(fn => fn.NameGeneration(It.IsAny<string>()), Times.Once);
+            fileNameServiceMock.Verify(fn => fn.Generate(It.IsAny<string>()), Times.Once);
             xsdValidationServiceMock.Verify(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
             annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, string.Empty), Times.Once);
