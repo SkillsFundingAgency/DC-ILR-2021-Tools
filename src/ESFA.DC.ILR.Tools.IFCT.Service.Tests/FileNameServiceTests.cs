@@ -80,7 +80,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var sut = NewService();
             string result = sut.Generate("ILR-10006341-1920-20190210-120000-01");
             result.Should().Be("ILR-10006341-2021-20190210-120000-01");
-
         }
 
         [Theory]
