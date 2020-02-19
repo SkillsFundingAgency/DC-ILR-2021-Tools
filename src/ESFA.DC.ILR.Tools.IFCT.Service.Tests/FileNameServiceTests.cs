@@ -78,9 +78,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public void NameGenerationValidInput()
         {
             var sut = NewService();
-            string result = sut.NameGeneration("ILR-10006341-1920-20190210-120000-01");
+            string result = sut.Generate("ILR-10006341-1920-20190210-120000-01");
             result.Should().Be("ILR-10006341-2021-20190210-120000-01");
-
         }
 
         [Theory]
