@@ -16,8 +16,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
     public class ConsoleServicesTests
     {
-        private readonly string sourcefileName = "C:\\sourceFile.xml";
-        private readonly string targetfileName = "C:\\targetFile.xml";
+        private readonly string sourcefileName = "sourceFile.xml";
+        private readonly string targetfileName = "targetFile.xml";
         private readonly string targetFilePath = "C:\\";
 
         [Fact]
@@ -127,7 +127,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             fileNameServiceMock.Verify(fn => fn.Generate(It.IsAny<string>()), Times.Once);
             xsdValidationServiceMock.Verify(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
-            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, string.Empty), Times.Once);
+            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, targetFilePath), Times.Once);
         }
     }
 }
