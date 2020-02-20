@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:EasyOPA.Composition"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="PopupProvidersManagerTemplate"
+                     TargetType="ContentControl">
+
+        <ContentControl Style="{StaticResource EmbeddedPopupElementStyle}"
+                        z:BoundProperty.Primary="{Binding Path=CurrentState, Converter={StaticResource IsVisibleIfStateMatches}, ConverterParameter={x:Static y:EasyOPAInteractionState.IsModalManageProviderSelection}}"
+                        z:BoundProperty.Secondary="{z:StringResource SelectProvidersButtonText}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ContentControl Height="500"
+                                Width="600"
+                                DataContext="{Binding Path=Providers}"
+                                Template="{DynamicResource SelectProvidersManagerView}" />
+
+                <Grid Grid.Row="1"
+                      Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource CentreLeftNoWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource SelectAllText}" />
+
+                    <CheckBox Grid.Column="1"
+                              Style="{StaticResource GDSToggleSwitchStyle}"
+                              IsChecked="{Binding Path=Providers.SelectAll, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Button Grid.Column="3"
+                            Content="{z:StringResource FinishedButtonText}"
+                            Command="{Binding Path=ResetStateCommand}" />
+                </Grid>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+</ResourceDictionary>

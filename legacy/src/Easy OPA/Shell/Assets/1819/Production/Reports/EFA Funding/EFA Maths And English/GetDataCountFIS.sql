@@ -1,0 +1,1 @@
+﻿EXEC [Report].[GetEFAMathsAndEnglishReportCount] @ReferenceDate, @LearnRefNumberFilter, @ProvSpecLearnerDataA, @ProvSpecLearnerDataB, @ProvSpecLearnMonA, @ProvSpecLearnMonB

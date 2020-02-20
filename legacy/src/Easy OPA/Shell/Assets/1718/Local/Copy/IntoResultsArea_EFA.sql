@@ -1,0 +1,92 @@
+--EFA_Results_Copy
+insert into [${TargetDataStore}].Rulebase.[EFA_Cases]
+(
+	LearnRefNumber
+	,CaseData
+)
+select
+	LearnRefNumber
+	,CaseData
+from 
+	Rulebase.[EFA_Cases]
+go
+
+insert into [${TargetDataStore}].Rulebase.[EFA_global]
+(	
+	UKPRN, 
+	LARSVersion, 
+	OrgVersion, 
+	PostcodeDisadvantageVersion, 
+	RulebaseVersion
+)
+select
+	UKPRN, 
+	LARSVersion, 
+	OrgVersion, 
+	PostcodeDisadvantageVersion, 
+	RulebaseVersion
+from
+	Rulebase.[EFA_global]
+go
+
+insert into [${TargetDataStore}].Rulebase.[EFA_Learner]
+(
+	LearnRefNumber, 
+	AcadMonthPayment, 
+	AcadProg, 
+	ActualDaysILCurrYear, 
+	AreaCostFact1618Hist, 
+	Block1DisadvUpliftNew, 
+	Block2DisadvElementsNew, 
+	ConditionOfFundingEnglish, 
+	ConditionOfFundingMaths, 
+	CoreAimSeqNumber, 
+	FullTimeEquiv, 
+	FundLine, 
+	LearnerActEndDate, 
+	LearnerPlanEndDate, 
+	LearnerStartDate, 
+	NatRate, 
+	OnProgPayment, 
+	PlannedDaysILCurrYear, 
+	ProgWeightHist, 
+	ProgWeightNew, 
+	PrvDisadvPropnHist, 
+	PrvHistLrgProgPropn, 
+	PrvRetentFactHist, 
+	RateBand, 
+	RetentNew, 
+	StartFund, 
+	ThresholdDays
+)
+select
+	LearnRefNumber, 
+	AcadMonthPayment, 
+	AcadProg, 
+	ActualDaysILCurrYear, 
+	AreaCostFact1618Hist, 
+	Block1DisadvUpliftNew, 
+	Block2DisadvElementsNew, 
+	ConditionOfFundingEnglish, 
+	ConditionOfFundingMaths, 
+	CoreAimSeqNumber, 
+	FullTimeEquiv, 
+	FundLine, 
+	LearnerActEndDate, 
+	LearnerPlanEndDate, 
+	LearnerStartDate, 
+	NatRate, 
+	OnProgPayment, 
+	PlannedDaysILCurrYear, 
+	ProgWeightHist, 
+	ProgWeightNew, 
+	PrvDisadvPropnHist, 
+	PrvHistLrgProgPropn, 
+	PrvRetentFactHist, 
+	RateBand, 
+	RetentNew, 
+	StartFund, 
+	ThresholdDays
+from
+	Rulebase.[EFA_Learner]
+go

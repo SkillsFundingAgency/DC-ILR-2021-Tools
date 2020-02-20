@@ -1,0 +1,220 @@
+--TBL_Results_Copy
+insert into [${TargetDataStore}].Rulebase.[TBL_Cases]
+(
+	LearnRefNumber
+	,CaseData
+)
+select
+	LearnRefNumber
+	,CaseData
+from
+	Rulebase.[TBL_Cases]
+go
+
+insert into [${TargetDataStore}].Rulebase.[TBL_global]
+(
+	UKPRN, 
+	CurFundYr, 
+	LARSVersion, 
+	RulebaseVersion
+)
+select
+	UKPRN, 
+	CurFundYr, 
+	LARSVersion, 
+	RulebaseVersion
+from
+	Rulebase.[TBL_global]
+go
+
+insert into [${TargetDataStore}].[Rulebase].[TBL_LearningDelivery]
+(
+	LearnRefNumber, 
+	AimSeqNumber, 
+	ProgStandardStartDate, 
+	FundLine, 
+	MathEngAimValue, 
+	PlannedNumOnProgInstalm, 
+	LearnSuppFundCash, 
+	AdjProgStartDate, 
+	LearnSuppFund, 
+	MathEngOnProgPayment, 
+	InstPerPeriod, 
+	SmallBusPayment, 
+	YoungAppSecondPayment, 
+	CoreGovContPayment, 
+	YoungAppEligible, 
+	SmallBusEligible, 
+	MathEngOnProgPct, 
+	AgeStandardStart, 
+	YoungAppSecondThresholdDate, 
+	EmpIdFirstDayStandard, 
+	EmpIdFirstYoungAppDate, 
+	EmpIdSecondYoungAppDate, 
+	EmpIdSmallBusDate, 
+	YoungAppFirstThresholdDate, 
+	AchApplicDate, 
+	AchEligible, 
+	Achieved, 
+	AchievementApplicVal, 
+	AchPayment, 
+	ActualNumInstalm, 
+	CombinedAdjProp, 
+	EmpIdAchDate, 
+	LearnDelDaysIL, 
+	LearnDelStandardAccDaysIL, 
+	LearnDelStandardPrevAccDaysIL, 
+	LearnDelStandardTotalDaysIL, 
+	ActualDaysIL, 
+	MathEngBalPayment, 
+	MathEngBalPct, 
+	MathEngLSFFundStart, 
+	PlannedTotalDaysIL, 
+	MathEngLSFThresholdDays, 
+	OutstandNumOnProgInstalm, 
+	SmallBusApplicVal, 
+	SmallBusStatusFirstDayStandard, 
+	SmallBusStatusThreshold, 
+	YoungAppApplicVal, 
+	CoreGovContCapApplicVal, 
+	CoreGovContUncapped, 
+	ApplicFundValDate, 
+	YoungAppFirstPayment, 
+	YoungAppPayment	
+)
+select
+	LearnRefNumber, 
+	AimSeqNumber, 
+	ProgStandardStartDate, 
+	FundLine, 
+	MathEngAimValue, 
+	PlannedNumOnProgInstalm, 
+	LearnSuppFundCash, 
+	AdjProgStartDate, 
+	LearnSuppFund, 
+	MathEngOnProgPayment, 
+	InstPerPeriod, 
+	SmallBusPayment, 
+	YoungAppSecondPayment, 
+	CoreGovContPayment, 
+	YoungAppEligible, 
+	SmallBusEligible, 
+	MathEngOnProgPct, 
+	AgeStandardStart, 
+	YoungAppSecondThresholdDate, 
+	EmpIdFirstDayStandard, 
+	EmpIdFirstYoungAppDate, 
+	EmpIdSecondYoungAppDate, 
+	EmpIdSmallBusDate, 
+	YoungAppFirstThresholdDate, 
+	AchApplicDate, 
+	AchEligible, 
+	Achieved, 
+	AchievementApplicVal, 
+	AchPayment, 
+	ActualNumInstalm, 
+	CombinedAdjProp, 
+	EmpIdAchDate, 
+	LearnDelDaysIL, 
+	LearnDelStandardAccDaysIL, 
+	LearnDelStandardPrevAccDaysIL, 
+	LearnDelStandardTotalDaysIL, 
+	ActualDaysIL, 
+	MathEngBalPayment, 
+	MathEngBalPct, 
+	MathEngLSFFundStart, 
+	PlannedTotalDaysIL, 
+	MathEngLSFThresholdDays, 
+	OutstandNumOnProgInstalm, 
+	SmallBusApplicVal, 
+	SmallBusStatusFirstDayStandard, 
+	SmallBusStatusThreshold, 
+	YoungAppApplicVal, 
+	CoreGovContCapApplicVal, 
+	CoreGovContUncapped, 
+	ApplicFundValDate, 
+	YoungAppFirstPayment, 
+	YoungAppPayment	
+from
+	[Rulebase].[TBL_LearningDelivery]
+go
+
+insert into [${TargetDataStore}].Rulebase.[TBL_LearningDelivery_Period]
+(
+	LearnRefNumber, 
+	AimSeqNumber, 
+	[Period], 
+	AchPayment, 
+	CoreGovContPayment, 
+	CoreGovContUncapped, 
+	InstPerPeriod, 
+	LearnSuppFund, 
+	LearnSuppFundCash, 
+	MathEngBalPayment, 
+	MathEngBalPct, 
+	MathEngOnProgPayment, 
+	MathEngOnProgPct, 
+	SmallBusPayment, 
+	YoungAppFirstPayment, 
+	YoungAppPayment, 
+	YoungAppSecondPayment
+)
+select
+	LearnRefNumber, 
+	AimSeqNumber, 
+	[Period], 
+	AchPayment, 
+	CoreGovContPayment, 
+	CoreGovContUncapped, 
+	InstPerPeriod, 
+	LearnSuppFund, 
+	LearnSuppFundCash, 
+	MathEngBalPayment, 
+	MathEngBalPct, 
+	MathEngOnProgPayment, 
+	MathEngOnProgPct, 
+	SmallBusPayment, 
+	YoungAppFirstPayment, 
+	YoungAppPayment, 
+	YoungAppSecondPayment
+from
+	Rulebase.[TBL_LearningDelivery_Period]
+go
+
+insert into [${TargetDataStore}].[Rulebase].[TBL_LearningDelivery_PeriodisedValues]
+(
+	LearnRefNumber, 
+	AimSeqNumber, 
+	AttributeName, 
+	Period_1, 
+	Period_2, 
+	Period_3,
+	Period_4, 
+	Period_5, 
+	Period_6, 
+	Period_7, 
+	Period_8, 
+	Period_9, 
+	Period_10, 
+	Period_11, 
+	Period_12
+)
+select
+	LearnRefNumber, 
+	AimSeqNumber, 
+	AttributeName, 
+	Period_1, 
+	Period_2, 
+	Period_3,
+	Period_4, 
+	Period_5, 
+	Period_6, 
+	Period_7, 
+	Period_8, 
+	Period_9, 
+	Period_10, 
+	Period_11, 
+	Period_12
+from
+	Rulebase.[TBL_LearningDelivery_PeriodisedValues]
+go

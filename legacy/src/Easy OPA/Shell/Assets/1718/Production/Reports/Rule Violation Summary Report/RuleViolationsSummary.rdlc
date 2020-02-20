@@ -1,0 +1,2269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ILRCommonReportsReport_Object_GraphsRule_Violation_Report">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>28831e24-eb1b-4c6d-9408-02fe86565834</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="ILRCommonReportsReport_Object_GraphsRule_Violation_Report1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>f67aa415-02f9-4051-9317-fa23d7bd7e86</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="ILRCommonReportsReport_Object_GraphsRule_Violation_Report2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>eb4face7-35ca-437c-8504-43c822f912de</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ValidationMessages">
+      <Query>
+        <DataSourceName>ILRCommonReportsReport_Object_GraphsRule_Violation_Report</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="AimSeqNum">
+          <DataField>AimSeqNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ErrorMessage">
+          <DataField>ErrorMessage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FieldValues">
+          <DataField>FieldValues</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FileLevelError">
+          <DataField>FileLevelError</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FundModel">
+          <DataField>FundModel</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LearnAimRef">
+          <DataField>LearnAimRef</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LearnRefNumber">
+          <DataField>LearnRefNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Occurrences">
+          <DataField>Occurrences</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PartnerUKPRN">
+          <DataField>PartnerUKPRN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RuleName">
+          <DataField>RuleName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Severity">
+          <DataField>Severity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report</rd:DataSetName>
+        <rd:TableName>ValidationMessages</rd:TableName>
+        <rd:ObjectDataSourceType>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report.RuleViolationReport+ValidationMessages, ILR, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Counts">
+      <Query>
+        <DataSourceName>ILRCommonReportsReport_Object_GraphsRule_Violation_Report1</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="TotalErrorCountResult">
+          <DataField>TotalErrorCountResult</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalWarningCountResult">
+          <DataField>TotalWarningCountResult</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report</rd:DataSetName>
+        <rd:TableName>RuleViolationCounts</rd:TableName>
+        <rd:ObjectDataSourceType>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report.RuleViolationReport+RuleViolationCounts, ILR, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Totals">
+      <Query>
+        <DataSourceName>ILRCommonReportsReport_Object_GraphsRule_Violation_Report2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="total1619Deliveries">
+          <DataField>total1619Deliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalAppsDeliveries">
+          <DataField>totalAppsDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalASDeliveries">
+          <DataField>totalASDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalCommunityDeliveries">
+          <DataField>totalCommunityDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalErrors">
+          <DataField>totalErrors</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalESFDeliveries">
+          <DataField>totalESFDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalImportedFiles">
+          <DataField>totalImportedFiles</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearner1619FullyValid">
+          <DataField>totalLearner1619FullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearner1619Funded">
+          <DataField>totalLearner1619Funded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearner1619Invalid">
+          <DataField>totalLearner1619Invalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerAppsFullyValid">
+          <DataField>totalLearnerAppsFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerAppsFunded">
+          <DataField>totalLearnerAppsFunded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerAppsInvalid">
+          <DataField>totalLearnerAppsInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerASFullyValid">
+          <DataField>totalLearnerASFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerASFunded">
+          <DataField>totalLearnerASFunded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerASInvalid">
+          <DataField>totalLearnerASInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerCommunityFullyValid">
+          <DataField>totalLearnerCommunityFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerCommunityFunded">
+          <DataField>totalLearnerCommunityFunded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerCommunityInvalid">
+          <DataField>totalLearnerCommunityInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerEFAFullyValid">
+          <DataField>totalLearnerEFAFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerEFAInvalid">
+          <DataField>totalLearnerEFAInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerESFFullyValid">
+          <DataField>totalLearnerESFFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerESFFunded">
+          <DataField>totalLearnerESFFunded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerESFInvalid">
+          <DataField>totalLearnerESFInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerFullyValid">
+          <DataField>totalLearnerFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerFullyValid_DestinationAndProgression">
+          <DataField>totalLearnerFullyValid_DestinationAndProgression</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerInvalid">
+          <DataField>totalLearnerInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerInvalid_DestinationAndProgression">
+          <DataField>totalLearnerInvalid_DestinationAndProgression</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerNoFundingFullyValid">
+          <DataField>totalLearnerNoFundingFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerNoFundingInvalid">
+          <DataField>totalLearnerNoFundingInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerOtherFullyValid">
+          <DataField>totalLearnerOtherFullyValid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerOtherInvalid">
+          <DataField>totalLearnerOtherInvalid</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearners">
+          <DataField>totalLearners</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearners_DestinationAndProgression">
+          <DataField>totalLearners_DestinationAndProgression</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerWarnings">
+          <DataField>totalLearnerWarnings</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearnerWarnings_DestinationAndProgression">
+          <DataField>totalLearnerWarnings_DestinationAndProgression</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalLearningDeliveries">
+          <DataField>totalLearningDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalNoSkillsDeliveries">
+          <DataField>totalNoSkillsDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalOther24ALLBDeliveries">
+          <DataField>totalOther24ALLBDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalOtherDeliveries">
+          <DataField>totalOtherDeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalOtherEFADeliveries">
+          <DataField>totalOtherEFADeliveries</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="totalWarnings">
+          <DataField>totalWarnings</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report</rd:DataSetName>
+        <rd:TableName>RuleViolationSummarySection</rd:TableName>
+        <rd:ObjectDataSourceType>ILR.Common.Reports.Report_Object_Graphs.Rule_Violation_Report.RuleViolationReport+RuleViolationSummarySection, ILR, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="Rectangle3">
+            <ReportItems>
+              <Tablix Name="Tablix2">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>2.91713cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>13.99325cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>2.45706cm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>0.89104cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox9">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Rule Name</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox9</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox5">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Error Message</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox5</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox21">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Occurrences</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox21</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                    <TablixRow>
+                      <Height>0.57354cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="RuleName">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RuleName.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RuleName</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="RuleDescription">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!ErrorMessage.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RuleDescription</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Occurrences">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Occurrences.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Occurrences</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <FixedData>true</FixedData>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="Details1" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>ValidationMessages</DataSetName>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!Severity.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>E</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+                <Top>0.71064cm</Top>
+                <Left>0.04279cm</Left>
+                <Height>1.46458cm</Height>
+                <Width>19.36744cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Tablix>
+              <Textbox Name="Textbox1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Error Count :</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <Top>0.03528cm</Top>
+                <Left>0.06661cm</Left>
+                <Height>0.49897cm</Height>
+                <Width>2.05021cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!totalErrors.Value, "Totals")</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.03528cm</Top>
+                <Left>2.29321cm</Left>
+                <Height>0.49897cm</Height>
+                <Width>1.65333cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>3.18384cm</Top>
+            <Left>0.11625cm</Left>
+            <Height>2.17522cm</Height>
+            <Width>19.64616cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle5">
+            <ReportItems>
+              <Tablix Name="Tablix3">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>3.00527cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>13.9203cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>2.45706cm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>0.86458cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox95">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Rule Name</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox95</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox7">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Warning Message</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox7</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox103">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Occurrences</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox103</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                    <TablixRow>
+                      <Height>0.86458cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="RuleName1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RuleName.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RuleName1</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="RuleDescription1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!ErrorMessage.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RuleDescription1</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Occurrences2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Occurrences.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Occurrences</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <FixedData>true</FixedData>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="Details" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>ValidationMessages</DataSetName>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!Severity.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>W</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+                <Top>0.70028cm</Top>
+                <Left>0.02759cm</Left>
+                <Height>1.72916cm</Height>
+                <Width>19.38263cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Tablix>
+              <Textbox Name="Textbox3">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Warning Count :</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <Top>0.0602cm</Top>
+                <Left>0.09308cm</Left>
+                <Height>0.49897cm</Height>
+                <Width>2.52646cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox4">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!totalWarnings.Value, "Totals")</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.0602cm</Top>
+                <Left>2.76065cm</Left>
+                <Height>0.49897cm</Height>
+                <Width>1.65333cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>5.53544cm</Top>
+            <Left>0.11625cm</Left>
+            <Height>2.42944cm</Height>
+            <Width>19.64616cm</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(IsNothing(Parameters!WarningFilter.Value) or (Parameters!WarningFilter.Value = "${Warning}") or Len(Parameters!WarningFilter.Value) = 0, False, IIF(LCase(Parameters!WarningFilter.Value) = "true", False, True))</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle4">
+            <ReportItems>
+              <Subreport Name="Subreport2">
+                <ReportName>SummaryPortrait</ReportName>
+                <Parameters>
+                  <Parameter Name="totalErrors">
+                    <Value>=First(Fields!totalErrors.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalWarnings">
+                    <Value>=First(Fields!totalWarnings.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearners">
+                    <Value>=First(Fields!totalLearners.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerWarnings">
+                    <Value>=First(Fields!totalLearnerWarnings.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerFullyValid">
+                    <Value>=First(Fields!totalLearnerFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerInvalid">
+                    <Value>=First(Fields!totalLearnerInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearner1619Funded">
+                    <Value>=First(Fields!totalLearner1619Funded.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearner1619FullyValid">
+                    <Value>=First(Fields!totalLearner1619FullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearner1619Invalid">
+                    <Value>=First(Fields!totalLearner1619Invalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerASFunded">
+                    <Value>=First(Fields!totalLearnerASFunded.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerASFullyValid">
+                    <Value>=First(Fields!totalLearnerASFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerASInvalid">
+                    <Value>=First(Fields!totalLearnerASInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerCommunityFunded">
+                    <Value>=First(Fields!totalLearnerCommunityFunded.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerCommunityFullyValid">
+                    <Value>=First(Fields!totalLearnerCommunityFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerCommunityInvalid">
+                    <Value>=First(Fields!totalLearnerCommunityInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerESFFunded">
+                    <Value>=First(Fields!totalLearnerESFFunded.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerESFFullyValid">
+                    <Value>=First(Fields!totalLearnerESFFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerESFInvalid">
+                    <Value>=First(Fields!totalLearnerESFInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerOtherFullyValid">
+                    <Value>=First(Fields!totalLearnerOtherFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerEFAFullyValid">
+                    <Value>=First(Fields!totalLearnerEFAFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerOtherInvalid">
+                    <Value>=First(Fields!totalLearnerOtherInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerEFAInvalid">
+                    <Value>=First(Fields!totalLearnerEFAInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerNoFundingFullyValid">
+                    <Value>=First(Fields!totalLearnerNoFundingFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerNoFundingInvalid">
+                    <Value>=First(Fields!totalLearnerNoFundingInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearningDeliveries">
+                    <Value>=First(Fields!totalLearningDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalCommunityDeliveries">
+                    <Value>=First(Fields!totalCommunityDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="total1619Deliveries">
+                    <Value>=First(Fields!total1619Deliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalESFDeliveries">
+                    <Value>=First(Fields!totalESFDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalASDeliveries">
+                    <Value>=First(Fields!totalASDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalOtherDeliveries">
+                    <Value>=First(Fields!totalOtherDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalOtherEFADeliveries">
+                    <Value>=First(Fields!totalOtherEFADeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalNoSkillsDeliveries">
+                    <Value>=First(Fields!totalNoSkillsDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalOther24ALLBDeliveries">
+                    <Value>=First(Fields!totalOther24ALLBDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerAppsFullyValid">
+                    <Value>=First(Fields!totalLearnerAppsFullyValid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerAppsInvalid">
+                    <Value>=First(Fields!totalLearnerAppsInvalid.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalAppsDeliveries">
+                    <Value>=First(Fields!totalAppsDeliveries.Value, "Totals")</Value>
+                  </Parameter>
+                </Parameters>
+                <Top>0.16134cm</Top>
+                <Left>0.06549cm</Left>
+                <Height>0.5cm</Height>
+                <Width>19.5cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Subreport>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>0.8cm</Top>
+            <Left>0.14384cm</Left>
+            <Height>0.67639cm</Height>
+            <Width>19.61366cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Subreport Name="ReportHeaderLandscape">
+                <ReportName>ReportHeaderLandscape</ReportName>
+                <Parameters>
+                  <Parameter Name="LearnerRefNum">
+                    <Value>=IIf(IsNothing(Parameters!LearnRefNumFilter.Value), "(ALL)", Parameters!LearnRefNumFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="RuleName">
+                    <Value>=IIf(IsNothing(Parameters!RuleNameFilter.Value), "(ALL)", Parameters!RuleNameFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecLearnerA">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecLearnOccurAFilter.Value), "(ALL)", Parameters!ProviderSpecLearnOccurAFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecLearnerB">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecLearnOccurBFilter.Value), "(ALL)", Parameters!ProviderSpecLearnOccurBFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecDeliveryA">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecDelOccurAFilter.Value), "(ALL)", Parameters!ProviderSpecDelOccurAFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecDeliveryB">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecDelOccurBFilter.Value), "(ALL)", Parameters!ProviderSpecDelOccurBFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecDeliveryC">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecDelOccurCFilter.Value), "(ALL)", Parameters!ProviderSpecDelOccurCFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="ProviderSpecDeliveryD">
+                    <Value>=IIf(IsNothing(Parameters!ProviderSpecDelOccurDFilter.Value), "(ALL)", Parameters!ProviderSpecDelOccurDFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="Warning">
+                    <Value>=IIf(IsNothing(Parameters!WarningFilter.Value), "(ALL)", Parameters!WarningFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="FundModel">
+                    <Value>=IIf(IsNothing(Parameters!FundModelFilter.Value), "(ALL)", Parameters!FundModelFilter.Value)</Value>
+                  </Parameter>
+                  <Parameter Name="UKPRN">
+                    <Value>=IIf(IsNothing(Parameters!UKPRNFilter.Value), "(ALL)", Parameters!UKPRNFilter.Value)</Value>
+                  </Parameter>
+                </Parameters>
+                <Left>0.06549cm</Left>
+                <Height>0.5cm</Height>
+                <Width>19.5cm</Width>
+                <Visibility>
+                  <Hidden>=(Parameters!IsOnlineFlag.Value="True")</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Subreport>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>0.07056cm</Top>
+            <Left>0.14384cm</Left>
+            <Height>0.64383cm</Height>
+            <Width>19.61366cm</Width>
+            <ZIndex>3</ZIndex>
+            <Visibility>
+              <Hidden>=(Parameters!IsOnlineFlag.Value="True")</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle7">
+            <ReportItems>
+              <Subreport Name="SubReportLearnerDestinationAndProgressionSummary">
+                <ReportName>SummaryPortraitLearnerDestinationAndProgressionSummary</ReportName>
+                <Parameters>
+                  <Parameter Name="totalLearners_DestinationAndProgression">
+                    <Value>=First(Fields!totalLearners_DestinationAndProgression.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerWarnings_DestinationAndProgression">
+                    <Value>=First(Fields!totalLearnerWarnings_DestinationAndProgression.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerFullyValid_DestinationAndProgression">
+                    <Value>=First(Fields!totalLearnerFullyValid_DestinationAndProgression.Value, "Totals")</Value>
+                  </Parameter>
+                  <Parameter Name="totalLearnerInvalid_DestinationAndProgression">
+                    <Value>=First(Fields!totalLearnerInvalid_DestinationAndProgression.Value, "Totals")</Value>
+                  </Parameter>
+                </Parameters>
+                <Top>0.03773cm</Top>
+                <Left>0.06549cm</Left>
+                <Height>0.5cm</Height>
+                <Width>19.5cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Subreport>
+              <Textbox Name="Textbox6">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Please note that The Hub applies additional validation rules. See the Skills Funding Agency's Validation Rules Specification.</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox3</rd:DefaultName>
+                <Top>0.71412cm</Top>
+                <Left>0.06549cm</Left>
+                <Height>0.6cm</Height>
+                <Width>19.31715cm</Width>
+                <ZIndex>1</ZIndex>
+                <Visibility>
+                  <Hidden>=(Parameters!IsOnlineFlag.Value="True")</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <PageBreak>
+              <BreakLocation>End</BreakLocation>
+            </PageBreak>
+            <KeepTogether>true</KeepTogether>
+            <Top>1.6cm</Top>
+            <Left>0.14384cm</Left>
+            <Height>1.40745cm</Height>
+            <Width>19.61366cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>8.30003cm</Height>
+        <Style />
+      </Body>
+      <Width>19.98531cm</Width>
+      <Page>
+        <PageHeader>
+          <Height>2.80248cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="textbox117">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!DefaultProvider.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.84693cm</Top>
+              <Left>1.89384cm</Left>
+              <Height>0.5cm</Height>
+              <Width>13.60391cm</Width>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox118">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Provider :</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.84693cm</Top>
+              <Left>0.05663in</Left>
+              <Height>0.5cm</Height>
+              <Width>1.6cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox119">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>UKPRN :</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.49387cm</Top>
+              <Left>0.14384cm</Left>
+              <Height>0.5cm</Height>
+              <Width>1.6cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox120">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>ILR File :</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.14082cm</Top>
+              <Left>0.05663in</Left>
+              <Height>0.5cm</Height>
+              <Width>1.6cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox121">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!UKPRN.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.49387cm</Top>
+              <Left>1.89384cm</Left>
+              <Height>0.5cm</Height>
+              <Width>13.6039cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox122">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!FileName.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.13193cm</Top>
+              <Left>1.92022cm</Left>
+              <Height>0.5cm</Height>
+              <Width>17.73618cm</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox123">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Year :</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.84693cm</Top>
+              <Left>15.67414cm</Left>
+              <Height>0.5cm</Height>
+              <Width>2cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox124">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!Year.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.84693cm</Top>
+              <Left>17.77997cm</Left>
+              <Height>0.5cm</Height>
+              <Width>1.87643cm</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Line Name="line9">
+              <Top>2.80248cm</Top>
+              <Left>0.01146in</Left>
+              <Height>0cm</Height>
+              <Width>19.49737cm</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="textbox126">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!Title.Value</Value>
+                      <Style>
+                        <FontSize>16pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Left>0.05663in</Left>
+              <Height>0.7411cm</Height>
+              <Width>12.08717cm</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox10">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!ProtectionText.Value</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Left>12.62514cm</Left>
+              <Height>0.7411cm</Height>
+              <Width>7.03126cm</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>2.75cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Rectangle Name="rectangle2">
+              <ReportItems>
+                <Line Name="line1">
+                  <Top>0.09701cm</Top>
+                  <Height>0cm</Height>
+                  <Width>19.7cm</Width>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Rectangle Name="rectangle6">
+                  <ReportItems>
+                    <Textbox Name="textbox51">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= "Page: " &amp; Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>1.65306cm</Top>
+                      <Left>10.77647cm</Left>
+                      <Height>0.47361cm</Height>
+                      <Width>8.7209cm</Width>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox50">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= "Prepared at: " &amp; TimeOfDay &amp; " on " &amp; format(Today,"dd/MM/yyyy")</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>1.65306cm</Top>
+                      <Height>0.47361cm</Height>
+                      <Width>9.64683cm</Width>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox48">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Application Version:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.22389cm</Top>
+                      <Height>0.3cm</Height>
+                      <Width>2.89331cm</Width>
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox45">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Component Set Version:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.54153cm</Top>
+                      <Height>0.3cm</Height>
+                      <Width>3.10219cm</Width>
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox41">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>LARS Data:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.53565cm</Top>
+                      <Left>9.69062cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>2.89331cm</Width>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox40">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Postcode Data:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>1.15917cm</Top>
+                      <Left>9.69062cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>2cm</Width>
+                      <ZIndex>5</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox39">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!AppVersion.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.22389cm</Top>
+                      <Left>3.20802cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>3.83479cm</Width>
+                      <ZIndex>6</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox35">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!ComponentSetVersion.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.54153cm</Top>
+                      <Left>3.20802cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>3.83479cm</Width>
+                      <ZIndex>7</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox34">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!LarsVersion.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.54153cm</Top>
+                      <Left>12.76032cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>6.58329cm</Width>
+                      <ZIndex>8</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox33">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!PostcodeFactorsVersion.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>1.15917cm</Top>
+                      <Left>12.76032cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>6.58329cm</Width>
+                      <ZIndex>9</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox31">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>File Preparation Date:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.85917cm</Top>
+                      <Height>0.3cm</Height>
+                      <Width>2.89331cm</Width>
+                      <ZIndex>10</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox30">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!FilePreparationDate.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.85917cm</Top>
+                      <Left>3.20802cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>3.83479cm</Width>
+                      <ZIndex>11</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Large Employer Data:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.22389cm</Top>
+                      <Left>9.69062cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>2.86191cm</Width>
+                      <ZIndex>12</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox20">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!LargeEmployerVersion.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.22389cm</Top>
+                      <Left>12.76032cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>6.58329cm</Width>
+                      <ZIndex>13</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox42">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Organisation Data:</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.84741cm</Top>
+                      <Left>9.69062cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>2.71197cm</Width>
+                      <ZIndex>14</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="textbox36">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!RefData4.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.85917cm</Top>
+                      <Left>12.76032cm</Left>
+                      <Height>0.3cm</Height>
+                      <Width>6.58329cm</Width>
+                      <ZIndex>15</ZIndex>
+                      <Style>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                  <DataElementOutput>ContentsOnly</DataElementOutput>
+                  <Top>0.13229cm</Top>
+                  <Left>0.06157in</Left>
+                  <Height>2.31699cm</Height>
+                  <Width>19.50001cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style />
+                </Rectangle>
+              </ReportItems>
+              <DataElementOutput>ContentsOnly</DataElementOutput>
+              <Top>0.04937cm</Top>
+              <Left>0.02647cm</Left>
+              <Height>2.70063cm</Height>
+              <Width>19.76241cm</Width>
+              <Style />
+            </Rectangle>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>0.2cm</LeftMargin>
+        <RightMargin>0.2cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
+        <ColumnSpacing>1cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="DefaultProvider">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>Default Provider Name</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Title">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>Rule Violation Summary Report</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProtectionText">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>123456-Protect</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UKPRN">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>123456</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Year">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Format(Today, "dd/MM/yyyy")</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FileName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>ILR-1516 File Name</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ReportDate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Today()</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AppVersion">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>1.2</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FilePreparationDate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Today()</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LarsVersion">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PostcodeFactorsVersion">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LargeEmployerVersion">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RefData4">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ComponentSetVersion">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecLearnOccurAFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecLearnOccurBFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="WarningFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UKPRNFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecDelOccurAFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecDelOccurBFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecDelOccurCFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProviderSpecDelOccurDFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FundModelFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LearnRefNumFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RuleNameFilter">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IsOnlineFlag">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>47e9fd77-144d-46ba-a3f6-64e348f6ef77</rd:ReportID>
+</Report>

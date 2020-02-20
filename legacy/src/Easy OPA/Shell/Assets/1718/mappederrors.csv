@@ -1,0 +1,805 @@
+CollectionType,Version,RuleID,Severity,ErrorMessage,SeverityFIS
+ILR1718,41,Inconsistent UKPRN,E,The UKPRN in the file name does not match the provider's UKPRN in the Hub,E
+ILR1718,41,Namespace Mismatch,E,ILR submissions must use the correct namespace,E
+ILR1718,41,Entity_1,E,There are no valid learners in either the Learner record or the Learner Destination and Progression record,E
+ILR1718,41,Filename_1,E,The filename is not in the correct format,E
+ILR1718,41,Filename_2,E,"A file with the same UKPRN, collection year and date/time combination has been received before",E
+ILR1718,41,Filename_4,E,The UKPRN is not valid,E
+ILR1718,41,Filename_5,E,The year of collection is not the current year,E
+ILR1718,41,Filename_6,E,The serial number is not a 2 digit number,E
+ILR1718,41,Filename_7,E,The serial number is 00,E
+ILR1718,41,Filename_8,E,The file date/time is after today's date/time,E
+ILR1718,41,Filename_9,E,The date/time of the file is earlier than a previous transmission for this collection,E
+ILR1718,41,Header_2,E,The file preparation date is after today's date,E
+ILR1718,41,Header_3,E,The UKPRN in the filename does not match the UKPRN in the Header,E
+ILR1718,41,UKPRN_03,E,The UKPRN is not the same as recorded in the Header,E
+ILR1718,41,UKPRN_05,E,There is no ESF funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_06,E,There is no Adult Skills funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_08,E,There is no Advanced Learner Loans Bursary funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_09,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_10,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_11,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_12,E,There is no Adult skills funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_13,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_14,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,UKPRN_15,E,There is no apprenticeship funding relationship for this UKPRN,E
+ILR1718,41,PrevUKPRN_01,E,The UKPRN is not valid,E
+ILR1718,41,PMUKPRN_01,E,The UKPRN is not valid,E
+ILR1718,41,ULN_02,W,This Unique learner number should not be used,W
+ILR1718,41,ULN_03,W,This Unique learner number should not be used,W
+ILR1718,41,ULN_04,E,This Unique learner number does not pass the checksum calculation,E
+ILR1718,41,ULN_05,E,This Unique learner number is not valid,E
+ILR1718,41,ULN_06,W,This Unique learner number should not be used,W
+ILR1718,41,ULN_07,E,This Unique learner number must not be used,E
+ILR1718,41,ULN_09,W,This Unique learner number should not be used,W
+ILR1718,41,ULN_10,W,This Unique learner number should not be used,W
+ILR1718,41,ULN_11,E,This Unique learner number must not be used,E
+ILR1718,41,ULN_12,E,This Unique learner number must not be used,E
+ILR1718,41,FamilyName_01,E,The learner's Family name must be returned,E
+ILR1718,41,FamilyName_02,E,The learner's Family name must be returned,E
+ILR1718,41,FamilyName_04,E,The learner's Family name must be returned,E
+ILR1718,41,GivenNames_01,E,The learner's Given names must be returned,E
+ILR1718,41,GivenNames_02,E,The learner's Given names must be returned,E
+ILR1718,41,GivenNames_04,E,The learner's Given names must be returned,E
+ILR1718,41,DateOfBirth_01,E,The Date of birth must be returned,E
+ILR1718,41,DateOfBirth_02,W,The Date of birth should be returned,W
+ILR1718,41,DateOfBirth_03,W,The learner is 100 or over,W
+ILR1718,41,DateOfBirth_04,E,The learner is 115 or over,E
+ILR1718,41,DateOfBirth_05,W,The learner is under 4,W
+ILR1718,41,DateOfBirth_06,W,The learner is under 13,W
+ILR1718,41,DateOfBirth_07,E,The learner is 25 or over so the Source of funding must not be EFA,E
+ILR1718,41,DateOfBirth_10,W,The learner is not over the school leaving age,W
+ILR1718,41,DateOfBirth_12,E,The learner is under 19 and the Community Learning provision is PCDL or NLDC,E
+ILR1718,41,DateOfBirth_13,W,The learner is under 16 and is HEFCE funded,W
+ILR1718,41,DateOfBirth_14,W,The learner is under 18,W
+ILR1718,41,DateOfBirth_20,E,The learner is under 19 and the Source of funding is not the EFA,E
+ILR1718,41,DateOfBirth_23,E,The Date of birth has not been returned,E
+ILR1718,41,DateOfBirth_24,E,The Unique learner number has been returned and the Date of birth has not been returned,E
+ILR1718,41,DateOfBirth_25,E,The learner is under 19,E
+ILR1718,41,DateOfBirth_41,W,The learner is under 19,W
+ILR1718,41,DateOfBirth_26,E,The learner is under 19 and financed by a Advanced Learner Loan,E
+ILR1718,41,DateOfBirth_27,E,The learner's Date of birth is on or after the start of the current teaching year,E
+ILR1718,41,DateOfBirth_28,W,The learner is under 19 and the Learning start date and Learning planned end date do not reach the minimum duration of an apprenticeship,W
+ILR1718,41,DateOfBirth_29,W,The learner is 19 or over and the planned duration of the programme does not reach the required minimum duration of an apprenticeship,W
+ILR1718,41,DateOfBirth_35,E,The learner is under 19 and the planned duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_36,E,The learner is 19 or over and the planned duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_37,E,The learner is 19 or over and the planned duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_38,E,The learner is under 19 and the actual duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_39,E,The learner is 19 or over and the actual duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_40,E,The learner is 19 or over and the actual duration of the programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_30,E,"The learner is between 19 and 24 and has an Education health plan, and the Funding model and/or Source of funding is not the EFA",E
+ILR1718,41,DateOfBirth_32,E,The learning aim started on or after 1 August 2015 and the learner is 24 or over and the aim is Level 3 or above and the Funding model is Adult Skills,E
+ILR1718,41,DateOfBirth_34,E,The learner is recorded as a High Needs Student but there is no Education health care plan recorded,E
+ILR1718,41,DateOfBirth_43,E,The learner is under 15,E
+ILR1718,41,DateOfBirth_44,E,The learner's age is outside of the age range described in the ESF Tender Specification,E
+ILR1718,41,DateOfBirth_46,E,The planned duration of the programme does not reach the required minimum duration for an apprenticeship standard,E
+ILR1718,41,DateOfBirth_47,E,The actual duration of the programme does not reach the required minimum duration for an apprenticeship standard,E
+ILR1718,41,DateOfBirth_48,E,The learner is not over the school leaving age,E
+ILR1718,41,DateOfBirth_49,E,The learning aim started on or after 1 August 2016 and the learner is 24 or over and the aim is Level 3 or above and the Funding model is Adult skills,E
+ILR1718,41,DateOfBirth_50,E,The learner must not start a traineeship programme until after 1 August of the academic year in which they turn 16,E
+ILR1718,41,DateOfBirth_51,E,The learners age is ineligible for a traineeship programme,E
+ILR1718,41,DateOfBirth_52,E,The programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_53,E,The programme does not reach the required minimum duration of an apprenticeship,E
+ILR1718,41,DateOfBirth_54,E,The learner is not over the school leaving age,E
+ILR1718,41,DateOfBirth_55,E,The learning aim started on or after 1 August 2017 and the learner is 24 or over and the aim is Level 3 or above and the Funding model is Adult skills,E
+ILR1718,41,Ethnicity_01,E,This Ethnicity is not a valid code,E
+ILR1718,41,Sex_01,E,This Sex is not a valid code,E
+ILR1718,41,LLDDHealthProb_01,E,This LLDD and health problem is not a valid code,E
+ILR1718,41,LLDDHealthProb_04,E,The LLDD and Health Problem record has been returned and the learner does not consider himself or herself to have a learning difficulty and/or disability or health problem,E
+ILR1718,41,LLDDHealthProb_06,E,The LLDD and Health Problem record has not been returned and the learner does consider himself or herself to have a learning difficulty and/or disability or health problem,E
+ILR1718,41,LLDDHealthProb_07,E,The LLDD and Health Problem record has not been returned and the learner does consider himself or herself to have a learning difficulty and/or disability or health problem,E
+ILR1718,41,NINumber_01,E,This National Insurance number is not in the correct format,E
+ILR1718,41,NINumber_02,E,The National Insurance number must be returned for this learner,E
+ILR1718,41,PriorAttain_01,E,The Prior attainment has not been returned,E
+ILR1718,41,PriorAttain_02,W,This Prior attainment is not valid if the learning aim is a full level 2 or full level 3,W
+ILR1718,41,PriorAttain_03,E,This Prior attainment is not a valid code,E
+ILR1718,41,PriorAttain_04,E,The Prior attainment is not valid if the programme is a funded intermediate or advanced level apprenticeship,E
+ILR1718,41,PriorAttain_05,E,The Prior attainment is not valid if the programme is a higher level 4 apprenticeship,E
+ILR1718,41,PriorAttain_06,E,The learner's prior attainment does not match the prior attainment described in the ESF Tender Specification,E
+ILR1718,41,PriorAttain_07,E,The Prior attainment is not valid for a traineeship programme,E
+ILR1718,41,Accom_01,E,This Accommodation is not a valid code,E
+ILR1718,41,ALSCost_02,E,The Learning support cost field must only be returned for High Needs Students,E
+ILR1718,41,PlanLearnHours_01,E,The Planned learning hours have not been returned,E
+ILR1718,41,PlanLearnHours_02,W,The Planned learning hours should not be zero,W
+ILR1718,41,PlanLearnHours_03,E,"The sum of the Planned learning hours and the Planned employability, enrichment and pastoral hours must not be zero",E
+ILR1718,41,PlanLearnHours_04,W,"The sum of the Planned learning hours and the Planned employability, enrichment and pastoral hours should not be greater than 1,000 hours",W
+ILR1718,41,PlanLearnHours_05,E,"The sum of the Planned learning hours and the Planned employability, enrichment and pastoral hours must not be greater than 4,000 hours",E
+ILR1718,41,PlanEEPHours_01,E,"The Planned employability, enrichment and pastoral hours have not been returned",E
+ILR1718,41,MathGrade_01,E,The GCSE maths qualification grade has not been returned,E
+ILR1718,41,MathGrade_02,E,The GCSE maths qualification grade is not a valid code,E
+ILR1718,41,MathGrade_03,E,The Learner FAM Type of Eligibility for EFA disadvantage funding must be returned,E
+ILR1718,41,MathGrade_04,E,GCSE maths qualification grade must be 'NONE',E
+ILR1718,41,EngGrade_01,E,The GCSE English qualification grade has not been returned,E
+ILR1718,41,EngGrade_02,E,The GCSE English qualification grade is not a valid code,E
+ILR1718,41,EngGrade_03,E,The Learner FAM Type of Eligibility for EFA disadvantage funding must be returned,E
+ILR1718,41,EngGrade_04,E,GCSE English qualification grade must be 'NONE',E
+ILR1718,41,PostcodePrior_01,W,The Postcode prior to enrolment is not valid,W
+ILR1718,41,PostcodePrior_02,E,The Postcode prior to enrolment is not in the correct format,E
+ILR1718,41,Postcode_14,W,The Postcode is not valid,W
+ILR1718,41,Postcode_15,E,The Postcode is not in the correct format,E
+ILR1718,41,Addline1_03,E,Address line 1 has not been returned.,E
+ILR1718,41,ContPrefType_01,E,This Contact preference type and code is not valid,E
+ILR1718,41,ContPrefType_02,E,"The combination of Contact preference type and code is not valid, this learner is not to be contacted",E
+ILR1718,41,ContPrefType_03,E,This Contact preference type and code is not valid for this Learning start date,E
+ILR1718,41,LLDDCat_01,E,The LLDD and health problem category is not a valid code,E
+ILR1718,41,LLDDCat_02,E,This LLDD and health problem category is not valid for this start date,E
+ILR1718,41,PrimaryLLDD_01,E,The Primary LLDD and health problem is not recorded on one of the LLDD and health problem records,E
+ILR1718,41,PrimaryLLDD_02,E,The Primary LLDD and health problem is not a valid code,E
+ILR1718,41,PrimaryLLDD_03,E,There must only be one Primary LLDD and Health problem record,E
+ILR1718,41,PrimaryLLDD_04,E,The Primary LLDD and health problem is not recorded,E
+ILR1718,41,LearnFAMType_01,E,This FAM type and code is not valid,E
+ILR1718,41,LearnFAMType_03,E,This FAM type and code is not valid for this Learning start date,E
+ILR1718,41,LearnFAMType_09,E,"There must not be more than one record with a FAM type of HNS, EHC, DLA, SEN, MCF, ECF or FME",E
+ILR1718,41,LearnFAMType_10,E,There must not be more than four records with a FAM type of LSR,E
+ILR1718,41,LearnFAMType_11,E,"There must not be more than two records with a FAM type of EDF, NLM or PPE",E
+ILR1718,41,LearnFAMType_14,E,The learner must not have both a FAM type of SEN and EHC,E
+ILR1718,41,LearnFAMType_15,E,The learner is recorded as exempt from maths GCSE condition of funding due to a learning difficulty but there is no Education health care plan recorded,E
+ILR1718,41,LearnFAMType_16,E,The learner is recorded as exempt from English GCSE condition of funding due to a learning difficulty but there is no Education health care plan recorded,E
+ILR1718,41,ProvSpecLearnMonOccur_01,E,This Provider specified learner monitoring occurrence is not 'A' or 'B',E
+ILR1718,41,EmpStat_01,E,An Employment status record has not been returned that applies prior to this Learning start date,E
+ILR1718,41,EmpStat_02,E,An Employment status record has not been returned that applies prior to this Learning start date,E
+ILR1718,41,EmpStat_04,E,The Employment status is not valid for learning aims funded by ESF,E
+ILR1718,41,EmpStat_05,E,This Employment status is not a valid code,E
+ILR1718,41,EmpStat_06,E,An Employment status record has not been returned that applies prior to the Learning start date,E
+ILR1718,41,EmpStat_07,E,An Employment status record has not been returned,E
+ILR1718,41,EmpStat_08,E,An Employment status record has not been returned that applies prior to the Learning start date,E
+ILR1718,41,EmpStat_09,E,An Employment status record has not been returned that applies prior to the Learning start date,E
+ILR1718,41,EmpStat_10,E,An Employment status record has not been returned that applies prior to the Learning start date,E
+ILR1718,41,EmpStat_11,E,An Employment status record has not been returned that applies prior to the Learning start date,E
+ILR1718,41,EmpStat_12,W,The Employment status on the start date of an apprenticeship programme should be employed,W
+ILR1718,41,EmpStat_14,E,The learner's Employment status does not match the employment status described in the ESF Tender Specification,E
+ILR1718,41,EmpStat_15,E,The Employment status on the start date of an apprenticeship programme must not be unknown,E
+ILR1718,41,EmpStat_17,E,The Employment status on the start date of an traineeship programme must not be unknown,E
+ILR1718,41,EmpStat_18,E,The learner must not be employed for more than 16 hours her week at the start of the programme,E
+ILR1718,41,DateEmpStatApp_01,E,The Date employment status applies must not be after the current teaching year,E
+ILR1718,41,DateEmpStatApp_02,E,The Date employment status applies must not be before 1 August 1990,E
+ILR1718,41,EmpId_01,E,The Employer identifier is not valid,E
+ILR1718,41,EmpId_02,E,The Employer identifier does not pass the checksum calculation,E
+ILR1718,41,EmpId_10,E,The Employer identifier has not been returned,E
+ILR1718,41,EmpId_12,W,The Employer identifier is not valid,W
+ILR1718,41,EmpId_13,E,The Employer identifier is not valid,E
+ILR1718,41,ESMType_01,E,The Employment status monitoring type and code is not valid,E
+ILR1718,41,ESMType_02,E,The learner's Employment status is 'in paid employment' and the Employment intensity indicator has not been returned,E
+ILR1718,41,ESMType_05,E,The learner's Employment status is 'in paid employment' and the Length of unemployment has been returned,E
+ILR1718,41,ESMType_07,E,The learner is self employed and the Employment status is not 'in paid employment',E
+ILR1718,41,ESMType_08,E,The Length of unemployment has not been returned,E
+ILR1718,41,ESMType_09,E,The Length of employment has not been returned,E
+ILR1718,41,ESMType_10,E,The Length of employment has been returned,E
+ILR1718,41,ESMType_11,E,The Employment status monitoring type and code is not valid for the Employment status date,E
+ILR1718,41,ESMType_12,E,The Employment intensity indicator or Self employed indicator has been returned,E
+ILR1718,41,ESMType_13,E,The learner's length of unemployment does not match the length of unemployment described in the ESF Tender Specification,E
+ILR1718,41,ESMType_14,E,The learner's benefit status does not match the benefit status described in the ESF Tender Specification,E
+ILR1718,41,ESMType_15,E,"There must not be more than one record with an ESM type of SEI, EII, LOU, LOE, BSI, PEI, or SEM",E
+ILR1718,41,LearnAimRef_01,E,This Learning aim reference is not a valid lookup on LARS,E
+ILR1718,41,LearnAimRef_03,E,This Learning aim reference is part of an Adult Skills funded apprenticeship and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_05,E,This Learning aim reference is Adult Skills funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_36,E,This Learning aim reference is not valid in the LARS database for this Funding model and this Learning start date,E
+ILR1718,41,LearnAimRef_09,E,This Learning aim reference is not valid in the LARS database for this Funding model and this Learning start date,E
+ILR1718,41,LearnAimRef_10,E,This Learning aim reference is 16-19 EFA funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_11,E,This Learning aim reference is Adult Skills funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_12,E,This Learning aim reference is Community Learning funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_37,E,This Learning aim reference is not valid in the LARS database for this Funding model and this Learning start date,E
+ILR1718,41,LearnAimRef_42,E,This Learning aim reference is OLASS funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_45,E,This Learning aim reference is financed by an Advanced Learner Loan and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_46,E,"This learner is recorded as in receipt of JSA, ESA (WRAG), another state benefit or Universal credit, is part of a Traineeship or recorded with LDM328 and this Learning aim reference is not valid in the LARS database on this Learning start date",E
+ILR1718,41,LearnAimRef_16,E,This Learning aim reference is not valid in the LARS database for this Funding Model for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_17,E,This Learning aim reference is Adult Skills funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_18,E,This Learning aim reference is 16-19 EFA funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_19,E,This Learning aim reference is Community Learning funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_38,E,This Learning aim reference is not valid in the LARS database for this Funding model for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_43,E,This Learning aim reference is OLASS funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_47,E,This Learning aim reference is financed by an Advanced Learner Loan and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_48,E,"This learner is recorded as in receipt of JSA, ESA (WRAG), another state benefit or Universal credit, is part of a traineeship or recorded with LDM328 and this Learning aim reference is not valid in the LARS database for a new starter on this Learning start date ",E
+ILR1718,41,LearnAimRef_23,E,The Learning aim reference is not valid in the LARS database for this Funding modeal for this teaching year,E
+ILR1718,41,LearnAimRef_24,E,This Learning aim reference is 16-19 EFA funded and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_25,E,This Learning aim reference is Adult Skills funded and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_26,E,This Learning aim reference is Community Learning funded and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_39,E,This Learning aim reference is not valid in the LARS database for this Funding model for this teaching year,E
+ILR1718,41,LearnAimRef_44,E,This Learning aim reference is OLASS funded and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_49,E,This Learning aim reference is financed by an Advanced Learner Loan and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_50,E,"This learner is recorded as in receipt of JSA, ESA (WRAG), another state benefit or Universal credit, or recorded with LDM328 and this Learning aim reference is not valid in the LARS database for this teaching year",E
+ILR1718,41,LearnAimRef_53,E,This Learning aim reference is not valid in the LARS database for this Funding model for this teaching year,E
+ILR1718,41,LearnAimRef_54,E,This Learning aim reference is not valid in the LARS database for this Funding model for this teaching year,E
+ILR1718,41,LearnAimRef_29,E,This Learning aim reference is not valid for this Funding model,E
+ILR1718,41,LearnAimRef_30,E,This Learning aim reference is not valid for a programme aim,E
+ILR1718,41,LearnAimRef_40,E,This Learning aim reference is not valid for an aim which is not a programme aim,E
+ILR1718,41,LearnAimRef_55,E,This learning aim is not recorded as the Core aim,E
+ILR1718,41,LearnAimRef_56,E,This learning aim is not valid for Adult Skills funding,E
+ILR1718,41,LearnAimRef_57,E,This learning aim is not valid for Adult Skills funding,E
+ILR1718,41,LearnAimRef_59,E,This learning aim is not valid for Adult Skills funding,E
+ILR1718,41,LearnAimRef_60,E,The learning aim must be Adult skills or ESF funded,E
+ILR1718,41,LearnAimRef_61,E,The learning aim must be Adult skills or ESF funded,E
+ILR1718,41,LearnAimRef_62,E,The learning aim must be Adult skills or Other SFA funded,E
+ILR1718,41,LearnAimRef_63,E,The learning aim is not Community Learning or Local Authority Community Learning funded,E
+ILR1718,41,LearnAimRef_64,E,The learning aim must be Non-funded,E
+ILR1718,41,LearnAimRef_65,E,The learning aim must be Non-funded,E
+ILR1718,41,LearnAimRef_66,E,The learning aim must Adult skills or Other SFA funded,E
+ILR1718,41,LearnAimRef_67,E,This Learning aim reference is not valid in the LARS database for this Funding model and this Learning start date,E
+ILR1718,41,LearnAimRef_68,E,This Learning aim reference is not valid in the LARS database for this Funding model and this Learning start date,E
+ILR1718,41,LearnAimRef_69,E,This Learning aim reference is not valid in the LARS database for this Funding model for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_70,W,This Learning aim reference is not valid in the LARS database for this Funding model for this teaching year,W
+ILR1718,41,LearnAimRef_71,E,The learning aim's sector subject area does not match the ESF Tender Specification.,E
+ILR1718,41,LearnAimRef_72,E,The learning aim's level does not match the level described in the ESF Tender Specification.,E
+ILR1718,41,LearnAimRef_73,E,The learning aim's sector subject area and level does not match the ESF Tender Specification.,E
+ILR1718,41,LearnAimRef_74,E,This Learning aim reference is Adult skills funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_75,E,This Learning aim reference is Adult skills funded and is not valid in the LARS database on this Learning start date,E
+ILR1718,41,LearnAimRef_76,E,This Learning aim reference is Adult skills funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_77,E,This Learning aim reference is Adult skills funded and is not valid in the LARS database for this teaching year,E
+ILR1718,41,LearnAimRef_78,E,This learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_79,E,This learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_80,E,This learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_81,E,The learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_83,E,The Learning aim reference is Adult skills funded and is not valid in the LARS database for a new starter on this Learning start date,E
+ILR1718,41,LearnAimRef_84,E,The learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_85,E,The learning aim is not valid for Adult skills funding,E
+ILR1718,41,LearnAimRef_86,E,The Learning aim reference is not valid for this funding model where the learning aim is not part of a traineeship,E
+ILR1718,41,LearnAimRef_87,E,ZVOC or ZUXA aims must not be returned,E
+ILR1718,41,AimType_01,E,This Aim type is not a valid code,E
+ILR1718,41,AimType_05,E,This Aim type is not valid for this Funding model,E
+ILR1718,41,AimType_06,W,The Learning start date for the Core aim should not be in the following teaching year,W
+ILR1718,41,AimType_07,E,A core aim must not be recorded with a source of funding of 105,E
+ILR1718,41,AimSeqNumber_02,E,The Aim sequence number is greater than the count of the learning aims,E
+ILR1718,41,LearnStartDate_02,E,The Learning start date is more than 10 years before the start of the current teaching year,E
+ILR1718,41,LearnStartDate_03,E,The Learning start date must not be after the end of the current teaching year,E
+ILR1718,41,LearnStartDate_05,E,The Learning start date must not be on or before the learner's Date of birth,E
+ILR1718,41,LearnStartDate_06,E,The Learning start date of the apprenticeship programme must not be after the Effective to date of this apprenticeship pathway,E
+ILR1718,41,LearnStartDate_07,E,The Learning start date of the apprenticeship programme must not be after the Effective to date of this component aim for this apprenticeship pathway,E
+ILR1718,41,LearnStartDate_12,E,The Learning start date must not be more than one year in the future,E
+ILR1718,41,LearnStartDate_13,E,The Learning start date of the apprenticeship standard programme must not be after the Effective to date of this apprenticeship standard,E
+ILR1718,41,LearnStartDate_14,E,The Learning start date of the apprenticeship standard programme must not be after the Effective to date of this component aim for this standard,E
+ILR1718,41,LearnStartDate_15,E,The Learning start date must be after the start date of the completed ZESF0001 aim for that contract,E
+ILR1718,41,LearnStartDate_16,E,The Learning start date must not be before the start date of the contract,E
+ILR1718,41,OrigLearnStartDate_01,E,The Original learning start date must not be more than 10 years before the Learning start date,E
+ILR1718,41,OrigLearnStartDate_02,E,The Original learning start date must not be on or after the Learning start date,E
+ILR1718,41,OrigLearnStartDate_03,E,The Original learning start date must not be returned,E
+ILR1718,41,OrigLearnStartDate_04,E,The Restart indicator has not been returned,E
+ILR1718,41,OrigLearnStartDate_05,E,This Learning aim reference is not valid in the LARS database for this Funding model on this Original learning start date,E
+ILR1718,41,OrigLearnStartDate_06,E,This Learning aim reference is Adult Skills funded and is not valid in the LARS database on this Original learning start date,E
+ILR1718,41,OrigLearnStartDate_07,E,This Learning aim reference is not valid in the LARS database for this Funding model on this Original learning start date,E
+ILR1718,41,OrigLearnStartDate_08,E,This Learning aim reference is financed by an Advanced Learner Loan and is not valid in the LARS database on this Original learning start date,E
+ILR1718,41,OrigLearnStartDate_09,E,The Original learning start date for this funding model must not be before 1 May 2017,E
+ILR1718,41,LearnPlanEndDate_02,E,The Learning planned end date must not be before the Learning start date,E
+ILR1718,41,LearnPlanEndDate_03,E,The Learning planned end date must not be 10 years or more after the Learning start date,E
+ILR1718,41,LearnPlanEndDate_04,W,The Learning planned end date should not be 5 years or more after the end of the current teaching year,W
+ILR1718,41,FundModel_01,E,This Funding model is not a valid code,E
+ILR1718,41,FundModel_03,E,This Funding model is not valid for a learning aim financed by an Advanced Learner Loan,E
+ILR1718,41,FundModel_04,E,This Funding model is not valid for a learning aim which is part of an apprenticeship programme.,E
+ILR1718,41,FundModel_05,E,This Funding model is not valid for starts before 1 May 2017,E
+ILR1718,41,FundModel_06,E,The funding model is not valid for this aim,E
+ILR1718,41,FundModel_07,E,The funding model is not valid for an apprenticeship programme,E
+ILR1718,41,FundModel_08,E,The funding model is not valid for this apprenticeship programme,E
+ILR1718,41,FundModel_09,E,The funding model is not valid for this apprenticeship programme,E
+ILR1718,41,ProgType_01,E,The Programme type must be returned for this learning aim,E
+ILR1718,41,ProgType_02,E,The Programme type must not be returned for this Aim type,E
+ILR1718,41,ProgType_03,E,This Programme type is not a valid code,E
+ILR1718,41,ProgType_04,E,This Programme type is not a valid code for this Learning start date,E
+ILR1718,41,ProgType_06,E,This Programme type is not a valid code for this Funding model,E
+ILR1718,41,ProgType_07,E,The planned duration for the programme exceeds the maximum allowed duration for a traineeship,E
+ILR1718,41,ProgType_08,E,The actual duration of the programme exceeds the maximum allowed duration for a traineeship,E
+ILR1718,41,ProgType_12,E,This learning aim is not valid for the Framework,E
+ILR1718,41,ProgType_13,E,The current duration of the programme exceeds the maximum allowed duration for a traineeship,E
+ILR1718,41,FworkCode_01,E,The Framework code must be returned,E
+ILR1718,41,FworkCode_02,E,The Framework code must not be returned,E
+ILR1718,41,FworkCode_05,E,"This Framework code, Pathway code and Programme type combination is not valid in the LARS database for this Learning aim reference",E
+ILR1718,41,PwayCode_01,E,This Apprenticeship pathway code is not a valid code in the LARS database,E
+ILR1718,41,PwayCode_02,E,The Apprenticeship pathway must not be returned,E
+ILR1718,41,PwayCode_03,E,The Apprenticeship pathway must be returned,E
+ILR1718,41,StdCode_01,E,The Apprenticeship standard code must be returned,E
+ILR1718,41,StdCode_02,E,The apprenticeship standard code is not valid.,E
+ILR1718,41,StdCode_03,E,The Apprenticeship standard code must not be returned,E
+ILR1718,41,PartnerUKPRN_01,E,This Subcontracted or partnership UKPRN is not valid,E
+ILR1718,41,PartnerUKPRN_02,E,The Subcontracted or partnership UKPRN must not be on programme aims,E
+ILR1718,41,PartnerUKPRN_03,E,The Subcontracted or partnership UKPRN must not be the same as the Learning provider UKPRN,E
+ILR1718,41,DelLocPostCode_03,W,This Delivery location postcode is not valid,W
+ILR1718,41,DelLocPostCode_11,E,The Delivery location postcode is not in the correct format,E
+ILR1718,41,DelLocPostCode_14,E,The Delivery location postcode is not valid in the local authority described in the ESF Tender Specification,E
+ILR1718,41,DelLocPostCode_15,E,The Delivery location postcode is not valid in the LEP described in the ESF Tender Specification,E
+ILR1718,41,DelLocPostCode_16,E,This Delivery location postcode is not valid,E
+ILR1718,41,DelLocPostCode_17,E,The Delivery location postcode is not valid in the local authority described in the ESF Tender Specification,E
+ILR1718,41,DelLocPostCode_18,E,The Delivery location postcode is not valid in the LEP described in the ESF Tender Specification,E
+ILR1718,41,AddHours_01,E,The Additional delivery hours must not be returned for learning aims that started prior to 1 August 2015,E
+ILR1718,41,AddHours_02,E,"The Additional delivery hours must not be returned for EFA, Community Learning or Non-funded provision",E
+ILR1718,41,AddHours_03,E,The Additional delivery hours must only be returned for ESOL qualification or unit aims,E
+ILR1718,41,AddHours_04,E,The Additional delivery hours must not exceed 24 hours in a day,E
+ILR1718,41,AddHours_05,W,The Additional delivery hours should not exceed 35 hours in a week,W
+ILR1718,41,AddHours_06,W,The Additional delivery hours divided by the number of days of study is greater than 9 and less than 24,W
+ILR1718,41,PriorLearnFundAdj_01,E,The Funding adjustment for prior learning must not be returned,E
+ILR1718,41,PriorLearnFundAdj_02,W,The Funding adjustment for prior learning should be completed when the Restart indicator is returned,W
+ILR1718,41,PriorLearnFundAdj_03,W,The Funding adjustment for prior learning field should be completed for this learning aim,W
+ILR1718,41,OtherFundAdj_01,E,The Other funding adjustment must not be returned for this Funding model,E
+ILR1718,41,ConRefNumber_01,E,The Contract reference number is not valid,E
+ILR1718,41,ConRefNumber_02,E,The Contract reference number must be returned for ESF funded aims,E
+ILR1718,41,ConRefNumber_03,E,The Contract reference number must not be returned for this Funding model,E
+ILR1718,41,EPAOrgID_01,E,The end point assessment organisation is not valid for this standard on this planned end date.,E
+ILR1718,41,EPAOrgID_02,E,The End point assessment organisation payment record has been returned but there is no record of the End point assessment organisation.,E
+ILR1718,41,EPAOrgID_03,E,The End point assessment organisation has been returned but there is no record of the associated financial record.,E
+ILR1718,41,EmpOutcome_01,E,The Employment outcome must not be returned for this Funding model,E
+ILR1718,41,EmpOutcome_02,E,This Employment outcome is not a valid code,E
+ILR1718,41,EmpOutcome_03,E,The Employment outcome must not be returned for apprenticeships,E
+ILR1718,41,EmpOutcome_04,W,The Employment outcome should not be returned where there is no Benefit status indicator,W
+ILR1718,41,CompStatus_01,E,This Completion status is not a valid code,E
+ILR1718,41,CompStatus_02,E,The Learning actual end date must not be returned for this Completion status,E
+ILR1718,41,CompStatus_03,E,The Learning actual end date must be returned for this Completion status,E
+ILR1718,41,CompStatus_04,E,The Outcome must be returned for this completion status,E
+ILR1718,41,CompStatus_05,E,The Completion status is not valid for this Outcome,E
+ILR1718,41,CompStatus_06,E,The Completion status is not valid for this Outcome,E
+ILR1718,41,LearnActEndDate_01,E,The Learning actual end date must be after the Learning start date,E
+ILR1718,41,LearnActEndDate_02,W,The Learning actual end date should be before the end of the current teaching year,W
+ILR1718,41,LearnActEndDate_03,E,The Learning actual end date must be before the end of the following teaching year,E
+ILR1718,41,LearnActEndDate_04,E,The Learning actual end date must be before the file preparation date,E
+ILR1718,41,WithdrawReason_02,E,This Withdrawal reason is not a valid code,E
+ILR1718,41,WithdrawReason_03,E,The Withdrawal reason must be returned for this Completion status,E
+ILR1718,41,WithdrawReason_04,E,The Withdrawal reason must not be returned for this Completion status,E
+ILR1718,41,WithdrawReason_05,E,The Withdrawal reason is only valid for OLASS - Offenders in custody,E
+ILR1718,41,Outcome_01,E,This Outcome is not a valid code,E
+ILR1718,41,Outcome_04,E,The Achievement date must not be returned for this Outcome,E
+ILR1718,41,Outcome_05,E,The Learning actual end date must be returned for this Outcome,E
+ILR1718,41,Outcome_07,E,There must be a Destination and progression record returned for this Outcome,E
+ILR1718,41,Outcome_08,E,There must be a Destination and progression record returned for this Outcome,E
+ILR1718,41,Outcome_09,E,The Completion status is not valid for this Outcome,E
+ILR1718,41,AchDate_02,W,The Achievement date should not be after the current teaching year end date,W
+ILR1718,41,AchDate_03,E,The Achievement date must not be before the Learning start date,E
+ILR1718,41,AchDate_04,E,The Learning actual end date must be returned for this Achievement date,E
+ILR1718,41,AchDate_05,E,The Achievement date must be after the Learning actual end date,E
+ILR1718,41,AchDate_07,E,The Achievement date must be before the file preparation date,E
+ILR1718,41,AchDate_08,E,The Achievement date must be completed for apprenticeship standards and traineeship programmes with a status of achieved,E
+ILR1718,41,AchDate_09,E,The Achievement date must not be completed for aims that are not traineeship or apprenticeship standard programme aims,E
+ILR1718,41,AchDate_10,E,The Achievement date must not be more than 6 months after the Learning actual end date,E
+ILR1718,41,OutGrade_01,E,This Outcome grade is not a valid code,E
+ILR1718,41,OutGrade_03,W,This Outcome grade is not valid for this level of qualification,W
+ILR1718,41,OutGrade_04,E,The Outcome grade must not be returned for this Outcome,E
+ILR1718,41,OutGrade_05,E,This Outcome grade is not valid for this Outcome,E
+ILR1718,41,OutGrade_06,E,This Outcome grade is not valid for this Outcome,E
+ILR1718,41,OutGrade_07,E,This Outcome grade is not valid for this type of qualification,E
+ILR1718,41,SWSupAimId_01,W,This Software supplier aim identifier is not in the correct format,W
+ILR1718,41,LearnDelFAMType_01,E,The Source of funding must be returned,E
+ILR1718,41,LearnDelFAMType_02,E,The Full or co-funding indicator must be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_03,E,The Community Learning provision type must be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_04,E,This FAM type and code is not valid,E
+ILR1718,41,LearnDelFAMType_06,E,This FAM type and code is not valid for this Learning start date,E
+ILR1718,41,LearnDelFAMType_07,E,The Source of funding is not valid for this Funding model,E
+ILR1718,41,LearnDelFAMType_08,E,The Source of funding is not valid for this Funding model,E
+ILR1718,41,LearnDelFAMType_09,E,The Source of funding is not valid for this Funding model,E
+ILR1718,41,LearnDelFAMType_14,E,The Eligibility for enhanced apprenticeship funding is only valid for apprenticeship aims,E
+ILR1718,41,LearnDelFAMType_15,E,This Learning delivery monitoring code must not be returned where the Learning actual end date is completed,E
+ILR1718,41,LearnDelFAMType_16,E,This Learning delivery monitoring code is not valid for this file preparation date,E
+ILR1718,41,LearnDelFAMType_18,E,"There must not be more than one record with a FAM type of SOF, FFI,  EEF, RES, ADL, ASL, SPP, NSA, WPP, POD or FLN",E
+ILR1718,41,LearnDelFAMType_20,E,There must not be more than three occurrences with a FAM type of HEM,E
+ILR1718,41,LearnDelFAMType_22,E,The Full or co-funding indicator must not be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_24,E,This FAM Type is not valid for this learning aim start date,E
+ILR1718,41,LearnDelFAMType_27,E,The ASL provision type must not be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_30,E,The Learning Delivery HE record must be returned for this FAM type,E
+ILR1718,41,LearnDelFAMType_31,E,There must not be more than four occurrences for the FAM type LDM,E
+ILR1718,41,LearnDelFAMType_35,E,The Advanced Learner Loans indicator must not be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_36,E,The Advanced Learner Loans indicator must be completed where the Advanced Learner Loans Bursary funding indicator has been returned,E
+ILR1718,41,LearnDelFAMType_38,E,The Advanced Learner Loans Bursary fund indicator is not required for this Funding mode,E
+ILR1718,41,LearnDelFAMType_39,W,The FAM type LDM should be returned for this Funding model,W
+ILR1718,41,LearnDelFAMType_40,E,The Advanced Learner Loans indicator must not be returned for apprenticeships,E
+ILR1718,41,LearnDelFAMType_44,E,The Household situation must be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_45,E,There must not be more than two occurrences of Household Situation,E
+ILR1718,41,LearnDelFAMType_46,E,The Funding model must be Adult skills,E
+ILR1718,41,LearnDelFAMType_48,E,The combination of Household situation codes is not valid,E
+ILR1718,41,LearnDelFAMType_50,E,Learning Support Funding must not be returned for this Funding model,E
+ILR1718,41,LearnDelFAMType_53,E,These FAM types must not be used by grant funded providers,E
+ILR1718,41,LearnDelFAMType_54,E,The combination of EEF and FFI codes is not valid,E
+ILR1718,41,LearnDelFAMType_56,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_57,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_58,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_59,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_60,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_61,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_62,W,The Prior attainment is not valid for this learning aim,W
+ILR1718,41,LearnDelFAMType_63,E,The Apprenticeship contract type must not be returned for this learning aim,E
+ILR1718,41,LearnDelFAMType_64,E,The Apprenticeship contract type must be returned for this learning aim,E
+ILR1718,41,LearnDelFAMType_65,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_66,E,The Full funding indicator is not valid for this learning aim,E
+ILR1718,41,LearnDelFAMType_67,E,Learning support funding must only be recorded on a programme aim or English/maths aim for apprenticeship funded programmes,E
+ILR1718,41,LearnDelFAMType_68,E,LDM356 can only be recorded on a Funding model 36 programme aim,E
+ILR1718,41,LearnDelFAMType_69,E,LDM357 can only be recorded on Funding models 35 or 10 and starting on or after 1st November 2017,E
+ILR1718,41,LearnDelFAMType_70,E,LDM358 can only be recorded against contracts between 1st January and 31 March 2018,E
+ILR1718,41,LearnDelFAMType_71,E,There should be an ACT 2 record for this LDM code,E
+ILR1718,41,LearnDelFAMDateFrom_01,E,The Date applies from or the Date applies to must be returned for this FAM type,E
+ILR1718,41,LearnDelFAMDateFrom_02,E,The Date applies from must be after the Learning start date,E
+ILR1718,41,LearnDelFAMDateFrom_03,E,The Date applies from must not be returned for this FAM type,E
+ILR1718,41,LearnDelFAMDateFrom_04,E,The Date applies from must be returned for this FAM type,E
+ILR1718,41,LearnDelFAMDateTo_01,E,The Date applies to must not be before the Date applies from for this FAM type,E
+ILR1718,41,LearnDelFAMDateTo_02,W,The Date applies to should not be after the Learning planned end date,W
+ILR1718,41,LearnDelFAMDateTo_03,E,The Date applies to must not be after the Learning actual end date,E
+ILR1718,41,LearnDelFAMDateTo_04,E,The Date applies to must not be returned for this FAM type,E
+ILR1718,41,WorkPlaceStartDate_01,E,The Work Placement record must be returned for this learning aim,E
+ILR1718,41,WorkPlaceStartDate_02,E,The Work placement start date must be after the Learning start date,E
+ILR1718,41,WorkPlaceStartDate_03,E,A Work placement record must not be returned for this learning aim,E
+ILR1718,41,WorkPlaceEndDate_01,E,The Work placement end date must be after the Work placement start date,E
+ILR1718,41,WorkPlaceEndDate_02,E,The Work placement end date must be before the Learning actual end date,E
+ILR1718,41,WorkPlaceMode_01,E,The Work placement mode must be a valid code,E
+ILR1718,41,WorkPlaceEmpId_01,E,The Work placement employer identifier is not valid,E
+ILR1718,41,WorkPlaceEmpId_02,E,The Work placement employer identifier does not pass the checksum calculation,E
+ILR1718,41,WorkPlaceEmpId_03,W,The Work placement employer identifier should not be used,W
+ILR1718,41,WorkPlaceEmpId_04,E,The Work placement employer identifier must not be used,E
+ILR1718,41,WorkPlaceEmpId_05,E,The Work placement employer identifier must be returned,E
+ILR1718,41,AFinType_01,E,A Apprenticeship Financial Record for the Total training price must be returned,E
+ILR1718,41,AFinType_02,E,The financial type and code is not valid,E
+ILR1718,41,AFinType_04,E,The Apprenticeship Financial Record must not be returned for this learning aim,E
+ILR1718,41,AFinType_05,E,There must not be more than ten occurrences of AFinType TNP,E
+ILR1718,41,AFinType_06,E,There must not be consecutive TNP records with the same Type and Amount,E
+ILR1718,41,AFinType_07,E,A financial record for the total assessment price must be returned,E
+ILR1718,41,AFinType_08,E,This Financial code must not be used for this funding mode,E
+ILR1718,41,AFinType_09,E,The  Apprenticeship Financial Record must be returned for this learning aim,E
+ILR1718,41,AFinType_10,W,The end-point assessment price should be returned,W
+ILR1718,41,AFinType_11,E,This Financial code must not be used for apprenticeship frameworks,E
+ILR1718,41,AFinType_12,E,The price must be returned for this programme,E
+ILR1718,41,AFinType_13,E,There must be a price record that applies from the start of the programme,E
+ILR1718,41,AFinType_14,E,A financial record for the training price must be returned,E
+ILR1718,41,AFinDate_01,E,The apprenticeship financial record date must not be more than one year before the start of the apprenticeship programme,E
+ILR1718,41,AFinDate_02,W,The apprenticeship financial record date must not be more than two years after the Learning planned end date of the apprenticeship programme,W
+ILR1718,41,AFinDate_03,E,The apprenticeship financial record date must not be after the file preparation date,E
+ILR1718,41,AFinDate_04,E,The price must not be after the learning actual end date,E
+ILR1718,41,AFinDate_05,E,A total training price must not be returned after a residual training price has been recorded,E
+ILR1718,41,AFinDate_06,E,A total assessment price must not be returned after a residual assessment price has been recorded,E
+ILR1718,41,AFinDate_07,E,A total training price and residual training price record must not have the same financial date,E
+ILR1718,41,AFinDate_08,E,A total assessment price and residual assessment price record must not have the same financial date,E
+ILR1718,41,AFinDate_09,E,The apprenticeship financial record date must not be more than one year before the start of the apprenticeship programme,E
+ILR1718,41,AFinDate_12,E,The apprenticeship financial record date should not be more than one year after the Learning planned end date of the apprenticeship programme,E
+ILR1718,41,ProvSpecDelMonOccur_01,E,"This Provider specified delivery monitoring occurrence is not 'A', 'B', 'C' or 'D'",E
+ILR1718,41,LearnerHE_02,E,A Learning Delivery HE record must be returned,E
+ILR1718,41,TTACCOM_01,E,This Term time accommodation is not a valid code,E
+ILR1718,41,TTACCOM_02,E,This Term time accommodation is not a valid code for this Learning start date,E
+ILR1718,41,TTACCOM_04,E,The Term time accommodation must be returned for this learning aim,E
+ILR1718,41,FINTYPE_01,E,This Financial support type is not a valid code,E
+ILR1718,41,FINTYPE_02,E,"There must not be more than one record with a Financial support type of Cash, Near cash, Accommodation discounts, or Other",E
+ILR1718,41,LearningDeliveryHE_02,E,A Learning Delivery HE record must be returned for this Source of funding,E
+ILR1718,41,LearningDeliveryHE_03,E,A Learning Delivery HE record must be returned for this learning aim,E
+ILR1718,41,LearningDeliveryHE_06,E,A Learning Delivery HE record must not be returned for this learning aim,E
+ILR1718,41,LearningDeliveryHE_07,E,A Learning Delivery HE record must be returned for this learning aim,E
+ILR1718,41,LearningDeliveryHE_08,E,A Learning Delivery HE record must be returned for this learning aim,E
+ILR1718,41,NUMHUS_01,E,The Student instance identifier must be returned for this learning aim,E
+ILR1718,41,SSN_02,E,The Student support number does not pass the checksum calculation,E
+ILR1718,41,QUALENT3_01,E,The Qualification on entry must be returned for this learning aim,E
+ILR1718,41,QUALENT3_02,E,The Qualification on entry is not a valid code,E
+ILR1718,41,QUALENT3_03,E,The Qualification on entry is not a valid code for this Learning start date,E
+ILR1718,41,SOC2000_02,E,The Occupation code must be returned for this learning aim,E
+ILR1718,41,SOC2000_03,E,The Occupation code is not a valid code,E
+ILR1718,41,SOC2000_04,E,This Occupation code is not a valid code,E
+ILR1718,41,SEC_01,E,This Socio-economic indicator is not a valid code,E
+ILR1718,41,SEC_02,E,The Socio-economic indicator must be returned for this learning aim,E
+ILR1718,41,UCASAPPID_01,E,The UCAS application code must be returned for this learning aim,E
+ILR1718,41,TYPEYR_01,E,This Type of instance year is not a valid code,E
+ILR1718,41,TYPEYR_02,E,The Type of instance year is not valid for this Completion of year of instance,E
+ILR1718,41,MODESTUD_01,E,This Mode of study is not a valid code,E
+ILR1718,41,MODESTUD_03,E,The Mode of study is not valid for this Special fee indicator,E
+ILR1718,41,FUNDLEV_01,E,This Level applicable to Funding Council HEIFES is not a valid code,E
+ILR1718,41,FUNDLEV_02,W,The Level applicable to Funding Council HEIFES is not valid for this type of learning aim,W
+ILR1718,41,FUNDLEV_03,W,The Level applicable to Funding Council HEIFES is not valid for this type of learning aim,W
+ILR1718,41,FUNDCOMP_01,E,This Completion of year of instance is not valid,E
+ILR1718,41,STULOAD_04,E,The Student instance FTE must be returned for this learning aim,E
+ILR1718,41,MSTUFEE_01,E,The Major source of tuition fees is not valid,E
+ILR1718,41,MSTUFEE_02,E,The Major source of tuition fees is not valid for this Learning start date,E
+ILR1718,41,MSTUFEE_03,W,The Major source of tuition fees is not consistent with the Domicile,W
+ILR1718,41,MSTUFEE_04,W,The Major source of tuition fees is not consistent with the Domicile,W
+ILR1718,41,MSTUFEE_05,W,The Major source of tuition fees is not consistent with the Domicile,W
+ILR1718,41,PCOLAB_01,E,The Percentage not taught by this institution must be returned for this learning aim,E
+ILR1718,41,PCFLDCS_01,E,The total of the three Percentage taught in LDCS subject fields must equal 100%,E
+ILR1718,41,PCFLDCS_02,E,The Percentage taught in first LDCS subject must be returned for this learning aim,E
+ILR1718,41,PCFLDCS_03,E,The Percentage taught in first LDCS subject must not be returned for this learning aim,E
+ILR1718,41,PCSLDCS_01,E,The Percentage taught in second LDCS subject must be returned for this learning aim,E
+ILR1718,41,PCSLDCS_02,E,The Percentage taught in second LDCS subject must not be returned for this learning aim,E
+ILR1718,41,PCTLDCS_01,E,The Percentage taught in third LDCS subject must be returned for this learning aim,E
+ILR1718,41,PCTLDCS_02,E,The Percentage taught in third LDCS subject must not be returned for this learning aim,E
+ILR1718,41,SPECFEE_01,E,This Special fee indicator is not valid,E
+ILR1718,41,SPECFEE_02,E,The Special fee indicator is not valid for this Mode of study,E
+ILR1718,41,NETFEE_01,E,The Net tuition fee must be returned for this learning aim,E
+ILR1718,41,NETFEE_02,W,The Net tuition fee should not be greater than £9000,W
+ILR1718,41,GROSSFEE_01,E,The Gross tuition fee must be returned for this learning aim,E
+ILR1718,41,GROSSFEE_02,E,The Gross tuition fee must be equal to or greater than the Net tuition fee,E
+ILR1718,41,GROSSFEE_03,E,The Gross tuition fee must not be greater than £30000,E
+ILR1718,41,DOMICILE_01,E,The Domicile must be returned for this learning aim,E
+ILR1718,41,DOMICILE_02,E,The Domicile is not a valid code,E
+ILR1718,41,ELQ_01,E,The ELQ must be returned for this learning aim,E
+ILR1718,41,ELQ_02,E,The ELQ is not a valid code,E
+ILR1718,41,HEPostCode_01,W,The HE centre location postcode should be a valid postcode on the list of complete UK postcodes table or be ZZ99 9ZZ,W
+ILR1718,41,HEPostCode_02,E,The Postcode must conform to the valid postcode format,E
+ILR1718,41,OutULN_01,E,This Unique learner number does not pass the checksum calculation,E
+ILR1718,41,OutULN_02,E,This Unique learner number is not valid,E
+ILR1718,41,OutType_01,E,This Outcome type and code is not valid,E
+ILR1718,41,OutType_02,E,"There is more than one record with the same start date and an Outcome type of EMP, NPE, VOL, GAP, SDE, or OTH",E
+ILR1718,41,OutType_03,E,There must not be more than two records with the same start date and an Outcome type of EDU,E
+ILR1718,41,OutType_04,E,There must not be DPOutcome records of both In Paid Employment and Not in paid Employment with the same Outcome start date,E
+ILR1718,41,OutType_05,E,The Outcome start date must not be after the 'valid to' date in the OutType Code table,E
+ILR1718,41,OutStartDate_01,E,The Outcome start date must not be more then 3 years before the start of the current teaching year,E
+ILR1718,41,OutStartDate_02,E,The Outcome start date must not be more than 1 year after the end of the current teaching year,E
+ILR1718,41,OutEndDate_01,E,The Outcome end date must not be before the Outcome start date,E
+ILR1718,41,OutCollDate_01,E,The Outcome collection date must not be after the file preparation date,E
+ILR1718,41,OutCollDate_02,E,The Outcome collection date must not be more than 3 years before the start of the current teaching year,E
+ILR1718,41,R06,E,There must not be more than one Learner record with the same Learner reference number,E
+ILR1718,41,R07,E,There must not be more than one Learning Delivery record with the same Learner reference number and Aim sequence number combination,E
+ILR1718,41,R20,E,The learner must not have more than one competency aim at the same time,E
+ILR1718,41,R29,E,"All open aims that are part of a programme must have the same Framework code, Apprenticeship pathway and Standard code (if returned)",E
+ILR1718,41,R30,E,"All aims that are part of a programme must have a corresponding programme aim with the same Programme type, Framework code and Apprenticeship pathway (if returned)",E
+ILR1718,41,R31,E,"An open programme must have an associated learning aim with the same Programme type, Framework code, Apprenticeship pathway and Standard code (if returned)",E
+ILR1718,41,R43,E,The learner must not have more than one Learner Employment status record with the same Date employment status applies,E
+ILR1718,41,R45,E,The learner must not have more than one LLDD and Health Problem record with the same LLDD and health problem category,E
+ILR1718,41,R47,E,The learner must not have more than one Learner Contact Preference record with the same Contact preference type and Contact preference code,E
+ILR1718,41,R49,E,The learner must not have more than one Learner Provider Specified Monitoring record with the same occurrence code,E
+ILR1718,41,R50,E,The learning aim must not have more than one Learning Delivery Provider Specified Monitoring record with the same occurrence code,E
+ILR1718,41,R51,E,The learner must not have more than one Learner Funding and Monitoring record with the same FAM type and code,E
+ILR1718,41,R52,E,The learning aim must not have more than one Learning Delivery FAM record with the same FAM type and code,E
+ILR1718,41,R56,E,An SFA or EFA funded component aim must not have a non-funded programme aim,E
+ILR1718,41,R58,E,The learner must not have more than one core aim at the same time,E
+ILR1718,41,R59,W,The ILR file should not have more than one record with the same ULN,W
+ILR1718,41,R61,E,The learning aim must not have more than one Learning Support Funding record at the same time,E
+ILR1718,41,R62,E,The learning aim must not have more than one Advanced Learner Loans Bursary funding record at the same time,E
+ILR1718,41,R63,E,The learner must have a core aim for this Funding model,E
+ILR1718,41,R64,E,"The learner must not have more than one competency aim with the same Programme type, Framework code and Apprenticeship pathway where an earlier competency aim has been achieved",E
+ILR1718,41,R66,E,"All funded component aims must have a corresponding programme aim with the same Programme type, Framework code, Pathway code or Standard code (where applicable)",E
+ILR1718,41,R67,E,The learner must not have more than one Learning Delivery Work Placement record with the same Work placement start date and Work placement employer identifier,E
+ILR1718,41,R68,E,"The learner must not have more than one Apprenticeship Financial Record with the same Apprenticeship financial type, code and date",E
+ILR1718,41,R69,E,"The learner must not have more than one DPOutcome record with the same Outcome type, code and start date",E
+ILR1718,41,R70,E,All aims that are part of an apprenticeship standard programme must have a corresponding programme aim with the same standard code.,E
+ILR1718,41,R71,E,There must not be more than one Learner Destination and Progression record with the same Learner reference number,E
+ILR1718,41,R72,E,The payment amounts must not exceed the employer contribution proportion of the total negotiated price,E
+ILR1718,41,R73,E,The payment amounts must not exceed the employer contribution proportion of the total negotiated price,E
+ILR1718,41,R75,W,The sum of the Apprenticeship financial payment amounts should not be less than zero,W
+ILR1718,41,R85,E,The ULN for this learner must match between the Learner entity and the Learner Destination and Progression entity,E
+ILR1718,41,R89,E,The Learning actual end date for the latest programme aim must not be before the Learning actual end date of the latest component aim (not including English and maths),E
+ILR1718,41,R90,E,The Learning actual end date of the component aims must be returned for this programme,E
+ILR1718,41,R91,E,There must be a completed ZESF0001 learning aim for this learner,E
+ILR1718,41,R92,E,There must not be more than one ZESF0001 learning aim for this contract,E
+ILR1718,41,R96,E,The learner must not have more than one Learning Delivery Work Placement record with the same Work placement start date,E
+ILR1718,41,R97,E,"The learner must not have consecutive Learner Employment status records with the same Employment status, Employer identifier and Employment Status Monitoring",E
+ILR1718,41,R99,E,The learner must not have more than one programme aim at the same time,E
+ILR1718,41,R100,E,There must be an assessment price recorded,E
+ILR1718,41,R101,E,The learning aim must not have more than one Apprenticeship contract type record at the same time,E
+ILR1718,41,R102,E,The aim must have an Apprenticeship contract type in the first day,E
+ILR1718,41,R104,E,There must be an apprenticeship contract type for the full duration of the aim,E
+ILR1718,41,R105,E,The learner must not have different Apprenticeship contract types recorded at the same time,E
+ILR1718,41,R106,E,There must not be more than one LSF record at the same time,E
+ILR1718,41,R107,W,There should be a Learner Destination and Progression record present,W
+ILR1718,41,R108,E,There must be a Learner Destination and Progression record present,E
+ILR1718,41,R110,E,The employment status is not valid for this apprenticeship contract type,E
+ILR1718,41,R111,E,The apprenticeship contract type is not valid for this employment status,E
+ILR1718,41,R112,E,There must be a Date applies to that matches the Learning actual end date for this aim.,E
+ILR1718,41,R113,E,"The Learning actual end date is not known, then the Date applies to record must not be returned.",E
+ILR1718,41,R114,E,The learner is currently apprenticeship funded and cannot start an Adult skills funded English/maths aim,E
+ILR1718,41,R115,E,"The learner must not have more than one Apprenticeship Financial Record with the same Apprenticeship financial type, code and date",E
+ILR1718,41,R116,W,The sum of the Apprenticeship financial payment amounts should not be less than zero,W
+ILR1718,41,R117,E,All component aims with LDM357 must have a corresponding programme aim with the same learning delivery monitoring type and code,E
+ILR1718,41,R118,E,All programme aims with LDM357 must have a corresponding component aim with the same learning delivery monitoring type and code,E
+ILR1718,41,FD_LearnRefNumber_AP,E,The LearnRefNumber does not match the validation pattern,E
+ILR1718,41,FD_PrevLearnRefNumber_AP,E,The PrevLearnRefNumber does not match the validation pattern,E
+ILR1718,41,FD_FamilyName_AP,E,The FamilyName does not match the validation pattern,E
+ILR1718,41,FD_GivenNames_AP,E,The GivenNames does not match the validation pattern,E
+ILR1718,41,FD_Sex_AP,E,The Sex does not match the validation pattern,E
+ILR1718,41,FD_NINumber_AP,E,The NINumber does not match the validation pattern,E
+ILR1718,41,FD_MathGrade_AP,E,The MathGrade does not match the validation pattern,E
+ILR1718,41,FD_EngGrade_AP,E,The EngGrade does not match the validation pattern,E
+ILR1718,41,FD_PostcodePrior_AP,E,The PostcodePrior does not match the validation pattern,E
+ILR1718,41,FD_Postcode_AP,E,The Postcode does not match the validation pattern,E
+ILR1718,41,FD_AddLine1_AP,E,The AddLine1 does not match the validation pattern,E
+ILR1718,41,FD_AddLine2_AP,E,The AddLine2 does not match the validation pattern,E
+ILR1718,41,FD_AddLine3_AP,E,The AddLine3 does not match the validation pattern,E
+ILR1718,41,FD_AddLine4_AP,E,The AddLine4 does not match the validation pattern,E
+ILR1718,41,FD_TelNo_AP,E,The TelNo does not match the validation pattern,E
+ILR1718,41,FD_Email_AP,E,The Email does not match the validation pattern,E
+ILR1718,41,FD_ContPrefType_AP,E,The ContPrefType does not match the validation pattern,E
+ILR1718,41,FD_LearnFAMType_AP,E,The LearnFAMType does not match the validation pattern,E
+ILR1718,41,FD_ProvSpecLearnMonOccur_AP,E,The ProvSpecLearnMonOccur does not match the validation pattern,E
+ILR1718,41,FD_ProvSpecLearnMon_AP,E,The ProvSpecLearnMon does not match the validation pattern,E
+ILR1718,41,FD_ESMType_AP,E,The ESMType does not match the validation pattern,E
+ILR1718,41,FD_UCASPERID_AP,E,The UCASPERID does not match the validation pattern,E
+ILR1718,41,FD_LearnAimRef_AP,E,The LearnAimRef does not match the validation pattern,E
+ILR1718,41,FD_DelLocPostCode_AP,E,The DelLocPostCode does not match the validation pattern,E
+ILR1718,41,FD_ConRefNumber_AP,E,The ConRefNumber does not match the validation pattern,E
+ILR1718,41,FD_EPAOrgID_AP,E,The EPAOrgID does not match the validation pattern,E
+ILR1718,41,FD_OutGrade_AP,E,The OutGrade does not match the validation pattern,E
+ILR1718,41,FD_SWSupAimId_AP,E,The SWSupAimId does not match the validation pattern,E
+ILR1718,41,FD_LearnDelFAMType_AP,E,The LearnDelFAMType does not match the validation pattern,E
+ILR1718,41,FD_LearnDelFAMCode_AP,E,The LearnDelFAMCode does not match the validation pattern,E
+ILR1718,41,FD_AFinType_AP,E,The AFinType does not match the validation pattern,E
+ILR1718,41,FD_ProvSpecDelMonOccur_AP,E,The ProvSpecDelMonOccur does not match the validation pattern,E
+ILR1718,41,FD_ProvSpecDelMon_AP,E,The ProvSpecDelMon does not match the validation pattern,E
+ILR1718,41,FD_NUMHUS_AP,E,The NUMHUS does not match the validation pattern,E
+ILR1718,41,FD_SSN_AP,E,The SSN does not match the validation pattern,E
+ILR1718,41,FD_QUALENT3_AP,E,The QUALENT3 does not match the validation pattern,E
+ILR1718,41,FD_UCASAPPID_AP,E,The UCASAPPID does not match the validation pattern,E
+ILR1718,41,FD_DOMICILE_AP,E,The DOMICILE does not match the validation pattern,E
+ILR1718,41,FD_HEPostCode_AP,E,The HEPostCode does not match the validation pattern,E
+ILR1718,41,FD_DP_LearnRefNumber_AP,E,The LearnRefNumber does not match the validation pattern,E
+ILR1718,41,FD_DP_OutType_AP,E,The OutType does not match the validation pattern,E
+ILR1718,41,FD_LearnRefNumber_MA,E,The LearnRefNumber has not been returned,E
+ILR1718,41,FD_ULN_MA,E,The ULN has not been returned,E
+ILR1718,41,FD_Ethnicity_MA,E,The Ethnicity has not been returned,E
+ILR1718,41,FD_Sex_MA,E,The Sex has not been returned,E
+ILR1718,41,FD_LLDDHealthProb_MA,E,The LLDDHealthProb has not been returned,E
+ILR1718,41,FD_PostcodePrior_MA,E,The PostcodePrior has not been returned,E
+ILR1718,41,FD_Postcode_MA,E,The Postcode has not been returned,E
+ILR1718,41,FD_LearnRefNumber_AL,E,The length of the value returned for LearnRefNumber is not between 1 and 12 characters,E
+ILR1718,41,FD_PrevLearnRefNumber_AL,E,The length of the value returned for PrevLearnRefNumber is not between 1 and 12 characters,E
+ILR1718,41,FD_PrevUKPRN_AL,E,The length of the value returned for PrevUKPRN is not between 1 and 8 characters,E
+ILR1718,41,FD_PMUKPRN_AL,E,The length of the value returned for PMUKPRN is not between 1 and 8 characters,E
+ILR1718,41,FD_ULN_AL,E,The length of the value returned for ULN is not between 1 and 10 characters,E
+ILR1718,41,FD_FamilyName_AL,E,The length of the value returned for FamilyName is not between 1 and 100 characters,E
+ILR1718,41,FD_GivenNames_AL,E,The length of the value returned for GivenNames is not between 1 and 100 characters,E
+ILR1718,41,FD_Ethnicity_AL,E,The length of the value returned for Ethnicity is not between 1 and 2 characters,E
+ILR1718,41,FD_Sex_AL,E,The value returned for Sex is not 1 character long,E
+ILR1718,41,FD_LLDDHealthProb_AL,E,The value returned for LLDDHealthProb is not 1 character long,E
+ILR1718,41,FD_NINumber_AL,E,The length of the value returned for NINumber is not between 1 and 9 characters,E
+ILR1718,41,FD_PriorAttain_AL,E,The length of the value returned for PriorAttain is not between 1 and 2 characters,E
+ILR1718,41,FD_Accom_AL,E,The value returned for Accom is not 1 character long,E
+ILR1718,41,FD_ALSCost_AL,E,The length of the value returned for ALSCost is not between 1 and 6 characters,E
+ILR1718,41,FD_PlanLearnHours_AL,E,The length of the value returned for PlanLearnHours is not between 1 and 4 characters,E
+ILR1718,41,FD_PlanEEPHours_AL,E,The length of the value returned for PlanEEPHours is not between 1 and 4 characters,E
+ILR1718,41,FD_MathGrade_AL,E,The length of the value returned for MathGrade is not between 1 and 4 characters,E
+ILR1718,41,FD_EngGrade_AL,E,The length of the value returned for EngGrade is not between 1 and 4 characters,E
+ILR1718,41,FD_PostcodePrior_AL,E,The length of the value returned for PostcodePrior is not between 1 and 8 characters,E
+ILR1718,41,FD_Postcode_AL,E,The length of the value returned for Postcode is not between 1 and 8 characters,E
+ILR1718,41,FD_AddLine1_AL,E,The length of the value returned for AddLine1 is not between 1 and 50 characters,E
+ILR1718,41,FD_AddLine2_AL,E,The length of the value returned for AddLine2 is not between 1 and 50 characters,E
+ILR1718,41,FD_AddLine3_AL,E,The length of the value returned for AddLine3 is not between 1 and 50 characters,E
+ILR1718,41,FD_AddLine4_AL,E,The length of the value returned for AddLine4 is not between 1 and 50 characters,E
+ILR1718,41,FD_TelNo_AL,E,The length of the value returned for TelNo is not between 1 and 18 characters,E
+ILR1718,41,FD_Email_AL,E,The length of the value returned for Email is not between 1 and 100 characters,E
+ILR1718,41,FD_PrevUKPRN_AR,E,The PrevUKPRN is out of range,E
+ILR1718,41,FD_PMUKPRN_AR,E,The PMUKPRN is out of range,E
+ILR1718,41,FD_ULN_AR,E,The ULN is out of range,E
+ILR1718,41,FD_ALSCost_AR,E,The ALSCost is out of range,E
+ILR1718,41,FD_PlanLearnHours_AR,E,The PlanLearnHours is out of range,E
+ILR1718,41,FD_PlanEEPHours_AR,E,The PlanEEPHours is out of range,E
+ILR1718,41,FD_ContPrefType_MA,E,The ContPrefType has not been returned,E
+ILR1718,41,FD_ContPrefCode_MA,E,The ContPrefCode has not been returned,E
+ILR1718,41,FD_ContPrefType_AL,E,The length of the value returned for ContPrefType is not between 1 and 3 characters,E
+ILR1718,41,FD_ContPrefCode_AL,E,The value returned for ContPrefCode is not 1 character long,E
+ILR1718,41,FD_ContactPreference_EO,E,The ContactPreference has occurred more than allowed,E
+ILR1718,41,FD_LLDDCat_MA,E,The LLDDCat has not been returned,E
+ILR1718,41,FD_LLDDCat_AL,E,The length of the value returned for LLDDCat is not between 1 and 2 characters,E
+ILR1718,41,FD_PrimaryLLDD_AL,E,The value returned for PrimaryLLDD is not 1 character long,E
+ILR1718,41,FD_LLDDandHealthProblem_EO,E,The LLDDandHealthProblem has occurred more than allowed,E
+ILR1718,41,FD_LearnFAMType_MA,E,The LearnFAMType has not been returned,E
+ILR1718,41,FD_LearnFAMCode_MA,E,The LearnFAMCode has not been returned,E
+ILR1718,41,FD_LearnFAMType_AL,E,The length of the value returned for LearnFAMType is not between 1 and 3 characters,E
+ILR1718,41,FD_LearnFAMCode_AL,E,The length of the value returned for LearnFAMCode is not between 1 and 3 characters,E
+ILR1718,41,FD_LearnerFAM_EO,E,The LearnerFAM has occurred more than allowed,E
+ILR1718,41,FD_ProvSpecLearnMonOccur_MA,E,The ProvSpecLearnMonOccur has not been returned,E
+ILR1718,41,FD_ProvSpecLearnMon_MA,E,The ProvSpecLearnMon has not been returned,E
+ILR1718,41,FD_ProvSpecLearnMonOccur_AL,E,The value returned for ProvSpecLearnMonOccur is not 1 character long,E
+ILR1718,41,FD_ProvSpecLearnMon_AL,E,The length of the value returned for ProvSpecLearnMon is not between 1 and 20 characters,E
+ILR1718,41,FD_ProviderSpecLearnerMonitoring_EO,E,The ProviderSpecLearnerMonitoring has occurred more than allowed,E
+ILR1718,41,FD_EmpStat_MA,E,The EmpStat has not been returned,E
+ILR1718,41,FD_DateEmpStatApp_MA,E,The DateEmpStatApp has not been returned,E
+ILR1718,41,FD_EmpStat_AL,E,The length of the value returned for EmpStat is not between 1 and 2 characters,E
+ILR1718,41,FD_EmpId_AL,E,The length of the value returned for EmpId is not between 1 and 9 characters,E
+ILR1718,41,FD_ESMType_MA,E,The ESMType has not been returned,E
+ILR1718,41,FD_ESMCode_MA,E,The ESMCode has not been returned,E
+ILR1718,41,FD_ESMType_AL,E,The length of the value returned for ESMType is not between 1 and 3 characters,E
+ILR1718,41,FD_ESMCode_AL,E,The length of the value returned for ESMCode is not between 1 and 2 characters,E
+ILR1718,41,FD_EmploymentStatusMonitoring_EO,E,The EmploymentStatusMonitoring has occurred more than allowed,E
+ILR1718,41,FD_UCASPERID_AL,E,The length of the value returned for UCASPERID is not between 1 and 10 characters,E
+ILR1718,41,FD_TTACCOM_AL,E,The value returned for TTACCOM is not 1 character long,E
+ILR1718,41,FD_UCASPERID_AR,E,The UCASPERID is out of range,E
+ILR1718,41,FD_LearnerHE_EO,E,The LearnerHE has occurred more than allowed,E
+ILR1718,41,FD_FINTYPE_MA,E,The FINTYPE has not been returned,E
+ILR1718,41,FD_FINAMOUNT_MA,E,The FINAMOUNT has not been returned,E
+ILR1718,41,FD_FINTYPE_AL,E,The value returned for FINTYPE is not 1 character long,E
+ILR1718,41,FD_FINAMOUNT_AL,E,The length of the value returned for FINAMOUNT is not between 1 and 6 characters,E
+ILR1718,41,FD_FINAMOUNT_AR,E,The FINAMOUNT is out of range,E
+ILR1718,41,FD_LearnerHEFinancialSupport_EO,E,The LearnerHEFinancialSupport has occurred more than allowed,E
+ILR1718,41,FD_LearnAimRef_MA,E,The LearnAimRef has not been returned,E
+ILR1718,41,FD_AimType_MA,E,The AimType has not been returned,E
+ILR1718,41,FD_AimSeqNumber_MA,E,The AimSeqNumber has not been returned,E
+ILR1718,41,FD_LearnStartDate_MA,E,The LearnStartDate has not been returned,E
+ILR1718,41,FD_LearnPlanEndDate_MA,E,The LearnPlanEndDate has not been returned,E
+ILR1718,41,FD_FundModel_MA,E,The FundModel has not been returned,E
+ILR1718,41,FD_DelLocPostCode_MA,E,The DelLocPostCode has not been returned,E
+ILR1718,41,FD_CompStatus_MA,E,The CompStatus has not been returned,E
+ILR1718,41,FD_LearnAimRef_AL,E,The length of the value returned for LearnAimRef is not between 1 and 8 characters,E
+ILR1718,41,FD_AimType_AL,E,The value returned for AimType is not 1 character long,E
+ILR1718,41,FD_AimSeqNumber_AL,E,The length of the value returned for AimSeqNumber is not between 1 and 2 characters,E
+ILR1718,41,FD_FundModel_AL,E,The length of the value returned for FundModel is not between 1 and 2 characters,E
+ILR1718,41,FD_ProgType_AL,E,The length of the value returned for ProgType is not between 1 and 2 characters,E
+ILR1718,41,FD_FworkCode_AL,E,The length of the value returned for FworkCode is not between 1 and 3 characters,E
+ILR1718,41,FD_PwayCode_AL,E,The length of the value returned for PwayCode is not between 1 and 3 characters,E
+ILR1718,41,FD_StdCode_AL,E,The length of the value returned for StdCode is not between 1 and 5 characters,E
+ILR1718,41,FD_PartnerUKPRN_AL,E,The length of the value returned for PartnerUKPRN is not between 1 and 8 characters,E
+ILR1718,41,FD_DelLocPostCode_AL,E,The length of the value returned for DelLocPostCode is not between 1 and 8 characters,E
+ILR1718,41,FD_AddHours_AL,E,The length of the value returned for AddHours is not between 1 and 4 characters,E
+ILR1718,41,FD_PriorLearnFundAdj_AL,E,The length of the value returned for PriorLearnFundAdj is not between 1 and 2 characters,E
+ILR1718,41,FD_OtherFundAdj_AL,E,The length of the value returned for OtherFundAdj is not between 1 and 3 characters,E
+ILR1718,41,FD_ConRefNumber_AL,E,The length of the value returned for ConRefNumber is not between 1 and 20 characters,E
+ILR1718,41,FD_EPAOrgID_AL,E,The length of the value returned for EPAOrgID is not between 1 and 7 characters,E
+ILR1718,41,FD_EmpOutcome_AL,E,The value returned for EmpOutcome is not 1 character long,E
+ILR1718,41,FD_CompStatus_AL,E,The value returned for CompStatus is not 1 character long,E
+ILR1718,41,FD_WithdrawReason_AL,E,The length of the value returned for WithdrawReason is not between 1 and 2 characters,E
+ILR1718,41,FD_Outcome_AL,E,The value returned for Outcome is not 1 character long,E
+ILR1718,41,FD_OutGrade_AL,E,The length of the value returned for OutGrade is not between 1 and 6 characters,E
+ILR1718,41,FD_SWSupAimId_AL,E,The length of the value returned for SWSupAimId is not between 1 and 36 characters,E
+ILR1718,41,FD_AimSeqNumber_AR,E,The AimSeqNumber is out of range,E
+ILR1718,41,FD_PartnerUKPRN_AR,E,The PartnerUKPRN is out of range,E
+ILR1718,41,FD_AddHours_AR,E,The AddHours is out of range,E
+ILR1718,41,FD_PriorLearnFundAdj_AR,E,The PriorLearnFundAdj is out of range,E
+ILR1718,41,FD_OtherFundAdj_AR,E,The OtherFundAdj is out of range,E
+ILR1718,41,FD_LearningDelivery_EO,E,The LearningDelivery has not met the minimum occurrence requirement,E
+ILR1718,41,FD_LearnDelFAMType_MA,E,The LearnDelFAMType has not been returned,E
+ILR1718,41,FD_LearnDelFAMCode_MA,E,The LearnDelFAMCode has not been returned,E
+ILR1718,41,FD_LearnDelFAMType_AL,E,The length of the value returned for LearnDelFAMType is not between 1 and 3 characters,E
+ILR1718,41,FD_LearnDelFAMCode_AL,E,The length of the value returned for LearnDelFAMCode is not between 1 and 5 characters,E
+ILR1718,41,FD_WorkPlaceStartDate_MA,E,The WorkPlaceStartDate has not been returned,E
+ILR1718,41,FD_WorkPlaceHours_MA,E,The WorkPlaceHours has not been returned,E
+ILR1718,41,FD_WorkPlaceMode_MA,E,The WorkPlaceMode has not been returned,E
+ILR1718,41,FD_WorkPlaceHours_AL,E,The length of the value returned for WorkPlaceHours is not between 1 and 4 characters,E
+ILR1718,41,FD_WorkPlaceMode_AL,E,The value returned for WorkPlaceMode is not 1 character long,E
+ILR1718,41,FD_WorkPlaceEmpId_AL,E,The length of the value returned for WorkPlaceEmpId is not between 1 and 9 characters,E
+ILR1718,41,FD_WorkPlaceHours_AR,E,The WorkPlaceHours is out of range,E
+ILR1718,41,FD_AFinType_MA,E,The AFinType has not been returned,E
+ILR1718,41,FD_AFinCode_MA,E,The AFinCode has not been returned,E
+ILR1718,41,FD_AFinDate_MA,E,The AFinDate has not been returned,E
+ILR1718,41,FD_AFinAmount_MA,E,The AFinAmount has not been returned,E
+ILR1718,41,FD_AFinType_AL,E,The length of the value returned for AFinType is not between 1 and 3 characters,E
+ILR1718,41,FD_AFinCode_AL,E,The length of the value returned for AFinCode is not between 1 and 2 characters,E
+ILR1718,41,FD_AFinAmount_AL,E,The length of the value returned for AFinAmount is not between 1 and 6 characters,E
+ILR1718,41,FD_AFinAmount_AR,E,The AFinAmount is out of range,E
+ILR1718,41,FD_ProvSpecDelMonOccur_MA,E,The ProvSpecDelMonOccur has not been returned,E
+ILR1718,41,FD_ProvSpecDelMon_MA,E,The ProvSpecDelMon has not been returned,E
+ILR1718,41,FD_ProvSpecDelMonOccur_AL,E,The value returned for ProvSpecDelMonOccur is not 1 character long,E
+ILR1718,41,FD_ProvSpecDelMon_AL,E,The length of the value returned for ProvSpecDelMon is not between 1 and 20 characters,E
+ILR1718,41,FD_ProviderSpecDeliveryMonitoring_EO,E,The ProviderSpecDeliveryMonitoring has occurred more than allowed,E
+ILR1718,41,FD_TYPEYR_MA,E,The TYPEYR has not been returned,E
+ILR1718,41,FD_MODESTUD_MA,E,The MODESTUD has not been returned,E
+ILR1718,41,FD_FUNDLEV_MA,E,The FUNDLEV has not been returned,E
+ILR1718,41,FD_FUNDCOMP_MA,E,The FUNDCOMP has not been returned,E
+ILR1718,41,FD_YEARSTU_MA,E,The YEARSTU has not been returned,E
+ILR1718,41,FD_MSTUFEE_MA,E,The MSTUFEE has not been returned,E
+ILR1718,41,FD_SPECFEE_MA,E,The SPECFEE has not been returned,E
+ILR1718,41,FD_NUMHUS_AL,E,The length of the value returned for NUMHUS is not between 1 and 20 characters,E
+ILR1718,41,FD_SSN_AL,E,The length of the value returned for SSN is not between 1 and 13 characters,E
+ILR1718,41,FD_QUALENT3_AL,E,The length of the value returned for QUALENT3 is not between 1 and 3 characters,E
+ILR1718,41,FD_SOC2000_AL,E,The length of the value returned for SOC2000 is not between 1 and 4 characters,E
+ILR1718,41,FD_SEC_AL,E,The value returned for SEC is not 1 character long,E
+ILR1718,41,FD_UCASAPPID_AL,E,The length of the value returned for UCASAPPID is not between 1 and 9 characters,E
+ILR1718,41,FD_TYPEYR_AL,E,The value returned for TYPEYR is not 1 character long,E
+ILR1718,41,FD_MODESTUD_AL,E,The length of the value returned for MODESTUD is not between 1 and 2 characters,E
+ILR1718,41,FD_FUNDLEV_AL,E,The length of the value returned for FUNDLEV is not between 1 and 2 characters,E
+ILR1718,41,FD_FUNDCOMP_AL,E,The value returned for FUNDCOMP is not 1 character long,E
+ILR1718,41,FD_STULOAD_AL,E,The length of the value returned for STULOAD is not between 1 and 4 characters,E
+ILR1718,41,FD_YEARSTU_AL,E,The length of the value returned for YEARSTU is not between 1 and 2 characters,E
+ILR1718,41,FD_MSTUFEE_AL,E,The length of the value returned for MSTUFEE is not between 1 and 2 characters,E
+ILR1718,41,FD_PCOLAB_AL,E,The length of the value returned for PCOLAB is not between 1 and 4 characters,E
+ILR1718,41,FD_PCFLDCS_AL,E,The length of the value returned for PCFLDCS is not between 1 and 4 characters,E
+ILR1718,41,FD_PCSLDCS_AL,E,The length of the value returned for PCSLDCS is not between 1 and 4 characters,E
+ILR1718,41,FD_PCTLDCS_AL,E,The length of the value returned for PCTLDCS is not between 1 and 4 characters,E
+ILR1718,41,FD_SPECFEE_AL,E,The value returned for SPECFEE is not 1 character long,E
+ILR1718,41,FD_NETFEE_AL,E,The length of the value returned for NETFEE is not between 1 and 6 characters,E
+ILR1718,41,FD_GROSSFEE_AL,E,The length of the value returned for GROSSFEE is not between 1 and 6 characters,E
+ILR1718,41,FD_DOMICILE_AL,E,The length of the value returned for DOMICILE is not between 1 and 2 characters,E
+ILR1718,41,FD_ELQ_AL,E,The value returned for ELQ is not 1 character long,E
+ILR1718,41,FD_HEPostCode_AL,E,The length of the value returned for HEPostCode is not between 1 and 8 characters,E
+ILR1718,41,FD_STULOAD_AR,E,The STULOAD is out of range,E
+ILR1718,41,FD_YEARSTU_AR,E,The YEARSTU is out of range,E
+ILR1718,41,FD_PCOLAB_AR,E,The PCOLAB is out of range,E
+ILR1718,41,FD_PCFLDCS_AR,E,The PCFLDCS is out of range,E
+ILR1718,41,FD_PCSLDCS_AR,E,The PCSLDCS is out of range,E
+ILR1718,41,FD_PCTLDCS_AR,E,The PCTLDCS is out of range,E
+ILR1718,41,FD_NETFEE_AR,E,The NETFEE is out of range,E
+ILR1718,41,FD_GROSSFEE_AR,E,The GROSSFEE is out of range,E
+ILR1718,41,FD_LearningDeliveryHE_EO,E,The LearningDeliveryHE has occurred more than allowed,E
+ILR1718,41,FD_DP_LearnRefNumber_MA,E,The LearnRefNumber has not been returned,E
+ILR1718,41,FD_DP_ULN_MA,E,The ULN has not been returned,E
+ILR1718,41,FD_DP_LearnRefNumber_AL,E,The length of the value returned for LearnRefNumber is not between 1 and 12 characters,E
+ILR1718,41,FD_DP_ULN_AL,E,The length of the value returned for ULN is not between 1 and 10 characters,E
+ILR1718,41,FD_DP_ULN_AR,E,The ULN is out of range,E
+ILR1718,41,FD_DP_OutType_MA,E,The OutType has not been returned,E
+ILR1718,41,FD_DP_OutCode_MA,E,The OutCode has not been returned,E
+ILR1718,41,FD_DP_OutStartDate_MA,E,The OutStartDate has not been returned,E
+ILR1718,41,FD_DP_OutCollDate_MA,E,The OutCollDate has not been returned,E
+ILR1718,41,FD_DP_OutType_AL,E,The length of the value returned for OutType is not between 1 and 3 characters,E
+ILR1718,41,FD_DP_OutCode_AL,E,The length of the value returned for OutCode is not between 1 and 3 characters,E
+ILR1718,41,FD_DP_DPOutcome_EO,E,The DPOutcome has not met the minimum occurrence requirement,E
+ILR1718,41,DLOCK_01,W,No matching UKPRN record found,W
+ILR1718,41,DLOCK_02,W,No matching ULN found,W
+ILR1718,41,DLOCK_03,W,No matching standard code found,W
+ILR1718,41,DLOCK_04,W,No matching framework code found,W
+ILR1718,41,DLOCK_05,W,No matching programme type code found,W
+ILR1718,41,DLOCK_06,W,No matching pathway code found,W
+ILR1718,41,DLOCK_07,W,No matching negotiated cost of training and assessment found,W
+ILR1718,41,DLOCK_08,W,Multiple matching records found,W
+ILR1718,41,DLOCK_09,W,The learning delivery start month is before the agreed start month,W
+ILR1718,41,DLOCK_10,W,The employer has stopped payments for this apprentice,W
+ILR1718,41,DLOCK_11,W,The employer is not currently a levy payer,W
