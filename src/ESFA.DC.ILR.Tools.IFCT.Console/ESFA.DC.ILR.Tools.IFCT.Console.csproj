@@ -49,12 +49,8 @@
   <ItemGroup>
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="FileConversionContext.cs" />
-    <Compile Include="Modules\AnonymiserModule.cs" />
     <Compile Include="Modules\ConsoleModule.cs" />
     <Compile Include="Modules\ConsoleServicesModule.cs" />
-    <Compile Include="Modules\FileValidationModule.cs" />
-    <Compile Include="Modules\LoggingModule.cs" />
-    <Compile Include="Modules\YearUplifterModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +80,10 @@
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj">
       <Project>{94F33A93-4109-486F-B4B4-7BAC6CE632C9}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Modules\ESFA.DC.ILR.Tools.IFCT.Modules.csproj">
+      <Project>{C211CEA3-614A-4CAA-9EAE-412C1F797540}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.Modules</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Service\ESFA.DC.ILR.Tools.IFCT.Service.csproj">
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>

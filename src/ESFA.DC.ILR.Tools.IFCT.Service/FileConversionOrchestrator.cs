@@ -15,7 +15,7 @@ using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
-    public class AnnualMapper : IAnnualMapper
+    public class FileConversionOrchestrator : IFileConversionOrchestrator
     {
         private readonly IFileService _fileService;
 
@@ -32,7 +32,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly IAnonymiseLog _anonymiseLog;
         private readonly ILogger _logger;
 
-        public AnnualMapper(
+        public FileConversionOrchestrator(
             IFileService fileService,
             IFileNameService fileNameService,
             IXsdValidationService xsdValidationService,

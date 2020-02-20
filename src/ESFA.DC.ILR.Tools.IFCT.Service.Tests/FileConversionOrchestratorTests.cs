@@ -16,13 +16,13 @@ using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
-    public class AnnualMapperTests
+    public class FileConversionOrchestratorTests
     {
         private readonly string sourcefileName = "sourceFile.xml";
         private readonly string targetfolderName = @"C:\";
 
         [Fact]
-        public async Task AnnualMapper_WorkingRunReturnsTrueandLogs()
+        public async Task FileConversionOrchestrator_WorkingRunReturnsTrueandLogs()
         {
             // Arrange
             var fileServiceMock = new Mock<IFileService>();
@@ -45,7 +45,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var anonymiseLogMock = new Mock<IAnonymiseLog>();
             anonymiseLogMock.SetupGet(s => s.Log).Returns(new List<IAnonymiseLogEntry>());
 
-            var annualMapper = new AnnualMapper(
+            var fileConversionOrchestrator = new FileConversionOrchestrator(
                 fileServiceMock.Object,
                 fileNameServiceMock.Object,
                 xsdValidationMock.Object,
@@ -59,7 +59,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 loggerMock.Object);
 
             // Act
-            var result = await annualMapper.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
 
             // Assert
             result.Should().BeTrue();
@@ -70,7 +70,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         }
 
         [Fact]
-        public async Task AnnualMapper_FailingRunReturnsFalseAndLogsFatal()
+        public async Task FileConversionOrchestrator_FailingRunReturnsFalseAndLogsFatal()
         {
             // Arrange
             var fileServiceMock = new Mock<IFileService>();
@@ -81,7 +81,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var iMapMock = new Mock<IMap<Loose.Previous.Message, Loose.Message>>();
             var loggerMock = new Mock<ILogger>();
 
-            var annualMapper = new AnnualMapper(
+            var fileConversionOrchestrator = new FileConversionOrchestrator(
                 fileServiceMock.Object,
                 null,
                 xsdValidationMock.Object,
@@ -95,7 +95,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 loggerMock.Object);
 
             // Act
-            var result = await annualMapper.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
 
             // Assert
             result.Should().BeFalse();

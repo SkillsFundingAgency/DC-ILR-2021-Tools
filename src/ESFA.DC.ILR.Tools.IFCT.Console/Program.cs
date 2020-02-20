@@ -4,6 +4,7 @@ using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Common;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
 using ESFA.DC.ILR.Tools.IFCT.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Modules;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.Logging.Desktop.Config;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;

@@ -10,12 +10,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
     public class ConsoleService : IConsoleService
     {
         private readonly IFileService _fileService;
-        private readonly IAnnualMapper _annualMapper;
+        private readonly IFileConversionOrchestrator _fileConversionOrchestrator;
 
-        public ConsoleService(IAnnualMapper annualMapper, IFileService fileService)
+        public ConsoleService(IFileConversionOrchestrator fileConversionOrchestrator, IFileService fileService)
         {
             _fileService = fileService;
-            _annualMapper = annualMapper;
+            _fileConversionOrchestrator = fileConversionOrchestrator;
         }
 
         public async Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext)
@@ -35,7 +35,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFolder)
             {
                 // process single file
-                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, _annualMapper);
+                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, _fileConversionOrchestrator);
                 return result;
             }
             else
@@ -45,9 +45,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
         }
 
-        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, IAnnualMapper annualMapper)
+        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, IFileConversionOrchestrator fileConversionOrchestrator)
         {
-            return await annualMapper.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder);
+            return await fileConversionOrchestrator.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public void ConsoleService_ProcessFiles_NullParamaterThrowsArgumentNullException()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
 
             var consoleService = new ConsoleService(annualMapperMock.Object, null);
             FileConversionContext fileConversionContext = null;
@@ -42,7 +42,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             string targetFolder)
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
 
@@ -63,7 +63,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public void ConsoleService_ProcessFiles_MissingSourceFileThrowsArgumentException()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileServiceMock = new Mock<IFileService>();
 
             var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
@@ -85,7 +85,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public async Task ConsoleService_ProcessFiles_ValidFilesCallMapFileAsync()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileServiceMock = new Mock<IFileService>();
 
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(true);
