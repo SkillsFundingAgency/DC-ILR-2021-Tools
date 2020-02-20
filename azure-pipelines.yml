@@ -83,7 +83,7 @@ stages:
         vstsFeed: '$(Parameters.nugetFeedName)'
 
     - task: VSBuild@1
-      displayName: 'Build solution **\*.sln'
+      displayName: 'Build solution **\src\*.sln'
       inputs:
         solution: '$(Parameters.solution)'
         msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
