@@ -15,10 +15,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
             // Interfaces at the Servic level
             containerBuilder.RegisterType<ConsoleService>().As<IConsoleService>();
             containerBuilder.RegisterType<FileNameService>().As<IFileNameService>();
-            containerBuilder.RegisterType<AnnualMapperConfiguration>().As<IAnnualMapperConfiguration>().SingleInstance();
+            containerBuilder.RegisterType<FileConversionOrchestratorConfiguration>().As<IFileConversionOrchestratorConfiguration>().SingleInstance();
             containerBuilder.RegisterType<MapperProvider>().As<IMapperProvider>();
             containerBuilder.RegisterType<MessageMapper>().As<IMap<Loose.Previous.Message, Loose.Message>>();
-            containerBuilder.RegisterType<AnnualMapper>().As<IAnnualMapper>();
+            containerBuilder.RegisterType<FileConversionOrchestrator>().As<IFileConversionOrchestrator>();
             containerBuilder.RegisterType<YearUpdater>().As<IProcess<Loose.Message>>();
 
             containerBuilder.RegisterType<XmlSerializationService>().As<IXmlSerializationService>();

@@ -6,22 +6,22 @@ using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
 {
-    public class AnnualMapperConfigurationTests
+    public class FileConversionOrchestratorConfigurationTests
     {
         [Fact]
-        public void AnnualMapperConfiguration_Constructor_LogsConfig()
+        public void FileConversionOrchestrator_Constructor_LogsConfig()
         {
             // Arrange
             var loggerMock = new Mock<ILogger>();
 
             var configurationMock = new Mock<IConfiguration>();
-            configurationMock.SetupGet(p => p[AnnualMapperConfiguration.SanitizeStringsId]).Returns("True");
+            configurationMock.SetupGet(p => p[FileConversionOrchestratorConfiguration.SanitizeStringsId]).Returns("True");
 
             // Act
-            var annualMapperConfiguration = new AnnualMapperConfiguration(configurationMock.Object, loggerMock.Object);
+            var annualMapperConfiguration = new FileConversionOrchestratorConfiguration(configurationMock.Object, loggerMock.Object);
 
             // Assert
-            var expectedLogString = $"Configuration: {AnnualMapperConfiguration.SanitizeStringsId}=[True]";
+            var expectedLogString = $"Configuration: {FileConversionOrchestratorConfiguration.SanitizeStringsId}=[True]";
             loggerMock.VerifyInfo(expectedLogString, Times.Once()).Should().BeTrue();
         }
 
@@ -30,15 +30,15 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("False", false)]
         [InlineData("", true)]
         [InlineData(null, true)]
-        public void AnnualMapperConfiguration_SanitizeStrings_RespectsIConfigValue(string iConfigValue, bool expectedResult)
+        public void FileConversionOrchestrator_SanitizeStrings_RespectsIConfigValue(string iConfigValue, bool expectedResult)
         {
             // Arrange
             var loggerMock = new Mock<ILogger>();
 
             var configurationMock = new Mock<IConfiguration>();
-            configurationMock.SetupGet(p => p[AnnualMapperConfiguration.SanitizeStringsId]).Returns(iConfigValue);
+            configurationMock.SetupGet(p => p[FileConversionOrchestratorConfiguration.SanitizeStringsId]).Returns(iConfigValue);
 
-            var annualMapperConfiguration = new AnnualMapperConfiguration(configurationMock.Object, loggerMock.Object);
+            var annualMapperConfiguration = new FileConversionOrchestratorConfiguration(configurationMock.Object, loggerMock.Object);
 
             // Act
             var result = annualMapperConfiguration.SanitizeStrings;

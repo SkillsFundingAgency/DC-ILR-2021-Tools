@@ -4,6 +4,7 @@ using CommandLine;
 using ESFA.DC.ILR.Tools.IFCT.Common;
 using ESFA.DC.ILR.Tools.IFCT.Console.Modules;
 using ESFA.DC.ILR.Tools.IFCT.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Modules;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.Logging.Desktop.Config;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;
@@ -31,10 +32,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                             var context = new FileConversionContext
                             {
                                 SourceFile = cla.SourceFile,
-                                TargetFile = cla.TargetFile,
+                                TargetFolder = cla.TargetFolder,
                             };
                             logger.LogDebug("Starting processing");
-                            await consoleService.ProcessFilesAsync(context);
+
+                            var result = await consoleService.ProcessFilesAsync(context);
+                            System.Console.WriteLine(result ? "Processing completed successfully" : "Processing failed, please check logs");
                         }
                         catch (ArgumentException ae)
                         {
@@ -49,8 +52,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                     });
             }
 
-            System.Console.WriteLine("Completed - press enter");
-
             System.Console.ReadLine();
         }
 
@@ -60,12 +61,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
             System.Console.WriteLine(@"IFCT Console");
             System.Console.WriteLine();
             System.Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.WriteLine(@"A matching source and target file required.");
+            System.Console.WriteLine(@"A source file and target folder are both required.");
             System.Console.ForegroundColor = ConsoleColor.White;
             System.Console.WriteLine(@"
-  -s, --source          Required. Provide File Path for source ILR File.
+  -s, --source          Required. Provide complete File Path for source ILR File.
 
-  -t, --target          Reuired. Provide File Path for target ILR File.");
+  -t, --target          Reuired. Provide folder for target ILR File.");
         }
 
         private static ContainerBuilder BuildContainerBuilder()

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ESFA.DC.ILR.Tools.IFCT.Anonymise;
+﻿using ESFA.DC.ILR.Tools.IFCT.Anonymise;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers;
 using FluentAssertions;
 using Xunit;

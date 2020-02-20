@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,12 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ESFA.DC.Logging.Interfaces" Version="0.1.10-beta0001" />
+    <PackageReference Include="Autofac" Version="5.1.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -19,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj" />
-    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj" />
-    <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj" />
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Anonymise\ESFA.DC.ILR.Tools.IFCT.Anonymise.csproj" />
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.FileValidation\ESFA.DC.ILR.Tools.IFCT.FileValidation.csproj" />
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.YearUpdate\ESFA.DC.ILR.Tools.IFCT.YearUpdate.csproj" />
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj" />
   </ItemGroup>
-  
 
 </Project>
