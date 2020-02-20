@@ -4,6 +4,8 @@
     {
         string SourceFile { get; }
 
-        string TargetFile { get; }
+        string SourceFolder { get; set; }
+
+        string TargetFolder { get; }
     }
 }

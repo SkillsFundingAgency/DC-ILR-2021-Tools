@@ -1,6 +1,5 @@
 ﻿using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using Loose;
-using System;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
 {
