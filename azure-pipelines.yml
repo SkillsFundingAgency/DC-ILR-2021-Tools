@@ -22,7 +22,7 @@ variables:
 trigger:
   branches:
     include:
-     - *
+     - '*'
   paths:
     include:
     - src/*
