@@ -85,8 +85,9 @@ stages:
 
     - task: MSBuild@1
       displayName: 'Build solution src\*.sln'
+      enabled: false
       inputs:
-        solution: '**/*.sln'
+        solution: '$(Parameters.solution)'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
         msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
@@ -95,7 +96,6 @@ stages:
       displayName: 'Build solution'
       enabled: true
       inputs:
-        msbuildVersion: 15.0
         solution: '$(Parameters.solution)'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
