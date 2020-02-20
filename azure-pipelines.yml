@@ -200,7 +200,7 @@ stages:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
         nobuild: true
-        projects: '**/*Tests.csproj'
+        projects: '**src/**/*Tests.csproj'
 
     - task: VSTest@2
       displayName: 'Run Unit Tests'
