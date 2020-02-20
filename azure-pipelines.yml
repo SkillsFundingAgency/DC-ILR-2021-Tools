@@ -8,7 +8,7 @@ resources:
 variables:
 - group: 'CodeSign KV'
 - name: Parameters.solution 
-  value: '**\*.sln'
+  value: '**\src\*.sln'
 - name: Parameters.nugetFeedName 
   value: 'dct-pkg'
 - name: BuildConfiguration
@@ -195,7 +195,7 @@ stages:
 
     - task: DotNetCoreCLI@2
       displayName: Run unit tests
-      enabled: false
+      enabled: true
       inputs:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
@@ -204,7 +204,7 @@ stages:
 
     - task: VSTest@2
       displayName: 'Run Unit Tests'
-      enabled: true
+      enabled: false
       inputs:
         testAssemblyVer2: |
          **\$(BuildConfiguration)\*test*.dll
