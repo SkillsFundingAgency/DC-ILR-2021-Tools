@@ -8,7 +8,7 @@ resources:
 variables:
 - group: 'CodeSign KV'
 - name: Parameters.solution 
-  value: '**\*.sln'
+  value: '**\src\*.sln'
 - name: Parameters.nugetFeedName 
   value: 'dct-pkg'
 - name: BuildConfiguration
@@ -17,6 +17,18 @@ variables:
   value: 'Any CPU'
 - name: ConsoleTool
   value: 'ESFA.DC.ILR.Tools.IFCT.Console'
+
+
+trigger:
+  branches:
+    include:
+     - '*'
+  paths:
+    include:
+    - src/*
+    - azure-pipelines.yml
+    exclude:
+    - legacy/*
 
 stages:
 - stage: Build
@@ -27,7 +39,7 @@ stages:
     pool:
       name: DCT
       demands:
-      - IsBuildServer
+      - BuildServer
 
     steps:
     - task: DotNetCoreInstaller@2
@@ -70,15 +82,28 @@ stages:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
 
-    - task: VSBuild@1
-      displayName: 'Build solution **\*.sln'
+
+    - task: MSBuild@1
+      displayName: 'Build solution src\*.sln'
       inputs:
-        solution: '$(Parameters.solution)'
-        msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        solution: '**/*.sln'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        vstsFeed: '$(Parameters.nugetFeedName)'
+        msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+
+    - task: MSBuild@1
+      displayName: 'Build solution'
+      enabled: true
+      inputs:
+        msbuildVersion: 15.0
+        solution: '$(Parameters.solution)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:SkipInvalidConfigurations=true'
         clean: true
+        maximumCpuCount: true
+        logProjectEvents: true
+        createLogFile: true        
 
     ## Restore & Build using dotnet cli
     #- task: DotNetCoreCLI@2
@@ -170,7 +195,7 @@ stages:
 
     - task: DotNetCoreCLI@2
       displayName: Run unit tests
-      enabled: false
+      enabled: true
       inputs:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
@@ -179,7 +204,7 @@ stages:
 
     - task: VSTest@2
       displayName: 'Run Unit Tests'
-      enabled: true
+      enabled: false
       inputs:
         testAssemblyVer2: |
          **\$(BuildConfiguration)\*test*.dll
