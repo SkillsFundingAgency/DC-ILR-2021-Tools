@@ -82,15 +82,28 @@ stages:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
 
-    - task: VSBuild@1
-      displayName: 'Build solution **\src\*.sln'
+
+    - task: MSBuild@1
+      displayName: 'Build solution src\*.sln'
       inputs:
-        solution: '$(Parameters.solution)'
-        msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        solution: '**/*.sln'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        vstsFeed: '$(Parameters.nugetFeedName)'
+        msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+
+    - task: MSBuild@1
+      displayName: 'Build solution'
+      enabled: true
+      inputs:
+        msbuildVersion: 15.0
+        solution: '$(Parameters.solution)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:SkipInvalidConfigurations=true'
         clean: true
+        maximumCpuCount: true
+        logProjectEvents: true
+        createLogFile: true        
 
     ## Restore & Build using dotnet cli
     #- task: DotNetCoreCLI@2
