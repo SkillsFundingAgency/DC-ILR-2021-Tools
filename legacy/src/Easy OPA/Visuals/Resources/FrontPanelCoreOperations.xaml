@@ -1,0 +1,192 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="FrontPanelCoreOperations"
+                     TargetType="ContentControl">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <!--<RowDefinition Height="Auto" />-->
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource GDSHeadingStyle}"
+                       Text="{z:StringResource EasyOPACoreOperationsHeaderText}" />
+
+            <Grid Grid.Row="1"
+                  Margin="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <ContentControl Style="{StaticResource GDSAssociatedElementStyle}"
+                                z:BoundProperty.Primary="{z:StringResource PrepareButtonText, StringFormat={z:StringResource CaptionTextFormat}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource PreparationExplanationText}" />
+
+                        <Grid Margin="50,5,0,5"
+                              DataContext="{Binding Path=Prepared}"
+                              Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                       Text="SQL Server Instance:" />
+                            <TextBlock Grid.Column="1"
+                                       Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                       Text="{Binding Path=SQLInstance, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                       Text="Data Source:" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="1"
+                                       Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                       Text="{Binding Path=SelectedSource.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+
+                        <Button Grid.Row="1"
+                                Grid.Column="2"
+                                VerticalAlignment="Bottom"
+                                Command="{Binding Path=PrepareCommand}"
+                                Content="{z:StringResource PrepareButtonText}" />
+                    </Grid>
+                </ContentControl>
+
+                <ContentControl Grid.Row="1"
+                                Style="{StaticResource GDSAssociatedElementStyle}"
+                                z:BoundProperty.Primary="{z:StringResource SelectProvidersButtonText, StringFormat={z:StringResource CaptionTextFormat}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource SelectProvidersExplanationText}" />
+
+                        <Grid Margin="50,5,0,5"
+                              DataContext="{Binding Path=Providers}"
+                              Grid.Row="1">
+                            <TextBlock Style="{DynamicResource TopWrapAndNoTrimTextStyle}"
+                                       Visibility="{Binding Path=SelectedProvidersCount, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                                <TextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource MultiText}"
+                                                  ConverterParameter="{z:StringResource SelectedProvidersInformationText}">
+                                        <Binding Path="SelectedProvidersCount" />
+                                        <Binding Path="SelectedProviderIDs" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource TopWrapAndNoTrimTextStyle}"
+                                       Text="{z:StringResource YouHaveNoProvidersSelectedText}"
+                                       Visibility="{Binding Path=SelectedProvidersCount, Converter={StaticResource IsVisibleIfPathIsFalse}}" />
+                        </Grid>
+
+                        <Button Grid.Row="1"
+                                Grid.Column="2"
+                                VerticalAlignment="Bottom"
+                                Command="{Binding Path=SelectProvidersCommand}"
+                                Content="{z:StringResource SelectProvidersButtonText}" />
+                    </Grid>
+                </ContentControl>
+
+                <ContentControl Grid.Row="2"
+                                Style="{StaticResource GDSAssociatedElementStyle}"
+                                z:BoundProperty.Primary="{z:StringResource SelectRulesButtonText, StringFormat={z:StringResource CaptionTextFormat}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource SelectRulesExplanationText}" />
+
+                        <Grid Margin="50,5,0,5"
+                              DataContext="{Binding Path=RuleSet}"
+                              Grid.Row="1">
+                            <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                       Visibility="{Binding Path=SelectedRulesCount, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                                <TextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource MultiText}"
+                                                  ConverterParameter="{z:StringResource SelectedRulesInformationText}">
+                                        <Binding Path="SelectedRulesCount" />
+                                        <Binding Path="SelectedRuleShortnames" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource TopWrapAndNoTrimTextStyle}"
+                                       Text="{z:StringResource YouHaveNoRulesSelectedText}"
+                                       Visibility="{Binding Path=SelectedRulesCount, Converter={StaticResource IsVisibleIfPathIsFalse}}" />
+                        </Grid>
+
+                        <Button Grid.Row="1"
+                                Grid.Column="2"
+                                VerticalAlignment="Bottom"
+                                Command="{Binding Path=SelectRulesCommand}"
+                                Content="{z:StringResource SelectRulesButtonText}" />
+                    </Grid>
+                </ContentControl>
+
+                <ContentControl Grid.Row="3"
+                                Style="{StaticResource GDSAssociatedElementStyle}"
+                                z:BoundProperty.Primary="{z:StringResource RunButtonText, StringFormat={z:StringResource CaptionTextFormat}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource RunExplanationText}" />
+
+                        <Button Grid.Column="1"
+                                Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}}"
+                                Content="{z:StringResource RunButtonText}" />
+                    </Grid>
+                </ContentControl>
+            </Grid>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

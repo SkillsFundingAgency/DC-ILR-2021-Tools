@@ -1,0 +1,2749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EasyOPA</RootNamespace>
+    <AssemblyName>EasyOPA.Shell</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ProjectGuid>{ACAB20E3-DA1A-47A7-8C9B-302DDF702B31}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.SQLXMLBULKLOADLib">
+      <HintPath>..\..\Libs\Interop.SQLXMLBULKLOADLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\Libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging">
+      <HintPath>..\..\Libs\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
+      <HintPath>..\..\Libs\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\Libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\Libs\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OPAWrapperLIB">
+      <HintPath>..\..\Libs\OPAWrapperLIB.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.Determinations.Engine">
+      <HintPath>..\..\Libs\Oracle.Determinations.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.Determinations.Masquerade">
+      <HintPath>..\..\Libs\Oracle.Determinations.Masquerade.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net, Version=1.5.231.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\sqlite-net-pcl.1.5.231\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.1.14.520, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.14\lib\net45\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.1.14.520, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.14\lib\net45\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.1.14.520, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.14\lib\net45\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.1.14.520, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.14\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Composition.AttributedModel">
+      <HintPath>..\..\packages\System.Composition.AttributedModel.1.2.0\lib\netstandard2.0\System.Composition.AttributedModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Convention">
+      <HintPath>..\..\packages\System.Composition.Convention.1.2.0\lib\netstandard2.0\System.Composition.Convention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Hosting">
+      <HintPath>..\..\packages\System.Composition.Hosting.1.2.0\lib\netstandard2.0\System.Composition.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Runtime">
+      <HintPath>..\..\packages\System.Composition.Runtime.1.2.0\lib\netstandard2.0\System.Composition.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts">
+      <HintPath>..\..\packages\System.Composition.TypedParts.1.2.0\lib\netstandard2.0\System.Composition.TypedParts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\Libs\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Tiny.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Tiny.Framework.1.5.0.13\lib\portable-net451+win81+wpa81\Tiny.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Tiny.Framework.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Tiny.Framework.Contracts.1.5.0.9\lib\portable-net451+win81+wpa81+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\Tiny.Framework.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="Assets\1718\lite_indatamapping.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\lite_tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\lite_indatamapping.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\lite_tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\lite_indatamapping.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1920\lite_tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\bulkLoadSchema19-20.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config" />
+    <None Include="Assets\1718\indatamapping.cfg">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\mappederrors.csv" />
+    <None Include="Assets\1819\indatamapping.cfg">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\mappederrors.csv" />
+    <None Include="Assets\1819\Production\Rulebases\AEC\Apprenticeships Earnings Calc 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ALB\Loans Bursary 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\DV\Derived Variables 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ESFVAL\ESF Validation 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ESF\ESF 1819 Funding Calc.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM25\FM25 Funding Calc 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM35\FM35 Funding Calc 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\TBL\Trailblazer Funding Calc 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\VALDP\Validation DP 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\VAL\Validation 18_19.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\align_common_to_wrapper.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Experimental\Rulebases\Sample\Sample_OPA_Rulebase.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Experimental\tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\indatamapping.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\mappederrors.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\ILRSchema\ILR-2019-20.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reports\Community Learning Report\Community_Learning_Report.rdlc" />
+    <None Include="Assets\1920\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1920\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim_Certification.rdlc" />
+    <None Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Summary\EFA_High_Needs_Students_Summary.rdlc" />
+    <None Include="Assets\1920\Production\Reports\PFR Reports\PFR Summary Report\FundingSummaryReport.rdlc" />
+    <None Include="Assets\1920\Production\Reports\Rule Violation Summary Report\ReportHeaderLandscape.rdlc" />
+    <None Include="Assets\1920\Production\Reports\Rule Violation Summary Report\RuleViolationsSummary.rdlc" />
+    <None Include="Assets\1920\Production\Reports\Rule Violation Summary Report\SummaryPortrait.rdlc" />
+    <None Include="Assets\1920\Production\Reports\Rule Violation Summary Report\SummaryPortraitLearnerDestinationAndProgressionSummary.rdlc" />
+    <None Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\SFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\SFA_Funding_Model_35.rdlc" />
+    <None Include="Assets\1920\Production\Rulebases\AEC\Apprenticeships Earnings Calc 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ALB\Loans Bursary 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\DV\Derived Variables 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ESFVAL\ESF Validation 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ESF\ESF 1920 Funding Calc.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM25\FM25 Funding Calc 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM35\FM35 Funding Calc 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\TBL\Trailblazer Funding Calc 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\VALDP\Validation DP 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\VAL\Validation 19_20.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\ILR-2018-19-v3.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\ILR-2019-20-v2.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\ILRExportTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\align_common_to_wrapper.bat" />
+    <None Include="Assets\1718\Experimental\Rulebases\Sample\Sample_OPA_Rulebase.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Experimental\tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1718\Production\ILRSchema\ILR-2017-18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1718\Production\Reports\Community Learning Report\Community_Learning_Report.rdlc" />
+    <None Include="Assets\1718\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1718\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim_Certification.rdlc" />
+    <None Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Summary\EFA_High_Needs_Students_Summary.rdlc" />
+    <None Include="Assets\1718\Production\Reports\PFR Reports\PFR Summary Report\FundingSummaryReport.rdlc" />
+    <None Include="Assets\1718\Production\Reports\Rule Violation Summary Report\ReportHeaderLandscape.rdlc" />
+    <None Include="Assets\1718\Production\Reports\Rule Violation Summary Report\RuleViolationsSummary.rdlc" />
+    <None Include="Assets\1718\Production\Reports\Rule Violation Summary Report\SummaryPortrait.rdlc" />
+    <None Include="Assets\1718\Production\Reports\Rule Violation Summary Report\SummaryPortraitLearnerDestinationAndProgressionSummary.rdlc" />
+    <None Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\SFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\SFA_Funding_Model_35.rdlc" />
+    <None Include="Assets\1718\Production\Rulebases\AEC\Apprenticeships Earnings Calc 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ALB\Loans Bursary 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\DV\Derived Variables 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\EFAPeriodisation\EFA Periodisation.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\EFA\EFA Funding Calc 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ESFVAL\ESF Validation 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ESF\ESF 1718 Funding Calc.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\SFA\SFA Funding Calc 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\TBL\Trailblazer Funding Calc 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\VALDP\Validation DP 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\VAL\Validation 17_18.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\align_common_to_wrapper.bat" />
+    <None Include="Assets\1819\Experimental\Rulebases\Sample\Sample_OPA_Rulebase.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Experimental\tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\ILRSchema\ILR-2018-19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1819\Production\Reports\Community Learning Report\Community_Learning_Report.rdlc" />
+    <None Include="Assets\1819\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1819\Production\Reports\EFA Funding\Funding Claim\EFA_Funding_Claim_Certification.rdlc" />
+    <None Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Summary\EFA_High_Needs_Students_Summary.rdlc" />
+    <None Include="Assets\1819\Production\Reports\PFR Reports\PFR Summary Report\FundingSummaryReport.rdlc" />
+    <None Include="Assets\1819\Production\Reports\Rule Violation Summary Report\ReportHeaderLandscape.rdlc" />
+    <None Include="Assets\1819\Production\Reports\Rule Violation Summary Report\RuleViolationsSummary.rdlc" />
+    <None Include="Assets\1819\Production\Reports\Rule Violation Summary Report\SummaryPortrait.rdlc" />
+    <None Include="Assets\1819\Production\Reports\Rule Violation Summary Report\SummaryPortraitLearnerDestinationAndProgressionSummary.rdlc" />
+    <None Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\SFA_Funding_Claim.rdlc" />
+    <None Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\SFA_Funding_Model_35.rdlc" />
+    <None Include="Assets\1718\Local\Export\GetHeader.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Export\GetLearnerDestinationandProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Export\GetLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Export\GetLearningProvider.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Export\GetSourceFiles.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\BuildSchema_SourceDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_AEC.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_ALB.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_DV.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_EFA-SFA.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_EFA.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_FD.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_SFA.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_TBL.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_VAL.sql" />
+    <None Include="Assets\1819\Local\Copy\IntoResultsArea_VALDP.sql" />
+    <None Include="Assets\1819\Local\Export\GetHeader.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Export\GetLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Export\GetLearnerDestinationandProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Export\GetLearningProvider.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Export\GetSourceFiles.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\PreValidationReferenceData1.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\PreValidationReferenceData2.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Schema\dbo\02 Views\DEDS_dbo_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\BuildSchema_SourceDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\CleanseProcessingArea.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\lite_ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\CreateCalculationReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\other_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1718\Production\Schema\Rulebase\02 Views\other_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Supplemental\0019_DeleteExistingLearnersStoredProc.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\03 Procedures\03 ImportFilenames.sql" />
+    <Content Include="Assets\1718\Production\Schema\dbo\03 Procedures\04 Logging.sql" />
+    <None Include="Assets\1718\Production\Schema\Invalid\02 Views\DEDS_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Schema\Valid\02 Views\DEDS_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Supplemental\AddNamespaceError.sql" />
+    <Content Include="Assets\1718\Production\Supplemental\CopyToWorkingSchema.sql" />
+    <Content Include="Assets\1718\Production\Supplemental\DisableSnapshotIsolation.sql" />
+    <Content Include="Assets\1718\Production\Supplemental\InsertFileDetails.sql" />
+    <Content Include="Assets\1718\Production\Supplemental\Truncate_Rulebase_Schema.sql" />
+    <None Include="Assets\1819\tokensubstitutionmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\grab_ilr_folders.bat" />
+    <None Include="Assets\ILR-2016-17-v2.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\ILR-2017-18-v2.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\assetmanagement.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\lite_rulebase.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\lite_sqlbatch.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\rulebase.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\schemamap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\sqlbatch.cfg">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\tokensubstitutionmap.cfg">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\participating_assemblies.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ESFA.Common\Contracts\Common.Contracts.csproj">
+      <Project>{5c4a8458-55c2-4327-9294-d5b214c52fe8}</Project>
+      <Name>Common.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ESFA.Common\Services\Common.Services.csproj">
+      <Project>{a04ea931-785b-4ed5-b1cb-5597dcf84eb1}</Project>
+      <Name>Common.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ESFA.Common\Visuals\Common.Visuals.csproj">
+      <Project>{9d44ee0b-877b-4d3c-a9fc-91cc95a28acd}</Project>
+      <Name>Common.Visuals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{c6b7a411-9523-4837-853e-a0c9da3bfe17}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{80360d7d-3836-47e0-b5a9-c1fb8f693762}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Visuals\Visuals.csproj">
+      <Project>{04b193e6-1364-4124-a6b8-dfe49a8a5761}</Project>
+      <Name>Visuals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XML2SQL\XML2SQL.csproj">
+      <Project>{d364b68b-a613-44fe-9531-0a59bec959c2}</Project>
+      <Name>XML2SQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\1718\Experimental\OPAConfig\Sample\Sample_OPAConfigILR_AnyYear.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\1819\Production\OPAConfig\FM25\FM25_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM25\ILR FM25 Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Schema\dbo\02 Views\DEDS_dbo_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\Copy\IntoProcessingArea.sql" />
+    <None Include="Assets\1819\Local\EFA DB alterations.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\OPAConfig\ESFVAL\ESFVAL_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\CleanseProcessingArea.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\EFA Clone Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertCalculationReferenceData_PostVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertCalculationReferenceData_PreVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertCalculationReferenceData_PreVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertCalculationReferenceData_PostVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\lite_ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Schema\Rulebase\02 Views\lite_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertOtherReferenceData_PostVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertOtherReferenceData_PreVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\InsertOtherReferenceData_PreVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\lite_InsertCalculationEFAReferenceData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\CreateCalculationReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\CreateOtherReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\lite_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Supplemental\0019_DeleteExistingLearnersStoredProc.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetSFAFundingForType.sql" />
+    <None Include="Assets\1819\Production\Schema\Invalid\02 Views\DEDS_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Schema\Rulebase\02 Views\lite_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Schema\Valid\02 Views\DEDS_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Schema\Rulebase\02 Views\other_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Supplemental\AddNamespaceError.sql" />
+    <Content Include="Assets\1819\Production\Supplemental\CopyToWorkingSchema.sql" />
+    <Content Include="Assets\1819\Production\Supplemental\DisableSnapshotIsolation.sql" />
+    <Content Include="Assets\1819\Production\Supplemental\InsertFileDetails.sql" />
+    <Content Include="Assets\1819\Production\Supplemental\Truncate_Rulebase_Schema.sql" />
+    <Resource Include="Assets\1920\Experimental\OPAConfig\Sample\Sample_OPAConfigILR_AnyYear.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\1920\Experimental\Rulebases\Sample\Sample_OPA_Case_Transformation.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Include="Assets\1920\ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\lite_ILRTableMappings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1920\Local\BuildSchema_ResultsDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\BuildSchema_SourceDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\CleanseProcessingArea.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoProcessingArea.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_AEC.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_ALB.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_DV.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_EFA-SFA.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_EFA.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_FD.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_SFA.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_TBL.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_VAL.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Copy\IntoResultsArea_VALDP.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\EFA Clone Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\EFA DB alterations.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Export\GetHeader.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Export\GetLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Export\GetLearnerDestinationandProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Export\GetLearningProvider.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\Export\GetSourceFiles.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Local\InsertErrorMessageLookUps.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1920\Production\OPAConfig\AEC\AEC_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\ALB\ALB_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\DV\DV_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\ESFVAL\ESFVAL_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\ESF\ESF_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\FDRegexValidation\FD_ILR_PatternValidation.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\FM25\FM25_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\FM35\FM35_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\TBL\TBL_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\VALDP\VALDP_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\OPAConfig\VAL\VAL_OPAConfigILR_1920.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Assets\1920\Production\OPAConfig\XmlToSql\AmalgamationILRTableMap.xml" />
+    <Resource Include="Assets\1920\Production\OPAConfig\XmlToSql\ILRTableMap.xml" />
+    <Resource Include="Assets\1920\Production\OPAConfig\XmlToSql\XSDTaskErrorMap.xml" />
+    <None Include="Assets\1920\Production\Reference\01 FCSContractSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\04 LARSLARSSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\05 EASSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\07 ESF_FundingDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\07 ESF_SupplementaryDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\08 FCS_Deliverable_DescriptionSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\09 FCS_DeliverableCodeMappings.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\10 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\11 EPA_Organisation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\12 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertCalculationReferenceData_PostVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertCalculationReferenceData_PostVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertCalculationReferenceData_PreVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertCalculationReferenceData_PreVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertOtherReferenceData_PostVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertOtherReferenceData_PreVal_Common.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\InsertOtherReferenceData_PreVal_HubOnly.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Reference\lite_InsertCalculationEFAReferenceData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1920\Production\Reports\Apps Indicative Earnings\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Apps Indicative Earnings\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\Apps Indicative Earnings\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Community Learning Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Community Learning Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\Community Learning Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_FIS_CSV.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_GetParameters_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_Online_CSV.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA Maths And English\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA Maths And English\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA Maths And English\GetDataCountFIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA Maths And English\GetDataFIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\EFA Maths And English\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\Funding Claim\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\Funding Claim\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\Funding Claim\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Report\GetData_Fis.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Summary\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Summary\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\EFA Funding\High Needs Students Summary\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\OLASS Prison Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\OLASS Prison Report\GetData_Count.sql" />
+    <Content Include="Assets\1920\Production\Reports\OLASS Prison Report\GetData_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\OLASS Prison Report\GetData_FIS_Count.sql" />
+    <Content Include="Assets\1920\Production\Reports\OLASS Prison Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Main Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Summary Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\PFR_TrailblazerEmployerIncentivesReport_GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Report PreRun\02 PopulatePeriodTables.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Report\CopyData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Report\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Summary Report\CopyData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Summary Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\Rule Violation Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Claim Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData_FIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetData.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCount.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCountFIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataFIS.sql" />
+    <Content Include="Assets\1920\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\Pre\PopulateData.sql" />
+    <None Include="Assets\1920\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\DV\ILR Derived Variables - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ESFVAL\ILR ESF Validation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\ESF\ILR ESF Funding Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM25\ILR FM25 Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\VALDP\ILR Validation DP - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Rulebases\VAL\ILR Validation Learner - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\01 XML_FileNames.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\02 SQLValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\03 TaskError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\04 SchemaValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\05 FileDetails.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\06 ProcessingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\01 Tables\07 Logging.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\02 Views\01 ValidLearnerDestinationProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\02 Views\02 ValidLearners.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\02 Views\DEDS_dbo_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\03 Procedures\01 TransformInputToInvalid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\03 Procedures\02 TransformInputToValid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\03 Procedures\03 ImportFilenames.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\03 Procedures\04 Logging.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\ConvertCSVToTable.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetAECFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetBursaryFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetBursaryLoansAreaUpliftForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetEASFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetEFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetOLASSEASAuditAdjustmentsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetOLASSEASAuthorisedClaimsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetOLASSEASCancellationCostsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetOLASSEASExceptionalLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetOLASSEASExcessLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetSFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetTrailblazerAdultIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetTrailblazerIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetTrailblazerLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\GetTrailblazerOnProgFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\RemovePunctuation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\dbo\04 Functions\StripSingleQuote.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Input\01 Tables\ILR_Input_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Input\02 Views\ILR_Input_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Invalid\01 Tables\ILR_Invalid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Invalid\02 Views\DEDS_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Invalid\02 Views\ILR_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\00 Reference Schema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\01 FCSContract.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\01 LargeEmployers.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\01 LARSLARS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\01 PFR_EAS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\01 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\02 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\ReferenceTablesForOnlineReports.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\Reference_ESF_FundingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\Reference_ESF_SuppementaryData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\01 Tables\Reference_FCS_Deliverable_Description.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Reference\02 Views\00 ESF_ReferenceViews.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\01_EFAFundingClaimReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\02_EFAMathsAndEnglishReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\03_EFA1619FundingByStudent.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\03_EFAHNSDetailReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\03_EFAHNSSummaryReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\04_PFRMainOccupancyReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\05_SFAFundingClaimReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\06_ALLBOccupancyReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\07_FM35SummFundingByLearner.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\AppsIndicativeEarningsReportOutput.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\CommunityLearningReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\ESFAimsAndDeliverables.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\FundingSummary.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\SFAFundingModel35SummaryReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\TrailblazerApprenticeshipsOccupancyReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\TrailblazerEmployerIncentivesReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\ViolationReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\01 Tables\ViolationSummaryReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\01 Validation Error.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\02 ILR_RuleViolationSummaryView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\03 ILR_RuleViolationView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\04 HighNeedsStudentsReportView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\05 PFRMainOccupancyReportView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\06 CL SummaryOfLearnersFAMS.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\06 PFRTrailblazerApprenticeshipsOccupancyReport_PSDM_FAM_HelperView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\07 PFRTrailblazerApprenticeshipsOccupancyReportView.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\AppsIndicativeReportPMRsCurrentYearNoPriceEpisode.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\AppsIndicativeReportPMRsPreviousYearsNoPriceEpisode.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsCurrentYear.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsPreviousYears.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_DeliverableRows.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_NonDeliverableRows.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\ValidLearnerEmpStatsBeforeLearnStartDate.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_ACT_EarliestAndLatestDates.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_LSF_EarliestAndLatestDates.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\CommunityLearningReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\CommunityLearningReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\CommunityLearningReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFAHNSDetailCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFAHNSDetailReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\EFAHNSDetailReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetDataCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportDataCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetPFRSummaryReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetPFRSummaryReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetRuleViolationReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetRuleViolationReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\GetRuleViolationSummaryReportData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\OLASSPrisonReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulateALLBOccupancyReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulateEFAEnglishAndMathsReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulateEFAFundingClaimReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulateEFAHNSSummaryReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulateFM35SummFundingByLearner.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\PopulatePFRSummaryReport.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetDataCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingClaimReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCSVGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportParameters.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportPopulateData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportCount.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportGetData.sql" />
+    <None Include="Assets\1920\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportPopulateData.sql" />
+    <Content Include="Assets\1920\Production\Schema\Reference\01 Tables\CreateCalculationReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Production\Schema\Reference\01 Tables\CreateOtherReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\00_GetSFAClaimBursaryFunding_Online.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFAEFAFundingClaimForType.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFAEmpPayment.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFAFundingForType.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFALearnSuppFundCash.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFAOnProgPayment.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFATrailblazerLearnSuppFundCash.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\01_GetSFATrailblazerProgPayment.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\02_GetSFAProgrammeFunding.sql" />
+    <Content Include="Assets\1920\Production\Schema\Report\04 Functions\02_GetSFASupportFunding.sql" />
+    <None Include="Assets\1920\Production\Schema\Rulebase\01 Tables\other_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\01 Tables\04 SFALearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\01 Tables\06 ALBLearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\01 Tables\ESFVAL_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\01 Tables\ESF_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\02 Views\001.VIEW.DD17.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\02 Views\other_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\AEC_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\ALB_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\DV_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\ESFVAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\ESF_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\FD_ILR_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\FM25_FM35_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\FM25_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\FM35_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\TBL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\VALDP_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Rulebase\03 Procedures\VAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Static\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Static\01 Tables\01 ErrorMessageLookUp.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Valid\01 Tables\ILR_Valid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Valid\02 Views\DEDS_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Schema\Valid\02 Views\ILR_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\0019_DeleteExistingLearnersStoredProc.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\AdditionalIndexes.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\AddNamespaceError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\CopyToWorkingSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\DisableSnapshotIsolation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\InsertFileDetails.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1920\Production\Supplemental\Truncate_Rulebase_Schema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\bulkLoadSchema18-19.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\bulkLoadSchema16-17.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\bulkLoadSchema17-18.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\relationships.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Experimental\Rulebases\Sample\Sample_OPA_Case_Transformation.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_AEC.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_ALB.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoProcessingArea.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_DV.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_EFA.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_EFA-SFA.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_FD.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea.sql" />
+    <None Include="Assets\1718\Local\InsertErrorMessageLookUps.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_SFA.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_TBL.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_VALDP.sql" />
+    <None Include="Assets\1718\Local\Copy\IntoResultsArea_VAL.sql" />
+    <None Include="Assets\1718\Production\OPAConfig\AEC\AEC_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\ALB\ALB_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\DV\DV_OPAConfigILR_1617.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\EFAPeriodisation\EFA_SFA_OPAConfigILR_1617.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\EFA\EFA_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\ESFVAL\ESFVAL_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\ESF\ESF_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\FDRegexValidation\FD_ILR_PatternValidation.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\SFA\SFA_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\TBL\TBL_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\VALDP\VALDP_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\VAL\VAL_OPAConfigILR_1718.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\XmlToSql\AmalgamationILRTableMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\XmlToSql\ILRTableMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\OPAConfig\XmlToSql\XSDTaskErrorMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Local\BuildSchema_ResultsDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\01 FCSContractSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\04 LARSLARSSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\05 EASSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\07 ESF_FundingDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\07 ESF_SupplementaryDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\08 FCS_Deliverable_DescriptionSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\09 FCS_DeliverableCodeMappings.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\10 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\11 EPA_Organisation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\12 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Reference\PostValidationReferenceData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Reports\Apps Indicative Earnings\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Apps Indicative Earnings\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\Apps Indicative Earnings\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Community Learning Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Community Learning Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\Community Learning Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_FIS_CSV.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_GetParameters_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_Online_CSV.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA Maths And English\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA Maths And English\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA Maths And English\GetDataCountFIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA Maths And English\GetDataFIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\EFA Maths And English\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\Funding Claim\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\Funding Claim\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\Funding Claim\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Report\GetData_Fis.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Summary\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Summary\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\EFA Funding\High Needs Students Summary\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\OLASS Prison Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\OLASS Prison Report\GetData_Count.sql" />
+    <Content Include="Assets\1718\Production\Reports\OLASS Prison Report\GetData_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\OLASS Prison Report\GetData_FIS_Count.sql" />
+    <Content Include="Assets\1718\Production\Reports\OLASS Prison Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Main Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Summary Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\PFR_TrailblazerEmployerIncentivesReport_GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Report PreRun\02 PopulatePeriodTables.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Report\CopyData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Report\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Summary Report\CopyData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Summary Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\Rule Violation Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Claim Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData_FIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetData.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCount.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCountFIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataFIS.sql" />
+    <Content Include="Assets\1718\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\Pre\PopulateData.sql" />
+    <None Include="Assets\1718\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\DV\ILR Derived Variables - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\EFAPeriodisation\ILR EFA Periodisation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\EFA\ILR EFA Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ESFVAL\ILR ESF Validation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\ESF\ILR ESF Funding Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\SFA\ILR SFA Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\VALDP\ILR Validation DP - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1718\Production\Rulebases\VAL\ILR Validation Learner - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\01 XML_FileNames.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\02 SQLValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\03 TaskError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\04 SchemaValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\05 FileDetails.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\06 ProcessingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\01 Tables\07 Logging.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\02 Views\01 ValidLearnerDestinationProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\02 Views\02 ValidLearners.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\03 Procedures\01 TransformInputToInvalid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\03 Procedures\02 TransformInputToValid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\ConvertCSVToTable.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetAECFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetBursaryFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetBursaryLoansAreaUpliftForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetEASFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetEFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetOLASSEASAuditAdjustmentsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetOLASSEASAuthorisedClaimsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetOLASSEASCancellationCostsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetOLASSEASExceptionalLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetOLASSEASExcessLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetSFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetTrailblazerAdultIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetTrailblazerIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetTrailblazerLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\GetTrailblazerOnProgFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\RemovePunctuation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\dbo\04 Functions\StripSingleQuote.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Input\01 Tables\ILR_Input_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Input\02 Views\ILR_Input_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Invalid\01 Tables\ILR_Invalid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1718\Production\Schema\Invalid\02 Views\ILR_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\00 Reference Schema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\01 FCSContract.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\01 LargeEmployers.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\01 LARSLARS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\01 PFR_EAS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\01 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\02 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\CreateOtherReferenceDataTables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\ReferenceTablesForOnlineReports.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\Reference_ESF_FundingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\Reference_ESF_SuppementaryData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\01 Tables\Reference_FCS_Deliverable_Description.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Reference\02 Views\00 ESF_ReferenceViews.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\01_EFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\02_EFAMathsAndEnglishReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\03_EFA1619FundingByStudent.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\03_EFAHNSDetailReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\03_EFAHNSSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\04_PFRMainOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\05_SFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\06_ALLBOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\07_FM35SummFundingByLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\AppsIndicativeEarningsReportOutput.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\CommunityLearningReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\ESFAimsAndDeliverables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\FundingSummary.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\SFAFundingModel35SummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\TrailblazerApprenticeshipsOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\TrailblazerEmployerIncentivesReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\ViolationReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\01 Tables\ViolationSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\01 Validation Error.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\02 ILR_RuleViolationSummaryView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\03 ILR_RuleViolationView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\04 HighNeedsStudentsReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\05 PFRMainOccupancyReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\06 CL SummaryOfLearnersFAMS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\06 PFRTrailblazerApprenticeshipsOccupancyReport_PSDM_FAM_HelperView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\07 PFRTrailblazerApprenticeshipsOccupancyReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsCurrentYear.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsPreviousYears.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_DeliverableRows.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_NonDeliverableRows.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\ValidLearnerEmpStatsBeforeLearnStartDate.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_ACT_EarliestAndLatestDates.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_LSF_EarliestAndLatestDates.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\CommunityLearningReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\CommunityLearningReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\CommunityLearningReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFAHNSDetailCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFAHNSDetailReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\EFAHNSDetailReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetPFRSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetPFRSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetRuleViolationReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetRuleViolationReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\GetRuleViolationSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\OLASSPrisonReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulateALLBOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulateEFAEnglishAndMathsReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulateEFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulateEFAHNSSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulateFM35SummFundingByLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\PopulatePFRSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingClaimReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCSVGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\00_GetSFAClaimBursaryFunding_Online.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFAEFAFundingClaimForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFAEmpPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFALearnSuppFundCash.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFAOnProgPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFATrailblazerLearnSuppFundCash.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\01_GetSFATrailblazerProgPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\02_GetSFAProgrammeFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Report\04 Functions\02_GetSFASupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\lite_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\04 SFALearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\06 ALBLearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\ESFVAL_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\01 Tables\ESF_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\02 Views\001.VIEW.DD17.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\AEC_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\ALB_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\DV_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\EFA_SFA_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\EFA_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\ESFVAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\ESF_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\FD_ILR_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\SFA_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\TBL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\VALDP_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Rulebase\03 Procedures\VAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Static\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Static\01 Tables\01 ErrorMessageLookUp.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Valid\01 Tables\ILR_Valid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1718\Production\Schema\Valid\02 Views\ILR_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1718\Production\Supplemental\AdditionalIndexes.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Assets\1718\read me.txt" />
+    <None Include="Assets\1819\Experimental\OPAConfig\Sample\Sample_OPAConfigILR_AnyYear.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Experimental\Rulebases\Sample\Sample_OPA_Case_Transformation.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Local\BuildSchema_ResultsDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Local\InsertErrorMessageLookUps.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\OPAConfig\AEC\AEC_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Assets\1819\Production\OPAConfig\ALB\ALB_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\OPAConfig\DV\DV_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\OPAConfig\ESF\ESF_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\OPAConfig\FDRegexValidation\FD_ILR_PatternValidation.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\OPAConfig\FM35\FM35_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\OPAConfig\TBL\TBL_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\OPAConfig\VALDP\VALDP_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\OPAConfig\VAL\VAL_OPAConfigILR_1819.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\OPAConfig\XmlToSql\AmalgamationILRTableMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\OPAConfig\XmlToSql\ILRTableMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\OPAConfig\XmlToSql\XSDTaskErrorMap.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\Reference\01 FCSContractSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\04 LARSLARSSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\05 EASSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\07 ESF_FundingDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\07 ESF_SupplementaryDataSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\08 FCS_Deliverable_DescriptionSetup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\09 FCS_DeliverableCodeMappings.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\10 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\11 EPA_Organisation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Reference\12 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Reports\Apps Indicative Earnings\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Apps Indicative Earnings\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\Apps Indicative Earnings\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Community Learning Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Community Learning Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\Community Learning Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_FIS_CSV.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_GetParameters_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA 16-19 Funding\Summary_of_Funding_ByStudent_Online_CSV.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA Maths And English\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA Maths And English\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA Maths And English\GetDataCountFIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA Maths And English\GetDataFIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\EFA Maths And English\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\Funding Claim\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\Funding Claim\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\Funding Claim\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Report\GetData_Fis.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Summary\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Summary\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\EFA Funding\High Needs Students Summary\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\OLASS Prison Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\OLASS Prison Report\GetData_Count.sql" />
+    <Content Include="Assets\1819\Production\Reports\OLASS Prison Report\GetData_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\OLASS Prison Report\GetData_FIS_Count.sql" />
+    <Content Include="Assets\1819\Production\Reports\OLASS Prison Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR 24 Plus ADL Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR ALLB Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Main Occupancy Report\PFR_MainOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Main Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Summary Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\PFR_TrailblazerApprenticeshipsOccupancyReport_GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Apprenticeships Occupancy Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\PFR_TrailblazerEmployerIncentivesReport_GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\PFR Reports\PFR Trailblazer Employer Incentives Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Report PreRun\02 PopulatePeriodTables.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Report\CopyData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Report\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Summary Report\CopyData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Summary Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\Rule Violation Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Claim Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetDataCount_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_Count.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_CSV_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetData_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\GetParameters_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\Pre\PopulateData_FIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetData.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCount.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCountFIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataFIS.sql" />
+    <Content Include="Assets\1819\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\Pre\PopulateData.sql" />
+    <None Include="Assets\1819\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\DV\ILR Derived Variables - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ESFVAL\ILR ESF Validation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\ESF\ILR ESF Funding Calc - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\VALDP\ILR Validation DP - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\1819\Production\Rulebases\VAL\ILR Validation Learner - Input_XSLT.xsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\01 XML_FileNames.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\02 SQLValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\03 TaskError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\04 SchemaValidationError.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\05 FileDetails.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\06 ProcessingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\01 Tables\07 Logging.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\02 Views\01 ValidLearnerDestinationProgression.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\02 Views\02 ValidLearners.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\03 Procedures\01 TransformInputToInvalid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\03 Procedures\02 TransformInputToValid.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\ConvertCSVToTable.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetAECFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetBursaryFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetBursaryLoansAreaUpliftForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetEASFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetEFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetOLASSEASAuditAdjustmentsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetOLASSEASAuthorisedClaimsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetOLASSEASCancellationCostsFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetOLASSEASExceptionalLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetOLASSEASExcessLearningSupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetTrailblazerAdultIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetTrailblazerIncentivesFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetTrailblazerLSFFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\GetTrailblazerOnProgFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\RemovePunctuation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\dbo\04 Functions\StripSingleQuote.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Input\01 Tables\ILR_Input_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Input\02 Views\ILR_Input_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Invalid\01 Tables\ILR_Invalid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\Schema\Invalid\02 Views\ILR_Invalid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\00 Reference Schema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\01 FCSContract.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\01 LargeEmployers.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\01 LARSLARS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\01 PFR_EAS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\01 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\02 CollectionCalendar.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\ReferenceTablesForOnlineReports.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\Reference_ESF_FundingData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\Reference_ESF_SuppementaryData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\01 Tables\Reference_FCS_Deliverable_Description.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Reference\02 Views\00 ESF_ReferenceViews.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\01_EFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\02_EFAMathsAndEnglishReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\03_EFA1619FundingByStudent.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\03_EFAHNSDetailReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\03_EFAHNSSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\04_PFRMainOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\05_SFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\06_ALLBOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\07_FM35SummFundingByLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\AppsIndicativeEarningsReportOutput.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\CommunityLearningReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\ESFAimsAndDeliverables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\FundingSummary.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\SFAFundingModel35SummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\TrailblazerApprenticeshipsOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\TrailblazerEmployerIncentivesReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\ViolationReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\01 Tables\ViolationSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\01 Validation Error.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\02 ILR_RuleViolationSummaryView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\03 ILR_RuleViolationView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\04 HighNeedsStudentsReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\05 PFRMainOccupancyReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\06 CL SummaryOfLearnersFAMS.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\06 PFRTrailblazerApprenticeshipsOccupancyReport_PSDM_FAM_HelperView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\07 PFRTrailblazerApprenticeshipsOccupancyReportView.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\AppsIndicativeReportPMRsCurrentYearNoPriceEpisode.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsCurrentYear.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\AppsIndicitiveReportPMRsPreviousYears.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_DeliverableRows.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\ESFAimsAndDeliverablesReportView_NonDeliverableRows.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\ValidLearnerEmpStatsBeforeLearnStartDate.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_ACT_EarliestAndLatestDates.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\02 Views\ValidLearningDeliveryFAM_LSF_EarliestAndLatestDates.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\AppsIndicativeEarningsReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\CommunityLearningReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\CommunityLearningReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\CommunityLearningReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFA1619FundingByStudentReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFAHNSDetailCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFAHNSDetailReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\EFAHNSDetailReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportGetDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\ESFAimsAndDeliverablesReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\ESFFundingSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetALLBOccupancyReportDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAFundingClaimReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAHNSSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetEFAMathsAndEnglishReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetFM35SummFundingByLearnerData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetPFRSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetPFRSummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetRuleViolationReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetRuleViolationReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\GetRuleViolationSummaryReportData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\OLASSPrisonReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PFRMainOccupancyReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulateALLBOccupancyReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulateEFAEnglishAndMathsReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulateEFAFundingClaimReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulateEFAHNSSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulateFM35SummFundingByLearner.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\PopulatePFRSummaryReport.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingClaimReportCsvGetDataCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingClaimReportExcelPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingClaimReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportCSVGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportParameters.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\SFAFundingModel35SummaryReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerApprenticeshipsOccupancyReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportCount.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportGetData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\03 Procedures\TrailblazerEmployerIncentivesReportPopulateData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\00_GetSFAClaimBursaryFunding_Online.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFAEFAFundingClaimForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFAEmpPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFAFundingForType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFALearnSuppFundCash.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFAOnProgPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFATrailblazerLearnSuppFundCash.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\01_GetSFATrailblazerProgPayment.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\02_GetSFAProgrammeFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Report\04 Functions\02_GetSFASupportFunding.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\other_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\04 SFALearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\06 ALBLearningDeliveryPeriod.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\ESFVAL_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\01 Tables\ESF_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\Schema\Rulebase\02 Views\001.VIEW.DD17.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\AEC_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\ALB_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\DV_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\FM25_FM35_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\FM25_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\ESFVAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\ESF_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\FD_ILR_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\FM35_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\TBL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\VALDP_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Rulebase\03 Procedures\VAL_StoredProcedures.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Static\01 Tables\00 CreateSchema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Static\01 Tables\01 ErrorMessageLookUp.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\1819\Production\Schema\Valid\01 Tables\ILR_Valid_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1819\Production\Schema\Valid\02 Views\ILR_Valid_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1819\Production\Supplemental\AdditionalIndexes.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\1920\Production\Schema\Rulebase\02 Views\lite_DEDS_Rulebase_Views.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Assets\1920\Production\Schema\Rulebase\01 Tables\lite_01 ILR_Rulebase_Tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\General\NewTargetDataStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
+</Project>

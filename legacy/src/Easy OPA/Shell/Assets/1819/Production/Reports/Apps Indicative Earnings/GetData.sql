@@ -1,0 +1,1 @@
+﻿EXEC [Report].[AppsIndicativeEarningsReportGetData] @Page, @PageSize

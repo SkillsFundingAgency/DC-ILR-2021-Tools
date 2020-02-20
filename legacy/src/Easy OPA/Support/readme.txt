@@ -1,0 +1,1 @@
+this folder contains sql bulk load components that must be installed in order for the programs in this project to work. depending on the hosting system select either the 32 or 64 its version of the installer.

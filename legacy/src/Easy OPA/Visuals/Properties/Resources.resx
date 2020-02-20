@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunButtonText" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="SelectInputFileButtonText" xml:space="preserve">
+    <value>Select Input File</value>
+  </data>
+  <data name="PrepareButtonText" xml:space="preserve">
+    <value>Prepare</value>
+  </data>
+  <data name="PreparationExplanationText" xml:space="preserve">
+    <value>You can manage your SQL Server instance information, source data selection and bulk loading operations from here.</value>
+  </data>
+  <data name="EasyOPACoreOperationsHeaderText" xml:space="preserve">
+    <value>Core Operations</value>
+  </data>
+  <data name="RunExplanationText" xml:space="preserve">
+    <value>Once you've selected an input file or data valid source and the rules you wish the submission to be against; you can click Run.</value>
+  </data>
+  <data name="SelectRulesButtonText" xml:space="preserve">
+    <value>Select Rules</value>
+  </data>
+  <data name="SelectRulesExplanationText" xml:space="preserve">
+    <value>Select the set of rules you want the input data to be run against.</value>
+  </data>
+  <data name="SelectSourceHeaderText" xml:space="preserve">
+    <value>Available data sources</value>
+  </data>
+  <data name="UseSourceForResultsText" xml:space="preserve">
+    <value>You can use the data source to hold the results of your tests. Does not support results aggregation.</value>
+  </data>
+  <data name="SelectInputFileExplanationText" xml:space="preserve">
+    <value>Alternatively, you can select a file and load it to a new source ready to run any designated rules against it..</value>
+  </data>
+  <data name="UseSourceForResultsHeaderText" xml:space="preserve">
+    <value>Use Source For Results</value>
+  </data>
+  <data name="SelectInputFileHeaderText" xml:space="preserve">
+    <value>Select Input File</value>
+  </data>
+  <data name="SelectSourceExplanationText" xml:space="preserve">
+    <value>Select a data source from the list. Each source's credentials have been verified for collection type and year.</value>
+  </data>
+  <data name="SetSQLServerExplanationText" xml:space="preserve">
+    <value>Enter the name of the SQL server instance you wish to use. Click the refresh button to load.</value>
+  </data>
+  <data name="SetSQLServerHeaderText" xml:space="preserve">
+    <value>Active SQL Instance</value>
+  </data>
+  <data name="SelectedRulesInformationText" xml:space="preserve">
+    <value>You have selected {0} rule(s) for use. ({1})</value>
+  </data>
+  <data name="AvailableRulesExplanationText" xml:space="preserve">
+    <value>You can select from the list of enabled items below. If there is something you can't select; it's probably because it's not pertinent to the collection being tested.</value>
+  </data>
+  <data name="AvailableRulesText" xml:space="preserve">
+    <value>Available Rules</value>
+  </data>
+  <data name="SelectedRulesNameFormatText" xml:space="preserve">
+    <value>({0}) {1} ({2}, {3})</value>
+  </data>
+  <data name="UseExperimentalItemsHeaderText" xml:space="preserve">
+    <value>Use Experimental Items</value>
+  </data>
+  <data name="UseExperimentalItemsText" xml:space="preserve">
+    <value>If you have any experimental scripts or rulebases your want to try.</value>
+  </data>
+  <data name="CheckingActiveSQLInstance" xml:space="preserve">
+    <value>Checking Active SQL Instance details for validity @{0}</value>
+  </data>
+  <data name="PreserveButtonText" xml:space="preserve">
+    <value>Preserve</value>
+  </data>
+  <data name="ExportingToFile" xml:space="preserve">
+    <value>Exporting selected input source to file @{0}</value>
+  </data>
+  <data name="PreserveSourceExplanationText" xml:space="preserve">
+    <value>You can preserve any data changes made to an input source to an appropriate ILR file here. To enable this functionality; select an item from the list above.</value>
+  </data>
+  <data name="SelectAllText" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="AvailableProvidersExplanationText" xml:space="preserve">
+    <value>You can select from the list of available providers below. Being selective by reducing a large list will improve the overall process time. You also have the facility to export selected data sets to ILR XML.</value>
+  </data>
+  <data name="AvailableProvidersText" xml:space="preserve">
+    <value>Available Providers</value>
+  </data>
+  <data name="SelectedProvidersInformationText" xml:space="preserve">
+    <value>You have selected {0} provider(s) for processing. ({1})</value>
+  </data>
+  <data name="SelectProvidersButtonText" xml:space="preserve">
+    <value>Select Providers</value>
+  </data>
+  <data name="SelectProvidersExplanationText" xml:space="preserve">
+    <value>You can adjust the number of providers you want to be processed here.</value>
+  </data>
+  <data name="YouHaveNoProvidersSelectedText" xml:space="preserve">
+    <value>You don't have any providers selected for processing.</value>
+  </data>
+  <data name="YouHaveNoRulesSelectedText" xml:space="preserve">
+    <value>You don't have any rules selected for use.</value>
+  </data>
+  <data name="SelectedProvidersNameFormatText" xml:space="preserve">
+    <value>{0},
+{1},
+{2},
+{3}</value>
+  </data>
+  <data name="ExportToFileHeaderText" xml:space="preserve">
+    <value>Export To File</value>
+  </data>
+  <data name="IsSelectedForProcessingHeaderText" xml:space="preserve">
+    <value>Include</value>
+  </data>
+  <data name="ProviderAddressHeaderText" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ProviderIDHeaderText" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="ProviderLearnerCountHeaderText" xml:space="preserve">
+    <value>Learners</value>
+  </data>
+  <data name="TooManyToDisplayText" xml:space="preserve">
+    <value>too many to display</value>
+  </data>
+  <data name="DepositRulebaseArtefactsText" xml:space="preserve">
+    <value>Enabling this option will create files and folders containing the XDS files used by the rulebase. Use for rulebase debugging.</value>
+  </data>
+  <data name="DepositRulebaseArtefactsHeaderText" xml:space="preserve">
+    <value>Deposit rulebase artefacts to disk</value>
+  </data>
+  <data name="ApplyFilterExplanationText" xml:space="preserve">
+    <value>Apply a simple filter to reduce a long list... 
+ID "Ends With" and Address "Contains".</value>
+  </data>
+  <data name="ReturnPeriodHeaderText" xml:space="preserve">
+    <value>Return Period</value>
+  </data>
+  <data name="ReturnPeriodText" xml:space="preserve">
+    <value>Some submissions may require you to set a 'return period' for cross year testing. You can do this here.</value>
+  </data>
+  <data name="ConnectionTimeoutHeaderText" xml:space="preserve">
+    <value>Connection Timeouts</value>
+  </data>
+  <data name="ConnectionTimeoutText" xml:space="preserve">
+    <value>In the unlikely event you have connection timeout issues, you can adjust the total timeout period here. The number is displayed in minutes.</value>
+  </data>
+  <data name="SwitchRunModeHeaderText" xml:space="preserve">
+    <value>Switch Run Mode</value>
+  </data>
+  <data name="SwitchRunModeText" xml:space="preserve">
+    <value>Switch between Full and Lite operation. (ON is Lite)</value>
+  </data>
+</root>

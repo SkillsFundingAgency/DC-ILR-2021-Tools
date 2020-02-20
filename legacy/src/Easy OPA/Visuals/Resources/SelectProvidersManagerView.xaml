@@ -1,0 +1,203 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib"
+                    xmlns:t="clr-namespace:EasyOPA.Manager"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:EasyOPA.Composition"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <y:BatchOperatingYearConverter x:Key="AsOperatingYearString" />
+
+    <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type s:Enum}"
+                        x:Key="FilterListProvider">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="t:TypeOfProviderListFilter" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <DataTemplate x:Key="ProviderDataTemplate">
+        <Border BorderBrush="{StaticResource GDSElementBorderBrush}"
+                BorderThickness="0,0,0,2"
+                Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="column0"
+                                      Width="Auto" />
+                    <ColumnDefinition SharedSizeGroup="column1"
+                                      Width="Auto" />
+                    <ColumnDefinition SharedSizeGroup="column2"
+                                      Width="Auto" />
+                    <ColumnDefinition SharedSizeGroup="column3"
+                                      Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Style="{StaticResource GDSToggleSwitchStyle}"
+                          IsChecked="{Binding Path=IsSelectedForProcessing, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Grid.Column="1"
+                           Style="{StaticResource CentreStageStyle}"
+                           FontWeight="DemiBold"
+                           Text="{Binding Path=Source.ID}" />
+
+                <TextBlock Grid.Column="2"
+                           Style="{StaticResource CentreStageStyle}"
+                           FontWeight="DemiBold"
+                           Text="{Binding Path=LearnerCount}" />
+
+                <TextBlock Grid.Column="3"
+                           Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                           Text="{Binding Path=Address}" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="SelectProvidersManagerView"
+                     TargetType="ContentControl">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ContentControl Style="{StaticResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource DescriptionText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                           Text="{z:StringResource AvailableProvidersExplanationText}" />
+            </ContentControl>
+
+            <ContentControl Grid.Row="1"
+                            Style="{StaticResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource AvailableProvidersText, StringFormat={z:StringResource CaptionTextFormat}}">
+
+                <Grid Grid.IsSharedSizeScope="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Visibility="{Binding Path=ShowFilter, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource ApplyFilterExplanationText}" />
+
+                        <ComboBox VerticalAlignment="Top"
+                                  Grid.Column="1"
+                                  Height="28"
+                                  Margin="5,3,0,0"
+                                  Padding="5"
+                                  SelectedIndex="0"
+                                  ItemsSource="{Binding Source={StaticResource FilterListProvider}}"
+                                  SelectedItem="{Binding Path=FilterBy}" />
+
+                        <DockPanel VerticalAlignment="Top"
+                                   Grid.Column="2">
+                            <Button DockPanel.Dock="Right"
+                                    Margin="5,-1,5,5"
+                                    Padding="4,3"
+                                    Command="{Binding Path=DataContext.ApplyProvidersFilterCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}}">
+                                <Rectangle Width="20"
+                                           Height="20"
+                                           Fill="{DynamicResource GDSReloadIconBrush}" />
+                            </Button>
+
+                            <TextBox Style="{StaticResource ShortTextBoxStyle}"
+                                     Text="{Binding Path=FilterUsing}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Margin="9,1,1,1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="column0"
+                                              Width="Auto" />
+                            <ColumnDefinition SharedSizeGroup="column1"
+                                              Width="Auto" />
+                            <ColumnDefinition SharedSizeGroup="column2"
+                                              Width="Auto" />
+                            <ColumnDefinition SharedSizeGroup="column3"
+                                              Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   FontWeight="Bold"
+                                   Text="{z:StringResource IsSelectedForProcessingHeaderText}" />
+
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   FontWeight="Bold"
+                                   Text="{z:StringResource ProviderIDHeaderText}" />
+
+                        <TextBlock Grid.Column="2"
+                                   Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   FontWeight="Bold"
+                                   Text="{z:StringResource ProviderLearnerCountHeaderText}" />
+
+                        <TextBlock Grid.Column="3"
+                                   Style="{DynamicResource TopWrapAndNoTrimTextStyle}"
+                                   FontWeight="Bold"
+                                   Text="{z:StringResource ProviderAddressHeaderText}" />
+                    </Grid>
+
+                    <ListBox Grid.Row="2"
+                             x:Name="providersList"
+                             VirtualizingPanel.IsVirtualizing="True"
+                             Style="{StaticResource PopupListBoxStyle}"
+                             ItemsSource="{Binding Path=FilteredProviders, IsAsync=True}"
+                             ItemTemplate="{StaticResource ProviderDataTemplate}" />
+
+                    <Grid Grid.Row="3"
+                          Background="{StaticResource AccentColorBrush4}">
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Visibility="{Binding Path=SelectedProvidersCount, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{StaticResource MultiText}"
+                                              ConverterParameter="{z:StringResource SelectedProvidersInformationText}">
+                                    <Binding Path="SelectedProvidersCount" />
+                                    <Binding Path="SelectedProviderIDs" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{z:StringResource YouHaveNoProvidersSelectedText}"
+                                   Visibility="{Binding Path=SelectedProvidersCount, Converter={StaticResource IsVisibleIfPathIsFalse}}" />
+                    </Grid>
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Grid.Row="2"
+                            Style="{StaticResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource ExportToFileHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource PreserveSourceExplanationText}" />
+
+                    <Button Grid.Column="1"
+                            Content="{z:StringResource PreserveButtonText}"
+                            IsEnabled="{Binding ElementName=providersList, Path=SelectedItem, Converter={StaticResource IsTrueIfPathIsTrue}, Mode=OneWay}"
+                            Command="{Binding Path=DataContext.ExportToFileCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}}"
+                            CommandParameter="{Binding ElementName=providersList, Path=SelectedItem.Source.ID}" />
+                </Grid>
+            </ContentControl>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

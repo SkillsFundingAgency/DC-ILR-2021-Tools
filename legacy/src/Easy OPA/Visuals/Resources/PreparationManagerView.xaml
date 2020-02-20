@@ -1,0 +1,256 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib"
+                    xmlns:t="clr-namespace:EasyOPA.Set;assembly=EasyOPA.Contracts"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type s:Enum}"
+                        x:Key="ReturnPeriodListProvider">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="t:ReturnPeriod" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <Style x:Key="ValidSQLInstanceElementStyle"
+           TargetType="ContentControl"
+           BasedOn="{StaticResource GDSAssociatedElementStyle}">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource GDSElementBorderBrush}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsValidSQLInstance}"
+                         Value="False">
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource GDSFailedColorBrush}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ValidSQLInstanceTextStyle"
+           TargetType="TextBox"
+           BasedOn="{StaticResource ShortTextBoxStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsValidSQLInstance}"
+                         Value="False">
+                <Setter Property="BorderThickness"
+                        Value="2" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource GDSFailedColorBrush}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="ComboWrappedText">
+        <TextBlock Text="{Binding}"
+                   TextWrapping="Wrap"
+                   Padding="2" />
+    </DataTemplate>
+
+    <ControlTemplate x:Key="PreparationManagerView"
+                     TargetType="ContentControl">
+        <StackPanel>
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource DescriptionText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                           Text="{z:StringResource PreparationExplanationText}" />
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource ValidSQLInstanceElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource SetSQLServerHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="210" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource SetSQLServerExplanationText}" />
+
+                    <DockPanel VerticalAlignment="Top"
+                               Grid.Column="1">
+                        <Button DockPanel.Dock="Right"
+                                Margin="5,-1,5,5"
+                                Padding="4,3"
+                                Command="{Binding Path=DataContext.LoadInputSourcesCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}}">
+                            <Rectangle Width="20"
+                                       Height="20"
+                                       Fill="{DynamicResource GDSReloadIconBrush}" />
+                        </Button>
+                        <TextBox Style="{StaticResource ValidSQLInstanceTextStyle}"
+                                 Text="{Binding Path=SQLInstance, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource SelectSourceHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="250" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource SelectSourceExplanationText}" />
+
+                    <ComboBox x:Name="candidateSources"
+                              Grid.Column="1"
+                              VerticalAlignment="Top"
+                              ItemTemplate="{StaticResource ComboWrappedText}"
+                              ItemsSource="{Binding Path=CandidateSources, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Path=SelectedSource, UpdateSourceTrigger=PropertyChanged}"
+                              Height="60"
+                              Style="{StaticResource GlobalMarginStyle}">
+                        <i:Interaction.Behaviors>
+                            <z:ComboBoxAutoResetBehavior />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource SelectInputFileHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource SelectInputFileExplanationText}" />
+
+                    <Button Grid.Column="1"
+                            Content="{z:StringResource SelectInputFileButtonText}"
+                            Command="{Binding Path=DataContext.SelectInputFileCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}}" />
+                </Grid>
+
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource UseSourceForResultsHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource UseSourceForResultsText}" />
+
+                    <CheckBox Grid.Column="1"
+                              Style="{StaticResource GDSToggleSwitchStyle}"
+                              IsEnabled="{Binding ElementName=candidateSources, Path=SelectedItem.IsMultiProviderSource, Converter={StaticResource IsTrueIfPathIsFalse}}"
+                              IsChecked="{Binding Path=UseSourceForResults, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource DepositRulebaseArtefactsHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource DepositRulebaseArtefactsText}" />
+
+                    <CheckBox Grid.Column="1"
+                              Style="{StaticResource GDSToggleSwitchStyle}"
+                              IsChecked="{Binding Path=DepositRulebaseArtefacts, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource SwitchRunModeHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource SwitchRunModeText}" />
+
+                    <CheckBox Grid.Column="1"
+                              Style="{StaticResource GDSToggleSwitchStyle}"
+                              IsChecked="{Binding Path=RunMode, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource UseExperimentalItemsHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource UseExperimentalItemsText}" />
+
+                    <CheckBox Grid.Column="1"
+                              Style="{StaticResource GDSToggleSwitchStyle}"
+                              IsChecked="{Binding Path=UseExperimentalItems, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource ConnectionTimeoutHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource ConnectionTimeoutText}" />
+
+                    <DockPanel VerticalAlignment="Top"
+                               Grid.Column="1">
+                        <TextBox Name="TimeoutInMinutes"
+                                 Style="{StaticResource ValidSQLInstanceTextStyle}"
+                                 IsReadOnly="True"
+                                 Text="{Binding Path=TimeoutInMinutes, UpdateSourceTrigger=PropertyChanged}" />
+                        <ScrollBar Orientation="Horizontal"
+                                   Margin="5,-3,5,-1"
+                                   Padding="4,3"
+                                   Height="28"
+                                   Minimum="10"
+                                   Maximum="30"
+                                   SmallChange="5"
+                                   Value="{Binding Path=Text, ElementName=TimeoutInMinutes}" />
+                    </DockPanel>
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                            z:BoundProperty.Primary="{z:StringResource ReturnPeriodHeaderText, StringFormat={z:StringResource CaptionTextFormat}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{z:StringResource ReturnPeriodText}" />
+
+                    <ComboBox VerticalAlignment="Top"
+                              Grid.Column="1"
+                              Height="28"
+                              Margin="5,3,0,0"
+                              Padding="5"
+                              SelectedIndex="0"
+                              ItemsSource="{Binding Source={StaticResource ReturnPeriodListProvider}}"
+                              SelectedItem="{Binding Path=SelectedReturnPeriod}" />
+                </Grid>
+            </ContentControl>
+
+        </StackPanel>
+    </ControlTemplate>
+</ResourceDictionary>

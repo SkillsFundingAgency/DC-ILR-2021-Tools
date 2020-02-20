@@ -1,0 +1,1 @@
+﻿EXEC [Report].[EFAHNSDetailReportData] @Page,	@PageSize ,'${ReferenceDate}' ,'${LearnRefNumberFilter}','${ProvSpecLearnMonA}' , '${ProvSpecLearnMonB}' 

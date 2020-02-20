@@ -1,0 +1,28 @@
+﻿IF OBJECT_ID('ConvertCSVToTable') IS NOT NULL
+BEGIN
+    DROP FUNCTION  ConvertCSVToTable
+END
+GO
+CREATE FUNCTION ConvertCSVToTable (@list nvarchar(MAX))
+   RETURNS @tbl TABLE (stringVal nvarchar(MAX) NOT NULL) AS
+BEGIN
+   DECLARE @pos        int,
+           @nextpos    int,
+           @valuelen   int
+
+   SELECT @pos = 0, @nextpos = 1
+
+   WHILE @nextpos > 0
+   BEGIN
+      SELECT @nextpos = charindex(',', @list, @pos + 1)
+      SELECT @valuelen = CASE WHEN @nextpos > 0
+                              THEN @nextpos
+                              ELSE len(@list) + 1
+                         END - @pos - 1
+      INSERT @tbl (stringVal)
+         VALUES (RTRIM(LTRIM(substring(@list, @pos + 1, @valuelen))))
+      SELECT @pos = @nextpos
+   END
+   RETURN
+END
+GO

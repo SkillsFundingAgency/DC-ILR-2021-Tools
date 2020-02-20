@@ -1,0 +1,71 @@
+﻿IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Report].[TrailblazerEmployerIncentivesReportGetData]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [Report].[TrailblazerEmployerIncentivesReportGetData]
+GO
+
+CREATE PROCEDURE [Report].[TrailblazerEmployerIncentivesReportGetData]
+	@Page INT,
+	@PageSize INT
+AS
+BEGIN
+
+	SELECT 
+		[Employer identifier]
+		,[August small employer incentive]	as 		[August small employer incentive (£)]	
+		,[August 16-18 year-old apprentice incentive] as [August 16-18 year-old apprentice incentive (£)]
+		,[August achievement incentive]	as [August achievement incentive (£)]	
+		,[August total] as [August total (£)]
+		,[September small employer incentive]	as [September small employer incentive (£)]	
+		,[September 16-18 year-old apprentice incentive] as [September 16-18 year-old apprentice incentive (£)]
+		,[September achievement incentive]	as [September achievement incentive (£)]	
+		,[September total] as [September total (£)]
+		,[October small employer incentive]	as [October small employer incentive (£)]	
+		,[October 16-18 year-old apprentice incentive] as [October 16-18 year-old apprentice incentive (£)]
+		,[October achievement incentive]	as [October achievement incentive (£)]	
+		,[October total] as [October total (£)]
+		,[November small employer incentive]	as [November small employer incentive (£)]	
+		,[November 16-18 year-old apprentice incentive] as [November 16-18 year-old apprentice incentive (£)]
+		,[November achievement incentive]	as [November achievement incentive (£)]	
+		,[November total] as [November total (£)]
+		,[December small employer incentive] as [December small employer incentive (£)]	
+		,[December 16-18 year-old apprentice incentive] as [December 16-18 year-old apprentice incentive (£)]
+		,[December achievement incentive]	as [December achievement incentive (£)]	
+		,[December total] as [December total (£)]
+		,[January small employer incentive]	 as [January small employer incentive (£)]	
+		,[January 16-18 year-old apprentice incentive] as [January 16-18 year-old apprentice incentive (£)]
+		,[January achievement incentive]	as [January achievement incentive (£)]	
+		,[January total] as [January total (£)]
+		,[February small employer incentive]	as [February small employer incentive (£)]	
+		,[February 16-18 year-old apprentice incentive] as [February 16-18 year-old apprentice incentive (£)]
+		,[February achievement incentive]	as [February achievement incentive (£)]	
+		,[February total] as [February total (£)]
+		,[March small employer incentive]	as [March small employer incentive (£)]	
+		,[March 16-18 year-old apprentice incentive] as [March 16-18 year-old apprentice incentive (£)]
+		,[March achievement incentive]	as [March achievement incentive (£)]	
+		,[March total] as [March total (£)]
+		,[April small employer incentive]	as [April small employer incentive (£)]	
+		,[April 16-18 year-old apprentice incentive] as [April 16-18 year-old apprentice incentive (£)]
+		,[April achievement incentive]	 as [April achievement incentive (£)]	
+		,[April total] as [April total (£)]
+		,[May small employer incentive]	as [May small employer incentive (£)]	
+		,[May 16-18 year-old apprentice incentive] as [May 16-18 year-old apprentice incentive (£)]
+		,[May achievement incentive]	as [May achievement incentive (£)]	
+		,[May total] as [May total (£)]
+		,[June small employer incentive] as [June small employer incentive (£)]	
+		,[June 16-18 year-old apprentice incentive] as [June 16-18 year-old apprentice incentive (£)]
+		,[June achievement incentive]	 as [June achievement incentive (£)]	
+		,[June total] as [June total (£)]
+		,[July small employer incentive]	as [July small employer incentive (£)]	
+		,[July 16-18 year-old apprentice incentive] as [July 16-18 year-old apprentice incentive (£)]
+		,[July achievement incentive]	as [July achievement incentive (£)]	
+		,[July total] as [July total (£)]
+		,[Total small employer incentive]	as [Total small employer incentive (£)]	
+		,[Total 16-18 year-old apprentice incentive] as [Total 16-18 year-old apprentice incentive (£)]
+		,[Total achievement incentive]	as [Total achievement incentive (£)]	
+		,[Grand total]	as [Grand total (£)]
+		,[OFFICIAL - SENSITIVE]
+  FROM [Report].[TrailblazerEmployerIncentives] 
+	WHERE [RowNumber] BETWEEN ((@Page - 1) * @PageSize) AND (@Page * @PageSize - 1)
+	ORDER BY [RowNumber]
+END
+
+GO

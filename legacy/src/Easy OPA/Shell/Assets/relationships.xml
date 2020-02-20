@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Schemas>
+    <Schema ns="http://www.theia.org.uk/ILR/2013-14/1">
+        <Message>
+            <Header>
+                <CollectionDetails />
+                <Source />
+            </Header>
+            <SourceFiles>
+                <SourceFile />
+            </SourceFiles>
+            <LearningProvider />
+            <LearnerDeletion />
+            <Learner>
+                <__keys__>
+                    <LearnRefNumber />
+                </__keys__>
+                <LearnerContact>
+                    <__keys__>
+                        <LocType />
+                        <ContType />
+                    </__keys__>
+                    <PostAdd />
+                </LearnerContact>
+                <ContactPreference />
+                <LLDDandHealthProblem />
+                <LearnerFAM />
+                <ProviderSpecLearnerMonitoring />
+                <LearnerEmploymentStatus>
+                    <__keys__>
+                        <DateEmpStatApp />
+                    </__keys__>
+                    <EmploymentStatusMonitoring />
+                </LearnerEmploymentStatus>
+                <LearnerHE />
+                <LearningDelivery>
+                    <__keys__>
+                        <AimSeqNumber />
+                    </__keys__>
+                    <LearningDeliveryFAM />
+                    <ProviderSpecDeliveryMonitoring />
+                    <LearningDeliveryHE />
+                </LearningDelivery>
+            </Learner>
+        </Message>
+    </Schema>
+    <Schema ns="http://www.theia.org.uk/ILR/2014-15/1">
+        <Message>
+            <Header>
+                <CollectionDetails />
+                <Source />
+            </Header>
+            <SourceFiles>
+                <SourceFile />
+            </SourceFiles>
+            <LearningProvider />
+            <LearnerDeletion />
+            <Learner>
+                <__keys__>
+                    <LearnRefNumber />
+                </__keys__>
+                <LearnerContact>
+                    <__keys__>
+                        <LocType />
+                        <ContType />
+                    </__keys__>
+                    <PostAdd />
+                </LearnerContact>
+                <ContactPreference />
+                <LLDDandHealthProblem />
+                <LearnerFAM />
+                <ProviderSpecLearnerMonitoring />
+                <LearnerEmploymentStatus>
+                    <__keys__>
+                        <DateEmpStatApp />
+                    </__keys__>
+                    <EmploymentStatusMonitoring />
+                </LearnerEmploymentStatus>
+                <LearnerHE>
+                    <__keys__ />
+                    <LearnerHEFinancialSupport />
+                </LearnerHE>
+                <LearningDelivery>
+                    <__keys__>
+                        <AimSeqNumber />
+                    </__keys__>
+                    <LearningDeliveryFAM />
+                    <ApprenticeshipTrailblazerFinancialDetails />
+                    <ProviderSpecDeliveryMonitoring />
+                    <LearningDeliveryHE />
+                    <LearningDeliveryWorkPlacement />
+                </LearningDelivery>
+            </Learner>
+            <LearnerDestinationandProgression>
+                <__keys__>
+                    <LearnRefNumber />
+                </__keys__>
+                <DPOutcome />
+            </LearnerDestinationandProgression>
+        </Message>
+    </Schema>
+    <Schema ns="SFA/ILR/2015-16">
+        <Message />
+        <Header>
+            <CollectionDetails />
+            <Source />
+        </Header>
+        <SourceFile />
+        <LearningProvider />
+        <Learner>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <LearnerContact>
+                <__keys__>
+                    <ContType />
+                    <LocType />
+                </__keys__>
+                <PostAdd />
+            </LearnerContact>
+            <ContactPreference />
+            <LLDDandHealthProblem />
+            <LearnerFAM />
+            <ProviderSpecLearnerMonitoring />
+            <LearnerEmploymentStatus>
+                <__keys__>
+                    <DateEmpStatApp />
+                </__keys__>
+                <EmploymentStatusMonitoring />
+            </LearnerEmploymentStatus>
+            <LearnerHE>
+                <__keys__ />
+                <LearnerHEFinancialSupport />
+            </LearnerHE>
+            <LearningDelivery>
+                <__keys__>
+                    <AimSeqNumber />
+                </__keys__>
+                <LearningDeliveryFAM />
+                <LearningDeliveryWorkPlacement />
+                <TrailblazerApprenticeshipFinancialRecord />
+                <ProviderSpecDeliveryMonitoring />
+                <LearningDeliveryHE />
+            </LearningDelivery>
+        </Learner>
+        <LearnerDestinationandProgression>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <DPOutcome />
+        </LearnerDestinationandProgression>
+    </Schema>
+    <Schema ns="SFA/ILR/2016-17">
+        <Message />
+        <Header>
+            <CollectionDetails />
+            <Source />
+        </Header>
+        <SourceFile />
+        <LearningProvider />
+        <Learner>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <LearnerContact>
+                <__keys__>
+                    <ContType />
+                    <LocType />
+                </__keys__>
+                <PostAdd />
+            </LearnerContact>
+            <ContactPreference />
+            <LLDDandHealthProblem />
+            <LearnerFAM />
+            <ProviderSpecLearnerMonitoring />
+            <LearnerEmploymentStatus>
+                <__keys__>
+                    <DateEmpStatApp />
+                </__keys__>
+                <EmploymentStatusMonitoring />
+            </LearnerEmploymentStatus>
+            <LearnerHE>
+                <__keys__ />
+                <LearnerHEFinancialSupport />
+            </LearnerHE>
+            <LearningDelivery>
+                <__keys__>
+                    <AimSeqNumber />
+                </__keys__>
+                <LearningDeliveryFAM />
+                <LearningDeliveryWorkPlacement />
+                <TrailblazerApprenticeshipFinancialRecord />
+                <ProviderSpecDeliveryMonitoring />
+                <LearningDeliveryHE />
+            </LearningDelivery>
+        </Learner>
+        <LearnerDestinationandProgression>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <DPOutcome />
+        </LearnerDestinationandProgression>
+    </Schema>
+    <Schema ns="SFA/ILR/2017-18">
+        <Message />
+        <Header>
+            <CollectionDetails />
+            <Source />
+        </Header>
+        <SourceFile />
+        <LearningProvider />
+        <Learner>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <ContactPreference />
+            <LLDDandHealthProblem />
+            <LearnerFAM />
+            <ProviderSpecLearnerMonitoring />
+            <LearnerEmploymentStatus>
+                <__keys__>
+                    <DateEmpStatApp />
+                </__keys__>
+                <EmploymentStatusMonitoring />
+            </LearnerEmploymentStatus>
+            <LearnerHE>
+                <__keys__ />
+                <LearnerHEFinancialSupport />
+            </LearnerHE>
+            <LearningDelivery>
+                <__keys__>
+                    <AimSeqNumber />
+                </__keys__>
+                <LearningDeliveryFAM />
+                <LearningDeliveryWorkPlacement />
+                <AppFinRecord />
+                <ProviderSpecDeliveryMonitoring />
+                <LearningDeliveryHE />
+            </LearningDelivery>
+        </Learner>
+        <LearnerDestinationandProgression>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <DPOutcome />
+        </LearnerDestinationandProgression>
+    </Schema>
+    <!-- CME: copied from the preceding year -->
+    <Schema ns="ESFA/ILR/2018-19">
+        <Message />
+        <Header>
+            <CollectionDetails />
+            <Source />
+        </Header>
+        <SourceFile />
+        <LearningProvider />
+        <Learner>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <ContactPreference />
+            <LLDDandHealthProblem />
+            <LearnerFAM />
+            <ProviderSpecLearnerMonitoring />
+            <LearnerEmploymentStatus>
+                <__keys__>
+                    <DateEmpStatApp />
+                </__keys__>
+                <EmploymentStatusMonitoring />
+            </LearnerEmploymentStatus>
+            <LearnerHE>
+                <__keys__ />
+                <LearnerHEFinancialSupport />
+            </LearnerHE>
+            <LearningDelivery>
+                <__keys__>
+                    <AimSeqNumber />
+                </__keys__>
+                <LearningDeliveryFAM />
+                <LearningDeliveryWorkPlacement />
+                <AppFinRecord />
+                <ProviderSpecDeliveryMonitoring />
+                <LearningDeliveryHE />
+            </LearningDelivery>
+        </Learner>
+        <LearnerDestinationandProgression>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <DPOutcome />
+        </LearnerDestinationandProgression>
+    </Schema>
+    <!-- CME: copied from the preceding year -->
+    <Schema ns="ESFA/ILR/2019-20">
+        <Message />
+        <Header>
+            <CollectionDetails />
+            <Source />
+        </Header>
+        <SourceFile />
+        <LearningProvider />
+        <Learner>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <ContactPreference />
+            <LLDDandHealthProblem />
+            <LearnerFAM />
+            <ProviderSpecLearnerMonitoring />
+            <LearnerEmploymentStatus>
+                <__keys__>
+                    <DateEmpStatApp />
+                </__keys__>
+                <EmploymentStatusMonitoring />
+            </LearnerEmploymentStatus>
+            <LearnerHE>
+                <__keys__ />
+                <LearnerHEFinancialSupport />
+            </LearnerHE>
+            <LearningDelivery>
+                <__keys__>
+                    <AimSeqNumber />
+                </__keys__>
+                <LearningDeliveryFAM />
+                <LearningDeliveryWorkPlacement />
+                <AppFinRecord />
+                <ProviderSpecDeliveryMonitoring />
+                <LearningDeliveryHE />
+            </LearningDelivery>
+        </Learner>
+        <LearnerDestinationandProgression>
+            <__keys__>
+                <LearnRefNumber />
+            </__keys__>
+            <DPOutcome />
+        </LearnerDestinationandProgression>
+    </Schema>
+</Schemas>

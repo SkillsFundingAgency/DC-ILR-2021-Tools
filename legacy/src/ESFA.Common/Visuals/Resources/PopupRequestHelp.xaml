@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:ESFA.Common.Composition">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/stylesandconverters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="PopupRequestHelpTemplate"
+                     TargetType="ContentControl">
+        <ContentControl Style="{DynamicResource EmbeddedPopupElementStyle}"
+                        y:BoundProperty.Primary="{Binding Path=CurrentState, Converter={StaticResource IsVisibleIfStateMatches}, ConverterParameter={x:Static y:InteractionState.IsModalRequestHelp}}"
+                        y:BoundProperty.Secondary="{y:StringResource HelpTabText}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Frame Height="400"
+                       Width="700"
+                       Source="pack://siteoforigin:,,,/assets/help.html" />
+
+                <DockPanel Grid.Row="1"
+                           Margin="0,5,0,0"
+                           HorizontalAlignment="Right">
+                    <Button Content="{y:StringResource FinishedButtonText}"
+                            Command="{Binding Path=ResetStateCommand}" />
+                </DockPanel>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+</ResourceDictionary>
