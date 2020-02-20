@@ -18,6 +18,18 @@ variables:
 - name: ConsoleTool
   value: 'ESFA.DC.ILR.Tools.IFCT.Console'
 
+
+trigger:
+  branches:
+    include:
+     - *
+  paths:
+    include:
+    - src/*
+    - azure-pipelines.yml
+    exclude:
+    - legacy/*
+
 stages:
 - stage: Build
   displayName: Build stage
