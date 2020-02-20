@@ -39,7 +39,7 @@ stages:
     pool:
       name: DCT
       demands:
-      - BuildServer
+      - IsBuildServer
 
     steps:
     - task: DotNetCoreInstaller@2
@@ -105,7 +105,7 @@ stages:
         
     - task: DotNetCoreCLI@2
       displayName: Run unit tests
-      enabled: true
+      enabled: false
       inputs:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
