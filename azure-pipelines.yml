@@ -61,6 +61,11 @@ stages:
         updateAssemblyInfo: true
         preferBundledVersion: false
 
+    - task: VisualStudioTestPlatformInstaller@1
+      inputs:
+        packageFeedSelector: 'nugetOrg'
+        versionSelector: 'latestStable'
+
     ## Restore & Build 
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
@@ -85,7 +90,19 @@ stages:
     #********************************************************************************
     # Run Unit Tests
     #********************************************************************************
-
+    - task: VSTest@2
+      displayName: 'Run Unit Tests'
+      enabled: true
+      inputs:
+        testAssemblyVer2: |
+         **\$(BuildConfiguration)\src\*test*.dll
+         !**\obj\**
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        runInParallel: true
+        codeCoverageEnabled: true
+        diagnosticsEnabled: true       
+        
     - task: DotNetCoreCLI@2
       displayName: Run unit tests
       enabled: true
