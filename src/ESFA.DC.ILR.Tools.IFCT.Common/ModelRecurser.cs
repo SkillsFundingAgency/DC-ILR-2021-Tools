@@ -1,8 +1,8 @@
-﻿using Autofac;
-using ESFA.DC.ILR.Tools.IFCT.Interface;
-using System;
+﻿using System;
 using System.Collections;
 using System.Reflection;
+using Autofac;
+using ESFA.DC.ILR.Tools.IFCT.Interface;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Common
 {
@@ -77,6 +77,5 @@ namespace ESFA.DC.ILR.Tools.IFCT.Common
                 }
             }
         }
-
     }
 }

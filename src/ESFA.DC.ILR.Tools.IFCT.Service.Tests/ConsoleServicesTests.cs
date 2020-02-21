@@ -14,7 +14,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
     public class ConsoleServicesTests
     {
         private readonly string sourcefileName = "sourceFile.xml";
-        private readonly string targetfileName = "targetFile.xml";
         private readonly string targetFilePath = @"C:\";
 
         [Fact]
@@ -27,7 +26,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             FileConversionContext fileConversionContext = null;
 
             // Act & Assert
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, null);
             action.Should().Throw<ArgumentNullException>();
         }
 
@@ -55,7 +54,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             };
 
             // Act & Assert
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, null);
             action.Should().Throw<ArgumentException>();
         }
 
@@ -74,7 +73,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             };
 
             // Act
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, null);
             action.Should().Throw<ArgumentException>();
 
             // Assert
@@ -98,11 +97,11 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             };
 
             // Act
-            await consoleService.ProcessFilesAsync(fileConversionContext);
+            await consoleService.ProcessFilesAsync(fileConversionContext, null);
 
             // Assert
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
-            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetFilePath), Times.Once);
+            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetFilePath, null), Times.Once);
         }
     }
 }

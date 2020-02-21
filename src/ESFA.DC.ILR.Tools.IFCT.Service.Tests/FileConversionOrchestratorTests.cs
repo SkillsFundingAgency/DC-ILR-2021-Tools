@@ -58,13 +58,18 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 anonymiseLogMock.Object,
                 loggerMock.Object);
 
+            var progressLog = new List<string>(16);
+
             // Act
-            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName, s => progressLog.Add(s));
 
             // Assert
             result.Should().BeTrue();
             loggerMock.VerifyInfo($"Mapping {sourcefileName} into {targetfolderName}", Times.Once()).Should().BeTrue();
-            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(8)).Should().BeTrue();
+            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(9)).Should().BeTrue();
+
+            progressLog.Should().NotBeEmpty();
+            progressLog.Should().HaveCount(7);
 
             targetStream.Dispose();
         }
@@ -95,7 +100,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 loggerMock.Object);
 
             // Act
-            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName, null);
 
             // Assert
             result.Should().BeFalse();

@@ -18,7 +18,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             _fileConversionOrchestrator = fileConversionOrchestrator;
         }
 
-        public async Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext)
+        public async Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext, Action<string> progressCallback)
         {
             if (fileConversionContext == null)
             {
@@ -26,7 +26,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
 
             // Using Directory here as this is the *ConsoleService* which will be used in console and WPF app, and expect windows file system.
-            // Perhaps useful to add a ContainerExists to the IFileService
+            // Perhaps useful to add a ContainerExists to the IFileService then this could be generic.
             var validSingeSourceFile = !string.IsNullOrWhiteSpace(fileConversionContext.SourceFile) &&
                 await _fileService.ExistsAsync(fileConversionContext.SourceFile, null, new CancellationToken());
             var validSingleTargetFolder = !string.IsNullOrWhiteSpace(fileConversionContext.TargetFolder)
@@ -35,7 +35,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFolder)
             {
                 // process single file
-                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, _fileConversionOrchestrator);
+                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, progressCallback);
                 return result;
             }
             else
@@ -45,9 +45,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
         }
 
-        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, IFileConversionOrchestrator fileConversionOrchestrator)
+        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, Action<string> progressCallback)
         {
-            return await fileConversionOrchestrator.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder);
+            return await _fileConversionOrchestrator.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder, progressCallback);
         }
     }
 }

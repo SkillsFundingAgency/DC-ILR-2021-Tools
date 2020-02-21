@@ -58,7 +58,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             _logger = logger;
         }
 
-        public async Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer)
+        public async Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer, Action<string> progressCallback)
         {
             _logger.LogInfo($"Mapping {sourceFileReference} into {targetFileContainer}");
 
@@ -67,6 +67,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
             try
             {
+                progressCallback?.Invoke("Starting");
+
                 // Generate new filename
                 var targetFileReference = GenerateOutputName(sourceFileReference);
                 _logger.LogInfo($"Updated filename from {sourceFileReference} is {targetFileReference}");
@@ -85,24 +87,32 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                         return false;
                     }
 
+                    _logger.LogVerbose($"Schema validated in {timer.ElapsedMilliseconds}ms");
+                    progressCallback?.Invoke("Schema validated");
+                    timer.Restart();
+
                     sourceMessage = _xmlSerializationService.Deserialize<Loose.Previous.Message>(sourceStream);
                     _logger.LogVerbose($"Deserialize in {timer.ElapsedMilliseconds}ms");
+                    progressCallback?.Invoke("File loaded");
                     timer.Restart();
                 }
 
                 // Map from previous year to current year structure via automapper
                 var targetMessage = _mapper.Map(sourceMessage);
                 _logger.LogVerbose($"Mapped in {timer.ElapsedMilliseconds}ms");
+                progressCallback?.Invoke("Mapped to current year structure");
                 timer.Restart();
 
                 // Uplift any relevant values in the current year structure
                 var upliftedMessage = _yearUplifter.Process(targetMessage);
                 _logger.LogVerbose($"Uplifted in {timer.ElapsedMilliseconds}ms");
+                progressCallback?.Invoke("Values uplifted for current year");
                 timer.Restart();
 
                 // Anonymise any PII information in the current year structure
                 var anonymisedMessage = _anonymiser.Process(upliftedMessage);
                 _logger.LogVerbose($"Anonymised in {timer.ElapsedMilliseconds}ms");
+                progressCallback?.Invoke("Anonymised for current year");
                 timer.Restart();
 
                 // Write out the current year structure
@@ -135,6 +145,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                     await targetStream.FlushAsync();
                     _anonymiseLog.Clear();
                 }
+
+                progressCallback?.Invoke("File saved - Completed");
             }
             catch (Exception ex)
             {
