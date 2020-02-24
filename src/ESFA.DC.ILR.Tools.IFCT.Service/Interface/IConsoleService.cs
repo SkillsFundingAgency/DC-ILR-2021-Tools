@@ -1,10 +1,10 @@
-﻿using System;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Interface
 {
     public interface IConsoleService
     {
-        Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext, Action<string> progressCallback);
+        Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext, CancellationToken cancellationToken);
     }
 }

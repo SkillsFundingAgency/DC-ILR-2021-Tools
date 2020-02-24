@@ -18,7 +18,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             _fileConversionOrchestrator = fileConversionOrchestrator;
         }
 
-        public async Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext, Action<string> progressCallback)
+        public async Task<bool> ProcessFilesAsync(IFileConversionContext fileConversionContext, CancellationToken cancellationToken)
         {
             if (fileConversionContext == null)
             {
@@ -35,7 +35,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             if (validSingeSourceFile && validSingleTargetFolder)
             {
                 // process single file
-                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, progressCallback);
+                var result = await ProcessSingleFile(fileConversionContext.SourceFile, fileConversionContext.TargetFolder, cancellationToken);
                 return result;
             }
             else
@@ -45,9 +45,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             }
         }
 
-        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, Action<string> progressCallback)
+        private async Task<bool> ProcessSingleFile(string sourceFile, string targetFolder, CancellationToken cancellationToken)
         {
-            return await _fileConversionOrchestrator.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder, progressCallback);
+            return await _fileConversionOrchestrator.MapFileAsync(Path.GetFileName(sourceFile), Path.GetDirectoryName(sourceFile), targetFolder, cancellationToken);
         }
     }
 }

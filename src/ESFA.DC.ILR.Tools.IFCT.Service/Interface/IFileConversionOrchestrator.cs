@@ -1,10 +1,10 @@
-﻿using System;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Interface
 {
     public interface IFileConversionOrchestrator
     {
-        Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer, Action<string> progressCallback);
+        Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer, CancellationToken cancellationToken);
     }
 }

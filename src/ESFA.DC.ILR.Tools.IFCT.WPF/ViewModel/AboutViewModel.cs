@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Windows.Input;
 using ESFA.DC.ILR.Tools.IFCT.WPF.Service.Interface;
+using GalaSoft.MvvmLight.Command;
 
 namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
 {
@@ -10,9 +11,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
     {
         public AboutViewModel()
         {
-            CloseWindowCommand = new ParameterCommandHandler(
-                (window) => CloseWindowCommandAction((ICloseable)window),
-                () => true);
+            CloseWindowCommand = new RelayCommand<ICloseable>(CloseWindowCommandAction);
+
             AboutItems = new ObservableCollection<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("Version Number:", Assembly.GetEntryAssembly().GetName().Version.ToString()),

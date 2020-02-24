@@ -1,22 +1,28 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Service.Message;
+using ESFA.DC.ILR.Tools.IFCT.WPF.Command;
 using ESFA.DC.ILR.Tools.IFCT.WPF.Views;
 using ESFA.DC.Logging.Interfaces;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
         private const string FilenamePlaceholder = "No file chosen";
         private const string FoldernamePlaceholder = "No folder chosen";
 
         private readonly ILogger _logger;
         private readonly IConsoleService _consoleService;
+        
+        private CancellationTokenSource _cancellationTokenSource;
 
         private string _sourceFileName = FilenamePlaceholder;
         private string _targetFolderName = FoldernamePlaceholder;
@@ -25,26 +31,26 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
         private string _progressIndicator = string.Empty;
         private int _progressCounter = -1;
 
-        public MainViewModel(ILogger logger, IConsoleService consoleService)
+        public MainViewModel(IMessengerService messengerService, ILogger logger, IConsoleService consoleService)
         {
             _logger = logger;
             _consoleService = consoleService;
 
-            AboutNavigationCommand = new CommandHandler(() => AboutNavigationAction(), () => true);
-            ShowChooseFileDialogCommand = new CommandHandler(() => ShowChooseFileDialogAction(), () => true);
-            ShowChooseFolderDialogCommand = new CommandHandler(() => ShowChooseFolderDialogAction(), () => true);
-            ProcessFileCommand = new CommandHandler(() => ProcessFileAction(), () => true);
+            messengerService.Register<TaskProgressMessage>(this, HandleTaskProgressMessage);
+
+            AboutNavigationCommand = new RelayCommand(AboutNavigationAction);
+            ShowChooseFileDialogCommand = new RelayCommand(ShowChooseFileDialogAction);
+            ShowChooseFolderDialogCommand = new RelayCommand(ShowChooseFolderDialogAction);
+            ProcessFileCommand = new AsyncCommand(ProcessFileAction);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public RelayCommand AboutNavigationCommand { get; }
 
-        public ICommand AboutNavigationCommand { get; }
+        public RelayCommand ShowChooseFileDialogCommand { get; }
 
-        public ICommand ShowChooseFileDialogCommand { get; }
+        public RelayCommand ShowChooseFolderDialogCommand { get; }
 
-        public ICommand ShowChooseFolderDialogCommand { get; }
-
-        public ICommand ProcessFileCommand { get; }
+        public AsyncCommand ProcessFileCommand { get; }
 
         public string SourceFileName
         {
@@ -52,7 +58,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _sourceFileName = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -62,7 +68,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _targetFolderName = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -72,7 +78,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _canSelectFileFolder = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -82,7 +88,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _canStartProcessing = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -92,7 +98,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _progressIndicator = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -102,13 +108,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _progressCounter = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public static void AboutNavigationAction()
@@ -143,7 +144,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             }
         }
 
-        public void ProcessFileAction()
+        public void HandleTaskProgressMessage(TaskProgressMessage taskProgressMessage)
+        {
+            ProgressIndicator = taskProgressMessage.TaskName;
+            ProgressCounter = taskProgressMessage.CurrentTask; ;
+        }
+
+        public async Task ProcessFileAction()
         {
             _logger.LogInfo($"Process {SourceFileName} to {TargetFolderName}");
             CanStartProcessing = false;
@@ -157,40 +164,20 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
 
             try
             {
-                using (var worker = new BackgroundWorker())
-                {
-                    worker.WorkerReportsProgress = true;
-                    worker.DoWork += ProcessfilesOnWorker;
-                    worker.ProgressChanged += ProgressChangedOnWorker;
-                    worker.RunWorkerCompleted += TaskCompletedOnWorker;
-                    ProgressIndicator = string.Empty;
-                    ProgressCounter = -1;
-                    worker.RunWorkerAsync(context);
-                }
+                _cancellationTokenSource = new CancellationTokenSource();
+                var result = await _consoleService.ProcessFilesAsync(context, _cancellationTokenSource.Token);
+
             }
-            catch (Exception)
+            catch (TaskCanceledException taskCanceledException)
             {
-                CanStartProcessing = true;
-                CanSelectFileFolder = true;
+                _logger.LogError("Operation Cancelled", taskCanceledException);
+
             }
-        }
-
-        private void ProcessfilesOnWorker(object sender, DoWorkEventArgs e)
-        {
-            var result = _consoleService.ProcessFilesAsync((FileConversionContext)e.Argument, s =>
+            finally
             {
-                (sender as BackgroundWorker).ReportProgress(0, s);
-            }).Result;
-        }
+                _cancellationTokenSource.Dispose();
+            }
 
-        private void ProgressChangedOnWorker(object sender, ProgressChangedEventArgs e)
-        {
-            ProgressIndicator = (string)e.UserState;
-            ProgressCounter++;
-        }
-
-        private void TaskCompletedOnWorker(object sender, RunWorkerCompletedEventArgs e)
-        {
             CanStartProcessing = true;
             CanSelectFileFolder = true;
         }

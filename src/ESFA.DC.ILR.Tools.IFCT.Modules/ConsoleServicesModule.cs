@@ -13,6 +13,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Modules
         protected override void Load(ContainerBuilder containerBuilder)
         {
             // Interfaces at the Servic level
+            containerBuilder.RegisterType<CommandLineMessengerService>().As<IMessengerService>().SingleInstance();
             containerBuilder.RegisterType<ConsoleService>().As<IConsoleService>();
             containerBuilder.RegisterType<FileNameService>().As<IFileNameService>();
             containerBuilder.RegisterType<FileConversionOrchestratorConfiguration>().As<IFileConversionOrchestratorConfiguration>().SingleInstance();
