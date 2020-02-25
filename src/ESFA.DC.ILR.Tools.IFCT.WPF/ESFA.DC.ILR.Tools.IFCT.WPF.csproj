@@ -215,7 +215,6 @@
     <Compile Include="Modules\ViewModelsModule.cs" />
     <Compile Include="Service\Interface\ICloseable.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
-    <Compile Include="ViewModel\ParameterCommandHandler.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
