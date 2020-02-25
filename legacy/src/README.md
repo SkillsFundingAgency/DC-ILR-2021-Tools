@@ -15,6 +15,8 @@ You will need to download and install the following:
 
 1. Copy the previous years file in the ./Shell/Assets folder and name it the
    current year.
+> <p style="color:red;font-weight:bold">WARNING</p>
+> <p style="color:red">Make sure that the files are set to "Copy If Newer" in Visual Studio</p>
 2. Take the current ILR file and place it:
   - ./Shell/Assets
   - ./Shell/Assets/{period}/Production/ILRSchema
