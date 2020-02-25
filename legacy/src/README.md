@@ -18,25 +18,23 @@ You will need to download and install the following:
 > <p style="color:red;font-weight:bold">WARNING</p>
 > <p style="color:red">Make sure that the files are set to "Copy If Newer" in Visual Studio</p>
 2. Take the current ILR file and place it:
-  - ./Shell/Assets
-  - ./Shell/Assets/{period}/Production/ILRSchema
+   - ./Shell/Assets
+   - ./Shell/Assets/{period}/Production/ILRSchema
 3. Copy the bulkloadSchema file of the previous year and add and remove sections
    based on the ILR specification. This file deals with the mapping between the
    ILR file and what fields are created in the database.
 2. Update the following files
-  - relationships.xml
-    - Copy the previous <Schema></Schema> and update the namespace to the
-      current year
-  - rulebase.cfg
-    - Copy the set of rulebases from the previous year and find and replace the
-      year. e.g. 1920 --> 2021
-  - schemamap.cfg
-    - Copy the previous <SchemaMap></SchemaMap> and update:
-      - <BulkLoad> file name
-      - <Message> file name
-      - <Namespace> current year
-      - <PeriodStartDate> current year start date
-      - <Year> current period date
-  - sqlbatch.cfg
-    - copy the set of <Batch> sections and update the file path to the new
-      current year.
+   - relationships.xml
+      - Copy the previous <Schema></Schema> and update the namespace to the current year
+   - rulebase.cfg
+      - Copy the set of rulebases from the previous year and find and replace the
+        year. e.g. 1920 --> 2021
+   - schemamap.cfg
+      - Copy the previous <SchemaMap></SchemaMap> and update:
+         - <BulkLoad> file name
+         - <Message> file name
+         - <Namespace> current year
+         - <PeriodStartDate> current year start date
+         - <Year> current period date
+    - sqlbatch.cfg
+       - copy the set of <Batch> sections and update the file path to the new current year.
