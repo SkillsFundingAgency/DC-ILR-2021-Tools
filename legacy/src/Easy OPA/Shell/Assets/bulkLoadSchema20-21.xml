@@ -1,0 +1,869 @@
+<xsd:schema xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+            attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="ESFA/ILR/2020-21"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation>
+        <xsd:appinfo>
+            <sql:relationship name="Learner_ContactPreference"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="ContactPreference"
+                              child-key="FK_Learner" />
+            <sql:relationship name="Learner_LLDDandHealthProblem"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="LLDDandHealthProblem"
+                              child-key="FK_Learner" />
+            <sql:relationship name="Learner_LearnerFAM"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="LearnerFAM"
+                              child-key="FK_Learner" />
+            <sql:relationship name="Learner_ProviderSpecLearnerMonitoring"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="ProviderSpecLearnerMonitoring"
+                              child-key="FK_Learner" />
+            <sql:relationship name="Learner_LearnerEmploymentStatus"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="LearnerEmploymentStatus"
+                              child-key="FK_Learner" />
+            <sql:relationship name="LearnerEmploymentStatus_EmploymentStatusMonitoring"
+                              parent="LearnerEmploymentStatus"
+                              parent-key="PK_LearnerEmploymentStatus"
+                              child="EmploymentStatusMonitoring"
+                              child-key="FK_LearnerEmploymentStatus" />
+            <sql:relationship name="Learner_LearnerHE"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="LearnerHE"
+                              child-key="FK_Learner" />
+            <sql:relationship name="LearnerHE_LearnerHEFinancialSupport"
+                              parent="LearnerHE"
+                              parent-key="PK_LearnerHE"
+                              child="LearnerHEFinancialSupport"
+                              child-key="FK_LearnerHE" />
+            <sql:relationship name="Learner_LearningDelivery"
+                              parent="Learner"
+                              parent-key="PK_Learner"
+                              child="LearningDelivery"
+                              child-key="FK_Learner" />
+            <sql:relationship name="LearningDelivery_LearningDeliveryFAM"
+                              parent="LearningDelivery"
+                              parent-key="PK_LearningDelivery"
+                              child="LearningDeliveryFAM"
+                              child-key="FK_LearningDelivery" />
+            <sql:relationship name="LearningDelivery_LearningDeliveryWorkPlacement"
+                              parent="LearningDelivery"
+                              parent-key="PK_LearningDelivery"
+                              child="LearningDeliveryWorkPlacement"
+                              child-key="FK_LearningDelivery" />
+            <sql:relationship name="LearningDelivery_AppFinRecord"
+                              parent="LearningDelivery"
+                              parent-key="PK_LearningDelivery"
+                              child="AppFinRecord"
+                              child-key="FK_LearningDelivery" />
+            <sql:relationship name="LearningDelivery_ProviderSpecDeliveryMonitoring"
+                              parent="LearningDelivery"
+                              parent-key="PK_LearningDelivery"
+                              child="ProviderSpecDeliveryMonitoring"
+                              child-key="FK_LearningDelivery" />
+            <sql:relationship name="LearningDelivery_LearningDeliveryHE"
+                              parent="LearningDelivery"
+                              parent-key="PK_LearningDelivery"
+                              child="LearningDeliveryHE"
+                              child-key="FK_LearningDelivery" />
+            <sql:relationship name="LearnerDestinationandProgression_DPOutcome"
+                              parent="LearnerDestinationandProgression"
+                              parent-key="PK_LearnerDestinationandProgression"
+                              child="DPOutcome"
+                              child-key="FK_LearnerDestinationandProgression" />
+        </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:element name="Message"
+                 sql:is-constant="1">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Header"
+                             sql:is-constant="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="CollectionDetails"
+                                         sql:relation="CollectionDetails">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_CollectionDetails"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="Collection"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(3)" />
+                                        <xsd:element name="Year"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(4)" />
+                                        <xsd:element name="FilePreparationDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="Source"
+                                         sql:relation="Source">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_Source"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="ProtectiveMarking"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(27)" />
+                                        <xsd:element name="UKPRN"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint" />
+                                        <xsd:element name="SoftwareSupplier"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(40)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="SoftwarePackage"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(30)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="Release"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(20)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="SerialNo"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(2)" />
+                                        <xsd:element name="DateTime"
+                                                     type="xsd:dateTime"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="ReferenceData"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(100)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="ComponentSetVersion"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(20)"
+                                                     minOccurs="0" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="SourceFiles"
+                             sql:is-constant="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="SourceFile"
+                                         sql:relation="SourceFile">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_SourceFile"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="SourceFileName"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(50)" />
+                                        <xsd:element name="FilePreparationDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="SoftwareSupplier"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(40)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="SoftwarePackage"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(30)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="Release"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(20)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="SerialNo"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(2)" />
+                                        <xsd:element name="DateTime"
+                                                     type="xsd:dateTime"
+                                                     sql:datatype="datetime"
+                                                     minOccurs="0" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="LearningProvider"
+                             sql:relation="LearningProvider">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="PK_LearningProvider"
+                                         type="xsd:int"
+                                         sql:datatype="int" />
+                            <xsd:element name="UKPRN"
+                                         type="xsd:int"
+                                         sql:datatype="bigint" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="Learner"
+                             sql:relation="Learner">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="PK_Learner"
+                                         type="xsd:int"
+                                         sql:datatype="int" />
+                            <xsd:element name="LearnRefNumber"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(12)" />
+                            <xsd:element name="PrevLearnRefNumber"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(12)"
+                                         minOccurs="0" />
+                            <xsd:element name="PrevUKPRN"
+                                         type="xsd:int"
+                                         sql:datatype="bigint"
+                                         minOccurs="0" />
+                            <xsd:element name="PMUKPRN"
+                                         type="xsd:int"
+                                         sql:datatype="bigint"
+                                         minOccurs="0" />
+                            <xsd:element name="CampId"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(8)"
+                                         minOccurs="0" />
+                            <xsd:element name="ULN"
+                                         type="xsd:long"
+                                         sql:datatype="bigint" />
+                            <xsd:element name="FamilyName"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(100)"
+                                         minOccurs="0" />
+                            <xsd:element name="GivenNames"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(100)"
+                                         minOccurs="0" />
+                            <xsd:element name="DateOfBirth"
+                                         type="xsd:date"
+                                         sql:datatype="datetime"
+                                         minOccurs="0" />
+                            <xsd:element name="Ethnicity"
+                                         type="xsd:int"
+                                         sql:datatype="int" />
+                            <xsd:element name="Sex"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(1)" />
+                            <xsd:element name="LLDDHealthProb"
+                                         type="xsd:int"
+                                         sql:datatype="int" />
+                            <xsd:element name="NINumber"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(9)"
+                                         minOccurs="0" />
+                            <xsd:element name="PriorAttain"
+                                         type="xsd:int"
+                                         sql:datatype="int"
+                                         minOccurs="0" />
+                            <xsd:element name="Accom"
+                                         type="xsd:int"
+                                         sql:datatype="int"
+                                         minOccurs="0" />
+                            <xsd:element name="ALSCost"
+                                         type="xsd:int"
+                                         sql:datatype="bigint"
+                                         minOccurs="0" />
+                            <xsd:element name="PlanLearnHours"
+                                         type="xsd:int"
+                                         sql:datatype="bigint"
+                                         minOccurs="0" />
+                            <xsd:element name="PlanEEPHours"
+                                         type="xsd:int"
+                                         sql:datatype="bigint"
+                                         minOccurs="0" />
+                            <xsd:element name="MathGrade"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(4)"
+                                         minOccurs="0" />
+                            <xsd:element name="EngGrade"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(4)"
+                                         minOccurs="0" />
+                            <xsd:element name="PostcodePrior"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(8)" />
+                            <xsd:element name="Postcode"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(8)" />
+                            <xsd:element name="AddLine1"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(50)"
+                                         minOccurs="0" />
+                            <xsd:element name="AddLine2"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(50)"
+                                         minOccurs="0" />
+                            <xsd:element name="AddLine3"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(50)"
+                                         minOccurs="0" />
+                            <xsd:element name="AddLine4"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(50)"
+                                         minOccurs="0" />
+                            <xsd:element name="TelNo"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(18)"
+                                         minOccurs="0" />
+                            <xsd:element name="Email"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(100)"
+                                         minOccurs="0" />
+                            <xsd:element name="ContactPreference"
+                                         sql:relation="ContactPreference"
+                                         sql:relationship="Learner_ContactPreference">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_ContactPreference"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="ContPrefType"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(3)" />
+                                        <xsd:element name="ContPrefCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="LLDDandHealthProblem"
+                                         sql:relation="LLDDandHealthProblem"
+                                         sql:relationship="Learner_LLDDandHealthProblem">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_LLDDandHealthProblem"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="LLDDCat"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="PrimaryLLDD"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="LearnerFAM"
+                                         sql:relation="LearnerFAM"
+                                         sql:relationship="Learner_LearnerFAM">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_LearnerFAM"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="LearnFAMType"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(3)" />
+                                        <xsd:element name="LearnFAMCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="ProviderSpecLearnerMonitoring"
+                                         sql:relation="ProviderSpecLearnerMonitoring"
+                                         sql:relationship="Learner_ProviderSpecLearnerMonitoring">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_ProviderSpecLearnerMonitoring"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="ProvSpecLearnMonOccur"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(1)" />
+                                        <xsd:element name="ProvSpecLearnMon"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(20)" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="LearnerEmploymentStatus"
+                                         sql:relation="LearnerEmploymentStatus"
+                                         sql:relationship="Learner_LearnerEmploymentStatus">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_LearnerEmploymentStatus"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="EmpStat"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="DateEmpStatApp"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="EmpId"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="EmploymentStatusMonitoring"
+                                                     sql:relation="EmploymentStatusMonitoring"
+                                                     sql:relationship="LearnerEmploymentStatus_EmploymentStatusMonitoring">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_EmploymentStatusMonitoring"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearnerEmploymentStatus"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="ESMType"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(3)" />
+                                                    <xsd:element name="ESMCode"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="LearnerHE"
+                                         sql:relation="LearnerHE"
+                                         sql:relationship="Learner_LearnerHE">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_LearnerHE"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="UCASPERID"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(10)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="TTACCOM"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="LearnerHEFinancialSupport"
+                                                     sql:relation="LearnerHEFinancialSupport"
+                                                     sql:relationship="LearnerHE_LearnerHEFinancialSupport">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_LearnerHEFinancialSupport"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearnerHE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FINTYPE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FINAMOUNT"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="LearningDelivery"
+                                         sql:relation="LearningDelivery"
+                                         sql:relationship="Learner_LearningDelivery">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_LearningDelivery"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_Learner"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="LearnAimRef"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(8)" />
+                                        <xsd:element name="AimType"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="AimSeqNumber"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint" />
+                                        <xsd:element name="LearnStartDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="OrigLearnStartDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime"
+                                                     minOccurs="0" />
+                                        <xsd:element name="LearnPlanEndDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="FundModel"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="PHours"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint"
+                                                     minOccurs="0" />
+                                        <xsd:element name="OTJActhours"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="ProgType"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="FworkCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="PwayCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="StdCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="PartnerUKPRN"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint"
+                                                     minOccurs="0" />
+                                        <xsd:element name="DelLocPostCode"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(8)" />
+                                        <xsd:element name="LSDPostcode"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(8)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="AddHours"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint"
+                                                     minOccurs="0" />
+                                        <xsd:element name="PriorLearnFundAdj"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint"
+                                                     minOccurs="0" />
+                                        <xsd:element name="OtherFundAdj"
+                                                     type="xsd:int"
+                                                     sql:datatype="bigint"
+                                                     minOccurs="0" />
+                                        <xsd:element name="ConRefNumber"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(20)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="EPAOrgID"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(7)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="EmpOutcome"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="CompStatus"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="LearnActEndDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime"
+                                                     minOccurs="0" />
+                                        <xsd:element name="WithdrawReason"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="Outcome"
+                                                     type="xsd:int"
+                                                     sql:datatype="int"
+                                                     minOccurs="0" />
+                                        <xsd:element name="AchDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime"
+                                                     minOccurs="0" />
+                                        <xsd:element name="OutGrade"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(6)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="SWSupAimId"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(36)"
+                                                     minOccurs="0" />
+                                        <xsd:element name="LearningDeliveryFAM"
+                                                     sql:relation="LearningDeliveryFAM"
+                                                     sql:relationship="LearningDelivery_LearningDeliveryFAM">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_LearningDeliveryFAM"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearningDelivery"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="LearnDelFAMType"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(3)" />
+                                                    <xsd:element name="LearnDelFAMCode"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(5)" />
+                                                    <xsd:element name="LearnDelFAMDateFrom"
+                                                                 type="xsd:date"
+                                                                 sql:datatype="datetime"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="LearnDelFAMDateTo"
+                                                                 type="xsd:date"
+                                                                 sql:datatype="datetime"
+                                                                 minOccurs="0" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="LearningDeliveryWorkPlacement"
+                                                     sql:relation="LearningDeliveryWorkPlacement"
+                                                     sql:relationship="LearningDelivery_LearningDeliveryWorkPlacement">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_LearningDeliveryWorkPlacement"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearningDelivery"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="WorkPlaceStartDate"
+                                                                 type="xsd:date"
+                                                                 sql:datatype="datetime" />
+                                                    <xsd:element name="WorkPlaceEndDate"
+                                                                 type="xsd:date"
+                                                                 sql:datatype="datetime"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="WorkPlaceHours"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint" />
+                                                    <xsd:element name="WorkPlaceMode"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="WorkPlaceEmpId"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int"
+                                                                 minOccurs="0" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="AppFinRecord"
+                                                     sql:relation="AppFinRecord"
+                                                     sql:relationship="LearningDelivery_AppFinRecord">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_AppFinRecord"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearningDelivery"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="AFinType"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(3)" />
+                                                    <xsd:element name="AFinCode"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="AFinDate"
+                                                                 type="xsd:date"
+                                                                 sql:datatype="datetime" />
+                                                    <xsd:element name="AFinAmount"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="ProviderSpecDeliveryMonitoring"
+                                                     sql:relation="ProviderSpecDeliveryMonitoring"
+                                                     sql:relationship="LearningDelivery_ProviderSpecDeliveryMonitoring">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_ProviderSpecDeliveryMonitoring"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearningDelivery"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="ProvSpecDelMonOccur"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(1)" />
+                                                    <xsd:element name="ProvSpecDelMon"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(20)" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="LearningDeliveryHE"
+                                                     sql:relation="LearningDeliveryHE"
+                                                     sql:relationship="LearningDelivery_LearningDeliveryHE">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="PK_LearningDeliveryHE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FK_LearningDelivery"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="NUMHUS"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(20)"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="SSN"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(13)"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="QUALENT3"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(3)"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="SOC2000"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="SEC"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="UCASAPPID"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(9)"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="TYPEYR"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="MODESTUD"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FUNDLEV"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="FUNDCOMP"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="STULOAD"
+                                                                 type="xsd:decimal"
+                                                                 sql:datatype="float"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="YEARSTU"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint" />
+                                                    <xsd:element name="MSTUFEE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="PCOLAB"
+                                                                 type="xsd:decimal"
+                                                                 sql:datatype="float"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="PCFLDCS"
+                                                                 type="xsd:decimal"
+                                                                 sql:datatype="float"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="PCSLDCS"
+                                                                 type="xsd:decimal"
+                                                                 sql:datatype="float"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="PCTLDCS"
+                                                                 type="xsd:decimal"
+                                                                 sql:datatype="float"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="SPECFEE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int" />
+                                                    <xsd:element name="NETFEE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="GROSSFEE"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="bigint"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="DOMICILE"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(2)"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="ELQ"
+                                                                 type="xsd:int"
+                                                                 sql:datatype="int"
+                                                                 minOccurs="0" />
+                                                    <xsd:element name="HEPostCode"
+                                                                 type="xsd:string"
+                                                                 sql:datatype="varchar(8)"
+                                                                 minOccurs="0" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="LearnerDestinationandProgression"
+                             sql:relation="LearnerDestinationandProgression">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="PK_LearnerDestinationandProgression"
+                                         type="xsd:int"
+                                         sql:datatype="int" />
+                            <xsd:element name="LearnRefNumber"
+                                         type="xsd:string"
+                                         sql:datatype="varchar(12)" />
+                            <xsd:element name="ULN"
+                                         type="xsd:long"
+                                         sql:datatype="bigint" />
+                            <xsd:element name="DPOutcome"
+                                         sql:relation="DPOutcome"
+                                         sql:relationship="LearnerDestinationandProgression_DPOutcome">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PK_DPOutcome"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="FK_LearnerDestinationandProgression"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="OutType"
+                                                     type="xsd:string"
+                                                     sql:datatype="varchar(3)" />
+                                        <xsd:element name="OutCode"
+                                                     type="xsd:int"
+                                                     sql:datatype="int" />
+                                        <xsd:element name="OutStartDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                        <xsd:element name="OutEndDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime"
+                                                     minOccurs="0" />
+                                        <xsd:element name="OutCollDate"
+                                                     type="xsd:date"
+                                                     sql:datatype="datetime" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
