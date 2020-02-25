@@ -184,7 +184,7 @@
     <None Include="Assets\2021\mappederrors.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\ILRSchema\ILR-2019-20.xsd">
+    <None Include="Assets\2021\Production\ILRSchema\ILR-2020-21.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -3456,6 +3456,9 @@
     <Content Include="Assets\1920\Production\Schema\Rulebase\01 Tables\lite_01 ILR_Rulebase_Tables.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Assets\bulkLoadSchema20-21.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Assets\General\NewTargetDataStore.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
