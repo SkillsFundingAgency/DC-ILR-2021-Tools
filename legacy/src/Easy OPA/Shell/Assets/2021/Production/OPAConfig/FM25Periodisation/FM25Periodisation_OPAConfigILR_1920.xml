@@ -1,0 +1,49 @@
+<OPAMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="OPAMapping.xsd"
+            RulebasePath="${WorkingFolder}\Rulebases\FM25Periodisation\FM25 Periodisation.zip"
+            BatchSize="1"
+            NumberOfThreads="-1">
+    <OPACaseControl DBConnectionID="ILR">
+        <CaseStatus StoredProcName="Rulebase.FM25_FM35_Update_Cases"
+                    CaseFailure="40"
+                    CaseSuccess="30"
+                    ProcessCase="10" />
+        <DBQuery>
+            <StoredProcName>Rulebase.FM25_FM35_Get_Cases</StoredProcName>
+        </DBQuery>
+    </OPACaseControl>
+    <OPAResults>
+        <OPAResult StoredProcName="Rulebase.FM25_FM35_Insert_global"
+                   TopLevelEntityName="global"
+                   DBConnectionID="ILR"
+                   RunOnce="y">
+            <ResultQueryParameterMap AttributeName="UKPRN"
+                                     ParameterName="UKPRN"
+                                     EntityName="global" />
+            <ResultQueryParameterMap AttributeName="RulebaseVersion"
+                                     ParameterName="RulebaseVersion"
+                                     EntityName="global" />
+        </OPAResult>
+        <OPAResult StoredProcName="Rulebase.FM25_FM35_Insert_Learner"
+                   TopLevelEntityName="Learner"
+                   DBConnectionID="ILR">
+            <ResultQueryParameterMap AttributeName="LearnRefNumber"
+                                     ParameterName="LearnRefNumber"
+                                     EntityName="Learner" />
+            <ResultQueryParameterMap AttributeName="LnrOnProgPay"
+                                     ParameterName="LnrOnProgPay"
+                                     EntityName="Learner">
+                <ChangePoint ParentAttributeIDColumn="LnrOnProgPay"
+                             StoredProcName="Rulebase.FM25_FM35_Insert_Learner_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+        </OPAResult>
+    </OPAResults>
+</OPAMapping>
