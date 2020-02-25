@@ -13,13 +13,13 @@ You will need to download and install the following:
 
 ## Uplift instructions
 
-1. Copy the previous years file in the ./Shell/Assets folder and name it the
+1. Copy the previous years file in the ./Easy OPA/Shell/Assets folder and name it the
    current year.
 > <p style="color:red;font-weight:bold">WARNING</p>
 > <p style="color:red">Make sure that the files are set to "Copy If Newer" in Visual Studio</p>
 2. Take the current ILR file and place it:
-   - ./Shell/Assets
-   - ./Shell/Assets/{period}/Production/ILRSchema
+   - ./Easy OPA/Shell/Assets
+   - ./Easy OPA/Shell/Assets/{period}/Production/ILRSchema
 3. Copy the bulkloadSchema file of the previous year and add and remove sections
    based on the ILR specification. This file deals with the mapping between the
    ILR file and what fields are created in the database.
