@@ -8,6 +8,7 @@ using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Service.Message;
 using ESFA.DC.Logging.Interfaces;
 using ESFA.DC.Serialization.Interfaces;
 using FluentAssertions;
@@ -25,6 +26,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public async Task FileConversionOrchestrator_WorkingRunReturnsTrueandLogs()
         {
             // Arrange
+            var messengerMock = new Mock<IMessengerService>();
             var fileServiceMock = new Mock<IFileService>();
             var targetStream = new MemoryStream();
             fileServiceMock.Setup(c => c.OpenReadStreamAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>())).ReturnsAsync(targetStream);
@@ -46,6 +48,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             anonymiseLogMock.SetupGet(s => s.Log).Returns(new List<IAnonymiseLogEntry>());
 
             var fileConversionOrchestrator = new FileConversionOrchestrator(
+                messengerMock.Object,
                 fileServiceMock.Object,
                 fileNameServiceMock.Object,
                 xsdValidationMock.Object,
@@ -59,12 +62,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 loggerMock.Object);
 
             // Act
-            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName, new CancellationToken());
 
             // Assert
             result.Should().BeTrue();
             loggerMock.VerifyInfo($"Mapping {sourcefileName} into {targetfolderName}", Times.Once()).Should().BeTrue();
-            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(8)).Should().BeTrue();
+            loggerMock.VerifyVerbose(It.IsAny<string>(), Times.Exactly(9)).Should().BeTrue();
+
+            messengerMock.Verify(v => v.Send(It.IsAny<TaskProgressMessage>()), Times.Exactly(7));
 
             targetStream.Dispose();
         }
@@ -73,6 +78,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public async Task FileConversionOrchestrator_FailingRunReturnsFalseAndLogsFatal()
         {
             // Arrange
+            var messengerMock = new Mock<IMessengerService>();
             var fileServiceMock = new Mock<IFileService>();
             var xsdValidationMock = new Mock<IXsdValidationService>();
             var xmlProviderMock = new Mock<IXmlSchemaProvider>();
@@ -82,6 +88,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
             var loggerMock = new Mock<ILogger>();
 
             var fileConversionOrchestrator = new FileConversionOrchestrator(
+                messengerMock.Object,
                 fileServiceMock.Object,
                 null,
                 xsdValidationMock.Object,
@@ -95,7 +102,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
                 loggerMock.Object);
 
             // Act
-            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName);
+            var result = await fileConversionOrchestrator.MapFileAsync(sourcefileName, null, targetfolderName, new CancellationToken());
 
             // Assert
             result.Should().BeFalse();

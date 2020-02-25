@@ -6,13 +6,14 @@ using ESFA.DC.ILR.Tools.YearUpdate;
 using ESFA.DC.Serialization.Interfaces;
 using ESFA.DC.Serialization.Xml;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
+namespace ESFA.DC.ILR.Tools.IFCT.Modules
 {
     public class ConsoleServicesModule : Module
     {
         protected override void Load(ContainerBuilder containerBuilder)
         {
             // Interfaces at the Servic level
+            containerBuilder.RegisterType<CommandLineMessengerService>().As<IMessengerService>().SingleInstance();
             containerBuilder.RegisterType<ConsoleService>().As<IConsoleService>();
             containerBuilder.RegisterType<FileNameService>().As<IFileNameService>();
             containerBuilder.RegisterType<FileConversionOrchestratorConfiguration>().As<IFileConversionOrchestratorConfiguration>().SingleInstance();

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 using ESFA.DC.FileService.Interface;
@@ -10,6 +11,7 @@ using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
 using ESFA.DC.ILR.Tools.IFCT.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Service.Message;
 using ESFA.DC.Serialization.Interfaces;
 using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
@@ -17,6 +19,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
     public class FileConversionOrchestrator : IFileConversionOrchestrator
     {
+        private readonly IMessengerService _messengerService;
         private readonly IFileService _fileService;
 
         private readonly IFileNameService _fileNameService;
@@ -33,6 +36,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private readonly ILogger _logger;
 
         public FileConversionOrchestrator(
+            IMessengerService messengerService,
             IFileService fileService,
             IFileNameService fileNameService,
             IXsdValidationService xsdValidationService,
@@ -45,6 +49,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             IAnonymiseLog anonymiseLog,
             ILogger logger)
         {
+            _messengerService = messengerService;
             _fileService = fileService;
             _fileNameService = fileNameService;
             _xsdValidationService = xsdValidationService;
@@ -58,8 +63,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             _logger = logger;
         }
 
-        public async Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer)
+        public async Task<bool> MapFileAsync(string sourceFileReference, string sourceFileContainer, string targetFileContainer, CancellationToken cancellationToken)
         {
+            const int taskCount = 7;
+            var currentTask = 0;
             _logger.LogInfo($"Mapping {sourceFileReference} into {targetFileContainer}");
 
             var timer = new Stopwatch();
@@ -67,6 +74,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 
             try
             {
+                _messengerService.Send(new TaskProgressMessage("Starting", currentTask++, taskCount));
+
                 // Generate new filename
                 var targetFileReference = GenerateOutputName(sourceFileReference);
                 _logger.LogInfo($"Updated filename from {sourceFileReference} is {targetFileReference}");
@@ -85,24 +94,32 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                         return false;
                     }
 
+                    _logger.LogVerbose($"Schema validated in {timer.ElapsedMilliseconds}ms");
+                    _messengerService.Send(new TaskProgressMessage("Schema validated", currentTask++, taskCount));
+                    timer.Restart();
+
                     sourceMessage = _xmlSerializationService.Deserialize<Loose.Previous.Message>(sourceStream);
                     _logger.LogVerbose($"Deserialize in {timer.ElapsedMilliseconds}ms");
+                    _messengerService.Send(new TaskProgressMessage("File loaded", currentTask++, taskCount));
                     timer.Restart();
                 }
 
                 // Map from previous year to current year structure via automapper
                 var targetMessage = _mapper.Map(sourceMessage);
                 _logger.LogVerbose($"Mapped in {timer.ElapsedMilliseconds}ms");
+                _messengerService.Send(new TaskProgressMessage("Mapped to current year structure", currentTask++, taskCount));
                 timer.Restart();
 
                 // Uplift any relevant values in the current year structure
                 var upliftedMessage = _yearUplifter.Process(targetMessage);
                 _logger.LogVerbose($"Uplifted in {timer.ElapsedMilliseconds}ms");
+                _messengerService.Send(new TaskProgressMessage("Values uplifted for current year", currentTask++, taskCount));
                 timer.Restart();
 
                 // Anonymise any PII information in the current year structure
                 var anonymisedMessage = _anonymiser.Process(upliftedMessage);
                 _logger.LogVerbose($"Anonymised in {timer.ElapsedMilliseconds}ms");
+                _messengerService.Send(new TaskProgressMessage("Anonymised for current year", currentTask++, taskCount));
                 timer.Restart();
 
                 // Write out the current year structure
@@ -135,6 +152,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                     await targetStream.FlushAsync();
                     _anonymiseLog.Clear();
                 }
+
+                _messengerService.Send(_validationErrorHandler.ErrorRaised ?
+                    new TaskProgressMessage("File saved - Completed with XML Validation warnings - Please check logs", currentTask++, taskCount) :
+                    new TaskProgressMessage("File saved - Completed", currentTask++, taskCount));
             }
             catch (Exception ex)
             {
