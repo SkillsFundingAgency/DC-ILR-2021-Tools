@@ -266,8 +266,7 @@ as
 			les.LearnRefNumber, 
 			les.EmpStat, 
 			les.DateEmpStatApp, 
-			les.EmpId,
-			les.AgreeId
+			les.EmpId
 	from	Valid.LearnerEmploymentStatus as les
 				cross join (select top 1 UKPRN from Valid.LearningProvider) as lp
 go

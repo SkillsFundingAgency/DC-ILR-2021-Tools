@@ -527,7 +527,7 @@
                                  minOccurs="0" />
                     <xsd:element name="OTJActHours"
                                  type="xsd:int"
-                                 sql:datatype="int"
+                                 sql:datatype="bigint"
                                  minOccurs="0" />
                     <xsd:element name="ProgType"
                                  type="xsd:int"

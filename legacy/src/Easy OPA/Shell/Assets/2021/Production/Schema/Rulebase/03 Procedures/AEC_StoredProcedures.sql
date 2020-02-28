@@ -78,7 +78,6 @@ begin
 											for xml path ('HistoricEarningInput'), type),
 											(select	les.EmpId as [@EmpId],
 													les.DateEmpStatApp as [@DateEmpStatApp],
-													les.AgreeId as [@AgreeId],
 													les.EmpStat as [@EMPStat],
 													lesd.ESMCode_SEM as [@EmpStatMon_SEM]
 											from	Valid.LearnerEmploymentStatus as les

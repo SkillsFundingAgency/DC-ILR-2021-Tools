@@ -257,16 +257,14 @@ begin
 		LearnRefNumber,
 		EmpStat,
 		DateEmpStatApp,
-		EmpId,
-		AgreeId
+		EmpId
 	)
 	select	LES.LearnerEmploymentStatus_Id,
 			LES.Learner_Id,
 			LES.LearnRefNumber,
 			LES.EmpStat,
 			LES.DateEmpStatApp,
-			LES.EmpId,
-			LES.AgreeId
+			LES.EmpId
 	from	Input.LearnerEmploymentStatus as LES
 				left join dbo.ValidLearners as vl on vl.Learner_Id = LES.Learner_Id
 	where	vl.Learner_Id is null

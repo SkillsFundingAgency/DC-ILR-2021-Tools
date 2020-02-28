@@ -388,8 +388,6 @@ begin
 											(select	LearnerEmploymentStatus.EmpStat as [@EmpStat],
 													LearnerEmploymentStatus.EmpId as [@EmpId],
 													LearnerEmploymentStatus.DateEmpStatApp as [@DateEmpStatApp],
-													-- p540	AgreeId
-													LearnerEmploymentStatus.AgreeId as [@AgreeId],
 													case when Employers.URN is not null 
 														then 'true' 
 														else 'false' 
@@ -407,8 +405,8 @@ begin
 											from	Input.LearnerEmploymentStatus
 														left join Reference.Employers
 															on Employers.URN = LearnerEmploymentStatus.EmpId
-														left join Reference.AccountLegalEntity
-															on AccountLegalEntity.PublicHashedId = ltrim(rtrim(LearnerEmploymentStatus.AgreeId))
+														 left join Reference.AccountLegalEntity
+														 	on AccountLegalEntity.PublicHashedId = ltrim(rtrim(LearnerEmploymentStatus.AgreeId))
 											where	LearnerEmploymentStatus.Learner_Id = l.Learner_Id
 											for xml path ('LearnerEmploymentStatus'), type),
 											(select	ContPrefCode as [@ContPrefCode],

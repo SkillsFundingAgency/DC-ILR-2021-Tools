@@ -192,7 +192,6 @@ create table Valid.LearnerEmploymentStatus (
 	EmpStat int null,
 	DateEmpStatApp date not null,
 	EmpId bigint,
-	AgreeId varchar(6) null,
 	primary key clustered (
 		LearnRefNumber asc,
 		DateEmpStatApp asc
@@ -293,6 +292,7 @@ create table Valid.LearningDelivery (
 	LearnPlanEndDate date not null,
 	FundModel int not null,
 	PHours bigint null,
+	OTJActHours bigint null,
 	ProgType int null,
 	FworkCode int null,
 	PwayCode int null,

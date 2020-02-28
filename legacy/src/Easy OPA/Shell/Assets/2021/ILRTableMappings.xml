@@ -4839,10 +4839,10 @@
           <Source>EmpId</Source>
           <Destination>EmpId</Destination>
         </ColumnMapping>
-        <ColumnMapping>
+        <!-- <ColumnMapping>
           <Source>AgreeId</Source>
           <Destination>AgreeId</Destination>
-        </ColumnMapping>
+        </ColumnMapping> -->
       </ColumnMappings>
     </TableMapping>
     <TableMapping>
@@ -4958,6 +4958,10 @@
         <ColumnMapping>
           <Source>PHours</Source>
           <Destination>PHours</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>OTJActHours</Source>
+          <Destination>OTJActHours</Destination>
         </ColumnMapping>
         <ColumnMapping>
           <Source>ProgType</Source>
