@@ -197,6 +197,7 @@ as
 			ld.LearnPlanEndDate,
 			ld.FundModel,
 			ld.PHours,
+			ld.OTJActHours,
 			ld.ProgType,
 			ld.FworkCode,
 			ld.PwayCode,

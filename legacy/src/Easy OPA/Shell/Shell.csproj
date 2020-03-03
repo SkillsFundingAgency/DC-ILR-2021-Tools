@@ -223,7 +223,7 @@
     <None Include="Assets\2021\Production\Rulebases\FM35\FM35 Funding Calc 19_20.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\TBL\Trailblazer Funding Calc 19_20.zip">
+    <None Include="Assets\2021\Production\Rulebases\TBL\Trailblazer Funding Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\VALDP\Validation DP 19_20.zip">
@@ -574,6 +574,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\sqlbatch_working.cfg">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Assets\1718\tokensubstitutionmap.cfg">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -729,9 +733,9 @@
     <Resource Include="Assets\2021\Experimental\Rulebases\Sample\Sample_OPA_Case_Transformation.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\ILRTableMappings.xml">
+    <None Include="Assets\2021\ILRTableMappings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\lite_ILRTableMappings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -831,9 +835,9 @@
     <Resource Include="Assets\2021\Production\OPAConfig\FM35\FM35_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\TBL\TBL_OPAConfigILR_1920.xml">
+    <None Include="Assets\2021\Production\OPAConfig\TBL\TBL_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\OPAConfig\VAL\VAL_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -871,6 +875,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Reference\12 Version.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PostVal_Common_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PostVal_HubOnly_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PreVal_Common_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PreVal_HubOnly_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PostVal_HubOnly_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PreVal_Common_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PreVal_HubOnly_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\2021\Production\Reference\lite_InsertCalculationEFAReferenceData_Working.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PostVal_Common.sql">
@@ -1000,9 +1028,9 @@
     <Resource Include="Assets\2021\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\Rulebases\VAL\ILR Validation Learner - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -83,6 +83,10 @@ namespace EasyOPA.Abstract
             }
 
             var loadPath = GetLoadPath();
+            if (loadPath.Contains("ILRTableMappings"))
+            {
+                loadPath = GetLoadPath();
+            }
             if (!File.Exists(loadPath))
             {
                 Console.Publish($"File not found: {loadPath}");

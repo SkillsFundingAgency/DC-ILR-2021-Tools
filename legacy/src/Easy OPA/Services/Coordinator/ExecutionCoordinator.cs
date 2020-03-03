@@ -203,6 +203,8 @@ namespace EasyOPA.Abstract
                         {
                             // start the log
                             StartLog(usingSession, usingProvider, inContext);
+                            
+
                             // build
                             PrepareRun(usingSession, inContext, usingProvider.ID, firstInRun);
                             // validate
