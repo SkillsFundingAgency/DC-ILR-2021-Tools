@@ -19,6 +19,12 @@ create table Reference.CampusIdentifier (
 )
 go
 
+if object_id('Reference.CampusIdentifier_SpecialistResources','u') is not null
+begin
+	drop table Reference.CampusIdentifier_SpecialistResources
+end
+go
+
 create table Reference.CampusIdentifier_SpecialistResources (
 	CampusIdentifier varchar(8) not null,
 	SpecialistResources varchar(1) not null,

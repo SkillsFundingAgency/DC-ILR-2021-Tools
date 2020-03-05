@@ -2631,10 +2631,6 @@
                     <Source>EmpId</Source>
                     <Destination>EmpId</Destination>
                 </ColumnMapping>
-                <ColumnMapping>
-                    <Source>AgreeId</Source>
-                    <Destination>AgreeId</Destination>
-                </ColumnMapping>
             </ColumnMappings>
         </TableMapping>
         <TableMapping>

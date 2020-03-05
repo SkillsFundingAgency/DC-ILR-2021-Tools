@@ -632,6 +632,10 @@
           <Destination>PHours</Destination>
         </ColumnMapping>
         <ColumnMapping>
+          <Source>OTJActHours</Source>
+          <Destination>OTJActHours</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
           <Source>ProgType</Source>
           <Destination>ProgType</Destination>
         </ColumnMapping>
@@ -4839,10 +4843,6 @@
           <Source>EmpId</Source>
           <Destination>EmpId</Destination>
         </ColumnMapping>
-        <ColumnMapping>
-          <Source>AgreeId</Source>
-          <Destination>AgreeId</Destination>
-        </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
     <TableMapping>
@@ -4959,6 +4959,10 @@
           <Source>PHours</Source>
           <Destination>PHours</Destination>
         </ColumnMapping>
+        <!--<ColumnMapping>
+          <Source>OTJActHours</Source>
+          <Destination>OTJActHours</Destination>
+        </ColumnMapping>-->
         <ColumnMapping>
           <Source>ProgType</Source>
           <Destination>ProgType</Destination>

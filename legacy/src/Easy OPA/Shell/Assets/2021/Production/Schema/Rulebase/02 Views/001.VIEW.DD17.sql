@@ -84,15 +84,15 @@ AS
 				CTE_LD_TBS_Records.[StandardCode],
 				CTE_SUM_Latest_1and2.[TotalAFinAmount],
 				CTE_SUM_Latest_1and2.[TotalAFinAmount_2rds] ,
-				[LARS_StandardFunding].[CoreGovContributionCap],
-				CASE WHEN [TotalAFinAmount_2rds] > [LARS_StandardFunding].[CoreGovContributionCap] THEN 'Y' ELSE 'N' END as Failed_DD17
+				[LARS_LARSStandardFunding].[CoreGovContributionCap],
+				CASE WHEN [TotalAFinAmount_2rds] > [LARS_LARSStandardFunding].[CoreGovContributionCap] THEN 'Y' ELSE 'N' END as Failed_DD17
 		FROM CTE_LD_TBS_Records
 		INNER JOIN CTE_SUM_Latest_1and2 
 			 ON CTE_LD_TBS_Records.[LearningDelivery_Id] = CTE_SUM_Latest_1and2.[LearningDelivery_Id]
-		INNER JOIN [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_StandardFunding] 
-			 ON [LARS_StandardFunding].[StandardCode] = CTE_LD_TBS_Records.[StandardCode]
+		INNER JOIN [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LARSStandardFunding] 
+			 ON [LARS_LARSStandardFunding].[StandardCode] = CTE_LD_TBS_Records.[StandardCode]
 			--AND Z.[LearnStartDate] BETWEEN SF.[EffectiveFrom] AND (SF.[EffectiveTo],DATEADD(YEAR,1,GETDATE())
-		WHERE [LARS_StandardFunding].[FundingCategory] = 'StandardTblazer'
+		WHERE [LARS_LARSStandardFunding].[FundingCategory] = 'StandardTblazer'
 	)
 	 --SELECT * FROM CTE_DD17_WorkOut
 	SELECT LD.[LearningDelivery_Id],LD.[AimSeqNumber],[StandardCode], [TotalAFinAmount],[TotalAFinAmount_2rds],[CoreGovContributionCap],ISNULL(Failed_DD17,'N') as Failed_DD17

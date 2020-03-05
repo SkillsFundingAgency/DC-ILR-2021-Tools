@@ -29,21 +29,19 @@ insert into Reference.vw_ContractDescription (
 	unitCost
 )
 select	distinct
-		FCA.ContractAllocationNumber,
-		FCA.EndDate,
-		FCA.StartDate,
-		FCD.DeliverableCode,
-		FCA.FundingStreamPeriodCode,
-		FCA.LearningRatePremiumFactor,
-		FCD.UnitCost
-from	ReferenceInput.FCS_FcsContractAllocation FCA
-		INNER JOIN ReferenceInput.FCS_FcsContractDeliverable FCD
-			on FCD.FCS_FcsContractAllocation_Id = FCA.Id
+		vw_ContractDescription.contractAllocationNumber,
+		vw_ContractDescription.contractEndDate,
+		vw_ContractDescription.contractStartDate,
+		vw_ContractDescription.deliverableCode,
+		vw_ContractDescription.fundingStreamPeriodCode,
+		vw_ContractDescription.learningRatePremiumFactor,
+		vw_ContractDescription.unitCost
+from	${FCS-Contracts.FQ}.dbo.vw_ContractDescription
 			inner merge join [${FCS-Contracts.servername}].[${FCS-Contracts.databasename}].[dbo].[DeliverableCodeMappings]
-				on DeliverableCodeMappings.FundingStreamPeriodCode = FCA.fundingStreamPeriodCode
-				and DeliverableCodeMappings.FCSDeliverableCode = FCD.deliverableCode
+				on DeliverableCodeMappings.FundingStreamPeriodCode = vw_ContractDescription.fundingStreamPeriodCode
+				and DeliverableCodeMappings.FCSDeliverableCode = vw_ContractDescription.deliverableCode
 			inner join Valid.LearningDelivery
-				on FCA.contractAllocationNumber = LearningDelivery.ConRefNumber
+				on vw_ContractDescription.contractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
 truncate table Reference.AEC_LatestInYearEarningHistory
@@ -111,8 +109,6 @@ select	distinct
 		aec.ULN,
 		aec.HistoricLearnDelProgEarliestACT2DateInput
 from	Valid.Learner as l
-			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AEC_LatestInYearEarningHistory as aec
-			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AppsEarningHistory_ApprenticeshipEarningsHistory as aec
-			join ReferenceInput.AppsEarningHistory_ApprenticeshipEarningsHistory as aec
+			join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AEC_LatestInYearEarningHistory as aec
 				on	aec.ULN = l.ULN
 go

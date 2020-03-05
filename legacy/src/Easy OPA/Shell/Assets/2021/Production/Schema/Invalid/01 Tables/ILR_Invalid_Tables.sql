@@ -235,8 +235,7 @@ create table Invalid.LearnerEmploymentStatus (
 	LearnRefNumber varchar(100),
 	EmpStat bigint,
 	DateEmpStatApp date,
-	EmpId bigint,
-	AgreeId varchar(6) NULL
+	EmpId bigint
 )
 go
 
@@ -348,6 +347,7 @@ create table Invalid.LearningDelivery (
 	LearnPlanEndDate date,
 	FundModel bigint,
 	PHours bigint,
+	OTJActHours bigint,
 	ProgType bigint,
 	FworkCode bigint,
 	PwayCode bigint,

@@ -197,6 +197,7 @@ as
 			ld.LearnPlanEndDate,
 			ld.FundModel,
 			ld.PHours,
+			ld.OTJActHours,
 			ld.ProgType,
 			ld.FworkCode,
 			ld.PwayCode,
@@ -290,8 +291,7 @@ as
 			les.LearnRefNumber,
 			les.EmpStat,
 			les.DateEmpStatApp,
-			les.EmpId,
-			les.AgreeId
+			les.EmpId
 	from	Invalid.LearnerEmploymentStatus as les
 				cross join (select top 1 UKPRN from Invalid.LearningProvider) as lp
 go

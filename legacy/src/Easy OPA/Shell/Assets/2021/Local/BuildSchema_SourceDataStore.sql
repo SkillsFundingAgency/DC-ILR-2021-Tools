@@ -127,8 +127,7 @@ as
 			l.LearnRefNumber,
 			les.EmpStat,
 			les.DateEmpStatApp,
-			les.EmpId,
-			les.AgreeId
+			les.EmpId
 	from	dbo.LearnerEmploymentStatus as les
  				cross join (select top 1 UKPRN from dbo.LearningProvider) as lp
 				join dbo.Learner as l on l.PK_Learner = les.FK_Learner
@@ -188,6 +187,7 @@ as
 			ld.LearnPlanEndDate,
 			ld.FundModel,
 			ld.PHours,
+			ld.OTJActHours,
 			ld.ProgType,
 			ld.FworkCode,
 			ld.PwayCode,

@@ -232,15 +232,13 @@ begin
 		LearnRefNumber,
 		EmpStat,
 		DateEmpStatApp,
-		EmpId,
-		AgreeId
+		EmpId
 	)
 	select 	distinct
 			LES.LearnRefNumber,
 			LES.EmpStat,
 			LES.DateEmpStatApp,
-			LES.EmpId,
-			LES.AgreeId
+			LES.EmpId
 	from	Input.LearnerEmploymentStatus as LES
 				join dbo.ValidLearners as vl on vl.Learner_Id = LES.Learner_Id
 end
