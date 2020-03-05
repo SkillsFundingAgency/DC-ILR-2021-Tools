@@ -86,7 +86,6 @@ namespace EasyOPA.Service
                 var messageSchemaPath = Path.Combine(Location.OfAssets, schemaMap.Message);
                 var relationshipsPath = Path.Combine(Location.OfAssets, "relationships.xml");
 
-
                 SQLDatabase.Open(inContext.SQLDetail);
 
                 var sqlSchema = new SQLSchema(messageSchemaPath);
