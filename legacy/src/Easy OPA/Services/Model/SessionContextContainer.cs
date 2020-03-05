@@ -15,7 +15,7 @@ namespace EasyOPA.Model
         /// <summary>
         /// Gets the name of the Intrajob (data store).
         /// </summary>
-        public static string IntrajobName => "Intrajob";
+        public static string IntrajobName => "EOPA_DB";
 
         /// <summary>
         /// Gets the connection details for master.
@@ -40,7 +40,7 @@ namespace EasyOPA.Model
         /// <summary>
         /// Gets the name of the data exchange (data store).
         /// </summary>
-        public string DataExchangeName => $"DS_SILR_EasyOPA_{Year.AsString()}";
+        public string DataExchangeName => "EOPA_DB";
 
         /// <summary>
         /// Gets the year.

@@ -215,7 +215,7 @@ select	distinct
 		LARS_LearningDelivery.UnitType,
 		LARS_LearningDelivery.EffectiveFrom
 from	${runmode.inputsource}.LearningDelivery
-			inner join [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LearningDelivery]
+			inner join [${LARS.schemaname}].[LARS_LearningDelivery]
 				on LARS_LearningDelivery.LearnAimRef = LearningDelivery.LearnAimRef
 go
  

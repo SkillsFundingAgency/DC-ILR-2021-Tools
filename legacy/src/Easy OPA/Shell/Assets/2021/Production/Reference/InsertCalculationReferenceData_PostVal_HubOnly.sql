@@ -36,8 +36,8 @@ select	distinct
 		FCA.FundingStreamPeriodCode,
 		FCA.LearningRatePremiumFactor,
 		FCD.UnitCost
-from	ReferenceInput.ReferenceInput.FCS_FcsContractAllocation FCA
-		INNER JOIN ReferenceInput.ReferenceInput.FCS_FcsContractDeliverable FCD
+from	ReferenceInput.FCS_FcsContractAllocation FCA
+		INNER JOIN ReferenceInput.FCS_FcsContractDeliverable FCD
 			on FCD.FCS_FcsContractAllocation_Id = FCA.Id
 			inner merge join [${FCS-Contracts.servername}].[${FCS-Contracts.databasename}].[dbo].[DeliverableCodeMappings]
 				on DeliverableCodeMappings.FundingStreamPeriodCode = FCA.fundingStreamPeriodCode
@@ -113,6 +113,6 @@ select	distinct
 from	Valid.Learner as l
 			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AEC_LatestInYearEarningHistory as aec
 			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AppsEarningHistory_ApprenticeshipEarningsHistory as aec
-			join ReferenceInput.ReferenceInput.AppsEarningHistory_ApprenticeshipEarningsHistory as aec
+			join ReferenceInput.AppsEarningHistory_ApprenticeshipEarningsHistory as aec
 				on	aec.ULN = l.ULN
 go

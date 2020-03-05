@@ -89,7 +89,7 @@ namespace EasyOPA.Manager
                 It.IsEmpty(inputFilePath)
                     .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.CanceledOperation);
 
-                var candidateSourceName = Path.GetFileNameWithoutExtension(inputFilePath);
+                //var candidateSourceName = Path.GetFileNameWithoutExtension(inputFilePath);
 
 
                 // check for DB overwrite...
@@ -97,15 +97,15 @@ namespace EasyOPA.Manager
 
                 var master = Provider.ConnectionToMaster(usingInstance);
 
-                if (Context.DataStoreExists(candidateSourceName, master))
-                {
-                    var format = Locals.GetString(Localised.AboutToOverwriteDBFormat);
-                    var msg = Format.String(format, candidateSourceName);
-                    (!andConfirmAnyChallenge(msg))
-                        .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.CanceledOperation);
-                }
+                //if (Context.DataStoreExists(candidateSourceName, master))
+                //{
+                //    var format = Locals.GetString(Localised.AboutToOverwriteDBFormat);
+                //    var msg = Format.String(format, candidateSourceName);
+                //    (!andConfirmAnyChallenge(msg))
+                //        .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.CanceledOperation);
+                //}
 
-                var source = Provider.ConnectionToSource(usingInstance, candidateSourceName);
+                var source = Provider.ConnectionToSource(usingInstance, "EOPA_DB");
 
                 await BulkLoader.Load(source, master, inputFilePath);
             });

@@ -9,6 +9,6 @@ select	distinct
 		ls.StandardCode,
 		ls.NotionalEndLevel
 from	${runmode.inputsource}.LearningDelivery
-			inner join ReferenceInput.ReferenceInput.[LARS_LARSStandard] ls
+			inner join ReferenceInput.[LARS_LARSStandard] ls
 				on ls.StandardCode = LearningDelivery.StdCode
 go

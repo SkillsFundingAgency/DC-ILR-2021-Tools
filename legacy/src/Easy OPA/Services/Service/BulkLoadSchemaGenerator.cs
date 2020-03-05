@@ -86,7 +86,6 @@ namespace EasyOPA.Service
                 var messageSchemaPath = Path.Combine(Location.OfAssets, schemaMap.Message);
                 var relationshipsPath = Path.Combine(Location.OfAssets, "relationships.xml");
 
-                var autoGenerateTables = false;
 
                 SQLDatabase.Open(inContext.SQLDetail);
 
@@ -94,6 +93,7 @@ namespace EasyOPA.Service
                 var relations = GetRelations(relationshipsPath, sqlSchema.NameSpace);
                 sqlSchema.SetRelationships(relations);
 
+                var autoGenerateTables = false;
                 //var newPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "newSchema.xml");
                 //var buildSchema = sqlSchema.GenerateBulkLoadSchemaWithIdentity();
                 //buildSchema.Save(newPath);

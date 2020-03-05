@@ -9,6 +9,7 @@ using ESFA.Common.Utility;
 using SQLXMLBULKLOADLib;
 using System;
 using System.Composition;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Tiny.Framework.Contracts.FlowControl;
@@ -87,14 +88,14 @@ namespace EasyOPA.Provider
                 It.IsEmpty(fromInputFile)
                     .AsGuard<ArgumentNullException>(nameof(fromInputFile));
 
-                if (Context.DataStoreExists(intoSource.Name, onMaster))
-                {
-                    Context.DropDataStore(intoSource.Name, onMaster);
-                }
+                //if (Context.DataStoreExists(intoSource.Name, onMaster))
+                //{
+                //    Context.DropDataStore(intoSource.Name, onMaster);
+                //}
 
                 Emitter.Publish($"Creating data store: {intoSource.Name}");
 
-                Context.CreateDataStore(intoSource.Name, onMaster);
+                //Context.CreateDataStore(intoSource.Name, onMaster);
 
                 var content = await FileManager.Load(fromInputFile); // <= very lazy and inefficient..
                 var messageNamespace = GetHeaderNameSpace(content);
@@ -166,7 +167,7 @@ namespace EasyOPA.Provider
                 ErrorLogFile = "LoadErrors.xml",
                 KeepIdentity = false,
                 SGDropTables = makeNew,
-                SchemaGen = makeNew
+                SchemaGen = makeNew,
             };
         }
     }

@@ -739,6 +739,9 @@
     <Resource Include="Assets\2021\lite_ILRTableMappings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Assets\2021\Local\BuildSchema_ResultsDataStore_Working.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\2021\Local\BuildSchema_ResultsDataStore.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

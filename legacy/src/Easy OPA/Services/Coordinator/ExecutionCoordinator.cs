@@ -212,7 +212,9 @@ namespace EasyOPA.Abstract
                             // calculate
                             RunRulebaseSubset(TypeOfRulebaseOperation.Calculation, usingSession.RulesToRun, inContext);
                             // complete
-                            CompleteRun(usingSession, inContext, usingProvider.ID);
+                            #region Needs new story to re-work this
+                            //CompleteRun(usingSession, inContext, usingProvider.ID);
+                            #endregion
                             // report
                             RunReport(usingSession, inContext);
                         }
@@ -416,7 +418,7 @@ namespace EasyOPA.Abstract
             {
                 var _inYear = usingSession.InputDataSource.OperatingYear;
 
-                ResultsDataStore.Prepare(inContext, forThisProvider, _inYear);
+                ResultsDataStore.Prepare(inContext, forThisProvider, _inYear, forceCreation: true);
                 Results.Clone(inContext, forThisProvider, _inYear);
             }
         }

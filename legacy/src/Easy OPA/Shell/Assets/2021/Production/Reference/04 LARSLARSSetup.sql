@@ -63,10 +63,10 @@ SELECT DISTINCT
 	--AV.SfaApprovalStatus
 
 --FROM [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LearningDelivery] L
-FROM ReferenceInput.ReferenceInput.[LARS_LARSLearningDelivery] L
+FROM ReferenceInput.[LARS_LARSLearningDelivery] L
 INNER JOIN (SELECT DISTINCT LearnAimRef FROM Input.LearningDelivery) LD ON L.LearnAimRef = LD.LearnAimRef
 --INNER JOIN  [${UoD.FullyQualified}].[${LARS.schemaname}].LARS_LARSAnnualValue AV on L.LearnAimRef = AV.LearnAimRef
-INNER JOIN  ReferenceInput.ReferenceInput.LARS_LARSAnnualValue AV on L.LearnAimRef = AV.LearnAimRef
+INNER JOIN  ReferenceInput.LARS_LARSAnnualValue AV on L.LearnAimRef = AV.LearnAimRef
 --INNER JOIN  [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LARSSection96] S96 ON L.LearnAimRef=S96.LearnAimRef
 where '1-Aug-2016' between AV.[EffectiveFrom] and coalesce(AV.[EffectiveTo],dateadd(yy,10,getdate()))
 

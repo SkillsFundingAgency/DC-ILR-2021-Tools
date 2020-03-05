@@ -9,7 +9,7 @@ select	distinct
 		LF.RateWeighted,
 		LF.WeightingFactor
 from	Valid.LearningDelivery
-			inner join ReferenceInput.ReferenceInput.[LARS_LARSFunding] LF
+			inner join ReferenceInput.[LARS_LARSFunding] LF
 				on LF.LearnAimRef = LearningDelivery.LearnAimRef
 go
 
@@ -21,9 +21,9 @@ select	distinct
 		LSCC.EffectiveTo,
 		LS.StandardCode
 from	Valid.LearningDelivery
-			INNER JOIN ReferenceInput.ReferenceInput.LARS_LARSStandard LS
+			INNER JOIN ReferenceInput.[LARS_LARSStandard] LS
 				on LS.StandardCode = LearningDelivery.StdCode
-			inner join ReferenceInput.ReferenceInput.[LARS_LARSStandardCommonComponent] LSCC
+			inner join ReferenceInput.[LARS_LARSStandardCommonComponent] LSCC
 				on LSCC.LARS_LARSStandard_Id  = LS.Id
 
 go

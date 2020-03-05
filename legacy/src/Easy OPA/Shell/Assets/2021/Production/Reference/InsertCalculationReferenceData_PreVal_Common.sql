@@ -4,7 +4,7 @@ insert into Reference.LARS_Current_Version (
 )
 select	distinct
 		[Version]
-from	ReferenceInput.ReferenceInput.[LARS_LARSVersion]
+from	ReferenceInput.[LARS_LARSVersion]
 go
 
 truncate table Reference.LARS_StandardFunding
@@ -30,11 +30,64 @@ select	distinct
 		LSF.SmallBusinessIncentive,
 		LS.StandardCode
 from	${runmode.inputsource}.LearningDelivery
-			INNER JOIN ReferenceInput.ReferenceInput.LARS_LARSStandard LS
+			INNER JOIN ReferenceInput.LARS_LARSStandard LS
 				ON LS.StandardCode = LearningDelivery.StdCode
-			INNER JOIN ReferenceInput.ReferenceInput.LARS_LARSStandardFunding LSF
+			INNER JOIN ReferenceInput.LARS_LARSStandardFunding LSF
 				on LSF.LARS_LARSStandard_Id = LS.Id
 				and LSF.FundingCategory = 'StandardTblazer'
+go
+
+truncate table Reference.LARS_LearningDelivery
+insert into Reference.LARS_LearningDelivery (
+	--AwardOrgAimRef,
+	AwardOrgCode,
+	--CreditBasedFwkType,
+	EFACOFType,
+	EnglandFEHEStatus,
+	EnglPrscID,
+	FrameworkCommonComponent,
+	LearnAimRef,
+	LearnAimRefTitle,
+	LearnAimRefType,
+	LearnDirectClassSystemCode1,
+	LearnDirectClassSystemCode2,
+	LearnDirectClassSystemCode3,
+	LearningDeliveryGenre,
+	NotionalNVQLevel,
+	NotionalNVQLevelv2,
+	RegulatedCreditValue,
+	SectorSubjectAreaTier1,
+	SectorSubjectAreaTier2,
+	--UnemployedOnly,
+	--UnitType,
+	EffectiveFrom
+)
+	select	distinct
+		--LLD.AwardOrgAimRef,
+		LLD.AwardOrgCode,
+		--LLD.CreditBasedFwkType,
+		LLD.EFACOFType,
+		LLD.EnglandFEHEStatus,
+		LLD.EnglPrscID,
+		LLD.FrameworkCommonComponent,
+		LLD.LearnAimRef,
+		LLD.LearnAimRefTitle,
+		LLD.LearnAimRefType,
+		LLD.LearnDirectClassSystemCode1,
+		LLD.LearnDirectClassSystemCode2,
+		LLD.LearnDirectClassSystemCode3,
+		LLD.LearningDeliveryGenre,
+		LLD.NotionalNVQLevel,
+		LLD.NotionalNVQLevelv2,
+		LLD.RegulatedCreditValue,
+		LLD.SectorSubjectAreaTier1,
+		LLD.SectorSubjectAreaTier2,
+		--LLD.UnemployedOnly,
+		--LLD.UnitType,
+		LLD.EffectiveFrom
+	from ${runmode.inputsource}.LearningDelivery
+			inner join ReferenceInput.[LARS_LARSLearningDelivery] LLD
+				on LLD.LearnAimRef = LearningDelivery.LearnAimRef
 go
 
 truncate table Reference.LARS_StandardCommonComponent
@@ -50,8 +103,8 @@ select	distinct
 		lscc.EffectiveTo,
 		ls.StandardCode
 from	${runmode.inputsource}.LearningDelivery
-			inner join ReferenceInput.ReferenceInput.LARS_LARSStandard ls
+			inner join ReferenceInput.LARS_LARSStandard ls
 				on ls.StandardCode = LearningDelivery.StdCode
-			inner join ReferenceInput.ReferenceInput.[LARS_LARSStandardCommonComponent] lscc
+			inner join ReferenceInput.[LARS_LARSStandardCommonComponent] lscc
 				on lscc.LARS_LARSStandard_Id = ls.Id
 go
