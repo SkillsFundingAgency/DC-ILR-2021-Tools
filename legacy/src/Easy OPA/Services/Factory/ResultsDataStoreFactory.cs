@@ -1,13 +1,17 @@
 ﻿using EasyOPA.Abstract;
 using EasyOPA.Constant;
+using EasyOPA.Coordinator;
 using EasyOPA.Model;
 using EasyOPA.Set;
+using ESFA.Common.Utility;
 using System.Composition;
 using System.Linq;
 using Tiny.Framework.Utilities;
+using XML2SQL;
 
 namespace EasyOPA.Factory
 {
+    
     /// <summary>
     /// data exchange data store factory
     /// </summary>
@@ -19,6 +23,8 @@ namespace EasyOPA.Factory
         DataStoreFactoryBase,
         ICreateResultsDataStores
     {
+        [Import]
+        public ICoordinateContextOperations Coordinate { get; set; }
         /// <summary>
         /// Store exists, a cleanse routine will be executed
         /// </summary>
@@ -57,14 +63,16 @@ namespace EasyOPA.Factory
 
             Emitter.Publish(batch.Description);
 
-            CreateDataStoreUsing(usingContext, batch.Scripts.First());
+            //CreateDataStoreUsing(usingContext, batch.Scripts.First());
 
+            var command = "select TOP(1) concat('ILR-', UKPRN,'-', FORMAT([DateTime], 'ddMMyyyy'),'-',FORMAT([DateTime],'hhmmss'), '-' , SerialNo) from dbo.Source;";
+            string ilrFileName = RunSafe.Try(() => Coordinate.GetAtom<string>(command, usingContext.SourceLocation));
             var forTarget = usingContext.ResultsDestination;
 
             CreateSchemaFor(
                 forTarget,
-                batch.Scripts.Skip(1).AsSafeReadOnlyList(),
-                x => Token.DoSecondaryPass(x, inYear, forTarget, usingContext.ReturnPeriod));
+                batch.Scripts.AsSafeReadOnlyList(),
+                x => Token.DoSecondaryPass(x, inYear, forTarget, usingContext.ReturnPeriod, ilrFileName));
         }
 
         /// <summary>
