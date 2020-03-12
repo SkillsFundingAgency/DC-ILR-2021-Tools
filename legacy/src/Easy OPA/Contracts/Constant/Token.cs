@@ -68,6 +68,8 @@ namespace EasyOPA.Constant
             /// For provider identifier
             /// </summary>
             public const string ForProviderID = "${providerID}";
+
+            public const string FileName = "${fileName}";
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace EasyOPA.Constant
         /// <returns>
         /// a de-tokenised string
         /// </returns>
-        public static string DoSecondaryPass(string onContent, BatchOperatingYear withYear, IConnectionDetail usingConnection, ReturnPeriod returnPeriod)
+        public static string DoSecondaryPass(string onContent, BatchOperatingYear withYear, IConnectionDetail usingConnection, ReturnPeriod returnPeriod, string fileName = "")
         {
             var unsupportedReturnPeriod = onContent.Contains(ForReturnPeriod) && It.IsInRange(returnPeriod, ReturnPeriod.None);
             unsupportedReturnPeriod
@@ -90,7 +92,8 @@ namespace EasyOPA.Constant
                     .Replace(ForReturnPeriod, $"{returnPeriod}")
                     .Replace(ForOperatingYear, withYear.AsString())
                     .Replace(SecondaryPass.ForLocalServer, usingConnection.Container)
-                    .Replace(SecondaryPass.ForContractPeriod, withYear.AsString());
+                    .Replace(SecondaryPass.ForContractPeriod, withYear.AsString())
+                    .Replace(SecondaryPass.FileName, fileName);
         }
 
         /// <summary>

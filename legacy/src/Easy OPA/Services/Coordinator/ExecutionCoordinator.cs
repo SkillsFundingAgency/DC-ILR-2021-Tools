@@ -213,7 +213,7 @@ namespace EasyOPA.Abstract
                             RunRulebaseSubset(TypeOfRulebaseOperation.Calculation, usingSession.RulesToRun, inContext);
                             // complete
                             #region Needs new story to re-work this
-                            //CompleteRun(usingSession, inContext, usingProvider.ID);
+                            CompleteRun(usingSession, inContext, usingProvider.ID);
                             #endregion
                             // report
                             RunReport(usingSession, inContext);
@@ -406,6 +406,12 @@ namespace EasyOPA.Abstract
             return RunSafe.Try(() => Coordinate.GetAtom<int>(command, forConnection));
         }
 
+        public string GetILRFileName(IConnectionDetail forConnection)
+        {
+            var command = "select TOP(1) concat('ILR-', UKPRN,'-', FORMAT([DateTime], 'ddMMyyyy'),'-',FORMAT([DateTime],'hhmmss'), '-' , SerialNo) from dbo.Source;";
+            return RunSafe.Try(() => Coordinate.GetAtom<string>(command, forConnection));
+        }
+
         /// <summary>
         /// Completes the run.
         /// </summary>
@@ -419,7 +425,8 @@ namespace EasyOPA.Abstract
                 var _inYear = usingSession.InputDataSource.OperatingYear;
 
                 ResultsDataStore.Prepare(inContext, forThisProvider, _inYear, forceCreation: true);
-                Results.Clone(inContext, forThisProvider, _inYear);
+                // TODO: add back in so we dont lose sight
+                //Results.Clone(inContext, forThisProvider, _inYear);
             }
         }
 

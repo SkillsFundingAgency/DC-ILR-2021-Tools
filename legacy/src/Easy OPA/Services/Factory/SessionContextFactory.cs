@@ -30,8 +30,8 @@ namespace EasyOPA.Factory
             {
                 Name = thisSource,
                 Container = thisInstance,
-                SQLDetail = $"Data Source={thisInstance};Initial Catalog={thisSource};Integrated Security=true;",
-                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};Integrated Security=SSPI"
+                SQLDetail = $"",
+                COMDetail = $""
             };
         }
 
@@ -44,7 +44,7 @@ namespace EasyOPA.Factory
         /// </returns>
         public IConnectionDetail ConnectionToMaster(string onInstance)
         {
-            return CreateFor(onInstance, "master");
+            return CreateFor(onInstance, "EOPA_DB");
         }
 
         /// <summary>
