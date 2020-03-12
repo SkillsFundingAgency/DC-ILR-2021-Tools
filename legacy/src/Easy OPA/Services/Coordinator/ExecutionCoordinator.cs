@@ -406,7 +406,7 @@ namespace EasyOPA.Abstract
             return RunSafe.Try(() => Coordinate.GetAtom<int>(command, forConnection));
         }
 
-        public string GetILRFIleName(IConnectionDetail forConnection)
+        public string GetILRFileName(IConnectionDetail forConnection)
         {
             var command = "select TOP(1) concat('ILR-', UKPRN,'-', FORMAT([DateTime], 'ddMMyyyy'),'-',FORMAT([DateTime],'hhmmss'), '-' , SerialNo) from dbo.Source;";
             return RunSafe.Try(() => Coordinate.GetAtom<string>(command, forConnection));
