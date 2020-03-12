@@ -425,6 +425,7 @@ namespace EasyOPA.Abstract
                 var _inYear = usingSession.InputDataSource.OperatingYear;
 
                 ResultsDataStore.Prepare(inContext, forThisProvider, _inYear, forceCreation: true);
+                // TODO: add back in so we dont lose sight
                 //Results.Clone(inContext, forThisProvider, _inYear);
             }
         }
