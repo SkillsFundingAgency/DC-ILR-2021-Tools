@@ -30,10 +30,8 @@ namespace EasyOPA.Factory
             {
                 Name = thisSource,
                 Container = thisInstance,
-                //SQLDetail = $"Data Source=crossdatabasetest.database.windows.net;Initial Catalog=eopatest;User ID=sqladmin;Password=Pa$$w0rd;Integrated Security=true;",
-                SQLDetail = $"Server=tcp:crossdatabasetest.database.windows.net,1433;Initial Catalog=EOPA_DB;Persist Security Info=False;User ID=sqladmin;Password=Pa$$w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-                COMDetail = $"Provider=sqloledb;Server=crossdatabasetest.database.windows.net;Database=EOPA_DB;User Id=sqladmin;Password=Pa$$w0rd"
-                //COMDetail = $"Server=tcp:crossdatabasetest.database.windows.net,1433;Initial Catalog=eopatest;Persist Security Info=False;User ID=sqladmin;Password=Pa$$w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+                SQLDetail = $"",
+                COMDetail = $""
             };
         }
 
@@ -46,7 +44,7 @@ namespace EasyOPA.Factory
         /// </returns>
         public IConnectionDetail ConnectionToMaster(string onInstance)
         {
-            return CreateFor(onInstance, "master");
+            return CreateFor(onInstance, "EOPA_DB");
         }
 
         /// <summary>
