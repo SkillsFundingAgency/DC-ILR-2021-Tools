@@ -17,6 +17,8 @@ variables:
   value: 'Any CPU'
 - name: ConsoleTool
   value: 'ESFA.DC.ILR.Tools.IFCT.Console'
+- name: WPFTool
+  value: 'ESFA.DC.ILR.Tools.IFCT.WPF'
 
 stages:
 - stage: Build
@@ -134,12 +136,20 @@ stages:
         flattenFolders: true
 
     - task: CopyFiles@2
-      displayName: 'Copy Application File to Artifact Folder'
+      displayName: 'Copy Console Application File to Artifact Folder'
       inputs:
         SourceFolder: 'src\$(ConsoleTool)\bin\$(BuildConfiguration)'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
 
+    - task: CopyFiles@2
+      displayName: 'Copy WPF Application File to Artifact Folder'
+      inputs:
+        SourceFolder: 'src\$(WPFTool)\bin\$(BuildConfiguration)'  
+        Contents: '**\!(*.pdb)'
+        TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
+        OverWrite: true'  
+        
     - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
       displayName: 'Tokenization: Transform Application config file'
       enabled: true
