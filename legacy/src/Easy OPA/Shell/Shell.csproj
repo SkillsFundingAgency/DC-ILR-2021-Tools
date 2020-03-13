@@ -552,7 +552,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\assetmanagement.cfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Assets\lite_rulebase.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

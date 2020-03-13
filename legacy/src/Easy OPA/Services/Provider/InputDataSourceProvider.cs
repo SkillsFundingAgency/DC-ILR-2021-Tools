@@ -131,6 +131,8 @@ namespace EasyOPA.Provider
             {
                 Name = withCandidate,
                 Container = usingDetail.Container,
+                DBUser = usingDetail.DBUser,
+                DBPassword = usingDetail.DBPassword,
                 CollectionType = collectionTemp.AsOperationType(),
                 OperatingYear = yearTemp.AsOperatingYear(),
                 Providers = providers.AsSafeReadOnlyList()

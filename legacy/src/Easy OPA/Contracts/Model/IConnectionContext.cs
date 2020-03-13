@@ -15,7 +15,10 @@ namespace EasyOPA.Model
         /// </summary>
         string Container { get; }
 
-        /// <summary>
+        string DBUser { get; }
+        string DBPassword { get; }
+
+        // <summary>
         /// Gets the connection details.
         /// </summary>
         string SQLDetail { get; }

@@ -19,7 +19,7 @@ namespace EasyOPA.Factory
         /// <param name="thisInstance">this instance.</param>
         /// <param name="thisSource">this source.</param>
         /// <returns>a connection string</returns>
-        public IConnectionDetail CreateFor(string thisInstance, string thisSource)
+        public IConnectionDetail CreateFor(string thisInstance, string thisSource, string thisUser, string thisPassword)
         {
             // connection strings are somewhat of a mystery, sometimes....
             // Provider=sqloledb;Server={usingInstance};Database={andDataSource};Integrated Security=SSPI
@@ -30,8 +30,10 @@ namespace EasyOPA.Factory
             {
                 Name = thisSource,
                 Container = thisInstance,
-                SQLDetail = $"",
-                COMDetail = $""
+                DBUser = thisUser,
+                DBPassword = thisPassword,
+                SQLDetail = $"Server=tcp:{thisInstance},1433;Initial Catalog={thisSource};Persist Security Info=False;User ID={thisUser};Password={thisPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};User Id={thisUser};Password={thisPassword}"
             };
         }
 
@@ -42,9 +44,9 @@ namespace EasyOPA.Factory
         /// <returns>
         /// a connection detail for the 'master' data source
         /// </returns>
-        public IConnectionDetail ConnectionToMaster(string onInstance)
+        public IConnectionDetail ConnectionToMaster(string onInstance, string thisUser, string thisPassword)
         {
-            return CreateFor(onInstance, "EOPA_DB");
+            return CreateFor(onInstance, "EOPA_DB", thisUser, thisPassword);
         }
 
         /// <summary>
@@ -55,9 +57,9 @@ namespace EasyOPA.Factory
         /// <returns>
         /// a connection detail for the data source
         /// </returns>
-        public IConnectionDetail ConnectionToSource(string onInstance, string withName)
+        public IConnectionDetail ConnectionToSource(string onInstance, string withName, string thisUser, string thisPassword)
         {
-            return CreateFor(onInstance, withName);
+            return CreateFor(onInstance, withName, thisUser, thisPassword);
         }
 
         /// <summary>
@@ -71,16 +73,16 @@ namespace EasyOPA.Factory
         /// <returns>
         /// a connection context provider
         /// </returns>
-        public IContainSessionContext Create(string onInstance, IInputDataSource forDataSource, bool runMode, bool usingSourceForResults, bool depositArtefacts, ReturnPeriod returnPeriod)
+        public IContainSessionContext Create(string onInstance, string thisUser, string thisPassword, IInputDataSource forDataSource, bool runMode, bool usingSourceForResults, bool depositArtefacts, ReturnPeriod returnPeriod)
         {
-            var sourceLocation = CreateFor(onInstance, forDataSource.Name);
+            var sourceLocation = CreateFor(onInstance, forDataSource.Name, thisUser, thisPassword);
 
             var provider = new SessionContextContainer
             {
                 Year = forDataSource.OperatingYear,
-                Master = CreateFor(onInstance, "master"),
+                Master = CreateFor(onInstance, "master", thisUser, thisPassword),
                 SourceLocation = sourceLocation,
-                ProcessingLocation = CreateFor(onInstance, SessionContextContainer.IntrajobName),
+                ProcessingLocation = CreateFor(onInstance, SessionContextContainer.IntrajobName, thisUser, thisPassword),
                 RunMode = runMode ? TypeOfRunMode.Lite : TypeOfRunMode.Full,
                 UsingSourceForResults = usingSourceForResults,
                 DepositRulebaseArtefacts = depositArtefacts,
@@ -89,7 +91,7 @@ namespace EasyOPA.Factory
 
             provider.ResultsDestination = usingSourceForResults
                 ? sourceLocation
-                : CreateFor(onInstance, provider.DataExchangeName);
+                : CreateFor(onInstance, provider.DataExchangeName, thisUser, thisPassword);
 
             return provider;
         }

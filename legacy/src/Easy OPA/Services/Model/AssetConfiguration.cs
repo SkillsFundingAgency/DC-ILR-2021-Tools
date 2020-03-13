@@ -32,6 +32,12 @@ namespace EasyOPA.Model
         [DataMember]
         public FolderNamesContainer FolderNames { get; set; }
 
+        [DataMember]
+        public string DBUser { get; set; }
+
+        [DataMember]
+        public string DBPassword { get; set; }
+
         /// <summary>
         /// Gets the name of the instance.
         /// </summary>
