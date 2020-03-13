@@ -18,6 +18,10 @@ namespace EasyOPA.Model
         /// </summary>
         string Container { get; }
 
+        string DBUser { get; }
+
+        string DBPassword { get; }
+
         /// <summary>
         /// Gets the type of collection.
         /// </summary>

@@ -18,7 +18,7 @@ namespace EasyOPA.Manager
         /// <returns>
         /// the current task
         /// </returns>
-        Task Import(string usingInstance, Func<string> getFileName, Func<string, bool> andConfirmAnyChallenge);
+        Task Import(string usingInstance, string dbUser, string dbPassword, Func<string> getFileName, Func<string, bool> andConfirmAnyChallenge);
 
         /// <summary>
         /// Exports (the currently selected input source to ILR file).

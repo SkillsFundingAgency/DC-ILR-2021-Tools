@@ -85,6 +85,8 @@ namespace EasyOPA.Manager
         /// The SQL instance
         /// </summary>
         private string _sqlInstance;
+        private string _dbUser;
+        private string _dbPassword;
 
         /// <summary>
         /// Gets or sets the SQL instance.
@@ -99,6 +101,36 @@ namespace EasyOPA.Manager
             set
             {
                 if (SetPropertyValue(ref _sqlInstance, value))
+                {
+                    Asset.SetInstanceName(value);
+                }
+            }
+        }
+
+        public string DBUser
+        {
+            get
+            {
+                return _dbUser ?? (_dbUser = Asset.DBUser);
+            }
+            set
+            {
+                if (SetPropertyValue(ref _dbUser, value))
+                {
+                    Asset.SetInstanceName(value);
+                }
+            }
+        }
+
+        public string DBPassword
+        {
+            get
+            {
+                return _dbPassword ?? (_dbPassword = Asset.DBPassword);
+            }
+            set
+            {
+                if (SetPropertyValue(ref _dbPassword, value))
                 {
                     Asset.SetInstanceName(value);
                 }
@@ -278,7 +310,7 @@ namespace EasyOPA.Manager
         /// <returns></returns>
         public async Task BuildValidSources()
         {
-            var master = Provider.ConnectionToMaster(SQLInstance);
+            var master = Provider.ConnectionToMaster(SQLInstance, DBUser, DBPassword);
             await GetDatabaseList(master);
         }
 

@@ -233,6 +233,8 @@ namespace EasyOPA.ViewModel
 
                 await Bulk.Import(
                     Prepared.SQLInstance,
+                    Prepared.DBUser,
+                    Prepared.DBPassword,
                     () => FileSelector.GetFileName<IManageRunPreparation>(),
                     x => Challenge.GetResponse(x));
                 await Prepared.Refresh();
@@ -316,6 +318,8 @@ namespace EasyOPA.ViewModel
 
                 var context = ContextFactory.Create(
                     Prepared.SQLInstance,
+                    Prepared.DBUser,
+                    Prepared.DBPassword,
                     Prepared.SelectedSource,
                     Prepared.RunMode,
                     Prepared.UseSourceForResults,
