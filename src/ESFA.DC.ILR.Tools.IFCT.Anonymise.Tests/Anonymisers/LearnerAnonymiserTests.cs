@@ -43,8 +43,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Anonymisers
             result.LearnRefNumber.Should().Equals("1");
             result.ULN.Should().Equals(9000000105);
 
-            result.FamilyName.Should().Equals("Mary Jane");
-            result.GivenNames.Should().Equals("Sméth");
+            result.GivenNames.Should().Equals("Mary Jane");
+            result.FamilyName.Should().Equals("Sméth");
 
             result.AddLine1.Should().Equals("18 Address line road");
             result.AddLine2.Should().BeNull();

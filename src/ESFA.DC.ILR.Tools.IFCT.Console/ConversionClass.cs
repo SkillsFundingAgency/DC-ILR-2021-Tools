@@ -47,7 +47,9 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                             logger.LogDebug("Starting processing");
                             System.Console.WriteLine("IFCT Console" + Environment.NewLine + Environment.NewLine);
 
-                            var result = await consoleService.ProcessFilesAsync(context, new CancellationToken());
+                            Task<bool> task = Task.Run<bool>(async () => await consoleService.ProcessFilesAsync(context, new CancellationToken()));
+                            var result = task.Result;
+
                             System.Console.WriteLine(result ? "Processing completed successfully" : "Processing failed, please check logs");
                         }
                         catch (ArgumentException ae)

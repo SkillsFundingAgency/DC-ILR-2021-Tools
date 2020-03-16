@@ -36,8 +36,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
             model.LearnRefNumber = lrnGeneratorCount.ToString();
             model.ULN = newULN;
 
-            model.FamilyName = "Mary Jane";
-            model.GivenNames = "Sméth";
+            model.GivenNames = "Mary Jane";
+            model.FamilyName = "Sméth";
 
             model.TelNo = "01215555555";
 
