@@ -83,7 +83,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                 // Need to do extract from zip (if relevant) here
                 Loose.Previous.Message sourceMessage = null;
 
-                using (var sourceStream = await _fileService.OpenReadStreamAsync(sourceFileReference, sourceFileContainer, cancellationToken))
+                using (var sourceStream = await _fileService.OpenReadStreamAsync(sourceFileReference, sourceFileContainer, new System.Threading.CancellationToken()))
                 {
                     _logger.LogVerbose($"Read in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
@@ -123,7 +123,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                 timer.Restart();
 
                 // Write out the current year structure
-                using (var targetStream = await _fileService.OpenWriteStreamAsync(targetFileReference, targetFileContainer, cancellationToken))
+                using (var targetStream = await _fileService.OpenWriteStreamAsync(targetFileReference, targetFileContainer, new System.Threading.CancellationToken()))
                 {
                     _logger.LogVerbose($"Get Out Stream in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
@@ -132,13 +132,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                     _logger.LogVerbose($"Serialize in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
 
-                    await targetStream.FlushAsync(cancellationToken);
+                    await targetStream.FlushAsync();
                     _logger.LogVerbose($"Flush in {timer.ElapsedMilliseconds}ms");
                     timer.Restart();
                 }
 
                 // Write out the anonymisation lookup details (LRN and ULN)
-                using (var targetStream = await _fileService.OpenWriteStreamAsync(targetFileReference + ".CSV", targetFileContainer, cancellationToken))
+                using (var targetStream = await _fileService.OpenWriteStreamAsync(targetFileReference + ".CSV", targetFileContainer, new System.Threading.CancellationToken()))
                 {
                     var newLineBytes = Encoding.ASCII.GetBytes(Environment.NewLine);
                     foreach (var logEntry in _anonymiseLog.Log)
@@ -149,13 +149,13 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                         targetStream.Write(newLineBytes, 0, newLineBytes.Length);
                     }
 
-                    await targetStream.FlushAsync(cancellationToken);
+                    await targetStream.FlushAsync();
                     _anonymiseLog.Clear();
                 }
 
                 _messengerService.Send(_validationErrorHandler.ErrorRaised ?
-                    new TaskProgressMessage("File saved - Completed with XML Validation warnings - Please check logs", currentTask, taskCount) :
-                    new TaskProgressMessage("File saved - Completed", currentTask, taskCount));
+                    new TaskProgressMessage("File saved - Completed with XML Validation warnings - Please check logs", currentTask++, taskCount) :
+                    new TaskProgressMessage("File saved - Completed", currentTask++, taskCount));
             }
             catch (Exception ex)
             {

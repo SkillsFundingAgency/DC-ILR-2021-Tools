@@ -51,8 +51,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
                             var result = task.Result;
 
                             System.Console.WriteLine(result ? "Processing completed successfully" : "Processing failed, please check logs");
-
-                            System.Console.ReadLine();
                         }
                         catch (ArgumentException ae)
                         {
