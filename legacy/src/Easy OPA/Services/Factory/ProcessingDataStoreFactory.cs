@@ -51,10 +51,9 @@ namespace EasyOPA.Factory
 
             var forTarget = usingContext.ProcessingLocation;
 
-            CreateDataStoreUsing(usingContext, batch.Scripts.First());
             CreateSchemaFor(
                 forTarget,
-                batch.Scripts.Skip(1).AsSafeReadOnlyList(),
+                batch.Scripts.AsSafeReadOnlyList(),
                 x => Token.DoSecondaryPass(x, inYear, forTarget, usingContext.ReturnPeriod));
         }
 
