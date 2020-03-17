@@ -84,6 +84,8 @@ stages:
       inputs:
         solution: '$(Parameters.solution)'
         msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
         clean: true
         maximumCpuCount: true
         restoreNugetPackages: true
