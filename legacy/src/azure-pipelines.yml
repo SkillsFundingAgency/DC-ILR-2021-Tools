@@ -1,0 +1,234 @@
+
+name: legacy-$(GitVersion.NuGetVersion)
+
+resources:
+- repo: self
+  fetchDepth: 30
+
+variables:
+- group: 'CodeSign KV'
+- name: Parameters.solution 
+  value: '**\src\*.sln'
+- name: Parameters.nugetFeedName 
+  value: 'dct-pkg'
+- name: BuildConfiguration
+  value: 'Release'
+- name: BuildPlatform
+  value: 'Any CPU'
+- name: ConsoleTool
+  value: 'ESFA.DC.ILR.Tools.IFCT.Console'
+
+
+trigger:
+  branches:
+    include:
+     - '*'
+  paths:
+    include:
+    - src/*
+    - azure-pipelines.yml
+    exclude:
+
+stages:
+- stage: Buil
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      name: DCT
+      demands:
+      - IsBuildServer
+
+    steps:
+    - task: DotNetCoreInstaller@2
+      inputs:
+        version: 2.2.110
+      displayName: 'Use .NET Core sdk 2.2.8 (VS2019 = 2.2.207) | (VS2017 = 2.2.110)'
+
+    - task: NuGetToolInstaller@0
+      displayName: 'Use NuGet >=5.3.1'
+      enabled: true
+      inputs:
+        versionSpec: '>=5.3.1'
+
+    - task: gittools.gitversion.gitversion-task.GitVersion@5
+      displayName: GitVersion
+      enabled: true
+      inputs:
+        runtime: full
+        updateAssemblyInfo: true
+        preferBundledVersion: false
+
+    - task: VisualStudioTestPlatformInstaller@1
+      inputs:
+        packageFeedSelector: 'nugetOrg'
+        versionSelector: 'latestStable'
+
+    ## Restore & Build 
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      enabled: true
+      inputs:
+        restoreSolution: '$(Parameters.solution)'
+        vstsFeed: '$(Parameters.nugetFeedName)'
+
+    - task: MSBuild@1
+      displayName: 'Build solution'
+      enabled: true
+      inputs:
+        solution: '$(Parameters.solution)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:SkipInvalidConfigurations=true'
+        clean: true
+        maximumCpuCount: true
+        logProjectEvents: true
+        createLogFile: true        
+
+    #********************************************************************************
+    # Run Unit Tests
+    #********************************************************************************
+    - task: VSTest@2
+      displayName: 'Run Unit Tests'
+      enabled: true
+      inputs:
+        testAssemblyVer2: |
+         **\$(BuildConfiguration)\src\*test*.dll
+         !**\obj\**
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        runInParallel: true
+        codeCoverageEnabled: true
+        diagnosticsEnabled: true       
+        
+    - task: DotNetCoreCLI@2
+      displayName: Run unit tests
+      enabled: false
+      inputs:
+        command: test
+        arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+        nobuild: false
+        projects: '**/src/**/*Tests.csproj'
+
+    #********************************************************************************
+    # Copy Files into Aftifact Folder before test.
+    #********************************************************************************
+
+    - task: CopyFiles@2
+      displayName: 'Copy Scripts File to Scripts Folder'
+      inputs:
+        Contents: 'GenerateZipFilename.ps1'
+        TargetFolder: '$(build.ArtifactStagingDirectory)\Scripts'
+        flattenFolders: true
+        CleanTargetFolder: true
+
+    - task: CopyFiles@2
+      displayName: 'Copy Nuget Interface Packages Files - Artifact NugetInterface Directory'
+      inputs:
+        SourceFolder: '$(build.sourcesdirectory)/src'
+        Contents: |
+         **/*$(BuildConfiguration)*/*Interface*.nupkg
+         !**/packages/**
+         !**/bin/x64/**
+        TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Interface'
+        flattenFolders: true
+
+    - task: CopyFiles@2
+      displayName: 'Copy NugetPackages Files - Artifact NugetPackages Directory'
+      inputs:
+        SourceFolder: '$(build.sourcesdirectory)/src'
+        Contents: |
+         **/*$(BuildConfiguration)*/*.nupkg
+         !**/*Interface*
+         !**/packages/**
+         !**/bin/x64/**
+        TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Packages'
+        flattenFolders: true
+
+    - task: CopyFiles@2
+      displayName: 'Copy Application File to Artifact Folder'
+      inputs:
+        SourceFolder: 'src\$(ConsoleTool)\bin\$(BuildConfiguration)'  
+        Contents: '**\!(*.pdb)'
+        TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
+
+    - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
+      displayName: 'Tokenization: Transform Application config file'
+      enabled: true
+      inputs:
+        SourcePath: '$(build.ArtifactStagingDirectory)\DesktopApplication'
+        TargetFileNames: '*.exe.config'
+        RequireVariable: false
+
+    #********************************************************************************
+    # CodeSign Script body
+    # Application Signing execution begins here
+    #********************************************************************************
+
+    - task: PowerShell@2
+      displayName: 'CodeSign DfE DesktopApplications'
+      enabled: true  
+      env:
+        CODESIGNPASSWORD: $(CodeSignPwdDfE)
+        CODESIGNCERT: $(CodeSignCertificatePFX)
+      inputs:
+        filePath: 'DFE_Code_Signing.ps1'
+        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication"'
+        workingDirectory: '$(Build.SourcesDirectory)'
+
+
+    #********************************************************************************
+    # Generate Code Coverage Report and Publish
+    #********************************************************************************
+#     
+#    ## Generate the report using ReportGenerator (https://github.com/danielpalme/ReportGenerator)
+#    # First install the tool on the machine, then run it
+#    - script: |
+#        dotnet tool install -g dotnet-reportgenerator-globaltool --version 4.3.6  
+#        reportgenerator -reports:$(Build.SourcesDirectory)/**/*Tests/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:Cobertura
+#      displayName: Create Code coverage report
+#      
+#    # Publish the code coverage result (summary and web site)
+#    # The summary allows to view the coverage percentage in the summary tab
+#    # The web site allows to view which lines are covered directly in Azure Pipeline
+#    - task: PublishCodeCoverageResults@1
+#      displayName: 'Publish code coverage'
+#      inputs:
+#        codeCoverageTool: Cobertura
+#        summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+#        reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
+#     
+    #********************************************************************************
+    # Publish Artifacts
+    #********************************************************************************
+     
+    - task: PublishSymbols@2
+      displayName: 'Publish symbols path'
+      enabled: false
+      inputs:
+        SearchPattern: '**\bin\**\*.pdb'
+        PublishSymbols: false
+      continueOnError: true
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: Scripts'
+      enabled: false
+      inputs:
+        ArtifactName: Scripts
+        PathtoPublish: '$(build.artifactstagingdirectory)\Scripts'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: NugetPackages'
+      enabled: false
+      inputs:
+        ArtifactName: NugetPackages
+        PathtoPublish: '$(build.artifactstagingdirectory)\Nuget'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: DesktopApplication'
+      enabled: true
+      inputs:
+        ArtifactName: DesktopApplication
+        PathtoPublish: '$(build.artifactstagingdirectory)\DesktopApplication'
+
