@@ -1,6 +1,14 @@
 
 name:  $(GitVersion.NuGetVersion)
 
+trigger:
+  paths:
+    include:
+    - src/legacy/*
+    - azure-pipelines.legacy.yml
+    exclude:
+    - src/*
+
 resources:
 - repo: self
   fetchDepth: 30
