@@ -17,7 +17,7 @@ resources:
 variables:
 - group: 'CodeSign KV'
 - name: Parameters.solution 
-  value: '**\*.sln'
+  value: 'src\**\*.sln'
 - name: Parameters.nugetFeedName 
   value: 'dct-pkg'
 - name: BuildConfiguration
@@ -126,7 +126,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*Interface*.nupkg
+         src/**/*$(BuildConfiguration)*/*Interface*.nupkg
          !**/packages/**
          !**/bin/x64/**
         TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Interface'
@@ -137,7 +137,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*.nupkg
+         src/**/*$(BuildConfiguration)*/*.nupkg
          !**/*Interface*
          !**/packages/**
          !**/bin/x64/**
@@ -194,14 +194,14 @@ stages:
         command: test
         arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
         nobuild: true
-        projects: '**/*Tests.csproj'
+        projects: 'src/**/*Tests.csproj'
 
     - task: VSTest@2
       displayName: 'Run Unit Tests'
       enabled: true
       inputs:
         testAssemblyVer2: |
-         **\$(BuildConfiguration)\*test*.dll
+         src\**\$(BuildConfiguration)\*test*.dll
          !**\obj\**
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
@@ -238,7 +238,7 @@ stages:
       displayName: 'Publish symbols path'
       enabled: false
       inputs:
-        SearchPattern: '**\bin\**\*.pdb'
+        SearchPattern: 'src\**\bin\**\*.pdb'
         PublishSymbols: false
       continueOnError: true
 
