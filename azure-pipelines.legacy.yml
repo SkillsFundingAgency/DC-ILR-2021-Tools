@@ -138,9 +138,9 @@ stages:
         flattenFolders: true
 
     - task: CopyFiles@2
-      displayName: 'Copy Console Application File to Artifact Folder'
+      displayName: 'Copy EASY OPA Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'legacy\src\$(ShellTool)\bin\$(BuildConfiguration)'  
+        SourceFolder: '\legacy\src\$(ShellTool)\bin\$(BuildConfiguration)'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\LegacyApplication'
         
