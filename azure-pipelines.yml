@@ -25,9 +25,8 @@ trigger:
      - '*'
   paths:
     include:
-    - src/*
-    - azure-pipelines.yml
     - legacy/*
+    - azure-pipelines.yml
 
 stages:
 - stage: Build
