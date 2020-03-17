@@ -5,11 +5,11 @@ using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
-    public class AnnualMapperConfiguration : ConfigurationBase, IAnnualMapperConfiguration
+    public class FileConversionOrchestratorConfiguration : ConfigurationBase, IFileConversionOrchestratorConfiguration
     {
         public static readonly string SanitizeStringsId = "SanitizeStrings";
 
-        public AnnualMapperConfiguration(IConfiguration configuration, ILogger logger)
+        public FileConversionOrchestratorConfiguration(IConfiguration configuration, ILogger logger)
             : base(configuration, logger)
         {
             LogConfiguration();

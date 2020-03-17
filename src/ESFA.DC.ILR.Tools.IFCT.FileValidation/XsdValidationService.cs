@@ -37,21 +37,21 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
                 {
                     xmlReader.ReadToFollowing(rootElementName);
                 }
-                catch (XmlException xmlException)
+                catch (XmlException)
                 {
-                    throw xmlException;
+                    throw;
                 }
             }
         }
 
-        public XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
+        public static XmlReaderSettings BuildXmlNsReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
             var settings = BuildReaderSettings(xmlSchemaSet, validationEventHandler);
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             return settings;
         }
 
-        public XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
+        public static XmlReaderSettings BuildReaderSettings(XmlSchemaSet xmlSchemaSet, ValidationEventHandler validationEventHandler = null)
         {
             var settings = new XmlReaderSettings
             {

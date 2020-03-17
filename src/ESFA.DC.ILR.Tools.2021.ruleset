@@ -76,6 +76,7 @@
   </Rules>
   <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers">
     <Rule Id="CA1303" Action="None" />
+    <Rule Id="CA1305" Action="None" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA0001" Action="None" />
@@ -104,6 +105,7 @@
     <Rule Id="SA1201" Action="Error" />
     <Rule Id="SA1202" Action="None" />
     <Rule Id="SA1203" Action="Error" />
+    <Rule Id="SA1204" Action="None" />
     <Rule Id="SA1208" Action="Error" />
     <Rule Id="SA1210" Action="Error" />
     <Rule Id="SA1309" Action="None" />
@@ -120,6 +122,7 @@
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1602" Action="None" />
     <Rule Id="SA1623" Action="None" />
+    <Rule Id="SA1629" Action="None" />
     <Rule Id="SA1633" Action="None" />
     <Rule Id="SA1649" Action="Error" />
     <Rule Id="SA1652" Action="None" />

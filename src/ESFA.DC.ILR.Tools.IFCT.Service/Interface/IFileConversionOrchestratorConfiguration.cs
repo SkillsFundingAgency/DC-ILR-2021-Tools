@@ -1,6 +1,6 @@
 ﻿namespace ESFA.DC.ILR.Tools.IFCT.Service.Interface
 {
-    public interface IAnnualMapperConfiguration
+    public interface IFileConversionOrchestratorConfiguration
     {
         bool SanitizeStrings { get; }
     }

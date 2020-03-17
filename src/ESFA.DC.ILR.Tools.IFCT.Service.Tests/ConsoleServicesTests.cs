@@ -1,15 +1,11 @@
-﻿using ESFA.DC.FileService.Interface;
-using ESFA.DC.ILR.Tools.IFCT.Console;
-using ESFA.DC.ILR.Tools.IFCT.FileValidation.Interfaces;
-using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
-using ESFA.DC.Logging.Interfaces;
-using FluentAssertions;
-using Moq;
-using System;
-using System.IO;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Schema;
+using ESFA.DC.FileService.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Console;
+using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
+using FluentAssertions;
+using Moq;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
@@ -17,54 +13,47 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
     public class ConsoleServicesTests
     {
         private readonly string sourcefileName = "sourceFile.xml";
-        private readonly string targetfileName = "targetFile.xml";
-        private readonly string targetFilePath = "C:\\";
+        private readonly string targetFilePath = @"C:\";
 
         [Fact]
         public void ConsoleService_ProcessFiles_NullParamaterThrowsArgumentNullException()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, null, null, null, null, null);
+            var consoleService = new ConsoleService(annualMapperMock.Object, null);
             FileConversionContext fileConversionContext = null;
 
             // Act & Assert
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, new CancellationToken());
             action.Should().Throw<ArgumentNullException>();
         }
 
         [Theory]
-        [InlineData(null, null, null, null)]
-        [InlineData("sourceFile", null, null, null)]
-        [InlineData(null, "targetFile", null, null)]
-        [InlineData(null, null, "sourceFolder", null)]
-        [InlineData(null, null, null, "targetFolder")]
+        [InlineData(null, null, null)]
+        [InlineData("sourceFile", null, null)]
+        [InlineData(null, "sourceFolder", null)]
+        [InlineData(null, null, "targetFolder")]
         public void ConsoleService_ProcessFiles_InvalidFileConversionContextThrowsArgumentException(
             string sourceFile,
-            string targetFile,
             string sourceFolder,
             string targetFolder)
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
-            var xsdValidationMock = new Mock<IXsdValidationService>();
-            var xmlProviderMock = new Mock<IXmlSchemaProvider>();
-            var validationErrorMock = new Mock<IValidationErrorHandler>();
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourceFile,
-                TargetFile = targetFile,
                 SourceFolder = sourceFolder,
-                TargetFolder = targetFolder
+                TargetFolder = targetFolder,
             };
 
             // Act & Assert
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, new CancellationToken());
             action.Should().Throw<ArgumentException>();
         }
 
@@ -72,25 +61,18 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public void ConsoleService_ProcessFiles_MissingSourceFileThrowsArgumentException()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
-            var fileNameServiceMock = new Mock<IFileNameService>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileServiceMock = new Mock<IFileService>();
-            var xsdValidationServiceMock = new Mock<IXsdValidationService>();
-            var xmlProviderMock = new Mock<IXmlSchemaProvider>();
-            var validationErrorMock = new Mock<IValidationErrorHandler>();
 
-            xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>())).Verifiable();
-            fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(false);
-
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
-                TargetFile = targetfileName,
+                TargetFolder = targetFilePath,
             };
 
             // Act
-            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext);
+            Func<Task> action = async () => await consoleService.ProcessFilesAsync(fileConversionContext, new CancellationToken());
             action.Should().Throw<ArgumentException>();
 
             // Assert
@@ -101,33 +83,24 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         public async Task ConsoleService_ProcessFiles_ValidFilesCallMapFileAsync()
         {
             // Arrange
-            var annualMapperMock = new Mock<IAnnualMapper>();
-            var fileNameServiceMock = new Mock<IFileNameService>();
+            var annualMapperMock = new Mock<IFileConversionOrchestrator>();
             var fileServiceMock = new Mock<IFileService>();
-            var xsdValidationServiceMock = new Mock<IXsdValidationService>();
-            var xmlProviderMock = new Mock<IXmlSchemaProvider>();
-            var validationErrorMock = new Mock<IValidationErrorHandler>();
 
-            fileNameServiceMock.Setup(x => x.Generate(It.IsAny<string>())).Returns("targetFile");
-            xsdValidationServiceMock.Setup(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>())).Verifiable();
             fileServiceMock.Setup(c => c.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>())).ReturnsAsync(true);
-            xmlProviderMock.Setup(p => p.Provide()).Returns(new XmlSchema());
 
-            var consoleService = new ConsoleService(annualMapperMock.Object, fileNameServiceMock.Object, fileServiceMock.Object, xsdValidationServiceMock.Object, xmlProviderMock.Object, validationErrorMock.Object);
+            var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);
             FileConversionContext fileConversionContext = new FileConversionContext
             {
                 SourceFile = sourcefileName,
-                TargetFile = targetFilePath,
+                TargetFolder = targetFilePath,
             };
 
             // Act
-            await consoleService.ProcessFilesAsync(fileConversionContext);
+            await consoleService.ProcessFilesAsync(fileConversionContext, new CancellationToken());
 
             // Assert
-            fileNameServiceMock.Verify(fn => fn.Generate(It.IsAny<string>()), Times.Once);
-            xsdValidationServiceMock.Verify(c => c.Validate(It.IsAny<Stream>(), It.IsAny<XmlSchemaSet>(), It.IsAny<ValidationEventHandler>()), Times.Once);
             fileServiceMock.Verify(v => v.ExistsAsync(sourcefileName, null, It.IsAny<CancellationToken>()), Times.Once);
-            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetfileName, targetFilePath), Times.Once);
+            annualMapperMock.Verify(v => v.MapFileAsync(sourcefileName, string.Empty, targetFilePath, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }

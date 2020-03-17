@@ -1,6 +1,6 @@
-﻿using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
+﻿using System;
+using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using Loose;
-using System;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
 {
@@ -20,7 +20,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
                 return null;
             }
 
-            var logEntry = new AnonymiseLogEntry { FieldName = "FilePreparationDate", OldValue = model.FilePreparationDate.ToShortDateString(), NewValue ="01/01/2099" };
+            var logEntry = new AnonymiseLogEntry { FieldName = "FilePreparationDate", OldValue = model.FilePreparationDate.ToShortDateString(), NewValue = "01/01/2099" };
             _anonymiseLog.Add(logEntry);
 
             model.FilePreparationDate = new DateTime(2099, 1, 1);

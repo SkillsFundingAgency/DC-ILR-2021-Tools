@@ -8,7 +8,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
     {
         private const string YEAR_PARSER = "yyyyMMdd";
         private const string TIME_PARSER = "HHmmss";
-        private const string SERIAL_DEAFULT = "99";
+        private const string SERIAL_DEFAULT = "99";
         private const char DELIMETER = '-';
         private const int ADD_MODIFIER = 1;
         private const int YEAR_LENGTH = 4;
@@ -17,12 +17,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         private const int TIMESTAMP_LENGTH = 6;
         private const int YEAR_SPLIT_LENGTH = 2;
 
-        public string YearUpdate(string year)
+        public static string YearUpdate(string year)
         {
-            if (int.TryParse(year, out int a) == false
+            if (int.TryParse(year, out _) == false
                 || year.Length != YEAR_LENGTH)
             {
-                throw new ArgumentException("message", nameof(year));
+                throw new ArgumentException("Year part of ILR filename not valid", nameof(year));
             }
 
             int yr1 = int.Parse(year.Substring(0, (int)(year.Length / YEAR_SPLIT_LENGTH)), CultureInfo.InvariantCulture);
@@ -32,35 +32,35 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
             return yr1.ToString(CultureInfo.InvariantCulture) + yr2.ToString(CultureInfo.InvariantCulture);
         }
 
-        public string SerialNumberUpdate(string serialNumber)
+        public static string SerialNumberUpdate(string serialNumber)
         {
-            if (!int.TryParse(serialNumber, out int x)
+            if (!int.TryParse(serialNumber, out _)
                 || serialNumber.Length != SERIAL_LENGTH)
             {
-                throw new ArgumentException("message", nameof(serialNumber));
+                throw new ArgumentException("Serial Number part of ILR filename not valid", nameof(serialNumber));
             }
 
-            return SERIAL_DEAFULT;
+            return SERIAL_DEFAULT;
         }
 
-        public string DateStampUpdate(string date)
+        public static string DateStampUpdate(string date)
         {
             if (!DateTime.TryParseExact(date, YEAR_PARSER, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime)
                 || date.Length != DATESTAMP_LENGTH)
             {
-                throw new ArgumentException("message", nameof(date));
+                throw new ArgumentException("Date Stamp part of ILR filename not valid", nameof(date));
             }
 
             dateTime = dateTime.AddYears(ADD_MODIFIER);
             return dateTime.ToString(YEAR_PARSER, CultureInfo.InvariantCulture);
         }
 
-        public string TimeStampUpdate(string time)
+        public static string TimeStampUpdate(string time)
         {
             if (!DateTime.TryParseExact(time, TIME_PARSER, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime)
                 || time.Length != TIMESTAMP_LENGTH)
             {
-                throw new ArgumentException("message", nameof(time));
+                throw new ArgumentException("Time Stamp part of ILR filename not valid", nameof(time));
             }
 
             dateTime = dateTime.AddSeconds(ADD_MODIFIER);
@@ -76,6 +76,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
         public string Generate(string currentFileName)
         {
             string[] ilrParts = currentFileName.Split(DELIMETER);
+
+            if (ilrParts.Length != 6)
+            {
+                throw new ArgumentException("Invalid ILR filename", nameof(currentFileName));
+            }
+
             ilrParts[2] = YearUpdate(ilrParts[2]);
             return string.Join(DELIMETER.ToString(CultureInfo.InvariantCulture), ilrParts);
         }
