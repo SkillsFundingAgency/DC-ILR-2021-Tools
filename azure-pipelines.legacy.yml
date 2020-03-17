@@ -140,7 +140,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy EASY OPA Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'legacy\$(ShellTool)\$(BuildConfiguration)'  
+        SourceFolder: 'legacy\$(ShellTool)\bin\$(BuildConfiguration)'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\LegacyApplication'
         
