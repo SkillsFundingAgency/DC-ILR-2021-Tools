@@ -28,7 +28,6 @@ trigger:
     - src/*
     - azure-pipelines.yml
     - legacy/*
-    exclude:
 
 stages:
 - stage: Build
