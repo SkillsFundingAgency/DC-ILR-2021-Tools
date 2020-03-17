@@ -79,8 +79,18 @@ stages:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
 
+    - task: MSBuild@1
+      displayName: 'Build solution EasyOPA'
+      inputs:
+        solution: '$(Parameters.solution)'
+        msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        clean: true
+        maximumCpuCount: true
+        restoreNugetPackages: true
+
     - task: VSBuild@1
-      displayName: 'Build solution **\*.sln'
+      displayName: 'Build solution EasyOPA'
+      enabled: false
       inputs:
         solution: '$(Parameters.solution)'
         msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
