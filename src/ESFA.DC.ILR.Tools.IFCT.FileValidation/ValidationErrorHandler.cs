@@ -15,13 +15,15 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             _logger = logger;
         }
 
+        public bool ErrorRaised { get; set; } = false;
+
         public void XsdNsValidationErrorHandler(object sender, ValidationEventArgs e)
         {
             if (e.Severity == XmlSeverityType.Warning)
             {
                 if (sender is IXmlLineInfo xmlMessageInfo)
                 {
-                    Console.WriteLine("Supplied XML does not conform to the XSD, see Validation Errors for Detailed Results.");
+                    ErrorRaised = true;
                     _logger.LogError(e.Message, e.Exception, callerLineNumber: xmlMessageInfo.LineNumber);
                 }
             }
@@ -31,7 +33,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
         {
             if (sender is IXmlLineInfo xmlLineInfo)
             {
-                Console.WriteLine("Supplied XML does not conform to the XSD, see Validation Errors for Detailed Results.");
+                ErrorRaised = true;
                 _logger.LogError(e.Message, e.Exception, callerLineNumber: xmlLineInfo.LineNumber);
             }
         }

@@ -1,13 +1,12 @@
 ﻿using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using Loose;
-using System;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
 {
     public class LearnerAnonymiser : IAnonymise<Loose.MessageLearner>
     {
-        private static int LrnGeneratorCount = 0;
-        private static int UlnGeneratorCount = 0;
+        private static int lrnGeneratorCount = 0;
+        private static int ulnGeneratorCount = 0;
         private readonly IAnonymiseLog _anonymiseLog;
 
         public LearnerAnonymiser(IAnonymiseLog anonymiseLog)
@@ -22,23 +21,23 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers
                 return null;
             }
 
-            //Find next valid ULN
-            long NewULN = -1;
-            while (NewULN < 0)
+            // Find next valid ULN
+            long newULN = -1;
+            while (newULN < 0)
             {
-                NewULN = ULN(++UlnGeneratorCount);
+                newULN = ULN(++ulnGeneratorCount);
             }
 
-            var logEntry = new AnonymiseLogEntry { FieldName = "LearnRefNumber", OldValue = model.LearnRefNumber, NewValue = $"{++LrnGeneratorCount}" };
+            var logEntry = new AnonymiseLogEntry { FieldName = "LearnRefNumber", OldValue = model.LearnRefNumber, NewValue = $"{++lrnGeneratorCount}" };
             _anonymiseLog.Add(logEntry);
-            logEntry = new AnonymiseLogEntry { FieldName = "ULN", OldValue = model.ULN?.ToString(), NewValue = $"{NewULN}" };
+            logEntry = new AnonymiseLogEntry { FieldName = "ULN", OldValue = model.ULN?.ToString(), NewValue = $"{newULN}" };
             _anonymiseLog.Add(logEntry);
 
-            model.LearnRefNumber = LrnGeneratorCount.ToString(); ;
-            model.ULN = NewULN; ;
+            model.LearnRefNumber = lrnGeneratorCount.ToString();
+            model.ULN = newULN;
 
-            model.FamilyName = "Mary Jane";
-            model.GivenNames = "Sméth";
+            model.GivenNames = "Mary Jane";
+            model.FamilyName = "Sméth";
 
             model.TelNo = "01215555555";
 

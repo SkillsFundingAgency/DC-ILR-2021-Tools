@@ -1,6 +1,15 @@
 
 name:  $(GitVersion.NuGetVersion)
 
+trigger:
+  paths:
+    include:
+    - src/*   
+    - azure-pipelines.yml    
+    exclude:
+    - legacy/*
+    - azure-pipelines.legacy.yml
+    
 resources:
 - repo: self
   fetchDepth: 30
@@ -8,7 +17,7 @@ resources:
 variables:
 - group: 'CodeSign KV'
 - name: Parameters.solution 
-  value: '**\legacy\**\*.sln'
+  value: 'src\**\*.sln'
 - name: Parameters.nugetFeedName 
   value: 'dct-pkg'
 - name: BuildConfiguration
@@ -16,17 +25,9 @@ variables:
 - name: BuildPlatform
   value: 'Any CPU'
 - name: ConsoleTool
-  value: 'legacy\src\Easy OPA\Shell'
-
-
-trigger:
-  branches:
-    include:
-     - '*'
-  paths:
-    include:
-    - legacy/*
-    - azure-pipelines.yml
+  value: 'ESFA.DC.ILR.Tools.IFCT.Console'
+- name: WPFTool
+  value: 'ESFA.DC.ILR.Tools.IFCT.WPF'
 
 stages:
 - stage: Build
@@ -59,10 +60,18 @@ stages:
         updateAssemblyInfo: true
         preferBundledVersion: false
 
-    - task: VisualStudioTestPlatformInstaller@1
+    - task: PowerShell@1
+      displayName: 'Display Variables'
+      enabled: false
       inputs:
-        packageFeedSelector: 'nugetOrg'
-        versionSelector: 'latestStable'
+        scriptType: inlineScript
+        inlineScript: |
+         $var = (gci env:*).GetEnumerator() | Sort-Object Name
+         $out = ""
+         Foreach ($v in $var) 
+         {
+         write-output "Name: $($v.Name)  | Value : $($v.Value)"
+         }
 
     ## Restore & Build 
     - task: NuGetCommand@2
@@ -71,45 +80,34 @@ stages:
       inputs:
         restoreSolution: '$(Parameters.solution)'
         vstsFeed: '$(Parameters.nugetFeedName)'
-        packagesdirectory: '..\packages'
 
-    - task: MSBuild@1
-      displayName: 'Build solution'
-      enabled: true
+    - task: VSBuild@1
+      displayName: 'Build solution **\*.sln'
       inputs:
         solution: '$(Parameters.solution)'
+        msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:SkipInvalidConfigurations=true'
+        vstsFeed: '$(Parameters.nugetFeedName)'
         clean: true
-        maximumCpuCount: true
-        logProjectEvents: true
-        createLogFile: true        
 
-    #********************************************************************************
-    # Run Unit Tests
-    #********************************************************************************
-    - task: VSTest@2
-      displayName: 'Run Unit Tests'
-      enabled: true
-      inputs:
-        testAssemblyVer2: |
-         **\$(BuildConfiguration)\src\*test*.dll
-         !**\obj\**
-        platform: '$(BuildPlatform)'
-        configuration: '$(BuildConfiguration)'
-        runInParallel: true
-        codeCoverageEnabled: true
-        diagnosticsEnabled: true       
+    ## Restore & Build using dotnet cli
+    #- task: DotNetCoreCLI@2
+    #  enabled: false
+    #  displayName: 'Restore Nuget packages'
+    #  inputs:
+    #    command: 'restore'
+    #    projects: '**/*.csproj'
+    #    feedsToUse: 'select'
+    #    vstsFeed: 'dct-pkg'
         
-    - task: DotNetCoreCLI@2
-      displayName: Run unit tests
-      enabled: false
-      inputs:
-        command: test
-        arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
-        nobuild: false
-        projects: '**/src/**/*Tests.csproj'
+    #- task: DotNetCoreCLI@2
+    #  enabled: false
+    #  displayName: 'Build Solution'
+    #  inputs:
+    #    command: 'build'
+    #    projects: '**/*.sln'
+    #    arguments: '-c $(BuildConfiguration) -p:version="$(GitVersion.AssemblySemVer)" -p:FileVersion="$(GitVersion.AssemblySemFileVer)"'
 
     #********************************************************************************
     # Copy Files into Aftifact Folder before test.
@@ -128,7 +126,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*Interface*.nupkg
+         src/**/*$(BuildConfiguration)*/*Interface*.nupkg
          !**/packages/**
          !**/bin/x64/**
         TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Interface'
@@ -139,7 +137,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*.nupkg
+         src/**/*$(BuildConfiguration)*/*.nupkg
          !**/*Interface*
          !**/packages/**
          !**/bin/x64/**
@@ -147,12 +145,20 @@ stages:
         flattenFolders: true
 
     - task: CopyFiles@2
-      displayName: 'Copy Application File to Artifact Folder'
+      displayName: 'Copy Console Application File to Artifact Folder'
       inputs:
-        SourceFolder: '$(ConsoleTool)\bin\$(BuildConfiguration)'  
+        SourceFolder: 'src\$(ConsoleTool)\bin\$(BuildConfiguration)'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
 
+    - task: CopyFiles@2
+      displayName: 'Copy WPF Application File to Artifact Folder'
+      inputs:
+        SourceFolder: 'src\$(WPFTool)\bin\$(BuildConfiguration)'  
+        Contents: '**\!(*.pdb)'
+        TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
+        OverWrite: true'  
+        
     - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
       displayName: 'Tokenization: Transform Application config file'
       enabled: true
@@ -177,6 +183,31 @@ stages:
         arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication"'
         workingDirectory: '$(Build.SourcesDirectory)'
 
+    #********************************************************************************
+    # Run Unit Tests
+    #********************************************************************************
+
+    - task: DotNetCoreCLI@2
+      displayName: Run unit tests
+      enabled: false
+      inputs:
+        command: test
+        arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+        nobuild: true
+        projects: 'src/**/*Tests.csproj'
+
+    - task: VSTest@2
+      displayName: 'Run Unit Tests'
+      enabled: true
+      inputs:
+        testAssemblyVer2: |
+         src\**\$(BuildConfiguration)\*test*.dll
+         !**\obj\**
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        runInParallel: true
+        codeCoverageEnabled: true
+        diagnosticsEnabled: true
 
     #********************************************************************************
     # Generate Code Coverage Report and Publish
@@ -207,7 +238,7 @@ stages:
       displayName: 'Publish symbols path'
       enabled: false
       inputs:
-        SearchPattern: '**\bin\**\*.pdb'
+        SearchPattern: 'src\**\bin\**\*.pdb'
         PublishSymbols: false
       continueOnError: true
 

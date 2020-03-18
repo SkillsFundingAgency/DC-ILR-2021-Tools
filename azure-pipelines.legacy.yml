@@ -1,5 +1,13 @@
 
-name: legacy-$(GitVersion.NuGetVersion)
+name:  $(GitVersion.NuGetVersion)
+
+trigger:
+  paths:
+    include:
+    - src/legacy/*
+    - azure-pipelines.legacy.yml
+    exclude:
+    - src/*
 
 resources:
 - repo: self
@@ -8,29 +16,19 @@ resources:
 variables:
 - group: 'CodeSign KV'
 - name: Parameters.solution 
-  value: '**\src\*.sln'
+  value: '**\legacy\src\Easy OPA\*.sln'
 - name: Parameters.nugetFeedName 
   value: 'dct-pkg'
 - name: BuildConfiguration
   value: 'Release'
 - name: BuildPlatform
   value: 'Any CPU'
-- name: ConsoleTool
-  value: 'ESFA.DC.ILR.Tools.IFCT.Console'
-
-
-trigger:
-  branches:
-    include:
-     - '*'
-  paths:
-    include:
-    - src/*
-    - azure-pipelines.yml
-    exclude:
+  
+- name: ShellTool
+  value: 'src\Easy OPA\Shell'
 
 stages:
-- stage: Buil
+- stage: Build
   displayName: Build stage
   jobs:  
   - job: Build
@@ -60,10 +58,18 @@ stages:
         updateAssemblyInfo: true
         preferBundledVersion: false
 
-    - task: VisualStudioTestPlatformInstaller@1
+    - task: PowerShell@1
+      displayName: 'Display Variables'
+      enabled: false
       inputs:
-        packageFeedSelector: 'nugetOrg'
-        versionSelector: 'latestStable'
+        scriptType: inlineScript
+        inlineScript: |
+         $var = (gci env:*).GetEnumerator() | Sort-Object Name
+         $out = ""
+         Foreach ($v in $var) 
+         {
+         write-output "Name: $($v.Name)  | Value : $($v.Value)"
+         }
 
     ## Restore & Build 
     - task: NuGetCommand@2
@@ -74,49 +80,34 @@ stages:
         vstsFeed: '$(Parameters.nugetFeedName)'
 
     - task: MSBuild@1
-      displayName: 'Build solution'
-      enabled: true
+      displayName: 'Build solution EasyOPA'
       inputs:
         solution: '$(Parameters.solution)'
+        msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber) -p:SkipInvalidConfigurations=true'
         clean: true
         maximumCpuCount: true
-        logProjectEvents: true
-        createLogFile: true        
+        restoreNugetPackages: true
 
-    #********************************************************************************
-    # Run Unit Tests
-    #********************************************************************************
-    - task: VSTest@2
-      displayName: 'Run Unit Tests'
-      enabled: true
-      inputs:
-        testAssemblyVer2: |
-         **\$(BuildConfiguration)\src\*test*.dll
-         !**\obj\**
-        platform: '$(BuildPlatform)'
-        configuration: '$(BuildConfiguration)'
-        runInParallel: true
-        codeCoverageEnabled: true
-        diagnosticsEnabled: true       
-        
-    - task: DotNetCoreCLI@2
-      displayName: Run unit tests
+    - task: VSBuild@1
+      displayName: 'Build solution EasyOPA'
       enabled: false
       inputs:
-        command: test
-        arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
-        nobuild: false
-        projects: '**/src/**/*Tests.csproj'
-
+        solution: '$(Parameters.solution)'
+        msbuildArgs: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        vstsFeed: '$(Parameters.nugetFeedName)'
+        clean: true
+        
     #********************************************************************************
     # Copy Files into Aftifact Folder before test.
     #********************************************************************************
 
     - task: CopyFiles@2
       displayName: 'Copy Scripts File to Scripts Folder'
+      enabled: false
       inputs:
         Contents: 'GenerateZipFilename.ps1'
         TargetFolder: '$(build.ArtifactStagingDirectory)\Scripts'
@@ -128,7 +119,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*Interface*.nupkg
+         **/legacy/*$(BuildConfiguration)*/*Interface*.nupkg
          !**/packages/**
          !**/bin/x64/**
         TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Interface'
@@ -139,7 +130,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         **/*$(BuildConfiguration)*/*.nupkg
+         **/legacy/*$(BuildConfiguration)*/*.nupkg
          !**/*Interface*
          !**/packages/**
          !**/bin/x64/**
@@ -147,17 +138,17 @@ stages:
         flattenFolders: true
 
     - task: CopyFiles@2
-      displayName: 'Copy Application File to Artifact Folder'
+      displayName: 'Copy EASY OPA Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'src\$(ConsoleTool)\bin\$(BuildConfiguration)'  
+        SourceFolder: 'legacy\$(ShellTool)\bin\$(BuildConfiguration)'  
         Contents: '**\!(*.pdb)'
-        TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
-
+        TargetFolder: '$(build.ArtifactStagingDirectory)\LegacyApplication'
+        
     - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
       displayName: 'Tokenization: Transform Application config file'
       enabled: true
       inputs:
-        SourcePath: '$(build.ArtifactStagingDirectory)\DesktopApplication'
+        SourcePath: '$(build.ArtifactStagingDirectory)\LegacyApplication'
         TargetFileNames: '*.exe.config'
         RequireVariable: false
 
@@ -167,16 +158,41 @@ stages:
     #********************************************************************************
 
     - task: PowerShell@2
-      displayName: 'CodeSign DfE DesktopApplications'
+      displayName: 'CodeSign DfE LegacyApplications'
       enabled: true  
       env:
         CODESIGNPASSWORD: $(CodeSignPwdDfE)
         CODESIGNCERT: $(CodeSignCertificatePFX)
       inputs:
         filePath: 'DFE_Code_Signing.ps1'
-        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication"'
+        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\LegacyApplication"'
         workingDirectory: '$(Build.SourcesDirectory)'
 
+    #********************************************************************************
+    # Run Unit Tests
+    #********************************************************************************
+
+    - task: DotNetCoreCLI@2
+      displayName: Run unit tests
+      enabled: false
+      inputs:
+        command: test
+        arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+        nobuild: true
+        projects: '**/*Tests.csproj'
+
+    - task: VSTest@2
+      displayName: 'Run Unit Tests'
+      enabled: true
+      inputs:
+        testAssemblyVer2: |
+         **\$(BuildConfiguration)\*test*.dll
+         !**\obj\**
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+        runInParallel: true
+        codeCoverageEnabled: true
+        diagnosticsEnabled: true
 
     #********************************************************************************
     # Generate Code Coverage Report and Publish
@@ -226,9 +242,9 @@ stages:
         PathtoPublish: '$(build.artifactstagingdirectory)\Nuget'
 
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: DesktopApplication'
+      displayName: 'Publish Artifact: LegacyApplication'
       enabled: true
       inputs:
-        ArtifactName: DesktopApplication
-        PathtoPublish: '$(build.artifactstagingdirectory)\DesktopApplication'
+        ArtifactName: LegacyApplication
+        PathtoPublish: '$(build.artifactstagingdirectory)\LegacyApplication'
 

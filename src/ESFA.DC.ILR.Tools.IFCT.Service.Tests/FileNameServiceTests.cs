@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
+using FluentAssertions;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
@@ -9,8 +9,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [Fact]
         public void YearUpdateValidString()
         {
-            FileNameService service = new FileNameService();
-            var returns = service.YearUpdate("1920");
+            var returns = FileNameService.YearUpdate("1920");
             returns.Should().Be("2021");
         }
 
@@ -22,16 +21,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("abcd")]
         public void YearUpdateInvalidStringParameter(string s)
         {
-            FileNameService fileNameService = new FileNameService();
-            Action a = () => fileNameService.YearUpdate(s);
+            Action a = () => FileNameService.YearUpdate(s);
             a.Should().Throw<ArgumentException>();
         }
 
         [Fact]
         public void SerialNumberUpdateValidInput()
         {
-            var sut = NewService();
-            string result = sut.SerialNumberUpdate("01");
+            string result = FileNameService.SerialNumberUpdate("01");
             result.Should().Be("99");
         }
 
@@ -45,17 +42,14 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("123")]
         public void SerialNumberUpdateInvalidInput(string number)
         {
-            var sut = NewService();
-            Action a = () => sut.SerialNumberUpdate(number);
+            Action a = () => FileNameService.SerialNumberUpdate(number);
             a.Should().Throw<ArgumentException>();
         }
-
 
         [Fact]
         public void DateUpdateValidDate()
         {
-            var sut = NewService();
-            string result = sut.DateStampUpdate("20190101");
+            string result = FileNameService.DateStampUpdate("20190101");
             result.Should().Be("20200101");
         }
 
@@ -69,8 +63,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("2019Jun10")]
         public void DateUpdateIvalidDate(string date)
         {
-            var sut = NewService();
-            Action result = () => sut.DateStampUpdate(date);
+            Action result = () => FileNameService.DateStampUpdate(date);
             result.Should().Throw<ArgumentException>();
         }
 
@@ -87,8 +80,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("235959", "000000")]
         public void TimeStampUpdateValidInput(string input, string expected)
         {
-            var sut = NewService();
-            string result = sut.TimeStampUpdate(input);
+            string result = FileNameService.TimeStampUpdate(input);
             result.Should().Be(expected);
         }
 
@@ -99,8 +91,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         [InlineData("12000")]
         public void TimeStampUpdateInvalidInput(string date)
         {
-            var sut = NewService();
-            Action result = () => sut.TimeStampUpdate(date);
+            Action result = () => FileNameService.TimeStampUpdate(date);
             result.Should().Throw<ArgumentException>();
         }
 

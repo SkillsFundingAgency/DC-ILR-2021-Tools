@@ -8,7 +8,7 @@ using ESFA.DC.ILR.Tools.YearUpdate;
 using ESFA.DC.ILR.Tools.YearUpdate.Interface;
 using Loose;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
+namespace ESFA.DC.ILR.Tools.IFCT.Modules
 {
     public class YearUplifterModule : Module
     {
