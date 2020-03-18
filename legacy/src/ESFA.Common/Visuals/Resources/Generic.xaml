@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!--<ResourceDictionary Source="/ESFA.Common.visuals;component/resources/basedark.xaml" />-->
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/baselight.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/colors.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/amber.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/stylesandconverters.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/applicationtemplates.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/datagridstyles.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/consoleview.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/frontpanelconsole.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/popupbusy.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/popuprequesthelp.xaml" />
+        <ResourceDictionary Source="/ESFA.Common.visuals;component/resources/popupconsole.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

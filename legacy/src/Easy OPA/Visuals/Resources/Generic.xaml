@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/applicationtemplates.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/frontpanelcoreoperations.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/selectprovidersmanagerview.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/selectrulesmanagerview.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/preparationmanagerview.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/popupselectprovidersmanager.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/popupselectrulesmanager.xaml" />
+        <ResourceDictionary Source="/EasyOPA.visuals;component/resources/popuppreparationmanager.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

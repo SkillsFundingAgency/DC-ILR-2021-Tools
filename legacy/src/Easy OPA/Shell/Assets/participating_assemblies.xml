@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfstring xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+  <string>tiny.framework</string>
+  <string>esfa.common.services</string>
+  <string>esfa.common.visuals</string>
+  <string>easyopa.services</string>
+  <string>easyopa.visuals</string>
+  <string>easyopa.shell</string>
+</ArrayOfstring>

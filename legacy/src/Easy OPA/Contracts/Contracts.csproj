@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyOPA</RootNamespace>
+    <AssemblyName>EasyOPA.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <ProjectGuid>{C6B7A411-9523-4837-853E-A0C9DA3BFE17}</ProjectGuid>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SQLite-net, Version=1.5.231.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\sqlite-net-pcl.1.5.231\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.1.14.520, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.14\lib\net45\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.1.14.520, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.14\lib\net45\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.1.14.520, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.14\lib\net45\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.1.14.520, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.14\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Composition.AttributedModel">
+      <HintPath>..\..\packages\System.Composition.AttributedModel.1.2.0\lib\netstandard2.0\System.Composition.AttributedModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Convention">
+      <HintPath>..\..\packages\System.Composition.Convention.1.2.0\lib\netstandard2.0\System.Composition.Convention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Hosting">
+      <HintPath>..\..\packages\System.Composition.Hosting.1.2.0\lib\netstandard2.0\System.Composition.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Runtime">
+      <HintPath>..\..\packages\System.Composition.Runtime.1.2.0\lib\netstandard2.0\System.Composition.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts">
+      <HintPath>..\..\packages\System.Composition.TypedParts.1.2.0\lib\netstandard2.0\System.Composition.TypedParts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tiny.Framework.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Tiny.Framework.Contracts.1.5.0.9\lib\portable-net451+win81+wpa81+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\Tiny.Framework.Contracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\DataCopyBase{TMappingConfiguration}.cs" />
+    <Compile Include="Abstract\DataCopyBase.cs" />
+    <Compile Include="Abstract\DataMappingConfigurationProviderBase.cs" />
+    <Compile Include="Abstract\DataStoreFactoryBase.cs" />
+    <Compile Include="Abstract\MessageFactoryBase.cs" />
+    <Compile Include="Abstract\SpecialisedFileConfigurationHostBase.cs" />
+    <Compile Include="Coordinator\ICoordinateContextOperations.cs" />
+    <Compile Include="Factory\ICreateConnectionContexts.cs" />
+    <Compile Include="Factory\ICreateMessages{TMessageContract, TMessagePayload}.cs" />
+    <Compile Include="Factory\ICreateRulesetConfigurationChangedMessages.cs" />
+    <Compile Include="Factory\ICreateChangeOperatingYearMessages.cs" />
+    <Compile Include="Factory\ICreateSelectedInputSourceMessages.cs" />
+    <Compile Include="Factory\ICreateSessionConfigurations.cs" />
+    <Compile Include="Factory\ICreateChangeRunModeMessages.cs" />
+    <Compile Include="Factory\ICreateUseExperimentalItemsMessages.cs" />
+    <Compile Include="Indirect\ICloneDataUsing.cs" />
+    <Compile Include="Indirect\IRequireComposing.cs" />
+    <Compile Include="Manager\IManageAssets.cs" />
+    <Compile Include="Manager\IManageBulkOperations.cs" />
+    <Compile Include="Manager\IManageProviderSelection.cs" />
+    <Compile Include="Manager\IManageRunPreparation.cs" />
+    <Compile Include="Manager\IManageRulesSelection.cs" />
+    <Compile Include="Model\ICanBeSelectedForProcessing.cs" />
+    <Compile Include="Model\IContainRunModeDetail.cs" />
+    <Compile Include="Model\IChangeRunModeMessage.cs" />
+    <Compile Include="Model\IYearCollection.cs" />
+    <Compile Include="Model\IProviderDetails.cs" />
+    <Compile Include="Model\ILearningProvider.cs" />
+    <Compile Include="Model\IMapClonedData.cs" />
+    <Compile Include="Model\IMapCloneAttributeDetails.cs" />
+    <Compile Include="Model\IMapCloneEntityDetails.cs" />
+    <Compile Include="Model\IRulesetConfigurationChangedMessage.cs" />
+    <Compile Include="Model\IChangeOperatingYearMessage.cs" />
+    <Compile Include="Model\ISelectedInputSourceMessage.cs" />
+    <Compile Include="Model\IConnectionContext.cs" />
+    <Compile Include="Model\IContainAssetConfiguration.cs" />
+    <Compile Include="Model\IContainSessionConfiguration.cs" />
+    <Compile Include="Model\IInputDataSource.cs" />
+    <Compile Include="Model\ISchemaConfiguration.cs" />
+    <Compile Include="Model\ISchemaMap.cs" />
+    <Compile Include="Model\IUseExperimentalItemsMessage.cs" />
+    <Compile Include="Provider\IProvideCloneInputConfiguration.cs" />
+    <Compile Include="Provider\IProvideDataCloningOperations.cs" />
+    <Compile Include="Provider\IProvideBulkExportOperations.cs" />
+    <Compile Include="Provider\IProvideBulkLoadingOperations.cs" />
+    <Compile Include="Provider\IProvideInputDataSources.cs" />
+    <Compile Include="Provider\IProvideCloneOutputConfiguration.cs" />
+    <Compile Include="Provider\IProvideSchemaConfigurations.cs" />
+    <Compile Include="Service\IGenerateBulkLoadSchemas.cs" />
+    <Compile Include="Service\IMonitorSessionProgress.cs" />
+    <Compile Include="Set\BatchOperatingYear.cs" />
+    <Compile Include="Set\ReturnPeriod.cs" />
+    <Compile Include="Set\TypeOfRulebaseOperation.cs" />
+    <Compile Include="Set\TypeOfCollection.cs" />
+    <Compile Include="Set\TypeOfBatchScript.cs" />
+    <Compile Include="Set\BatchProcessName.cs" />
+    <Compile Include="Model\ISQLBatchScript.cs" />
+    <Compile Include="Model\IMapTokenSubstitutions.cs" />
+    <Compile Include="Model\ITokenSubstitute.cs" />
+    <Compile Include="Model\ISQLBatch.cs" />
+    <Compile Include="Model\IContainSQLBatches.cs" />
+    <Compile Include="Constant\Token.cs" />
+    <Compile Include="Constant\EasyOPAConstant.cs" />
+    <Compile Include="Model\IContainFolderNames.cs" />
+    <Compile Include="Model\IContainLocations.cs" />
+    <Compile Include="Model\IContainRulesetConfiguration.cs" />
+    <Compile Include="Model\IRulebaseConfiguration.cs" />
+    <Compile Include="Set\Localised.cs" />
+    <Compile Include="Set\OperationalState.cs" />
+    <Compile Include="Set\TypeOfRulebaseExecution.cs" />
+    <Compile Include="Indirect\ICopyDataUsing.cs" />
+    <Compile Include="Factory\ICreateSessionContexts.cs" />
+    <Compile Include="Factory\ICreateResultsDataStores.cs" />
+    <Compile Include="Indirect\IPrepareStorage.cs" />
+    <Compile Include="Provider\IProvideTokenSubstitution.cs" />
+    <Compile Include="Provider\IProvideSQLBatches.cs" />
+    <Compile Include="Provider\IProvideRulebaseConfigurations.cs" />
+    <Compile Include="Model\IContainSessionContext.cs" />
+    <Compile Include="Coordinator\ICoordinateExecutionRuns.cs" />
+    <Compile Include="Service\ICopySourceData.cs" />
+    <Compile Include="Service\ICopyResultsData.cs" />
+    <Compile Include="Factory\ICreateProcessingDataStores.cs" />
+    <Compile Include="Service\IRunRulebases.cs" />
+    <Compile Include="Service\ITransformInputPostValidation.cs" />
+    <Compile Include="Junk\IExporter.cs" />
+    <Compile Include="Junk\IXDSExporter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Junk\ICreateReports.cs" />
+    <Compile Include="Junk\ICSVWriter.cs" />
+    <Compile Include="Junk\IDocumentWriter.cs" />
+    <Compile Include="Junk\IWriter.cs" />
+    <Compile Include="Set\TypeOfRunMode.cs" />
+    <Compile Include="Utility\StringExtensions.cs" />
+    <Compile Include="ViewModel\IMainViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ESFA.Common\Contracts\Common.Contracts.csproj">
+      <Project>{5c4a8458-55c2-4327-9294-d5b214c52fe8}</Project>
+      <Name>Common.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

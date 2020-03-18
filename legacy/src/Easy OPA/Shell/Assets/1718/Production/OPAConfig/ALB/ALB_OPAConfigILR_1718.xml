@@ -1,0 +1,178 @@
+<OPAMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="OPAMapping.xsd"
+            RulebasePath="${WorkingFolder}\Rulebases\ALB\Loans Bursary 17_18.zip"
+            BatchSize="1"
+            NumberOfThreads="-1">
+    <OPACaseControl DBConnectionID="ILR">
+        <CaseStatus StoredProcName="Rulebase.ALB_Update_Cases"
+                    CaseFailure="40"
+                    CaseSuccess="30"
+                    ProcessCase="10" />
+        <DBQuery>
+            <StoredProcName>Rulebase.ALB_Get_Cases</StoredProcName>
+        </DBQuery>
+    </OPACaseControl>
+    <OPAResults>
+        <OPAResult StoredProcName="Rulebase.ALB_Insert_global"
+                   TopLevelEntityName="global"
+                   DBConnectionID="ILR"
+                   RunOnce="y">
+            <ResultQueryParameterMap AttributeName="UKPRN"
+                                     ParameterName="UKPRN"
+                                     EntityName="global" />
+            <ResultQueryParameterMap AttributeName="LARSVersion"
+                                     ParameterName="LARSVersion"
+                                     EntityName="global" />
+            <ResultQueryParameterMap AttributeName="PostcodeAreaCostVersion"
+                                     ParameterName="PostcodeAreaCostVersion"
+                                     EntityName="global" />
+            <ResultQueryParameterMap AttributeName="RulebaseVersion"
+                                     ParameterName="RulebaseVersion"
+                                     EntityName="global" />
+        </OPAResult>
+        <OPAResult StoredProcName="Rulebase.ALB_Insert_Learner"
+                   TopLevelEntityName="Learner"
+                   DBConnectionID="ILR">
+            <ResultQueryParameterMap AttributeName="LearnRefNumber"
+                                     ParameterName="LearnRefNumber"
+                                     EntityName="Learner" />
+            <ResultQueryParameterMap AttributeName="ALBSeqNum"
+                                     ParameterName="ALBSeqNum"
+                                     EntityName="Learner">
+                <ChangePoint ParentAttributeIDColumn="ALBSeqNum"
+                             StoredProcName="Rulebase.ALB_Insert_Learner_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+        </OPAResult>
+        <OPAResult StoredProcName="Rulebase.ALB_Insert_LearningDelivery"
+                   TopLevelEntityName="LearningDelivery"
+                   DBConnectionID="ILR">
+            <ResultQueryParameterMap EntityName="Learner"
+                                     ParameterName="LearnRefNumber"
+                                     AttributeName="LearnRefNumber" />
+            <ResultQueryParameterMap AttributeName="AimSeqNumber"
+                                     ParameterName="AimSeqNumber"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="Achieved"
+                                     ParameterName="Achieved"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="ActualNumInstalm"
+                                     ParameterName="ActualNumInstalm"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="AdvLoan"
+                                     ParameterName="AdvLoan"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="ALBCode"
+                                     ParameterName="ALBCode"
+                                     EntityName="LearningDelivery">
+                <ChangePoint ParentAttributeIDColumn="ALBCode"
+                             StoredProcName="Rulebase.ALB_Insert_LearningDelivery_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap EntityName="Learner"
+                                             AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <ChangePointParameterMap AttributeName="AimSeqNumber"
+                                             ParemeterName="AimSeqNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+            <ResultQueryParameterMap AttributeName="ALBSupportPayment"
+                                     ParameterName="ALBSupportPayment"
+                                     EntityName="LearningDelivery">
+                <ChangePoint ParentAttributeIDColumn="ALBSupportPayment"
+                             StoredProcName="Rulebase.ALB_Insert_LearningDelivery_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap EntityName="Learner"
+                                             AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <ChangePointParameterMap AttributeName="AimSeqNumber"
+                                             ParemeterName="AimSeqNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+            <ResultQueryParameterMap AttributeName="ApplicProgWeightFact"
+                                     ParameterName="ApplicProgWeightFact"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="AreaCostFactAdj"
+                                     ParameterName="AreaCostFactAdj"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="AreaCostInstalment"
+                                     ParameterName="AreaCostInstalment"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="AreaUpliftBalPayment"
+                                     ParameterName="AreaUpliftBalPayment"
+                                     EntityName="LearningDelivery">
+                <ChangePoint ParentAttributeIDColumn="AreaUpliftBalPayment"
+                             StoredProcName="Rulebase.ALB_Insert_LearningDelivery_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap EntityName="Learner"
+                                             AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <ChangePointParameterMap AttributeName="AimSeqNumber"
+                                             ParemeterName="AimSeqNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+            <ResultQueryParameterMap AttributeName="AreaUpliftOnProgPayment"
+                                     ParameterName="AreaUpliftOnProgPayment"
+                                     EntityName="LearningDelivery">
+                <ChangePoint ParentAttributeIDColumn="AreaUpliftOnProgPayment"
+                             StoredProcName="Rulebase.ALB_Insert_LearningDelivery_PeriodisedValues">
+                    <ChangePointParameterMap AttributeName="AttributeName"
+                                             ParemeterName="AttributeName" />
+                    <ChangePointParameterMap EntityName="Learner"
+                                             AttributeName="LearnRefNumber"
+                                             ParemeterName="LearnRefNumber" />
+                    <ChangePointParameterMap AttributeName="AimSeqNumber"
+                                             ParemeterName="AimSeqNumber" />
+                    <Period SP_ParameterPrefix="Period_"
+                            NumOfPeriods="12"
+                            PeriodStartDate="${PeriodStartDate}" />
+                </ChangePoint>
+            </ResultQueryParameterMap>
+            <ResultQueryParameterMap AttributeName="FundLine"
+                                     ParameterName="FundLine"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="FundStart"
+                                     ParameterName="FundStart"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="LiabilityDate"
+                                     ParameterName="LiabilityDate"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="LoanBursAreaUplift"
+                                     ParameterName="LoanBursAreaUplift"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="LoanBursSupp"
+                                     ParameterName="LoanBursSupp"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="OutstndNumOnProgInstalm"
+                                     ParameterName="OutstndNumOnProgInstalm"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="PlannedNumOnProgInstalm"
+                                     ParameterName="PlannedNumOnProgInstalm"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="WeightedRate"
+                                     ParameterName="WeightedRate"
+                                     EntityName="LearningDelivery" />
+            <ResultQueryParameterMap AttributeName="ApplicFactDate"
+                                     ParameterName="ApplicFactDate"
+                                     EntityName="LearningDelivery" />
+        </OPAResult>
+    </OPAResults>
+</OPAMapping>

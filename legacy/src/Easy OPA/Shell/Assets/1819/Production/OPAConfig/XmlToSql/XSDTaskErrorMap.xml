@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfTable>
+  <Table ElementName="TaskError" TableName="TaskError">
+    <Fields>
+      <Field Name="LineNumber" />
+      <Field Name="LinePosition" />
+      <Field Name="ErrorDescription" />
+      <Field Name="FileName"  ForeignKey="false"  DefaultValue="${dcft.1718_ILR_Batch.0}" />
+    </Fields>
+  </Table>
+</ArrayOfTable>

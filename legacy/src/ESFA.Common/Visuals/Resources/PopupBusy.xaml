@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:ESFA.Common.Composition">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.Common.visuals;component/resources/stylesandconverters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- the 'is busy' overlay view -->
+    <ControlTemplate x:Key="PopupBusyTemplate"
+                     TargetType="ContentControl">
+        <ContentControl Style="{DynamicResource EmbeddedPopupElementStyle}"
+                        y:BoundProperty.Primary="{Binding Path=CurrentState, Converter={StaticResource IsVisibleIfStateMatches}, ConverterParameter={x:Static y:InteractionState.IsBusy}}">
+            <Grid MaxWidth="300">
+                <ContentControl Margin="0,-30,-8,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Template="{DynamicResource PopupBusyBadgeArea}" />
+
+                <StackPanel>
+                    <TextBlock FontSize="24"
+                               Text="{y:StringResource BusyText}"
+                               Style="{DynamicResource GlobalMarginStyle}" />
+
+                    <TextBlock FontSize="14"
+                               Text="{Binding Path=Console.LastLine}"
+                               Style="{DynamicResource TopWrapAndNoTrimTextStyle}" />
+
+                    <ProgressBar IsIndeterminate="True"
+                                 Height="15"
+                                 Style="{DynamicResource GlobalMarginStyle}" />
+                </StackPanel>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

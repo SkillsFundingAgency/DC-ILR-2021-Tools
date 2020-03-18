@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.Common.visuals;component/resources/stylesandconverters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="PopupBusyBadgeArea">
+        <DockPanel>
+            <DockPanel Margin="10,0"
+                       Visibility="{Binding Path=SessionMonitor.ShowCounts, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                <Border Background="Red"
+                        BorderThickness="3,3,0,3"
+                        BorderBrush="Pink"
+                        CornerRadius="12,0,0,12"
+                        Padding="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Color="LightGray" />
+                    </Border.Effect>
+                    <TextBlock FontSize="12"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               Text="{Binding Path=SessionMonitor.InvalidLearnerCount}"
+                               Style="{DynamicResource GlobalMarginStyle}" />
+                </Border>
+                <Border Background="White"
+                        BorderThickness="0,3,0,3"
+                        BorderBrush="LightBlue"
+                        Padding="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Color="LightGray" />
+                    </Border.Effect>
+                    <TextBlock FontSize="12"
+                               Foreground="DarkSlateGray"
+                               FontWeight="Bold"
+                               Text="{Binding Path=SessionMonitor.TotalLearnerCount}"
+                               Style="{DynamicResource GlobalMarginStyle}" />
+                </Border>
+                <Border Background="Green"
+                        BorderThickness="0,3,0,3"
+                        BorderBrush="GreenYellow"
+                        Padding="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Color="LightGray" />
+                    </Border.Effect>
+                    <TextBlock FontSize="12"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               Text="{Binding Path=SessionMonitor.ValidLearnerCount}"
+                               Style="{DynamicResource GlobalMarginStyle}" />
+                </Border>
+                <Border Background="Yellow"
+                        BorderThickness="0,3,3,3"
+                        BorderBrush="LightYellow"
+                        CornerRadius="0,12,12,0"
+                        Padding="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Color="LightGray" />
+                    </Border.Effect>
+                    <TextBlock FontSize="12"
+                               Foreground="DarkSlateGray"
+                               FontWeight="Bold"
+                               Text="{Binding Path=SessionMonitor.RulebaseCaseDetails, TargetNullValue='Waiting...'}"
+                               Style="{DynamicResource GlobalMarginStyle}" />
+                </Border>
+            </DockPanel>
+
+            <Border Background="Red"
+                    BorderThickness="3"
+                    BorderBrush="Pink"
+                    CornerRadius="12"
+                    Margin="10,0"
+                    Padding="1"
+                    Visibility="{Binding Path=FileMonitor.ShowDetails, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Color="LightGray" />
+                </Border.Effect>
+                <TextBlock FontSize="12"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           Text="{Binding Path=FileMonitor.Count}"
+                           Style="{DynamicResource GlobalMarginStyle}" />
+            </Border>
+
+            <Border Background="Blue"
+                    BorderThickness="3"
+                    BorderBrush="Turquoise"
+                    CornerRadius="12"
+                    Padding="1"
+                    Visibility="{Binding Path=SessionMonitor.ShowPosition, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Color="LightGray" />
+                </Border.Effect>
+                <TextBlock FontSize="12"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           Style="{DynamicResource GlobalMarginStyle}">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource MultiText}"
+                                      ConverterParameter="{y:StringResource ProgressMonitorIndexText}">
+                            <Binding Path="SessionMonitor.ProviderPosition" />
+                            <Binding Path="SessionMonitor.ProviderCount" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Border>
+        </DockPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ApplicationPageContentArea"
+                     TargetType="ContentControl">
+        <StackPanel>
+            <ContentControl Template="{DynamicResource FrontPanelCoreOperations}" />
+            <ContentControl Template="{DynamicResource FrontPanelConsole}" />
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ApplicationPagePopupArea"
+                     TargetType="ContentControl">
+        <Grid>
+            <!--supported by the interaction states-->
+            <ContentControl Template="{DynamicResource PopupBusyTemplate}" />
+            <ContentControl Template="{DynamicResource PopupRequestHelpTemplate}" />
+            <ContentControl Template="{DynamicResource PopupConsoleTemplate}" />
+            <ContentControl Template="{DynamicResource PopupPreparationManagerTemplate}" />
+            <ContentControl Template="{DynamicResource PopupSelectRulesManagerTemplate}" />
+            <ContentControl Template="{DynamicResource PopupProvidersManagerTemplate}" />
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,1 @@
+﻿EXEC [Report].[CommunityLearningReportPopulateData] @startDate = '2017-08-01',	@endDate  = '2018-08-01'

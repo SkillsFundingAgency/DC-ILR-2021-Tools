@@ -1,0 +1,15 @@
+The use of the batch file "align_common_to_wrapper" is required to take ILR component set production script files and bring them into the remit of Easy Wrapper. The batch file cleanses and realigns folder and file names for use in the project.
+
+Using the batch file should be safe.
+	It has nothing to do if "Common" doe not exist and will stop.
+	It will stop if a "back up" of pre existing production files is already in place.
+
+The script files are drawn from the ILR component set solution. The path to them is:
+	
+	ILR{component set year}\source\ILR\Common
+
+Take the whole folder and place a copy of it into the equivalent year folder in EasyWrapper and run the batch file.
+
+	EasyOPA\Assets\{component set year}
+
+The batch file "align_common_to_wrapper" needs to be in each component set year folder in the Easy wrapper solution in order for it to be able to prepare the folders for use.

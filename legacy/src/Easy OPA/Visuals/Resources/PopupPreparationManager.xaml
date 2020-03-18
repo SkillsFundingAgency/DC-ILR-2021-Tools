@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:EasyOPA.Composition"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="PopupPreparationManagerTemplate"
+                     TargetType="ContentControl">
+
+        <ContentControl Style="{DynamicResource EmbeddedPopupElementStyle}"
+                        z:BoundProperty.Primary="{Binding Path=CurrentState, Converter={StaticResource IsVisibleIfStateMatches}, ConverterParameter={x:Static y:EasyOPAInteractionState.IsModalManagePreparation}}"
+                        z:BoundProperty.Secondary="{z:StringResource PrepareButtonText}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ContentControl Height="700"
+                                Width="600"
+                                DataContext="{Binding Path=Prepared}"
+                                Template="{DynamicResource PreparationManagerView}" />
+
+                <DockPanel Grid.Row="1"
+                           Margin="0,5,0,0"
+                           HorizontalAlignment="Right">
+                    <Button Content="{z:StringResource FinishedButtonText}"
+                            Command="{Binding Path=ResetStateCommand}" />
+                </DockPanel>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+</ResourceDictionary>

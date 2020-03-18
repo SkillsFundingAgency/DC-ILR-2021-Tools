@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfTable>
+    <Table TableName="[Input].[Learner]"
+           IdentityColumn="Learner_ID">
+        <Columns>
+            <Column RuleId="FD_LearnRefNumber_AP"
+                    RegexString="[A-Za-z0-9 ]{1,12}"
+                    Severity="E"
+                    SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_PrevLearnRefNumber_AP"
+                    RegexString="[A-Za-z0-9 ]{1,12}"
+                    Severity="E"
+                    SourceColumn="PrevLearnRefNumber" />
+            <Column RuleId="FD_FamilyName_AP"
+                    RegexString="[^0-9\r\n\t|&quot;]{1,100}"
+                    Severity="E"
+                    SourceColumn="FamilyName" />
+            <Column RuleId="FD_GivenNames_AP"
+                    RegexString="[^0-9\r\n\t|&quot;]{1,100}"
+                    Severity="E"
+                    SourceColumn="GivenNames" />
+            <Column RuleId="FD_Sex_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="Sex" />
+            <Column RuleId="FD_NINumber_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="NINumber" />
+            <Column RuleId="FD_MathGrade_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="MathGrade" />
+            <Column RuleId="FD_EngGrade_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="EngGrade" />
+            <Column RuleId="FD_PostcodePrior_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="PostcodePrior" />
+            <Column RuleId="FD_Postcode_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="Postcode" />
+            <Column RuleId="FD_AddLine1_AP"
+                    RegexString="[A-Za-z0-9 ~!@&amp;'\\()*+,\-./:;]{1,50}"
+                    Severity="E"
+                    SourceColumn="AddLine1" />
+            <Column RuleId="FD_AddLine2_AP"
+                    RegexString="[A-Za-z0-9 ~!@&amp;'\\()*+,\-./:;]{1,50}"
+                    Severity="E"
+                    SourceColumn="AddLine2" />
+            <Column RuleId="FD_AddLine3_AP"
+                    RegexString="[A-Za-z0-9 ~!@&amp;'\\()*+,\-./:;]{1,50}"
+                    Severity="E"
+                    SourceColumn="AddLine3" />
+            <Column RuleId="FD_AddLine4_AP"
+                    RegexString="[A-Za-z0-9 ~!@&amp;'\\()*+,\-./:;]{1,50}"
+                    Severity="E"
+                    SourceColumn="AddLine4" />
+            <Column RuleId="FD_TelNo_AP"
+                    RegexString="[0-9]{1,18}"
+                    Severity="E"
+                    SourceColumn="TelNo" />
+            <Column RuleId="FD_Email_AP"
+                    RegexString=".+@.+"
+                    Severity="E"
+                    SourceColumn="Email" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[ContactPreference]"
+           IdentityColumn="ContactPreference_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_ContPrefType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ContPrefType" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearnerFAM]"
+           IdentityColumn="LearnerFAM_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_LearnFAMType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="LearnFAMType" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[ProviderSpecLearnerMonitoring]"
+           IdentityColumn="ProviderSpecLearnerMonitoring_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_ProvSpecLearnMonOccur_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ProvSpecLearnMonOccur" />
+            <Column RuleId="FD_ProvSpecLearnMon_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ProvSpecLearnMon" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[EmploymentStatusMonitoring]"
+           IdentityColumn="EmploymentStatusMonitoring_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column SourceColumn="DateEmpStatApp" />
+            <Column RuleId="FD_ESMType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ESMType" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearnerHE]"
+           IdentityColumn="LearnerHE_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_UCASPERID_AP"
+                    RegexString="[0-9]{10}"
+                    Severity="E"
+                    SourceColumn="UCASPERID" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearningDelivery]"
+           IdentityColumn="LearningDelivery_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_LearnAimRef_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="LearnAimRef" />
+            <Column RuleId="FD_DelLocPostCode_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="DelLocPostCode" />
+            <Column RuleId="FD_LSDPostcode_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="LSDPostcode" />
+            <Column RuleId="FD_ConRefNumber_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ConRefNumber" />
+            <Column RuleId="FD_EPAOrgID_AP"
+                    RegexString="[Ee][Pp][Aa][0-9]{4}"
+                    Severity="E"
+                    SourceColumn="EPAOrgID" />
+            <Column RuleId="FD_OutGrade_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="OutGrade" />
+            <Column RuleId="FD_SWSupAimId_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="SWSupAimId" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearningDeliveryFAM]"
+           IdentityColumn="LearningDeliveryFAM_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column SourceColumn="AimSeqNumber" />
+            <Column RuleId="FD_LearnDelFAMType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="LearnDelFAMType" />
+            <Column RuleId="FD_LearnDelFAMCode_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="LearnDelFAMCode" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[AppFinRecord]"
+           IdentityColumn="AppFinRecord_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column SourceColumn="AimSeqNumber" />
+            <Column RuleId="FD_AFinType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="AFinType" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[ProviderSpecDeliveryMonitoring]"
+           IdentityColumn="ProviderSpecDeliveryMonitoring_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column SourceColumn="AimSeqNumber" />
+            <Column RuleId="FD_ProvSpecDelMonOccur_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ProvSpecDelMonOccur" />
+            <Column RuleId="FD_ProvSpecDelMon_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="ProvSpecDelMon" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearningDeliveryHE]"
+           IdentityColumn="LearningDeliveryHE_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column SourceColumn="AimSeqNumber" />
+            <Column RuleId="FD_NUMHUS_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="NUMHUS" />
+            <Column RuleId="FD_SSN_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="SSN" />
+            <Column RuleId="FD_QUALENT3_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="QUALENT3" />
+            <Column RuleId="FD_UCASAPPID_AP"
+                    RegexString="[a-zA-Z]{2}[0-9]{2}$|^[0-9]{9}"
+                    Severity="E"
+                    SourceColumn="UCASAPPID" />
+            <Column RuleId="FD_DOMICILE_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="DOMICILE" />
+            <Column RuleId="FD_HEPostCode_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="HEPostCode" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[LearnerDestinationandProgression]"
+           IdentityColumn="LearnerDestinationandProgression_ID">
+        <Columns>
+            <Column RuleId="FD_DP_LearnRefNumber_AP"
+                    RegexString="[A-Za-z0-9 ]{1,12}"
+                    Severity="E"
+                    SourceColumn="LearnRefNumber" />
+        </Columns>
+    </Table>
+    <Table TableName="[Input].[DPOutcome]"
+           IdentityColumn="DPOutcome_ID">
+        <Columns>
+            <Column SourceColumn="LearnRefNumber" />
+            <Column RuleId="FD_DP_OutType_AP"
+                    RegexString="[A-Za-z0-9 ~!@#$%&amp;'\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]_\{\}\^&#xa3;&#x20ac;]*"
+                    Severity="E"
+                    SourceColumn="OutType" />
+        </Columns>
+    </Table>
+</ArrayOfTable>

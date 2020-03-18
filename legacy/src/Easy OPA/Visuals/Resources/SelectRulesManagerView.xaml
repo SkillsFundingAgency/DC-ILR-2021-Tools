@@ -1,0 +1,178 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:y="clr-namespace:EasyOPA.Composition"
+                    xmlns:z="clr-namespace:ESFA.Common.Composition;assembly=ESFA.Common.Visuals">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/esfa.common.visuals;component/resources/generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <y:BatchOperatingYearConverter x:Key="AsOperatingYearString" />
+    <y:RulebaseDependencyConverter x:Key="ShowRulebaseDependency" />
+
+    <DataTemplate x:Key="SelectedRuleDataTemplate">
+        <Border x:Name="ListItemOuterCasing">
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Style="{StaticResource GDSToggleSwitchStyle}"
+                          IsEnabled="{Binding Path=IsEnabledForSelection}"
+                          IsChecked="{Binding Path=IsSelectedForProcessing, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"
+                                          SharedSizeGroup="firstColumn" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               FontWeight="DemiBold"
+                               Text="Rulebase:" />
+
+                    <TextBlock Grid.Column="1"
+                               Style="{DynamicResource TopWrapAndNoTrimTextStyle}">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource MultiText}"
+                                          ConverterParameter="{z:StringResource SelectedRulesNameFormatText}">
+                                <Binding Path="Source.Collection" />
+                                <Binding Path="Source.Name" />
+                                <Binding Path="Source.ShortName" />
+                                <Binding Path="Source.OperatingYear"
+                                         Converter="{StaticResource AsOperatingYearString}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="1"
+                               Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               FontWeight="DemiBold"
+                               Text="Execution Type:" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{Binding Path=Source.ExecutionType}" />
+
+                    <TextBlock Grid.Row="2"
+                               Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               FontWeight="DemiBold"
+                               Text="Dependency:" />
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                               Text="{Binding Path=Source.Dependency, Converter={StaticResource ShowRulebaseDependency}}" />
+                    <Grid Grid.Row="3"
+                          Grid.ColumnSpan="2"
+                          Margin="30,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"
+                                              SharedSizeGroup="firstColumn" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Visibility="{Binding Path=Source.OPATransform, Converter={StaticResource IsVisibleIfPathIsTrue}}"
+                                   Text="OPA Transformation:" />
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Visibility="{Binding Path=Source.OPATransform, Converter={StaticResource IsVisibleIfPathIsTrue}}"
+                                   Text="{Binding Path=Source.OPATransform}" />
+
+                        <TextBlock Grid.Row="1"
+                                   Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Visibility="{Binding Path=Source.OPAConfiguration , Converter={StaticResource IsVisibleIfPathIsTrue}}"
+                                   Text="OPA Configuration:" />
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Visibility="{Binding Path=Source.OPAConfiguration , Converter={StaticResource IsVisibleIfPathIsTrue}}"
+                                   Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                                   Text="{Binding Path=Source.OPAConfiguration}" />
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=IsEnabled}"
+                         Value="false">
+                <Setter TargetName="ListItemOuterCasing"
+                        Property="BorderThickness"
+                        Value="1" />
+                <Setter TargetName="ListItemOuterCasing"
+                        Property="BorderBrush"
+                        Value="{DynamicResource GrayBrush5}" />
+                <Setter TargetName="ListItemOuterCasing"
+                        Property="Background"
+                        Value="{DynamicResource GrayBrush8}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Source.IsExperimental, Mode=OneWay}"
+                         Value="true">
+                <Setter TargetName="ListItemOuterCasing"
+                        Property="BorderThickness"
+                        Value="3" />
+                <Setter TargetName="ListItemOuterCasing"
+                        Property="BorderBrush"
+                        Value="Red" />
+                <!--<Setter TargetName="ListItemOuterCasing"
+                        Property="Background"
+                        Value="{DynamicResource GrayBrush8}" />-->
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="SelectRulesManagerView"
+                     TargetType="ContentControl">
+
+        <ContentControl Style="{DynamicResource GDSAssociatedElementStyle}"
+                        z:BoundProperty.Primary="{z:StringResource AvailableRulesText, StringFormat={z:StringResource CaptionTextFormat}}">
+
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource TopWrapAndNoTrimTextStyle}"
+                           Text="{z:StringResource AvailableRulesExplanationText}" />
+
+                <ListBox Grid.Row="1"
+                         Style="{StaticResource PopupListBoxStyle}"
+                         SelectionMode="Single"
+                         ScrollViewer.CanContentScroll="False"
+                         ItemsSource="{Binding Path=CandidateRules}"
+                         ItemTemplate="{StaticResource SelectedRuleDataTemplate}" />
+
+                <Grid Grid.Row="2"
+                      Background="{DynamicResource AccentColorBrush4}">
+                    <TextBlock Style="{DynamicResource TopWrapAndNoTrimTextStyle}"
+                               Visibility="{Binding Path=SelectedRulesCount, Converter={StaticResource IsVisibleIfPathIsTrue}}">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource MultiText}"
+                                          ConverterParameter="{z:StringResource SelectedRulesInformationText}">
+                                <Binding Path="SelectedRulesCount" />
+                                <Binding Path="SelectedRuleShortnames" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+</ResourceDictionary>
