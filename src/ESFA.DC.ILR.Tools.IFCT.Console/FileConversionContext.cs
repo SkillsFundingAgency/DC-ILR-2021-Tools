@@ -6,8 +6,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Console
     {
         public string SourceFile { get; set; }
 
-        public string TargetFile { get; set; }
-
         public string SourceFolder { get; set; }
 
         public string TargetFolder { get; set; }

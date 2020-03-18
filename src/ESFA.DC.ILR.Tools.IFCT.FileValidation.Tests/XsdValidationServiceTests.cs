@@ -12,7 +12,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
         {
             var xmlSchemaSet = new XmlSchemaSet();
 
-            var xmlReaderSettings = NewService().BuildReaderSettings(xmlSchemaSet);
+            var xmlReaderSettings = XsdValidationService.BuildReaderSettings(xmlSchemaSet);
 
             xmlReaderSettings.CloseInput.Should().BeFalse();
             xmlReaderSettings.ValidationType.Should().Be(ValidationType.Schema);
@@ -25,17 +25,12 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation.Tests
         {
             var schemaSet = new XmlSchemaSet();
 
-            var xmlReaderSettings = NewService().BuildXmlNsReaderSettings(schemaSet);
+            var xmlReaderSettings = XsdValidationService.BuildXmlNsReaderSettings(schemaSet);
 
             xmlReaderSettings.CloseInput.Should().BeFalse();
             xmlReaderSettings.ValidationType.Should().Be(ValidationType.Schema);
             xmlReaderSettings.Schemas.Should().Be(schemaSet);
             xmlReaderSettings.ValidationFlags.Should().Be(XmlSchemaValidationFlags.ProcessIdentityConstraints | XmlSchemaValidationFlags.ReportValidationWarnings);
-        }
-
-        private XsdValidationService NewService()
-        {
-            return new XsdValidationService();
         }
     }
 }

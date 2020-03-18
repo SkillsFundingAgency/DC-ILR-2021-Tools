@@ -1,10 +1,8 @@
 ﻿using System;
-using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Rules;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters;
 using FluentAssertions;
 using Loose;
-using Moq;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Tests.Uplifters

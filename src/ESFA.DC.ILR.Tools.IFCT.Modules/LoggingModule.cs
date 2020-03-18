@@ -3,7 +3,7 @@ using ESFA.DC.Logging.Desktop;
 using ESFA.DC.Logging.Desktop.Config.Interfaces;
 using ESFA.DC.Logging.Interfaces;
 
-namespace ESFA.DC.ILR.Tools.IFCT.Console.Modules
+namespace ESFA.DC.ILR.Tools.IFCT.Modules
 {
     public class LoggingModule : Module
     {
