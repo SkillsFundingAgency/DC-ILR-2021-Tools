@@ -105,7 +105,7 @@ namespace EasyOPA.Manager
                 //        .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.CanceledOperation);
                 //}
 
-                var source = Provider.ConnectionToSource(usingInstance, "EOPA_DB", dbUser, dbPassword);
+                var source = Provider.ConnectionToSource(usingInstance, "EasyOpa", dbUser, dbPassword);
 
                 await BulkLoader.Load(source, master, inputFilePath);
             });
