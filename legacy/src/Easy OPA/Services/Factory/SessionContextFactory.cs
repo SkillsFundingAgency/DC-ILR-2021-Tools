@@ -26,6 +26,18 @@ namespace EasyOPA.Factory
             // Integrated Security=true
             // Integrated Security=SSPI
             // Trusted_Connection=true
+            if(string.IsNullOrEmpty(thisUser) || string.IsNullOrEmpty(thisPassword))
+            {
+                return new ConnectionDetail
+                {
+                    Name = thisSource,
+                    Container = thisInstance,
+                    DBUser = thisUser,
+                    DBPassword = thisPassword,
+                    SQLDetail = $"Data Source={thisInstance};Initial Catalog={thisSource};Integrated Security=true;",
+                    COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};Integrated Security=SSPI"
+                };
+            }
             return new ConnectionDetail
             {
                 Name = thisSource,
