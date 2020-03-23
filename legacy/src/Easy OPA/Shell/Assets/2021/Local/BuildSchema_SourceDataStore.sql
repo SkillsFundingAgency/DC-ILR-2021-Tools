@@ -1,4 +1,7 @@
-create schema [Clone]
+if not exists(select schema_id from sys.schemas where name='Clone')	
+begin
+	exec('create schema Clone')
+end
 go
 
 create view Clone.AppFinRecord

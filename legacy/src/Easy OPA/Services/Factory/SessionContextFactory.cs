@@ -46,7 +46,7 @@ namespace EasyOPA.Factory
         /// </returns>
         public IConnectionDetail ConnectionToMaster(string onInstance, string thisUser, string thisPassword)
         {
-            return CreateFor(onInstance, "EOPA_DB", thisUser, thisPassword);
+            return CreateFor(onInstance, "EasyOpa", thisUser, thisPassword);
         }
 
         /// <summary>

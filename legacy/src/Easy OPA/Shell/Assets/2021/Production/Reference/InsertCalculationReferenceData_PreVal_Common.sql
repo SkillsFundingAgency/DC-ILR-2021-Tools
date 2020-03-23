@@ -4,7 +4,7 @@ insert into Reference.LARS_Current_Version (
 )
 select	distinct
 		[Version]
-from	ReferenceInput.[LARS_LARSVersion]
+from	ReferenceInput.[MetaData_LarsVersion]
 go
 
 truncate table Reference.LARS_StandardFunding
@@ -107,4 +107,12 @@ from	${runmode.inputsource}.LearningDelivery
 				on ls.StandardCode = LearningDelivery.StdCode
 			inner join ReferenceInput.[LARS_LARSStandardCommonComponent] lscc
 				on lscc.LARS_LARSStandard_Id = ls.Id
+go
+
+truncate table Reference.SFA_PostcodeAreaCost_Current_Version
+insert into Reference.SFA_PostcodeAreaCost_Current_Version (
+	CurrentVersion
+)
+select	[Version]
+from	ReferenceInput.[MetaData_PostcodesVersion]
 go

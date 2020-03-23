@@ -1,6 +1,6 @@
 <OPAMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="OPAMapping.xsd"
-            RulebasePath="${WorkingFolder}\Rulebases\ALB\Loans Bursary 19_20.zip"
+            RulebasePath="${WorkingFolder}\Rulebases\ALB\Loans Bursary 20_21.zip"
             BatchSize="1"
             NumberOfThreads="-1">
     <OPACaseControl DBConnectionID="ILR">

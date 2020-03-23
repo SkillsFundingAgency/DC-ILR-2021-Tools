@@ -202,7 +202,7 @@
     <None Include="Assets\2021\Production\Rulebases\AEC\Apprenticeships Earnings Calc 19_20.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\ALB\Loans Bursary 19_20.zip">
+    <None Include="Assets\2021\Production\Rulebases\ALB\Loans Bursary 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\DV\Derived Variables 19_20.zip">
@@ -814,9 +814,6 @@
     <Resource Include="Assets\2021\Production\OPAConfig\AEC\AEC_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\ALB\ALB_OPAConfigILR_1920.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\2021\Production\OPAConfig\DV\DV_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -928,6 +925,9 @@
     <None Include="Assets\2021\Production\Reference\lite_InsertCalculationEFAReferenceData.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\2021\Production\OPAConfig\ALB\ALB_OPAConfigILR_2021.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\GetData.sql" />
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\GetDataCount.sql" />
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\Pre\PopulateData.sql" />
@@ -1009,10 +1009,10 @@
     <Resource Include="Assets\2021\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\Rulebases\DV\ILR Derived Variables - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

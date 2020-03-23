@@ -27,3 +27,45 @@ from	Valid.LearningDelivery
 				on LSCC.LARS_LARSStandard_Id  = LS.Id
 
 go
+
+
+truncate table Reference.SFA_PostcodeAreaCost
+insert into	Reference.SFA_PostcodeAreaCost (
+	AreaCostFactor,
+	EffectiveFrom,
+	EffectiveTo,
+	Postcode
+)
+select	distinct
+		pac.AreaCostFactor,
+		pac.EffectiveFrom,
+		pac.EffectiveTo,
+		p.Postcode
+from	Valid.LearningDelivery as vld
+inner join [ReferenceInput].Postcodes_Postcode p
+				on p.PostCode = vld.DelLocPostCode
+			inner join [ReferenceInput].[Postcodes_SfaAreaCost] as pac
+				on pac.Postcodes_Postcode_Id = p.Id
+go
+
+truncate table Reference.SFA_PostcodeDisadvantage
+insert into Reference.SFA_PostcodeDisadvantage (
+	Apprenticeship_Uplift,
+	EffectiveFrom,
+	EffectiveTo,
+	Postcode,
+	Uplift
+)
+select	distinct
+		pd.Uplift,
+		pd.EffectiveFrom,
+		pd.EffectiveTo,
+		p.Postcode,
+		pd.Uplift
+from	Valid.Learner
+			inner join [ReferenceInput].Postcodes_Postcode p
+				on p.PostCode = Learner.PostcodePrior
+			inner join [ReferenceInput].[Postcodes_SfaDisadvantage] as pd
+				on pd.Postcodes_Postcode_Id = p.Id
+go
+
