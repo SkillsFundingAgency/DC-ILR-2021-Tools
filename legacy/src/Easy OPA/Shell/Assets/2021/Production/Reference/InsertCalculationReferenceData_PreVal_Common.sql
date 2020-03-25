@@ -116,3 +116,33 @@ insert into Reference.SFA_PostcodeAreaCost_Current_Version (
 select	[Version]
 from	ReferenceInput.[MetaData_PostcodesVersion]
 go
+
+truncate table Reference.Org_Current_Version
+insert into Reference.Org_Current_Version (
+	CurrentVersion
+)
+select	distinct
+		[Version]
+from	ReferenceInput.[MetaData_OrganisationsVersion]
+go
+
+truncate table Reference.CampusIdentifier_SpecialistResources
+insert into Reference.CampusIdentifier_SpecialistResources (
+	CampusIdentifier,
+	EffectiveFrom,
+	EffectiveTo,
+	SpecialistResources
+)
+select	distinct
+		CI.CampusIdentifier,
+		sr.EffectiveFrom,
+		sr.EffectiveTo,
+		sr.IsSpecialistResource
+from	
+ReferenceInput.Organisations_OrganisationCampusIdentifier as ci
+	join Valid.Learner as L
+	on CI.CampusIdentifier = L.CampId
+		join ReferenceInput.Organisations_SpecialistResource as sr
+			on sr.Organisations_OrganisationCampusIdentifier_Id = ci.Id
+go
+				

@@ -1,3 +1,17 @@
+truncate table Reference.FM25_PostcodeDisadvantage
+insert into Reference.FM25_PostcodeDisadvantage
+select	distinct
+		pc.Postcode,
+		PFRD_PC_Disadvantage.Uplift,
+		PFRD_PC_Disadvantage.EffectiveFrom,
+		PFRD_PC_Disadvantage.EffectiveTo
+from	Valid.Learner
+			inner join ReferenceInput.[Postcodes_Postcode] pc
+				on pc.PostCode = Learner.Postcode
+			inner join ReferenceInput.[Postcodes_EfaDisadvantage] as PFRD_PC_Disadvantage
+				on PFRD_PC_Disadvantage.Postcodes_Postcode_Id = pc.Id
+go
+
 truncate table Reference.LARS_Funding
 insert into Reference.LARS_Funding
 select	distinct
