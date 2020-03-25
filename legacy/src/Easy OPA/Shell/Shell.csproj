@@ -217,7 +217,7 @@
     <None Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\FM25\FM25 Funding Calc 19_20.zip">
+    <None Include="Assets\2021\Production\Rulebases\FM25\FM25 Funding Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\FM35\FM35 Funding Calc 19_20.zip">
@@ -826,9 +826,6 @@
     <Resource Include="Assets\2021\Production\OPAConfig\FDRegexValidation\FD_ILR_PatternValidation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\FM25\FM25_OPAConfigILR_1920.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\2021\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -928,6 +925,9 @@
     <None Include="Assets\2021\Production\OPAConfig\ALB\ALB_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\2021\Production\OPAConfig\FM25\FM25_OPAConfigILR_2021.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\GetData.sql" />
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\GetDataCount.sql" />
     <Content Include="Assets\2021\Production\Reports\Apps Indicative Earnings\Pre\PopulateData.sql" />
@@ -1022,9 +1022,9 @@
     <Resource Include="Assets\2021\Production\Rulebases\ESFVAL\ILR ESF Validation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\Rulebases\FM25\ILR FM25 Calculation - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\FM25\ILR FM25 Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

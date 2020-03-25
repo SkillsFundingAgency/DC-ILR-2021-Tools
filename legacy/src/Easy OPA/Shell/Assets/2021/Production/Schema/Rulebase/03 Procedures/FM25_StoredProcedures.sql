@@ -58,10 +58,7 @@ begin
 											learnDenorm.MCF as [@LrnFAM_MCF],
 											l.PlanEEPHours as [@PlanEEPHours],
 											l.PlanLearnHours as [@PlanLearnHours],
-											case when l.Postcode = 'ZZ99 9ZZ' 
-												then Learner_FM25_PostcodeDisadvantage_Prior_Postcode.Uplift 
-												else Learner_FM25_PostcodeDisadvantage.Uplift
-											end as [@PostcodeDisadvantageUplift],
+											pd.Uplift as [@PostcodeDisadvantageUplift],
 											(select	OutCode as [@OutCode],
 													OutType as [@OutType]
 											from	Valid.DPOutcome
@@ -114,11 +111,6 @@ begin
 												join Valid.LearnerDenorm as learnDenorm
 													on l.LearnRefNumber = learnDenorm.LearnRefNumber
 
-												-- i moved one side to postcode prior CME: 2019-08-07
-												left join Reference.FM25_PostcodeDisadvantage as Learner_FM25_PostcodeDisadvantage
-													on Learner_FM25_PostcodeDisadvantage.Postcode = l.Postcode
-												left join Reference.FM25_PostcodeDisadvantage as Learner_FM25_PostcodeDisadvantage_Prior_Postcode
-													on Learner_FM25_PostcodeDisadvantage_Prior_Postcode.Postcode = l.PostcodePrior
 												
 												left join Reference.FM25_PostcodeDisadvantage as pd
 													on pd.Postcode = l.Postcode
@@ -159,7 +151,7 @@ begin
 											and specialRes.FundingFactorType = 'EFA 16-19'
 											and specialRes.FundingFactor = 'SPECIALIST RESOURCES'
 											-- and specialRes.EffectiveFrom = '01-Aug-2013' <= this is the only funding factor that doesn't have an annual renewal??
-							where	globalLearner.LearnRefNumber = controller.LearnRefNumber 
+							where	globalLearner.LearnRefNumber = controller.LearnRefNumber
 							for xml path ('global'), type))
 					from	(select	distinct
 									LearnRefNumber

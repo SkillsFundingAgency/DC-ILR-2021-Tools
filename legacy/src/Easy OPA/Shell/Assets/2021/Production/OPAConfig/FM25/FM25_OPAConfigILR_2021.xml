@@ -6,7 +6,7 @@ Rulebase Version: ILR EFA Calculation 1617, Version 1617.04
 -->
 <OPAMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="OPAMapping.xsd"
-            RulebasePath="${WorkingFolder}\Rulebases\FM25\FM25 Funding Calc 19_20.zip"
+            RulebasePath="${WorkingFolder}\Rulebases\FM25\FM25 Funding Calc 20_21.zip"
             BatchSize="1"
             NumberOfThreads="-1">
     <OPACaseControl DBConnectionID="ILR">
