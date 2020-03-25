@@ -12,17 +12,31 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Rules
                 var nullableDateTime = value as DateTime?;
                 if (nullableDateTime != null && nullableDateTime.HasValue)
                 {
-                    return (T)(object)nullableDateTime.Value.AddYears(1);
+                    var dateTime = (DateTime)(object)nullableDateTime.Value;
+
+                    return (T)(object)UpliftYear(dateTime);
                 }
             }
 
             if (typeof(T) == typeof(DateTime))
             {
                 var dateTime = (DateTime)(object)value;
-                return (T)(object)dateTime.AddYears(1);
+                return (T)(object)UpliftYear(dateTime);
             }
 
             return default(T);
+        }
+
+        private DateTime UpliftYear(DateTime dateTime)
+        {
+            dateTime = dateTime.AddYears(1);
+
+            if (DateTime.IsLeapYear(dateTime.Year) && dateTime.Month == 2 && dateTime.Day == 28)
+            {
+                dateTime = dateTime.AddDays(1);
+            }
+
+            return dateTime;
         }
     }
 }

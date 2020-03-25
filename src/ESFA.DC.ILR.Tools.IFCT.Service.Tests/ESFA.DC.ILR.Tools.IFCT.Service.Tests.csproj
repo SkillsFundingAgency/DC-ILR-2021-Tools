@@ -153,6 +153,10 @@
       <Project>{9cb39ebc-3d07-4e7f-87ce-f4420b4410f2}</Project>
       <Name>ESFA.DC.ILR.Tools.IFCT.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.YearUpdate\ESFA.DC.ILR.Tools.IFCT.YearUpdate.csproj">
+      <Project>{308C2001-C661-48EF-8DCB-5B4CA4BFD68C}</Project>
+      <Name>ESFA.DC.ILR.Tools.IFCT.YearUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous\ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous.csproj">
       <Project>{1c031595-c41d-4a3b-8d7a-6798c43e39b3}</Project>
       <Name>ESFA.DC.ILR.Tools.ILR.Model.Loose.Previous</Name>
