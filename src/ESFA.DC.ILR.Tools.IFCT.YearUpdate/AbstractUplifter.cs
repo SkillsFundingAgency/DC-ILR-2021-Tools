@@ -20,7 +20,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
             {
                 var value = fieldUpdateProperties.UpliftRule.Invoke(inputValue);
 
-                var prop = (PropertyInfo)((MemberExpression)fieldUpdateProperties.Selecter.Body).Member;
+                var prop = (PropertyInfo)((MemberExpression)fieldUpdateProperties.Selector.Body).Member;
                 prop.SetValue(entity, value);
             }
         }
