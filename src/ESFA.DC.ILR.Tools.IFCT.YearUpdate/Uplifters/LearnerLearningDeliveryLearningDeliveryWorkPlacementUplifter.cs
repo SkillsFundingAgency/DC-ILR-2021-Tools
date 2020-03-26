@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,27 +7,29 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerLearningDeliveryLearningDeliveryWorkPlacementUplifter
         : AbstractUplifter<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement>, IUplifter<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?> _workPlaceStartDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?> _workPlaceEndDateProps;
 
-        private readonly Expression<Func<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?>> _selecterFuncWorkPlaceStartDate = s => s.WorkPlaceStartDate;
-        private readonly Func<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?> _compiledSelectorWorkPlaceStartDate;
-        private readonly Expression<Func<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?>> _selecterFuncWorkPlaceEndDate = s => s.WorkPlaceEndDate;
-        private readonly Func<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?> _compiledSelectorWorkPlaceEndDate;
-
-        public LearnerLearningDeliveryLearningDeliveryWorkPlacementUplifter(IRuleProvider ruleProvider)
+        public LearnerLearningDeliveryLearningDeliveryWorkPlacementUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+            var modelName = typeof(MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement).Name;
+            Func<DateTime?, DateTime?> standardNullableDateUplifter = ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition;
 
-            _compiledSelectorWorkPlaceStartDate = _selecterFuncWorkPlaceStartDate.Compile();
-            _compiledSelectorWorkPlaceEndDate = _selecterFuncWorkPlaceEndDate.Compile();
+            _workPlaceStartDateProps = new FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "WorkPlaceStartDate"),
+                s => s.WorkPlaceStartDate,
+                standardNullableDateUplifter);
+
+            _workPlaceEndDateProps = new FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "WorkPlaceEndDate"),
+                s => s.WorkPlaceEndDate,
+                standardNullableDateUplifter);
         }
 
         public MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement Process(MessageLearnerLearningDeliveryLearningDeliveryWorkPlacement model)
         {
-            ApplyCompiledRule(_selecterFuncWorkPlaceStartDate, _compiledSelectorWorkPlaceStartDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncWorkPlaceEndDate, _compiledSelectorWorkPlaceEndDate, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_workPlaceStartDateProps, model);
+            ApplyRule(_workPlaceEndDateProps, model);
 
             return model;
         }

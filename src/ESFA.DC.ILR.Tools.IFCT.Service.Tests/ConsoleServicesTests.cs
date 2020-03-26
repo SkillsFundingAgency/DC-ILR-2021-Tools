@@ -41,7 +41,6 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests
         {
             // Arrange
             var annualMapperMock = new Mock<IFileConversionOrchestrator>();
-            var fileNameServiceMock = new Mock<IFileNameService>();
             var fileServiceMock = new Mock<IFileService>();
 
             var consoleService = new ConsoleService(annualMapperMock.Object, fileServiceMock.Object);

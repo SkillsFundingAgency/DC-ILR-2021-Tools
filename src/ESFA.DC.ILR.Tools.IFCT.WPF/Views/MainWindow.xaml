@@ -44,6 +44,7 @@
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Button Grid.Column="0" Grid.Row="0" Content="Choose File" FontSize="14" Margin="0,5" 
                         Command="{Binding ShowChooseFileDialogCommand}" IsEnabled="{Binding CanSelectFileFolder}"/>
@@ -51,12 +52,15 @@
                 <Button Grid.Column="0" Grid.Row="1" Content="Choose Folder" FontSize="14" Margin="0,5"
                         Command="{Binding ShowChooseFolderDialogCommand}" IsEnabled="{Binding CanSelectFileFolder}"/>
                 <Label Grid.Column="1" Grid.Row="1" Content="{Binding TargetFolderName}" FontSize="14"/>
-                <Button Grid.Column="0" Grid.Row="2" Content="Process File" FontSize="14" Margin="0,5"
+                <StackPanel Grid.Column="1" Grid.Row="2">
+                    <CheckBox Content="Uplift Dates" IsChecked="{Binding UpliftDates}" IsEnabled="{Binding CanSelectFileFolder}"  />
+                </StackPanel>
+                <Button Grid.Column="0" Grid.Row="3" Content="Process File" FontSize="14" Margin="0,5"
                         Command="{Binding ProcessFileCommand}" IsEnabled="{Binding CanStartProcessing}"
                         Visibility="{Binding CanSubmit, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <ProgressBar Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="6" Margin="5 0 5 0"
+                <ProgressBar Grid.Column="1" Grid.Row="3" Minimum="0" Maximum="6" Margin="5 0 5 0"
                              Value="{Binding ProgressCounter}" Visibility="{Binding Processing, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"
+                <TextBlock Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"
                            Text="{Binding ProgressIndicator}" Visibility="{Binding Processing, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
         </Grid>

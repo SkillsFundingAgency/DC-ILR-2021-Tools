@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using Autofac;
 using ESFA.DC.ILR.Tools.IFCT.Interface;
+using ESFA.DC.ILR.Tools.IFCT.YearUpdate;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Rules;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters;
-using ESFA.DC.ILR.Tools.YearUpdate;
-using ESFA.DC.ILR.Tools.YearUpdate.Interface;
 using Loose;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Modules

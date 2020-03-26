@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,40 +7,50 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerLearningDeliveryUplifter
         : AbstractUplifter<MessageLearnerLearningDelivery>, IUplifter<MessageLearnerLearningDelivery>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?> _learnStartDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?> _origLearnStartDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?> _learnPlanEndDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?> _learnActEndDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?> _achDateProps;
 
-        private readonly Expression<Func<MessageLearnerLearningDelivery, DateTime?>> _selecterFuncLearnStartDate = s => s.LearnStartDate;
-        private readonly Func<MessageLearnerLearningDelivery, DateTime?> _compiledSelectorLearnStartDate;
-        private readonly Expression<Func<MessageLearnerLearningDelivery, DateTime?>> _selecterFuncOrigLearnStartDate = s => s.OrigLearnStartDate;
-        private readonly Func<MessageLearnerLearningDelivery, DateTime?> _compiledSelectorOrigLearnStartDate;
-        private readonly Expression<Func<MessageLearnerLearningDelivery, DateTime?>> _selecterFuncLearnPlanEndDate = s => s.LearnPlanEndDate;
-        private readonly Func<MessageLearnerLearningDelivery, DateTime?> _compiledSelectorLearnPlanEndDate;
-        private readonly Expression<Func<MessageLearnerLearningDelivery, DateTime?>> _selecterFuncLearnActEndDate = s => s.LearnActEndDate;
-        private readonly Func<MessageLearnerLearningDelivery, DateTime?> _compiledSelectorLearnActEndDate;
-        private readonly Expression<Func<MessageLearnerLearningDelivery, DateTime?>> _selecterFuncAchDate = s => s.AchDate;
-        private readonly Func<MessageLearnerLearningDelivery, DateTime?> _compiledSelectorAchDate;
-
-        public LearnerLearningDeliveryUplifter(
-            IRuleProvider ruleProvider)
+        public LearnerLearningDeliveryUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+            var modelName = typeof(MessageLearnerLearningDelivery).Name;
+            Func<DateTime?, DateTime?> standardNullableDateUplifter = ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition;
 
-            _compiledSelectorLearnStartDate = _selecterFuncLearnStartDate.Compile();
-            _compiledSelectorOrigLearnStartDate = _selecterFuncOrigLearnStartDate.Compile();
-            _compiledSelectorLearnPlanEndDate = _selecterFuncLearnPlanEndDate.Compile();
-            _compiledSelectorLearnActEndDate = _selecterFuncLearnActEndDate.Compile();
-            _compiledSelectorAchDate = _selecterFuncAchDate.Compile();
+            _learnStartDateProps = new FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "LearnStartDate"),
+                s => s.LearnStartDate,
+                standardNullableDateUplifter);
+
+            _origLearnStartDateProps = new FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "OrigLearnStartDate"),
+                s => s.OrigLearnStartDate,
+                standardNullableDateUplifter);
+
+            _learnPlanEndDateProps = new FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "LearnPlanEndDate"),
+                s => s.LearnPlanEndDate,
+                standardNullableDateUplifter);
+
+            _learnActEndDateProps = new FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "LearnActEndDate"),
+                s => s.LearnActEndDate,
+                standardNullableDateUplifter);
+
+            _achDateProps = new FieldUpdateProperties<MessageLearnerLearningDelivery, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "AchDate"),
+                s => s.AchDate,
+                standardNullableDateUplifter);
         }
 
         public MessageLearnerLearningDelivery Process(MessageLearnerLearningDelivery model)
         {
-            ApplyCompiledRule(_selecterFuncLearnStartDate, _compiledSelectorLearnStartDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncOrigLearnStartDate, _compiledSelectorOrigLearnStartDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncLearnPlanEndDate, _compiledSelectorLearnPlanEndDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncLearnActEndDate, _compiledSelectorLearnActEndDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncAchDate, _compiledSelectorAchDate, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_learnStartDateProps, model);
+            ApplyRule(_origLearnStartDateProps, model);
+            ApplyRule(_learnPlanEndDateProps, model);
+            ApplyRule(_learnActEndDateProps, model);
+            ApplyRule(_achDateProps, model);
 
             return model;
         }

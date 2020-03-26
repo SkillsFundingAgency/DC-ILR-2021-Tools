@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,23 +7,19 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerLearnerEmploymentStatusUplifter
         : AbstractUplifter<MessageLearnerLearnerEmploymentStatus>, IUplifter<MessageLearnerLearnerEmploymentStatus>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerLearnerEmploymentStatus, DateTime?> _dateEmpStatAppProps;
 
-        private readonly Expression<Func<MessageLearnerLearnerEmploymentStatus, DateTime?>> _selecterFuncDateEmpStatApp = s => s.DateEmpStatApp;
-        private readonly Func<MessageLearnerLearnerEmploymentStatus, DateTime?> _compiledSelectorDateEmpStatApp;
-
-        public LearnerLearnerEmploymentStatusUplifter(IRuleProvider ruleProvider)
+        public LearnerLearnerEmploymentStatusUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
-
-            _compiledSelectorDateEmpStatApp = _selecterFuncDateEmpStatApp.Compile();
+            _dateEmpStatAppProps = new FieldUpdateProperties<MessageLearnerLearnerEmploymentStatus, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(typeof(MessageLearnerLearnerEmploymentStatus).Name, "DateEmpStatApp"),
+                s => s.DateEmpStatApp,
+                ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition);
         }
 
         public MessageLearnerLearnerEmploymentStatus Process(MessageLearnerLearnerEmploymentStatus model)
         {
-            ApplyCompiledRule(_selecterFuncDateEmpStatApp, _compiledSelectorDateEmpStatApp, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_dateEmpStatAppProps, model);
 
             return model;
         }

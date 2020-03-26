@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,22 +7,19 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class HeaderCollectionDetailsUplifter
         : AbstractUplifter<MessageHeaderCollectionDetails>, IUplifter<MessageHeaderCollectionDetails>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime> _standardDateUplifter;
-        private readonly Expression<Func<MessageHeaderCollectionDetails, DateTime>> _selecterFunc = s => s.FilePreparationDate;
-        private readonly Func<MessageHeaderCollectionDetails, DateTime> _compiledSelector;
+        private readonly FieldUpdateProperties<MessageHeaderCollectionDetails, DateTime> _filePreparationDateProps;
 
-        public HeaderCollectionDetailsUplifter(IRuleProvider ruleProvider)
+        public HeaderCollectionDetailsUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime>();
-
-            _compiledSelector = _selecterFunc.Compile();
+            _filePreparationDateProps = new FieldUpdateProperties<MessageHeaderCollectionDetails, DateTime>(
+                yearUpdateConfiguration.ShouldUpdateDate(typeof(MessageHeaderCollectionDetails).Name, "FilePreparationDate"),
+                s => s.FilePreparationDate,
+                ruleProvider.BuildStandardDateUplifter<DateTime>().Definition);
         }
 
         public MessageHeaderCollectionDetails Process(MessageHeaderCollectionDetails model)
         {
-            ApplyCompiledRule(_selecterFunc, _compiledSelector, _standardDateUplifter.Definition, model);
+            ApplyRule(_filePreparationDateProps, model);
 
             return model;
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ILogger = ESFA.DC.Logging.Interfaces.ILogger;
 
-namespace ESFA.DC.ILR.Tools.YearUpdate
+namespace ESFA.DC.ILR.Tools.IFCT.Common
 {
     public abstract class ConfigurationBase
     {
@@ -27,6 +27,11 @@ namespace ESFA.DC.ILR.Tools.YearUpdate
             }
 
             return defaultValue;
+        }
+
+        protected string ReadSettingAsString(string setting)
+        {
+            return _configuration[setting];
         }
 
         protected string GetConfigItemForLog(string setting)
