@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autofac;
 using ESFA.DC.ILR.Tools.IFCT.Service.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Service.Message;
 using ESFA.DC.ILR.Tools.IFCT.WPF.Command;
@@ -11,6 +11,7 @@ using ESFA.DC.ILR.Tools.IFCT.WPF.Views;
 using ESFA.DC.Logging.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.Extensions.Configuration;
 
 namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
 {
@@ -20,23 +21,20 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
         private const string FoldernamePlaceholder = "No folder chosen";
 
         private readonly ILogger _logger;
-        private readonly IConsoleService _consoleService;
-        
+       
         private CancellationTokenSource _cancellationTokenSource;
 
         private string _sourceFileName = FilenamePlaceholder;
         private string _targetFolderName = FoldernamePlaceholder;
+        private bool _upliftDates = true;
         private bool _canSelectFileFolder = true;
         private bool _canStartProcessing = false;
         private string _progressIndicator = string.Empty;
         private int _progressCounter = -1;
 
-        public MainViewModel(IMessengerService messengerService, ILogger logger, IConsoleService consoleService)
+        public MainViewModel(ILogger logger)
         {
             _logger = logger;
-            _consoleService = consoleService;
-
-            messengerService.Register<TaskProgressMessage>(this, HandleTaskProgressMessage);
 
             AboutNavigationCommand = new RelayCommand(AboutNavigationAction);
             ShowChooseFileDialogCommand = new RelayCommand(ShowChooseFileDialogAction);
@@ -68,6 +66,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _targetFolderName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool UpliftDates
+        {
+            get => _upliftDates;
+            set
+            {
+                _upliftDates = value;
                 RaisePropertyChanged();
             }
         }
@@ -156,30 +164,47 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             CanStartProcessing = false;
             CanSelectFileFolder = false;
 
-            var context = new FileConversionContext
+            // Re-create the Configuration with memory source added for options set from the UI
+            var memOptions = new List<KeyValuePair<string, string>>
             {
-                SourceFile = SourceFileName,
-                TargetFolder = TargetFolderName,
+                new KeyValuePair<string, string>("DateUplift:Default", UpliftDates ? "true" : "false")
             };
 
-            try
-            {
-                _cancellationTokenSource = new CancellationTokenSource();
-                var result = await _consoleService.ProcessFilesAsync(context, _cancellationTokenSource.Token);
+            var configBuilder = new ConfigurationBuilder();
+            configBuilder.AddJsonFile("appSettings.json");
+            configBuilder.AddInMemoryCollection(memOptions);
+            IConfiguration config = configBuilder.Build();
 
-            }
-            catch (TaskCanceledException taskCanceledException)
+            using (var scope = App.Container.BeginLifetimeScope(
+                builder => { builder.RegisterInstance<IConfiguration>(config); }))
             {
-                _logger.LogError("Operation Cancelled", taskCanceledException);
+                var consoleService = scope.Resolve<IConsoleService>();
+                var messengerService = scope.Resolve<IMessengerService>();
+                messengerService.Register<TaskProgressMessage>(this, HandleTaskProgressMessage);
 
-            }
-            finally
-            {
-                _cancellationTokenSource.Dispose();
-            }
+                var context = new FileConversionContext
+                {
+                    SourceFile = SourceFileName,
+                    TargetFolder = TargetFolderName,
+                };
 
-            CanStartProcessing = true;
-            CanSelectFileFolder = true;
+                try
+                {
+                    _cancellationTokenSource = new CancellationTokenSource();
+                    var result = await Task.Run(() => consoleService.ProcessFilesAsync(context, _cancellationTokenSource.Token));
+                }
+                catch (TaskCanceledException taskCanceledException)
+                {
+                    _logger.LogError("Operation Cancelled", taskCanceledException);
+                }
+                finally
+                {
+                    _cancellationTokenSource.Dispose();
+                }
+
+                CanStartProcessing = true;
+                CanSelectFileFolder = true;
+            }
         }
 
         private static string GetFileNameFromOpenFileDialog()

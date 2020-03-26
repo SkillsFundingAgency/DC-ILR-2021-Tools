@@ -8,31 +8,36 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerDestinationandProgressionDPOutcomeUplifter
         : AbstractUplifter<MessageLearnerDestinationandProgressionDPOutcome>, IUplifter<MessageLearnerDestinationandProgressionDPOutcome>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _outStartDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _outEndDateProps;
+        private readonly FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _outCollDateProps;
 
-        private readonly Expression<Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>> _selecterFuncOutStartDate = s => s.OutStartDate;
-        private readonly Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _compiledSelectorOutStartDate;
-        private readonly Expression<Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>> _selecterFuncOutEndDate = s => s.OutEndDate;
-        private readonly Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _compiledSelectorOutEndDate;
-        private readonly Expression<Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>> _selecterFuncOutCollDate = s => s.OutCollDate;
-        private readonly Func<MessageLearnerDestinationandProgressionDPOutcome, DateTime?> _compiledSelectorOutCollDate;
-
-        public LearnerDestinationandProgressionDPOutcomeUplifter(IRuleProvider ruleProvider)
+        public LearnerDestinationandProgressionDPOutcomeUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+            var modelName = typeof(MessageLearnerDestinationandProgressionDPOutcome).Name;
+            Func<DateTime?, DateTime?> standardNullableDateUplifter = ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition;
 
-            _compiledSelectorOutStartDate = _selecterFuncOutStartDate.Compile();
-            _compiledSelectorOutEndDate = _selecterFuncOutEndDate.Compile();
-            _compiledSelectorOutCollDate = _selecterFuncOutCollDate.Compile();
+            _outStartDateProps = new FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "OutStartDate"),
+                s => s.OutStartDate,
+                standardNullableDateUplifter);
+
+            _outEndDateProps = new FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "OutEndDate"),
+                s => s.OutEndDate,
+                standardNullableDateUplifter);
+
+            _outCollDateProps = new FieldUpdateProperties<MessageLearnerDestinationandProgressionDPOutcome, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "OutCollDate"),
+                s => s.OutCollDate,
+                standardNullableDateUplifter);
         }
 
         public MessageLearnerDestinationandProgressionDPOutcome Process(MessageLearnerDestinationandProgressionDPOutcome model)
         {
-            ApplyCompiledRule(_selecterFuncOutStartDate, _compiledSelectorOutStartDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncOutEndDate, _compiledSelectorOutEndDate, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncOutCollDate, _compiledSelectorOutCollDate, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_outStartDateProps, model);
+            ApplyRule(_outEndDateProps, model);
+            ApplyRule(_outCollDateProps, model);
 
             return model;
         }

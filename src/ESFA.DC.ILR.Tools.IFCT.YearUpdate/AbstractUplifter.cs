@@ -5,16 +5,22 @@ using System.Reflection;
 namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
 {
     public class AbstractUplifter<T>
+    where T : class
     {
-        protected void ApplyCompiledRule<TValue>(Expression<Func<T, TValue>> selector, Func<T, TValue> compiledSelector, Func<TValue, TValue> rule, T entity)
+        protected void ApplyRule<TValue>(FieldUpdateProperties<T, TValue> fieldUpdateProperties, T entity)
         {
-            var inputValue = compiledSelector.Invoke(entity);
+            if (!fieldUpdateProperties.ShouldUpdateField)
+            {
+                return;
+            }
+
+            var inputValue = fieldUpdateProperties.CompiledSelector.Invoke(entity);
 
             if (inputValue != null)
             {
-                var value = rule.Invoke(inputValue);
+                var value = fieldUpdateProperties.UpliftRule.Invoke(inputValue);
 
-                var prop = (PropertyInfo)((MemberExpression)selector.Body).Member;
+                var prop = (PropertyInfo)((MemberExpression)fieldUpdateProperties.Selecter.Body).Member;
                 prop.SetValue(entity, value);
             }
         }

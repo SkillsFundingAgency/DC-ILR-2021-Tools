@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using ESFA.DC.ILR.Tools.IFCT.Service.Extension;
+using FluentAssertions;
 using Xunit;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Service.Tests

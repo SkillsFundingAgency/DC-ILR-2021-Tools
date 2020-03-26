@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,23 +7,19 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerLearningDeliveryAppFinRecordUplifter
         : AbstractUplifter<MessageLearnerLearningDeliveryAppFinRecord>, IUplifter<MessageLearnerLearningDeliveryAppFinRecord>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDeliveryAppFinRecord, DateTime?> _aFinDateProps;
 
-        private readonly Expression<Func<MessageLearnerLearningDeliveryAppFinRecord, DateTime?>> _selecterFuncAFinDate = s => s.AFinDate;
-        private readonly Func<MessageLearnerLearningDeliveryAppFinRecord, DateTime?> _compiledSelectorAFinDate;
-
-        public LearnerLearningDeliveryAppFinRecordUplifter(IRuleProvider ruleProvider)
+        public LearnerLearningDeliveryAppFinRecordUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
-
-            _compiledSelectorAFinDate = _selecterFuncAFinDate.Compile();
+            _aFinDateProps = new FieldUpdateProperties<MessageLearnerLearningDeliveryAppFinRecord, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(typeof(MessageLearnerLearningDeliveryAppFinRecord).Name, "AFinDate"),
+                s => s.AFinDate,
+                ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition);
         }
 
         public MessageLearnerLearningDeliveryAppFinRecord Process(MessageLearnerLearningDeliveryAppFinRecord model)
         {
-            ApplyCompiledRule(_selecterFuncAFinDate, _compiledSelectorAFinDate, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_aFinDateProps, model);
 
             return model;
         }

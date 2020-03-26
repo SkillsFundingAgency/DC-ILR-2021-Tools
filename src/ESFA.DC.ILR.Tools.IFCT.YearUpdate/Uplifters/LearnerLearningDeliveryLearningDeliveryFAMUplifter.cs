@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,27 +7,29 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class LearnerLearningDeliveryLearningDeliveryFAMUplifter
         : AbstractUplifter<MessageLearnerLearningDeliveryLearningDeliveryFAM>, IUplifter<MessageLearnerLearningDeliveryLearningDeliveryFAM>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?> _learnDelFAMDateFromProps;
+        private readonly FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?> _learnDelFAMDateToProps;
 
-        private readonly Expression<Func<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?>> _selecterFuncLearnDelFAMDateFrom = s => s.LearnDelFAMDateFrom;
-        private readonly Func<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?> _compiledSelectorLearnDelFAMDateFrom;
-        private readonly Expression<Func<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?>> _selecterFuncLearnDelFAMDateTo = s => s.LearnDelFAMDateTo;
-        private readonly Func<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?> _compiledSelectorLearnDelFAMDateTo;
-
-        public LearnerLearningDeliveryLearningDeliveryFAMUplifter(IRuleProvider ruleProvider)
+        public LearnerLearningDeliveryLearningDeliveryFAMUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+            var modelName = typeof(MessageLearnerLearningDeliveryLearningDeliveryFAM).Name;
+            Func<DateTime?, DateTime?> standardNullableDateUplifter = ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition;
 
-            _compiledSelectorLearnDelFAMDateFrom = _selecterFuncLearnDelFAMDateFrom.Compile();
-            _compiledSelectorLearnDelFAMDateTo = _selecterFuncLearnDelFAMDateTo.Compile();
+            _learnDelFAMDateFromProps = new FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "LearnDelFAMDateFrom"),
+                s => s.LearnDelFAMDateFrom,
+                standardNullableDateUplifter);
+
+            _learnDelFAMDateToProps = new FieldUpdateProperties<MessageLearnerLearningDeliveryLearningDeliveryFAM, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "LearnDelFAMDateTo"),
+                s => s.LearnDelFAMDateTo,
+                standardNullableDateUplifter);
         }
 
         public MessageLearnerLearningDeliveryLearningDeliveryFAM Process(MessageLearnerLearningDeliveryLearningDeliveryFAM model)
         {
-            ApplyCompiledRule(_selecterFuncLearnDelFAMDateFrom, _compiledSelectorLearnDelFAMDateFrom, _standardNullableDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncLearnDelFAMDateTo, _compiledSelectorLearnDelFAMDateTo, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_learnDelFAMDateFromProps, model);
+            ApplyRule(_learnDelFAMDateToProps, model);
 
             return model;
         }

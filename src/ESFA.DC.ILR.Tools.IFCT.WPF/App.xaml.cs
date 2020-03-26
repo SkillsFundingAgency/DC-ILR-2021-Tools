@@ -20,15 +20,17 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF
     /// </summary>
     public partial class App : Application
     {
+        public static IContainer Container { get; private set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             var containerBuilder = BuildContainerBuilder();
 
-            var container = containerBuilder.Build();
+            Container = containerBuilder.Build();
 
-            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container));
+            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(Container));
 
-            var logger = container.Resolve<ILogger>();
+            var logger = Container.Resolve<ILogger>();
             logger.LogInfo("ILR File Conversion Application Start");
 
             base.OnStartup(e);

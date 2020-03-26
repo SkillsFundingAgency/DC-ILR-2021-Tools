@@ -5,11 +5,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
 {
     public class MapperProvider : IMapperProvider
     {
-        private readonly IFileConversionOrchestratorConfiguration _fileConversionOrchestratorConfiguration;
-
         public MapperProvider(IFileConversionOrchestratorConfiguration fileConversionOrchestratorConfiguration)
         {
-            _fileConversionOrchestratorConfiguration = fileConversionOrchestratorConfiguration;
         }
 
         public IMapper GetMapper()

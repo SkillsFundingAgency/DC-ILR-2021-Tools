@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface;
 using Loose;
 
@@ -8,29 +7,28 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Uplifters
     public class SourceFilesSourceFileUplifter
         : AbstractUplifter<MessageSourceFilesSourceFile>, IUplifter<MessageSourceFilesSourceFile>
     {
-        private readonly IRuleProvider _ruleProvider;
-        private readonly IRule<DateTime> _standardDateUplifter;
-        private readonly IRule<DateTime?> _standardNullableDateUplifter;
+        private readonly FieldUpdateProperties<MessageSourceFilesSourceFile, DateTime> _filePreparationDateProps;
+        private readonly FieldUpdateProperties<MessageSourceFilesSourceFile, DateTime?> _dateTimeProps;
 
-        private readonly Expression<Func<MessageSourceFilesSourceFile, DateTime>> _selecterFuncFilePreparationDate = s => s.FilePreparationDate;
-        private readonly Func<MessageSourceFilesSourceFile, DateTime> _compiledSelectorFilePreparationDate;
-        private readonly Expression<Func<MessageSourceFilesSourceFile, DateTime?>> _selecterFuncDateTime = s => s.DateTime;
-        private readonly Func<MessageSourceFilesSourceFile, DateTime?> _compiledSelectorDateTime;
-
-        public SourceFilesSourceFileUplifter(IRuleProvider ruleProvider)
+        public SourceFilesSourceFileUplifter(IRuleProvider ruleProvider, IYearUpdateConfiguration yearUpdateConfiguration)
         {
-            _ruleProvider = ruleProvider;
-            _standardDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime>();
-            _standardNullableDateUplifter = _ruleProvider.BuildStandardDateUplifter<DateTime?>();
+            var modelName = typeof(MessageSourceFilesSourceFile).Name;
 
-            _compiledSelectorFilePreparationDate = _selecterFuncFilePreparationDate.Compile();
-            _compiledSelectorDateTime = _selecterFuncDateTime.Compile();
+            _filePreparationDateProps = new FieldUpdateProperties<MessageSourceFilesSourceFile, DateTime>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "FilePreparationDate"),
+                s => s.FilePreparationDate,
+                ruleProvider.BuildStandardDateUplifter<DateTime>().Definition);
+
+            _dateTimeProps = new FieldUpdateProperties<MessageSourceFilesSourceFile, DateTime?>(
+                yearUpdateConfiguration.ShouldUpdateDate(modelName, "DateTime"),
+                s => s.DateTime,
+                ruleProvider.BuildStandardDateUplifter<DateTime?>().Definition);
         }
 
         public MessageSourceFilesSourceFile Process(MessageSourceFilesSourceFile model)
         {
-            ApplyCompiledRule(_selecterFuncFilePreparationDate, _compiledSelectorFilePreparationDate, _standardDateUplifter.Definition, model);
-            ApplyCompiledRule(_selecterFuncDateTime, _compiledSelectorDateTime, _standardNullableDateUplifter.Definition, model);
+            ApplyRule(_filePreparationDateProps, model);
+            ApplyRule(_dateTimeProps, model);
 
             return model;
         }

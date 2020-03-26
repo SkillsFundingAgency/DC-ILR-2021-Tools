@@ -1,4 +1,4 @@
-﻿namespace ESFA.DC.ILR.Tools.IFCT.Service
+﻿namespace ESFA.DC.ILR.Tools.IFCT.Service.Extension
 {
     public static class StringExtensions
     {

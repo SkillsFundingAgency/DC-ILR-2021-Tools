@@ -5,18 +5,18 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise
 {
     public class AnonymiseLog : IAnonymiseLog
     {
-        private readonly IList<IAnonymiseLogEntry> log = new List<IAnonymiseLogEntry>();
+        private readonly IList<IAnonymiseLogEntry> _log = new List<IAnonymiseLogEntry>();
 
-        public IList<IAnonymiseLogEntry> Log => log;
+        public IList<IAnonymiseLogEntry> Log => _log;
 
         public void Add(IAnonymiseLogEntry entry)
         {
-            log.Add(entry);
+            _log.Add(entry);
         }
 
         public void Clear()
         {
-            log.Clear();
+            _log.Clear();
         }
     }
 }

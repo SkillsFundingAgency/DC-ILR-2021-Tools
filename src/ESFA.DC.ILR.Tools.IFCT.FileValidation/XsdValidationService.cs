@@ -14,15 +14,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.FileValidation
             stream.Position = 0;
             using (var xmlReader = XmlReader.Create(stream, xmlReaderSettings))
             {
-                try
+                while (xmlReader.Read())
                 {
-                    while (xmlReader.Read())
-                    {
-                    }
-                }
-                catch (XmlException)
-                {
-                    throw;
                 }
             }
         }

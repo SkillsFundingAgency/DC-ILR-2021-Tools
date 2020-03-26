@@ -1,7 +1,7 @@
-﻿namespace ESFA.DC.ILR.Tools.YearUpdate.Interface
+﻿namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate.Interface
 {
     public interface IYearUpdateConfiguration
     {
-        bool AddOneToDates { get; }
+        bool ShouldUpdateDate(string objectName, string propertyName);
     }
 }
