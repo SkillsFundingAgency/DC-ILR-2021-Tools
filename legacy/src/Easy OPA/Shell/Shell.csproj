@@ -199,7 +199,7 @@
     <None Include="Assets\2021\Production\Reports\Rule Violation Summary Report\SummaryPortraitLearnerDestinationAndProgressionSummary.rdlc" />
     <None Include="Assets\2021\Production\Reports\SFA Funding\SFA Funding Claim Report\SFA_Funding_Claim.rdlc" />
     <None Include="Assets\2021\Production\Reports\SFA Funding\SFA Funding Model 35 Summary Report\SFA_Funding_Model_35.rdlc" />
-    <None Include="Assets\2021\Production\Rulebases\AEC\Apprenticeships Earnings Calc 19_20.zip">
+    <None Include="Assets\2021\Production\Rulebases\AEC\Apprenticeships Earnings Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\ALB\Loans Bursary 20_21.zip">
@@ -751,42 +751,6 @@
     <Content Include="Assets\2021\Local\CleanseProcessingArea.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoProcessingArea.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_AEC.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_ALB.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_DV.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_EFA-SFA.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_EFA.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_FD.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_SFA.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_TBL.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_VAL.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_VALDP.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\2021\Local\EFA Clone Views.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -811,9 +775,9 @@
     <Content Include="Assets\2021\Local\InsertErrorMessageLookUps.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\2021\Production\OPAConfig\AEC\AEC_OPAConfigILR_1920.xml">
+    <None Include="Assets\2021\Production\OPAConfig\AEC\AEC_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\OPAConfig\DV\DV_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -1006,9 +970,9 @@
     <Content Include="Assets\2021\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataCountFIS.sql" />
     <Content Include="Assets\2021\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\GetDataFIS.sql" />
     <Content Include="Assets\2021\Production\Reports\SFA Funding\SFA Summary of FM 35 Funding by Learner\Pre\PopulateData.sql" />
-    <Resource Include="Assets\2021\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\AEC\ILR Apprenticeship Earnings Calc - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <None Include="Assets\2021\Production\Rulebases\ALB\ILR 24+ Loans Calculation - Input_XSLT.xsl">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -3490,6 +3454,9 @@
     <None Include="Assets\bulkLoadSchema20-21.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\2021\Local\Copy\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.14\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
