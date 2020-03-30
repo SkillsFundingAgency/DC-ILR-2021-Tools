@@ -220,7 +220,7 @@
     <None Include="Assets\2021\Production\Rulebases\FM25\FM25 Funding Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\FM35\FM35 Funding Calc 19_20.zip">
+    <None Include="Assets\2021\Production\Rulebases\FM35\FM35 Funding Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\TBL\Trailblazer Funding Calc 20_21.zip">
@@ -829,9 +829,9 @@
     <Resource Include="Assets\2021\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\FM35\FM35_OPAConfigILR_1920.xml">
+    <None Include="Assets\2021\Production\OPAConfig\FM35\FM35_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <None Include="Assets\2021\Production\OPAConfig\TBL\TBL_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1028,9 +1028,9 @@
     <Resource Include="Assets\2021\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <None Include="Assets\2021\Production\Rulebases\TBL\ILR Trailblazer Funding Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
