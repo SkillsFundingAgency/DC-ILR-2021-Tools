@@ -211,7 +211,7 @@
     <None Include="Assets\2021\Production\Rulebases\ESFVAL\ESF Validation 19_20.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\ESF\ESF 1920 Funding Calc.zip">
+    <None Include="Assets\2021\Production\Rulebases\ESF\ESF 2021 Funding Calc.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
@@ -781,9 +781,9 @@
     <Resource Include="Assets\2021\Production\OPAConfig\DV\DV_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\ESF\ESF_OPAConfigILR_1920.xml">
+    <None Include="Assets\2021\Production\OPAConfig\ESF\ESF_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\OPAConfig\ESFVAL\ESFVAL_OPAConfigILR_1920.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -980,9 +980,9 @@
     <Resource Include="Assets\2021\Production\Rulebases\DV\ILR Derived Variables - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\Rulebases\ESF\ILR ESF Funding Calc - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\ESF\ILR ESF Funding Calc - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <Resource Include="Assets\2021\Production\Rulebases\ESFVAL\ILR ESF Validation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -1,6 +1,6 @@
 <OPAMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="OPAMapping.xsd"
-            RulebasePath="${WorkingFolder}\Rulebases\ESF\ESF 1920 Funding Calc.zip"
+            RulebasePath="${WorkingFolder}\Rulebases\ESF\ESF 2021 Funding Calc.zip"
             BatchSize="1"
             NumberOfThreads="-1">
     <OPACaseControl DBConnectionID="ILR">

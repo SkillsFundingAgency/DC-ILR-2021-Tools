@@ -16,7 +16,7 @@ from	${ESF_Contract_Reference_Data.FQ}.dbo.Lot
 				on ContractAllocation.ContractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
-truncate table Reference.ContractAllocation
+--truncate table Reference.ContractAllocation
 insert into Reference.ContractAllocation
 select	distinct
 		ContractAllocation.ContractAllocationNumber,
