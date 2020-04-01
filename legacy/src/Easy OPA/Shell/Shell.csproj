@@ -790,9 +790,9 @@
     <Resource Include="Assets\2021\Production\OPAConfig\FDRegexValidation\FD_ILR_PatternValidation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\2021\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_1920.xml">
+    <None Include="Assets\2021\Production\OPAConfig\FM25Periodisation\FM25Periodisation_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <None Include="Assets\2021\Production\OPAConfig\FM35\FM35_OPAConfigILR_2021.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -989,9 +989,9 @@
     <None Include="Assets\2021\Production\Rulebases\FM25\ILR FM25 Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Resource Include="Assets\2021\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
+    <None Include="Assets\2021\Production\Rulebases\FM25Periodisation\ILR FM25 Periodisation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <None Include="Assets\2021\Production\Rulebases\FM35\ILR FM35 Calculation - Input_XSLT.xsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
