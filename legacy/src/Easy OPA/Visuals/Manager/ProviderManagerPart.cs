@@ -318,7 +318,7 @@ namespace EasyOPA.Manager
         /// <param name="source">The source.</param>
         public IReadOnlyCollection<LearningProviderWrapper> AddProviderDetailsUpdateCountHook(IInputDataSource source)
         {
-            var context = Provider.ConnectionToSource(source.Container, source.Name, source.DBUser, source.DBPassword);
+            var context = Provider.ConnectionToSource(source.Container, source.DBName, source.DBUser, source.DBPassword);
             var providerIDs = source.Providers.Select(x => x.ID).AsSafeReadOnlyList();
             var details = ValidSources.GetProviderDetails(context, providerIDs);
 

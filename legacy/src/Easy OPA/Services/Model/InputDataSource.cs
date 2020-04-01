@@ -57,6 +57,8 @@ namespace EasyOPA.Model
         /// </summary>
         public string Container { get; set; }
 
+        public string DBName { get; set; }
+
         public string DBUser { get; set; }
 
         public string DBPassword { get; set; }

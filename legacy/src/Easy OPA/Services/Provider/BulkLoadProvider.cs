@@ -93,7 +93,7 @@ namespace EasyOPA.Provider
                 //    Context.DropDataStore(intoSource.Name, onMaster);
                 //}
 
-                Emitter.Publish($"Creating data store: {intoSource.Name}");
+                Emitter.Publish($"Creating data store: {intoSource.DBName}");
 
                 //Context.CreateDataStore(intoSource.Name, onMaster);
 

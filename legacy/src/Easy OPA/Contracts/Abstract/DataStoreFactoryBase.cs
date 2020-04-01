@@ -156,7 +156,7 @@ namespace EasyOPA.Abstract
         /// <returns></returns>
         public void CreateSchemaFor(IConnectionDetail inContext, IReadOnlyCollection<ISQLBatchScript> usingSchemaScripts, Func<string, string> withSecondaryReplacements)
         {
-            Emitter.Publish(Indentation.FirstLevel, $"Adding structures to {inContext.Name} data store");
+            Emitter.Publish(Indentation.FirstLevel, $"Adding structures to {inContext.DBName} data store");
 
             Context.Run(usingSchemaScripts, inContext, withSecondaryReplacements);
         }

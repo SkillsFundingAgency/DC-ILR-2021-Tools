@@ -75,7 +75,7 @@ namespace EasyOPA.Manager
         /// <returns>
         /// the current task
         /// </returns>
-        public async Task Import(string usingInstance,string dbUser, string dbPassword, Func<string> getFileName, Func<string, bool> andConfirmAnyChallenge)
+        public async Task Import(string usingInstance, string usingDatabase ,string dbUser, string dbPassword, Func<string> getFileName, Func<string, bool> andConfirmAnyChallenge)
         {
             It.IsNull(getFileName)
                 .AsGuard<ArgumentNullException>(nameof(getFileName));
@@ -95,7 +95,7 @@ namespace EasyOPA.Manager
                 // check for DB overwrite...
                 Emitter.Publish("Checking for risk of overwrite...");
 
-                var master = Provider.ConnectionToMaster(usingInstance, dbUser, dbPassword);
+                var master = Provider.ConnectionToMaster(usingInstance, usingDatabase, dbUser, dbPassword);
 
                 //if (Context.DataStoreExists(candidateSourceName, master))
                 //{
@@ -105,7 +105,7 @@ namespace EasyOPA.Manager
                 //        .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.CanceledOperation);
                 //}
 
-                var source = Provider.ConnectionToSource(usingInstance, "EasyOpa", dbUser, dbPassword);
+                var source = Provider.ConnectionToSource(usingInstance, usingDatabase, dbUser, dbPassword);
 
                 await BulkLoader.Load(source, master, inputFilePath);
             });
@@ -123,7 +123,7 @@ namespace EasyOPA.Manager
         {
             await Handler.RunAsyncOperation<Localised>(async () =>
             {
-                var context = Provider.ConnectionToSource(fromThisSource.Container, fromThisSource.Name, fromThisSource.DBUser, fromThisSource.DBPassword);
+                var context = Provider.ConnectionToSource(fromThisSource.Container, fromThisSource.DBName, fromThisSource.DBUser, fromThisSource.DBPassword);
                 await BulkExporter.Export(fromThisSource, context, forProvider);
             });
         }

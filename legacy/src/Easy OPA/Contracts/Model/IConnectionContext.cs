@@ -6,15 +6,11 @@ namespace EasyOPA.Model
     public interface IConnectionDetail
     {
         /// <summary>
-        /// Gets the name.
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
         /// Gets the container.
         /// </summary>
         string Container { get; }
 
+        string DBName { get; }
         string DBUser { get; }
         string DBPassword { get; }
 
