@@ -131,6 +131,7 @@ namespace EasyOPA.Provider
             {
                 Name = withCandidate,
                 Container = usingDetail.Container,
+                DBName = usingDetail.DBName,
                 DBUser = usingDetail.DBUser,
                 DBPassword = usingDetail.DBPassword,
                 CollectionType = collectionTemp.AsOperationType(),
@@ -187,7 +188,7 @@ namespace EasyOPA.Provider
         /// <returns>the learner count for this submission</returns>
         public int GetLearnerCount(IConnectionDetail usingDetail, int providerID)
         {
-            var script = GetScript(BatchProcessName.GetLearnerCountForProvider, usingDetail.Name);
+            var script = GetScript(BatchProcessName.GetLearnerCountForProvider, usingDetail.DBName);
             var temp = Token.DoSecondaryPass(script, providerID);
 
             return Context.GetAtom<int>(temp, usingDetail);

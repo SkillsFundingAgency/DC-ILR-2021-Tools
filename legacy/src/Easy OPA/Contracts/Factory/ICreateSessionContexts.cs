@@ -13,7 +13,7 @@ namespace EasyOPA.Factory
         /// </summary>
         /// <param name="onInstance">on instance.</param>
         /// <returns>a connection detail for the 'master' data source</returns>
-        IConnectionDetail ConnectionToMaster(string onInstance, string thisUser, string thisPassword);
+        IConnectionDetail ConnectionToMaster(string onInstance, string withName, string thisUser, string thisPassword);
 
         /// <summary>
         /// Connects to (a) source.

@@ -88,7 +88,7 @@ namespace EasyOPA.Constant
                 .AsGuard<NotSupportedException, Localised>(Localised.UnsupportedReturnPeriod);
 
             return onContent
-                    .Replace(ForTargetDataStore, usingConnection.Name)
+                    .Replace(ForTargetDataStore, usingConnection.DBName)
                     .Replace(ForReturnPeriod, $"{returnPeriod}")
                     .Replace(ForOperatingYear, withYear.AsString())
                     .Replace(SecondaryPass.ForLocalServer, usingConnection.Container)

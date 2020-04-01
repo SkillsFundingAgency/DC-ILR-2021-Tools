@@ -67,7 +67,7 @@ namespace EasyOPA.Abstract
             var target = GetTarget(usingContext);
 
             return Token.DoSecondaryPass(onCandidate, forYear, target, usingContext.ReturnPeriod)
-                .Replace(GetTargetToken(), target.Name);
+                .Replace(GetTargetToken(), target.DBName);
         }
 
         /// <summary>

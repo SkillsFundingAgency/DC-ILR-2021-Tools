@@ -33,6 +33,9 @@ namespace EasyOPA.Model
         public FolderNamesContainer FolderNames { get; set; }
 
         [DataMember]
+        public string DBName { get; set; }
+
+        [DataMember]
         public string DBUser { get; set; }
 
         [DataMember]

@@ -57,6 +57,8 @@ namespace EasyOPA.Manager
         /// </summary>
         public string InstanceName => Configured.InstanceName;
 
+        public string DBName => Configured.DBName;
+
         public string DBUser => Configured.DBUser;
 
         public string DBPassword => Configured.DBPassword;

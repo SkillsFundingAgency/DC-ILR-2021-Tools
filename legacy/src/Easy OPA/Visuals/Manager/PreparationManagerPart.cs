@@ -85,6 +85,7 @@ namespace EasyOPA.Manager
         /// The SQL instance
         /// </summary>
         private string _sqlInstance;
+        private string _dbName; 
         private string _dbUser;
         private string _dbPassword;
 
@@ -106,6 +107,23 @@ namespace EasyOPA.Manager
                 }
             }
         }
+
+        public string DBName
+        {
+            get
+            {
+                return _dbName
+                    ?? (_dbName = Asset.DBName);
+            }
+            set
+            {
+                if (SetPropertyValue(ref _dbName, value))
+                {
+                    Asset.SetInstanceName(value);
+                }
+            }
+        }
+
 
         public string DBUser
         {
@@ -310,7 +328,7 @@ namespace EasyOPA.Manager
         /// <returns></returns>
         public async Task BuildValidSources()
         {
-            var master = Provider.ConnectionToMaster(SQLInstance, DBUser, DBPassword);
+            var master = Provider.ConnectionToMaster(SQLInstance, DBName, DBUser, DBPassword);
             await GetDatabaseList(master);
         }
 
@@ -333,7 +351,7 @@ namespace EasyOPA.Manager
             Dispatcher.BeginInvoke(() =>
             {
                 candidates
-                    .OrderBy(x => x.Name)
+                    .OrderBy(x => x.DBName)
                     .ForEach(CandidateSources.Add);
 
                 SelectedSource = CandidateSources.FirstOrDefault();

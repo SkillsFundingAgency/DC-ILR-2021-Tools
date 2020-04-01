@@ -14,11 +14,6 @@ namespace EasyOPA.Model
         IContainSessionContext
     {
         /// <summary>
-        /// Gets the name of the Intrajob (data store).
-        /// </summary>
-        public static string IntrajobName => "EasyOpa";
-
-        /// <summary>
         /// Gets the connection details for master.
         /// </summary>
         public IConnectionDetail Master { get; set; }
@@ -37,11 +32,6 @@ namespace EasyOPA.Model
         /// Gets the connection details for the data store.
         /// </summary>
         public IConnectionDetail ResultsDestination { get; set; }
-
-        /// <summary>
-        /// Gets the name of the data exchange (data store).
-        /// </summary>
-        public string DataExchangeName => "EasyOpa";
 
         /// <summary>
         /// Gets the year.

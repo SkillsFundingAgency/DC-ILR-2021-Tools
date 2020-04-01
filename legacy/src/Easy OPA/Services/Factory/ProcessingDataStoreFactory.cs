@@ -66,7 +66,7 @@ namespace EasyOPA.Factory
         /// </returns>
         public override string GetStoreNameFor(IContainSessionContext inContext)
         {
-            return inContext.ProcessingLocation.Name;
+            return inContext.ProcessingLocation.DBName;
         }
     }
 }

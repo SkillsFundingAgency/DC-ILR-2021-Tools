@@ -30,7 +30,7 @@ namespace EasyOPA.Factory
             {
                 return new ConnectionDetail
                 {
-                    Name = thisSource,
+                    DBName = thisSource,
                     Container = thisInstance,
                     DBUser = thisUser,
                     DBPassword = thisPassword,
@@ -40,7 +40,7 @@ namespace EasyOPA.Factory
             }
             return new ConnectionDetail
             {
-                Name = thisSource,
+                DBName = thisSource,
                 Container = thisInstance,
                 DBUser = thisUser,
                 DBPassword = thisPassword,
@@ -56,9 +56,9 @@ namespace EasyOPA.Factory
         /// <returns>
         /// a connection detail for the 'master' data source
         /// </returns>
-        public IConnectionDetail ConnectionToMaster(string onInstance, string thisUser, string thisPassword)
+        public IConnectionDetail ConnectionToMaster(string onInstance, string withName, string thisUser, string thisPassword)
         {
-            return CreateFor(onInstance, "EasyOpa", thisUser, thisPassword);
+            return CreateFor(onInstance, withName, thisUser, thisPassword);
         }
 
         /// <summary>
@@ -87,14 +87,14 @@ namespace EasyOPA.Factory
         /// </returns>
         public IContainSessionContext Create(string onInstance, string thisUser, string thisPassword, IInputDataSource forDataSource, bool runMode, bool usingSourceForResults, bool depositArtefacts, ReturnPeriod returnPeriod)
         {
-            var sourceLocation = CreateFor(onInstance, forDataSource.Name, thisUser, thisPassword);
+            var sourceLocation = CreateFor(onInstance, forDataSource.DBName, thisUser, thisPassword);
 
             var provider = new SessionContextContainer
             {
                 Year = forDataSource.OperatingYear,
                 Master = CreateFor(onInstance, "master", thisUser, thisPassword),
                 SourceLocation = sourceLocation,
-                ProcessingLocation = CreateFor(onInstance, SessionContextContainer.IntrajobName, thisUser, thisPassword),
+                ProcessingLocation = CreateFor(onInstance, forDataSource.DBName, thisUser, thisPassword),
                 RunMode = runMode ? TypeOfRunMode.Lite : TypeOfRunMode.Full,
                 UsingSourceForResults = usingSourceForResults,
                 DepositRulebaseArtefacts = depositArtefacts,
@@ -103,7 +103,7 @@ namespace EasyOPA.Factory
 
             provider.ResultsDestination = usingSourceForResults
                 ? sourceLocation
-                : CreateFor(onInstance, provider.DataExchangeName, thisUser, thisPassword);
+                : CreateFor(onInstance, forDataSource.DBName, thisUser, thisPassword);
 
             return provider;
         }

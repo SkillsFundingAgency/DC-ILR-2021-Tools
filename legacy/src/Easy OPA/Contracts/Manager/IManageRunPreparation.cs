@@ -20,6 +20,8 @@ namespace EasyOPA.Manager
         /// </summary>
         string SQLInstance { get; }
 
+        string DBName { get; }
+
         string DBUser { get; }
 
         string DBPassword { get; }

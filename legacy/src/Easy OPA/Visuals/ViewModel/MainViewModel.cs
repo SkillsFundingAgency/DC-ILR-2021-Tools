@@ -233,6 +233,7 @@ namespace EasyOPA.ViewModel
 
                 await Bulk.Import(
                     Prepared.SQLInstance,
+                    Prepared.DBName,
                     Prepared.DBUser,
                     Prepared.DBPassword,
                     () => FileSelector.GetFileName<IManageRunPreparation>(),
