@@ -12,13 +12,13 @@ namespace ESFA.Common.Utility
         /// <summary>
         /// The first level
         /// </summary>
-        [Description("\t")]
+        [Description("")]
         FirstLevel,
 
         /// <summary>
         /// The second level
         /// </summary>
-        [Description("\t\t")]
+        [Description("")]
         SecondLevel
     }
 

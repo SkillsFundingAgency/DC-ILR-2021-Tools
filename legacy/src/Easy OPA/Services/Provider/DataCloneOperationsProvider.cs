@@ -55,6 +55,7 @@ namespace EasyOPA.Provider
         {
             using (var writeConnection = new SqlConnection(toDataTarget.SQLDetail))
             {
+                Emitter.Publish($"{this.ToString()}.Clone");
                 writeConnection.Open();
                 var sqlTransaction = writeConnection.BeginTransaction();
 
@@ -84,6 +85,7 @@ namespace EasyOPA.Provider
 
                 catch (Exception exception)
                 {
+                    Emitter.Publish(exception.Message);
                     sqlTransaction.Rollback();
 
                     throw (exception);
