@@ -50,7 +50,7 @@ namespace EasyOPA.Factory
                 DBUser = thisUser,
                 DBPassword = thisPassword,
                 SQLDetail = $"Server=tcp:{thisInstance},1433;Initial Catalog={thisSource};Persist Security Info=False;User ID={thisUser};Password='{thisPassword}';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};User Id={thisUser};Password={thisPassword}"
+                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};User Id={thisUser};Password='{thisPassword}'"
             };
         }
 
