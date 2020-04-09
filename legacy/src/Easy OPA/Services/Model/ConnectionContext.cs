@@ -1,4 +1,8 @@
-﻿using System.Data;
+﻿using ESFA.Common.Service;
+using System;
+using System.Composition;
+using System.Data;
+using System.Data.SqlClient;
 using Tiny.Framework.Utilities;
 
 namespace EasyOPA.Model
@@ -10,6 +14,12 @@ namespace EasyOPA.Model
     public sealed class ConnectionContext :
         IConnectionContext
     {
+        /// <summary>
+        /// Gets or sets the (console) emitter.
+        /// </summary>
+        [Import]
+        public IEmitToConsole Emitter { get; set; }
+
         /// <summary>
         /// Gets the connection.
         /// </summary>
@@ -39,8 +49,14 @@ namespace EasyOPA.Model
             {
                 return;
             }
-
-            Connection.Open();
+            try
+            {
+                Connection.Open();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

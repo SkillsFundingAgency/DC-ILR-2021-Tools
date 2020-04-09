@@ -104,8 +104,7 @@ namespace EasyOPA.Abstract
             var resultsStoreName = GetStoreNameFor(currentContext);
             //Emitter.Publish($"Placing results storage in '{resultsStoreName}'");
 
-            var newStoreRequired = !Context.DataStoreExists(resultsStoreName, currentContext.Master);
-
+            var newStoreRequired = false; 
             var actionDo = Fetch(newStoreRequired || forceCreation);
             actionDo(currentContext, forProvider, inYear);
 
@@ -123,19 +122,7 @@ namespace EasyOPA.Abstract
             failedTypeCheck.AsGuard<ArgumentException>("script is not the right type");
         }
 
-        /// <summary>
-        /// Creates the data store using.
-        /// </summary>
-        /// <param name="thisSession">this session.</param>
-        /// <param name="inContext">in context.</param>
-        /// <param name="usingScript">The create script.</param>
-        public void CreateDataStoreUsing(IContainSessionContext inContext, ISQLBatchScript usingScript)
-        {
-            Emitter.Publish(Indentation.FirstLevel, usingScript.Description);
-
-            Context.Run(usingScript, inContext.Master, x => GetSupplementaryTokenReplacements(x, inContext));
-        }
-
+                
         /// <summary>
         /// Gets the supplementary token replacements.
         /// </summary>

@@ -152,8 +152,16 @@ namespace EasyOPA.Coordinator
 
             using (var con = Factory.Create(inThisContext))
             {
-                con.OpenSafe();
-                runThisAction(con);
+                try
+                {
+                    con.OpenSafe();
+                    runThisAction(con);
+                }
+                catch (Exception e)
+                {
+                    Emitter.Publish(e.Message);
+                    throw;
+                }
             }
         }
 
@@ -175,8 +183,17 @@ namespace EasyOPA.Coordinator
 
             using (var con = Factory.Create(inThisContext))
             {
-                con.OpenSafe();
-                return runThisAction(con);
+                try
+                {
+                    Emitter.Publish($"UsingConnection");
+                    con.OpenSafe();
+                    return runThisAction(con);
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using EasyOPA.Model;
 using EasyOPA.Set;
 using System.Composition;
+using System.Data.SqlClient;
 
 namespace EasyOPA.Factory
 {
@@ -26,15 +27,19 @@ namespace EasyOPA.Factory
             // Integrated Security=true
             // Integrated Security=SSPI
             // Trusted_Connection=true
-            if(string.IsNullOrEmpty(thisUser) || string.IsNullOrEmpty(thisPassword))
+            SqlConnectionStringBuilder sqlDetailBuilder = new SqlConnectionStringBuilder();
+            if (string.IsNullOrEmpty(thisUser) || string.IsNullOrEmpty(thisPassword))
             {
+                sqlDetailBuilder["Initial Catalog"] = thisSource;
+                sqlDetailBuilder["Integrated Security"] = true;
+
                 return new ConnectionDetail
                 {
                     DBName = thisSource,
                     Container = thisInstance,
                     DBUser = thisUser,
                     DBPassword = thisPassword,
-                    SQLDetail = $"Data Source={thisInstance};Initial Catalog={thisSource};Integrated Security=true;",
+                    SQLDetail = sqlDetailBuilder.ConnectionString,
                     COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};Integrated Security=SSPI"
                 };
             }
@@ -44,8 +49,8 @@ namespace EasyOPA.Factory
                 Container = thisInstance,
                 DBUser = thisUser,
                 DBPassword = thisPassword,
-                SQLDetail = $"Server=tcp:{thisInstance},1433;Initial Catalog={thisSource};Persist Security Info=False;User ID={thisUser};Password={thisPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};User Id={thisUser};Password={thisPassword}"
+                SQLDetail = $"Server=tcp:{thisInstance},1433;Initial Catalog={thisSource};Persist Security Info=False;User ID={thisUser};Password='{thisPassword}';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+                COMDetail = $"Provider=sqloledb;Server={thisInstance};Database={thisSource};User Id={thisUser};Password='{thisPassword}'"
             };
         }
 
@@ -92,7 +97,7 @@ namespace EasyOPA.Factory
             var provider = new SessionContextContainer
             {
                 Year = forDataSource.OperatingYear,
-                Master = CreateFor(onInstance, "master", thisUser, thisPassword),
+                //Master = CreateFor(onInstance, "master", thisUser, thisPassword),
                 SourceLocation = sourceLocation,
                 ProcessingLocation = CreateFor(onInstance, forDataSource.DBName, thisUser, thisPassword),
                 RunMode = runMode ? TypeOfRunMode.Lite : TypeOfRunMode.Full,

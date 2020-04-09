@@ -4,7 +4,7 @@ name:  $(GitVersion.NuGetVersion)
 trigger:
   paths:
     include:
-    - src/legacy/*
+    - legacy/*
     - azure-pipelines.legacy.yml
     exclude:
     - src/*

@@ -15,6 +15,12 @@ namespace ESFA.Common.Service
         IConductSafeOperations
     {
         /// <summary>
+        /// Gets or sets the (console) emitter.
+        /// </summary>
+        [Import]
+        public IEmitToConsole Emitter { get; set; }
+
+        /// <summary>
         /// Runs the specified action safely.
         /// </summary>
         /// <param name="action">The action.</param>
@@ -31,6 +37,7 @@ namespace ESFA.Common.Service
 
             catch (Exception e)
             {
+                Emitter.Publish(e.Message);
                 return OperationResponseFactory.Create(e.Message);
             }
         }
@@ -52,6 +59,7 @@ namespace ESFA.Common.Service
 
             catch (Exception e)
             {
+                Emitter.Publish(e.Message);
                 return OperationResponseFactory.Create<T>(e.Message);
             }
         }
@@ -73,6 +81,7 @@ namespace ESFA.Common.Service
 
             catch (Exception e)
             {
+                Emitter.Publish(e.Message);
                 return OperationResponseFactory.Create(e.Message);
             }
         }
@@ -95,6 +104,7 @@ namespace ESFA.Common.Service
 
             catch (Exception e)
             {
+                Emitter.Publish(e.Message);
                 return OperationResponseFactory.Create<T>(e.Message);
             }
         }
