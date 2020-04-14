@@ -65,7 +65,7 @@ namespace EasyOPA.Factory
 
             //CreateDataStoreUsing(usingContext, batch.Scripts.First());
 
-            var command = "select TOP(1) concat('ILR-', UKPRN,'-', FORMAT([DateTime], 'ddMMyyyy'),'-',FORMAT([DateTime],'hhmmss'), '-' , SerialNo) from dbo.Source;";
+            var command = $"select TOP(1) [SourceFileName] from [dbo].[SourceFile] WHERE [SourceFileName] like '%{forProvider}%';";
             string ilrFileName = RunSafe.Try(() => Coordinate.GetAtom<string>(command, usingContext.SourceLocation));
             var forTarget = usingContext.ResultsDestination;
 

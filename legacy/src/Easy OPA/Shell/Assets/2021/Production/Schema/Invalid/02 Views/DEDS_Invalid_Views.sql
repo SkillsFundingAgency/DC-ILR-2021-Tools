@@ -420,14 +420,8 @@ create view DEDS_Invalid.SourceFile
 as
 	select	lp.UKPRN,
 			sf.SourceFile_Id,
-			sf.SourceFileName,
-			sf.FilePreparationDate,
-			sf.SoftwareSupplier,
-			sf.SoftwarePackage,
-			sf.Release,
-			sf.SerialNo,
-			sf.[DateTime]
-	from	Invalid.SourceFile as sf
+			sf.SourceFileName
+			from	Invalid.SourceFile as sf
 				cross join (select top 1 UKPRN from Invalid.LearningProvider) as lp
 go
 
