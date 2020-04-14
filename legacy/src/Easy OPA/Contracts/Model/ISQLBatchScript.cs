@@ -20,6 +20,6 @@ namespace EasyOPA.Model
         /// <summary>
         /// Gets the command.
         /// </summary>
-        string Command { get; }
+        string Command { get; set; }
     }
 }

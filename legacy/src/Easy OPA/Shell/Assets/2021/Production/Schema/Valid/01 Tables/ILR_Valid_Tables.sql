@@ -41,13 +41,7 @@ end
 go
  
 create table Valid.SourceFile (
-	SourceFileName varchar(50) not null,
-	FilePreparationDate date null,
-	SoftwareSupplier varchar(40) null,
-	SoftwarePackage varchar(30) null,
-	Release varchar(20) null,
-	SerialNo varchar(2) null,
-	[DateTime] datetime null
+	SourceFileName varchar(50) not null
 )
 go
 

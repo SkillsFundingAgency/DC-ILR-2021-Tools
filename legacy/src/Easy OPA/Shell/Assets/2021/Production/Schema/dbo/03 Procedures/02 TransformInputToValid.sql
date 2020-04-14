@@ -650,22 +650,10 @@ go
 create procedure dbo.TransformInputToValid_SourceFile as
 begin
 	insert into Valid.SourceFile (
-		SourceFileName,
-		FilePreparationDate,
-		SoftwareSupplier,
-		SoftwarePackage,
-		Release,
-		SerialNo,
-		[DateTime]
-	)
-	select 	SourceFileName,
-			FilePreparationDate,
-			SoftwareSupplier,
-			SoftwarePackage,
-			Release,
-			SerialNo,
-			[DateTime]
-	from	Input.SourceFile
+		SourceFileName
+		)
+	select 	SourceFileName
+				from	Input.SourceFile
 end
 go
 
