@@ -481,7 +481,8 @@ as
 			el.RateBand,
 			el.RetentNew,
 			el.StartFund,
-			el.ThresholdDays
+			el.ThresholdDays,
+			el.TLevelStudent
 	from	Rulebase.FM25_Learner as el
 				cross join (select top 1 UKPRN from Rulebase.FM25_global) as g
 go

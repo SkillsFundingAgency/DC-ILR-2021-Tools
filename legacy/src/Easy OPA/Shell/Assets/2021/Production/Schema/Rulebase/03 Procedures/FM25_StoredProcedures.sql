@@ -224,7 +224,8 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 	@RateBand varchar(50),
 	@RetentNew decimal(10,5),
 	@StartFund bit,
-	@ThresholdDays int
+	@ThresholdDays int,
+	@TLevelStudent bit
 ) as
 begin
 	insert into Rulebase.FM25_Learner (
@@ -254,7 +255,8 @@ begin
 		RateBand,
 		RetentNew,
 		StartFund,
-		ThresholdDays
+		ThresholdDays,
+		TLevelStudent
 	) values (
 		@LearnRefNumber,
 		@AcadMonthPayment,
@@ -282,7 +284,8 @@ begin
 		@RateBand,
 		@RetentNew,
 		@StartFund,
-		@ThresholdDays
+		@ThresholdDays,
+		@TLevelStudent
 	)
 end
 go

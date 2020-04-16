@@ -1314,6 +1314,10 @@
           <Source>ThresholdDays</Source>
           <Destination>ThresholdDays</Destination>
         </ColumnMapping>
+        <ColumnMapping>
+          <Source>TLevelStudent</Source>
+          <Destination>TLevelStudent</Destination>
+        </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
     <TableMapping>
