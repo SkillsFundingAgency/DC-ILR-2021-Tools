@@ -86,6 +86,9 @@ begin
 													lld.AwardOrgCode as [@AwardOrgCode],
 													lld.EFACOFType as [@EFACOFType],
 													lld.SectorSubjectAreaTier2 as [@SectorSubjectAreaTier2],
+													lld.NotionalNVQLevel as [@NotionalNVQLevel],
+													lld.GuidedLearningHours as [GuidedLearningHours],
+													-- Add in inputs
 													-- learning delivery fam
 													(select	LearnDelFAMCode as [@LearnDelFAMCode],
 															LearnDelFAMType as [@LearnDelFAMType],
