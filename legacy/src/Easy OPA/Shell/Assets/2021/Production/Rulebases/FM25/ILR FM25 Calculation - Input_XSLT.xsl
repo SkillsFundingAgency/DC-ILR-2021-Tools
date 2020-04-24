@@ -38,6 +38,8 @@
                         select="@RetentionFactor"/>
           <xsl:variable name="var_SpecialistResources"
                         select="@SpecialistResources"/>
+          <xsl:variable name="var_Level3ProgMathsandEnglishProportion"
+                        select="@Level3ProgMathsandEnglishProportion"/>
           <instance>
             <xsl:attribute name="id">
               <xsl:value-of select="generate-id(.)"/>
@@ -119,6 +121,14 @@
                 <xsl:attribute name="id">SpecialistResources</xsl:attribute>
                 <boolean-val>
                   <xsl:value-of select="string($var_SpecialistResources)"/>
+                </boolean-val>
+              </attribute>
+            </xsl:if>
+            <xsl:if test="string(boolean($var_Level3ProgMathsandEnglishProportion)) != 'false'">
+              <attribute>
+                <xsl:attribute name="id">Level3ProgMathsandEnglishProportion</xsl:attribute>
+                <boolean-val>
+                  <xsl:value-of select="string($var_Level3ProgMathsandEnglishProportion)"/>
                 </boolean-val>
               </attribute>
             </xsl:if>
@@ -400,6 +410,8 @@
                                     select="@NotionalNVQLevel"/>
                       <xsl:variable name="var_GuidedLearningHours"
                                     select="@GuidedLearningHours"/>
+                      <xsl:variable name="var_PHours"
+                                    select="@PHours"/>
                       <instance>
                         <xsl:attribute name="id">
                           <xsl:value-of select="generate-id(.)"/>
@@ -537,6 +549,14 @@
                             <xsl:attribute name="id">GuidedLearningHours</xsl:attribute>
                             <number-val>
                               <xsl:value-of select="string($var_GuidedLearningHours)"/>
+                            </number-val>
+                          </attribute>
+                        </xsl:if>
+                        <xsl:if test="string(boolean($var_PHours)) != 'false'">
+                          <attribute>
+                            <xsl:attribute name="id">PHours</xsl:attribute>
+                            <number-val>
+                              <xsl:value-of select="string($var_PHours)"/>
                             </number-val>
                           </attribute>
                         </xsl:if>

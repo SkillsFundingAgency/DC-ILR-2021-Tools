@@ -126,6 +126,9 @@ Rulebase Version: ILR EFA Calculation 1617, Version 1617.04
       <ResultQueryParameterMap AttributeName="TLevelStudent"
                                           ParameterName="TLevelStudent"
                                           EntityName="Learner" />
+      <ResultQueryParameterMap AttributeName="PrvHistL3ProgMathEngProp"
+                                                ParameterName="PrvHistL3ProgMathEngProp"
+                                                EntityName="Learner" />
     </OPAResult>
   </OPAResults>
 </OPAMapping>
