@@ -138,6 +138,8 @@ create table Rulebase.FM25_Learner (
 	RetentNew decimal(10,5),
 	StartFund bit,
 	ThresholdDays int,
+	TLevelStudent bit,
+	PrvHistL3ProgMathEngProp decimal(10, 5),
 	primary key clustered (
 		LearnRefNumber asc
 	)

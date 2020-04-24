@@ -39,7 +39,8 @@ begin
 									disadProportion.FundingFactorValue as [@DisadvantageProportion],
 									progProp.FundingFactorValue as [@HistoricLargeProgrammeProportion],
 									progCostFact.FundingFactorValue as [@ProgrammeWeighting],
-									retFact.FundingFactorValue as [@RetentionFactor],						
+									retFact.FundingFactorValue as [@RetentionFactor],
+									disadLevel3.FundingFactorValue as [@Level3ProgMathsandEnglishProportion],
 									case when specialRes.FundingFactorValue = '1' 
 										then 'true' 
 										else 'false'
@@ -86,6 +87,10 @@ begin
 													lld.AwardOrgCode as [@AwardOrgCode],
 													lld.EFACOFType as [@EFACOFType],
 													lld.SectorSubjectAreaTier2 as [@SectorSubjectAreaTier2],
+													lld.NotionalNVQLevel as [@NotionalNVQLevel],
+													lld.GuidedLearningHours as [@GuidedLearningHours],
+													ld.PHours as [@PHours],
+													-- Add in inputs
 													-- learning delivery fam
 													(select	LearnDelFAMCode as [@LearnDelFAMCode],
 															LearnDelFAMType as [@LearnDelFAMType],
@@ -125,27 +130,32 @@ begin
 											on areaCost.UKPRN = lp.UKPRN
 											and areaCost.FundingFactorType = 'EFA 16-19'
 											and areaCost.FundingFactor = 'HISTORIC AREA COST FACTOR'
-											and areaCost.EffectiveFrom = '01-Aug-2019'
+											and areaCost.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as disadProportion
 											on disadProportion.UKPRN = lp.UKPRN
 											and disadProportion.FundingFactorType = 'EFA 16-19'
 											and disadProportion.FundingFactor = 'HISTORIC DISADVANTAGE FUNDING PROPORTION'
-											and disadProportion.EffectiveFrom = '01-Aug-2019'
+											and disadProportion.EffectiveFrom = '01-Aug-2020'
+										left join Reference.Org_Funding as disadLevel3
+											on disadLevel3.UKPRN = lp.UKPRN
+											and disadLevel3.FundingFactorType = 'EFA 16-19'
+											and disadLevel3.FundingFactor = 'HISTORIC LEVEL 3 PROGRAMME MATHS AND ENGLISH PROPORTION'
+											and disadLevel3.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as progProp
 											on progProp.UKPRN = lp.UKPRN
 											and progProp.FundingFactorType = 'EFA 16-19'
 											and progProp.FundingFactor = 'HISTORIC LARGE PROGRAMME PROPORTION'
-											and progProp.EffectiveFrom = '01-Aug-2019'
+											and progProp.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as progCostFact
 											on progCostFact.UKPRN = lp.UKPRN
 											and progCostFact.FundingFactorType = 'EFA 16-19'
 											and progCostFact.FundingFactor = 'HISTORIC PROGRAMME COST WEIGHTING FACTOR'
-											and progCostFact.EffectiveFrom = '01-Aug-2019'
+											and progCostFact.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as retFact
 											on retFact.UKPRN = lp.UKPRN
 											and retFact.FundingFactorType = 'EFA 16-19'
 											and retFact.FundingFactor = 'HISTORIC RETENTION FACTOR'
-											and retFact.EffectiveFrom = '01-Aug-2019'
+											and retFact.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as specialRes
 											on specialRes.UKPRN = lp.UKPRN
 											and specialRes.FundingFactorType = 'EFA 16-19'
@@ -224,7 +234,9 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 	@RateBand varchar(50),
 	@RetentNew decimal(10,5),
 	@StartFund bit,
-	@ThresholdDays int
+	@ThresholdDays int,
+	@TLevelStudent bit,
+	@PrvHistL3ProgMathEngProp decimal(10,5)
 ) as
 begin
 	insert into Rulebase.FM25_Learner (
@@ -254,7 +266,9 @@ begin
 		RateBand,
 		RetentNew,
 		StartFund,
-		ThresholdDays
+		ThresholdDays,
+		TLevelStudent,
+		PrvHistL3ProgMathEngProp
 	) values (
 		@LearnRefNumber,
 		@AcadMonthPayment,
@@ -282,7 +296,9 @@ begin
 		@RateBand,
 		@RetentNew,
 		@StartFund,
-		@ThresholdDays
+		@ThresholdDays,
+		@TLevelStudent,
+		@PrvHistL3ProgMathEngProp
 	)
 end
 go

@@ -239,6 +239,7 @@ create table Reference.LARS_LearningDelivery (
 	EnglandFEHEStatus char(1),
 	EnglPrscID int,
 	FrameworkCommonComponent int,
+	GuidedLearningHours int,
 	LearnAimRef varchar(8) not null,
 	LearnAimRefTitle varchar(254),
 	LearnAimRefType varchar(4),
