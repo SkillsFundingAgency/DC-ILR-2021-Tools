@@ -214,18 +214,18 @@
     <None Include="Assets\2021\Production\Rulebases\ESF\ESF 2021 Funding Calc.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\2021\Production\Rulebases\FM25\FM25 Funding Calc 20_21.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Assets\2021\Production\Rulebases\FM35\FM35 Funding Calc 20_21.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Rulebases\TBL\Trailblazer Funding Calc 20_21.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="Assets\2021\Production\Rulebases\TBL\Trailblazer Funding Calc 20_21.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Assets\2021\Production\Rulebases\VALDP\Validation DP 19_20.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
