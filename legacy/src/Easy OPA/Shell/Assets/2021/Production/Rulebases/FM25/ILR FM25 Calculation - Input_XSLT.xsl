@@ -539,9 +539,9 @@
                         <xsl:if test="string(boolean($var_NotionalNVQLevel)) != 'false'">
                           <attribute>
                             <xsl:attribute name="id">NotionalNVQLevel</xsl:attribute>
-                            <number-val>
+                            <text-val>
                               <xsl:value-of select="string($var_NotionalNVQLevel)"/>
-                            </number-val>
+                            </text-val>
                           </attribute>
                         </xsl:if>
                         <xsl:if test="string(boolean($var_GuidedLearningHours)) != 'false'">
