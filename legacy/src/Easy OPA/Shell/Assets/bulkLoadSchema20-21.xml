@@ -155,7 +155,7 @@
           </xsd:complexType>
         </xsd:element>
         <xsd:element name="SourceFiles"
-                     sql:is-constant="1">
+                              sql:is-constant="1">
           <xsd:complexType>
             <xsd:sequence>
               <xsd:element name="SourceFile"
@@ -168,6 +168,28 @@
                     <xsd:element name="SourceFileName"
                                  type="xsd:string"
                                  sql:datatype="varchar(50)" />
+                    <xsd:element name="FilePreparationDate"
+                                 type="xsd:date"
+                                 sql:datatype="datetime" />
+                    <xsd:element name="SoftwareSupplier"
+                                 type="xsd:string"
+                                 sql:datatype="varchar(40)"
+                                 minOccurs="0" />
+                    <xsd:element name="SoftwarePackage"
+                                 type="xsd:string"
+                                 sql:datatype="varchar(30)"
+                                 minOccurs="0" />
+                    <xsd:element name="Release"
+                                 type="xsd:string"
+                                 sql:datatype="varchar(20)"
+                                 minOccurs="0" />
+                    <xsd:element name="SerialNo"
+                                 type="xsd:string"
+                                 sql:datatype="varchar(2)" />
+                    <xsd:element name="DateTime"
+                                 type="xsd:dateTime"
+                                 sql:datatype="datetime"
+                                 minOccurs="0" />
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>

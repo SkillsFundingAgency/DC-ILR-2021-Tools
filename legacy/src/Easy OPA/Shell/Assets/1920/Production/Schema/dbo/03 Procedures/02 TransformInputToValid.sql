@@ -649,25 +649,13 @@ begin
 end
 go
  
-create procedure dbo.TransformInputToValid_SourceFile as
+create procedure dbo.TransformInputToValid_File as
 begin
-	insert into Valid.SourceFile (
-		SourceFileName,
-		FilePreparationDate,
-		SoftwareSupplier,
-		SoftwarePackage,
-		Release,
-		SerialNo,
-		[DateTime]
+	insert into Valid.[File] (
+		[FileName]
 	)
-	select 	SourceFileName,
-			FilePreparationDate,
-			SoftwareSupplier,
-			SoftwarePackage,
-			Release,
-			SerialNo,
-			[DateTime]
-	from	Input.SourceFile
+	select 	[FileName]
+	from	Input.[File]
 end
 go
 
@@ -857,6 +845,7 @@ begin
 	exec dbo.TransformInputToValid_ProviderSpecLearnerMonitoring
 	exec dbo.TransformInputToValid_Source
 	exec dbo.TransformInputToValid_SourceFile
+	exec dbo.TransformInputToValid_File
 
 	--Insert to these tables at the end so that dependencies are in place.
 	exec dbo.TransformInputToValid_LearningDeliveryDenormTbl

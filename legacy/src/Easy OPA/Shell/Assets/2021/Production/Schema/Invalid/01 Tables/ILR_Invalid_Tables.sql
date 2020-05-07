@@ -44,7 +44,13 @@ go
  
 create table Invalid.SourceFile (
 	SourceFile_Id int primary key,
-	SourceFileName varchar(50) not null
+	SourceFileName varchar(50) not null,
+	FilePreparationDate date not null,
+	SoftwareSupplier varchar(40),
+	SoftwarePackage varchar(30),
+	Release varchar(20),
+	SerialNo varchar(2) not null,
+	[DateTime] datetime
 )
 go
 

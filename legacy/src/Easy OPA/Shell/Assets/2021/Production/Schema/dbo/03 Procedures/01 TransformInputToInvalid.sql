@@ -708,11 +708,23 @@ create procedure dbo.TransformInputToInvalid_SourceFile as
 begin
 	insert into Invalid.SourceFile (
 		SourceFile_Id,
-		SourceFileName
-		)
+		SourceFileName,
+		FilePreparationDate,
+		SoftwareSupplier,
+		SoftwarePackage,
+		Release,
+		SerialNo,
+		[DateTime]
+	)
 	select	SourceFile_Id,
-			SourceFileName
-			from	Input.SourceFile
+			SourceFileName,
+			FilePreparationDate,
+			SoftwareSupplier,
+			SoftwarePackage,
+			Release,
+			SerialNo,
+			[DateTime]
+	from	Input.SourceFile
 end
 go
  

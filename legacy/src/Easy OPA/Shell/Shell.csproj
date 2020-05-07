@@ -214,6 +214,9 @@
     <None Include="Assets\2021\Production\Rulebases\ESF\ESF 2021 Funding Calc.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Assets\2021\Local\CreateFileTable.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

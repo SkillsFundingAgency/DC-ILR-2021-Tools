@@ -115,9 +115,9 @@ namespace EasyOPA.Provider
                 Mediator.Publish(ChangeYearMessage.Create(buildSchema.Year, buildSchema.Collection));
 
                 var batchList = Batches.GetBatch(BatchProcessName.BuildSourceDataStore, buildSchema.Year);
-                var s = batchList.Scripts.First().Command;
+                var s = batchList.Scripts.ElementAt(1).Command;
                 s = s.Replace("originalFileName", Path.GetFileNameWithoutExtension(fromInputFile));
-                batchList.Scripts.First().Command = s;
+                batchList.Scripts.ElementAt(1).Command = s;
 
                 Emitter.Publish(batchList.Description);
 

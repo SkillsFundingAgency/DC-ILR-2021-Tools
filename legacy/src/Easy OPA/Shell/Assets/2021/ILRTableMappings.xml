@@ -1102,6 +1102,30 @@
           <Source>SourceFileName</Source>
           <Destination>SourceFileName</Destination>
         </ColumnMapping>
+        <ColumnMapping>
+          <Source>FilePreparationDate</Source>
+          <Destination>FilePreparationDate</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SoftwareSupplier</Source>
+          <Destination>SoftwareSupplier</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SoftwarePackage</Source>
+          <Destination>SoftwarePackage</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>Release</Source>
+          <Destination>Release</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SerialNo</Source>
+          <Destination>SerialNo</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>DateTime</Source>
+          <Destination>DateTime</Destination>
+        </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
     <TableMapping>
@@ -5353,6 +5377,30 @@
         <ColumnMapping>
           <Source>SourceFileName</Source>
           <Destination>SourceFileName</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>FilePreparationDate</Source>
+          <Destination>FilePreparationDate</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SoftwareSupplier</Source>
+          <Destination>SoftwareSupplier</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SoftwarePackage</Source>
+          <Destination>SoftwarePackage</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>Release</Source>
+          <Destination>Release</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>SerialNo</Source>
+          <Destination>SerialNo</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>DateTime</Source>
+          <Destination>DateTime</Destination>
         </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
