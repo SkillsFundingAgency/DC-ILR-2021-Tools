@@ -119,18 +119,50 @@
                     minOccurs="1">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="SourceFile"
-                          maxOccurs="unbounded">
+              <xs:element name="SourceFile" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="SourceFileName" >
+                    <xs:element name="SourceFileName">
                       <xs:simpleType>
-                        <xs:restriction  base="RestrictedString">
-                          <xs:maxLength value="50" />
-                          <xs:minLength value="1" />
+                        <xs:restriction base="RestrictedString">
+                          <xs:maxLength value="50"/>
+                          <xs:minLength value="1"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
+                    <xs:element name="FilePreparationDate" type="xs:date"/>
+                    <xs:element name="SoftwareSupplier" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="RestrictedString">
+                          <xs:maxLength value="40"/>
+                          <xs:minLength value="1"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="SoftwarePackage" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="RestrictedString">
+                          <xs:maxLength value="30"/>
+                          <xs:minLength value="1"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Release" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="RestrictedString">
+                          <xs:maxLength value="20"/>
+                          <xs:minLength value="1"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="SerialNo">
+                      <xs:simpleType>
+                        <xs:restriction base="RestrictedString">
+                          <xs:pattern value="[0-9]{1,2}"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="DateTime" type="xs:dateTime" minOccurs="0"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

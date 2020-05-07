@@ -354,7 +354,20 @@ create view Clone.SourceFile
 as
 	select	PK_SourceFile,
 			lp.UKPRN,
-			SourceFileName
+			SourceFileName,
+			FilePreparationDate,
+			SoftwareSupplier,
+			SoftwarePackage,
+			Release,
+			[DateTime],
+			SerialNo
 	from	dbo.SourceFile
  				cross join (select top 1 UKPRN from dbo.LearningProvider) as lp
+go
+
+create view Clone.[File]
+as
+	SELECT PK_File
+			[FileName]
+	FROM dbo.[File]
 go

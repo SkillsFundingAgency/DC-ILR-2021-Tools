@@ -44,8 +44,13 @@ go
  
 create table Input.SourceFile (
 	SourceFile_Id int primary key,
-	SourceFileName varchar(50) not null
-	
+	SourceFileName varchar(50) not null,
+	FilePreparationDate date not null,
+	SoftwareSupplier varchar(40),
+	SoftwarePackage varchar(30),
+	Release varchar(20),
+	SerialNo varchar(2) not null,
+	[DateTime] datetime
 )
 go
 
@@ -594,4 +599,20 @@ create index IX_Input_DPOutcome on Input.DPOutcome (
 	OutCode asc,
 	OutStartDate asc
 )
+go
+
+if object_id('Input.File','u') is not null
+begin
+	drop table Input.[File]
+end
+go
+ 
+create table Input.[File] (
+	FilID int primary key,
+	[FileName] varchar(55),
+)
+go
+
+INSERT INTO Input.[File]
+SELECT * FROM dbo.[File]
 go

@@ -41,12 +41,13 @@ end
 go
  
 create table Valid.SourceFile (
-	SourceFileName varchar(50) not null
-)
-go
-
-create clustered index IX_Valid_SourceFile on Valid.SourceFile (
-	SourceFileName asc
+	SourceFileName varchar(50) not null,
+	FilePreparationDate date null,
+	SoftwareSupplier varchar(40) null,
+	SoftwarePackage varchar(30) null,
+	Release varchar(20) null,
+	SerialNo varchar(2) null,
+	[DateTime] datetime null
 )
 go
 
@@ -553,3 +554,17 @@ create clustered index IX_Valid_DPOutcome on Valid.DPOutcome (
 	OutStartDate asc
 )
 go
+
+if object_id('Valid.File','u') is not null
+begin
+	drop table Valid.[File]
+end
+go
+ 
+create table Valid.[File] (
+	[FileName] varchar(55)
+)
+
+INSERT INTO Valid.[File]
+	SELECT [FileName]
+	FROM Input.[File]

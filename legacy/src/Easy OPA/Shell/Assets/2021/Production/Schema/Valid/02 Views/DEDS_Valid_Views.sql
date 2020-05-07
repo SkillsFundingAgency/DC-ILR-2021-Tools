@@ -385,8 +385,14 @@ go
 create view DEDS_Valid.SourceFile
 as
 	select	lp.UKPRN,
-			sf.SourceFileName
-			from	Valid.SourceFile as sf
+			sf.SourceFileName,
+			sf.FilePreparationDate,
+			sf.SoftwareSupplier, 
+			sf.SoftwarePackage, 
+			sf.Release, 
+			sf.SerialNo, 
+			sf.[DateTime]
+	from	Valid.SourceFile as sf
 				cross join (select top 1 UKPRN from Valid.LearningProvider) as lp
 go
 
