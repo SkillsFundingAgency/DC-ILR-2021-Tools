@@ -54,7 +54,6 @@ select coalesce(cast((
 			(	select	EmpStat,
 						cast(DateEmpStatApp as date) as DateEmpStatApp,
 						EmpId,
-						AgreeId,
 						(	select	ESMType,
 									ESMCode 
 							from	Clone.EmploymentStatusMonitoring
@@ -85,6 +84,7 @@ select coalesce(cast((
 						cast(LearnPlanEndDate as date) as LearnPlanEndDate,
 						FundModel,
 						PHours,
+						OTJActHours,
 						ProgType,
 						FworkCode,
 						PwayCode,

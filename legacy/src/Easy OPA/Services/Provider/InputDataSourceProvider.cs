@@ -158,7 +158,7 @@ namespace EasyOPA.Provider
             var script = GetScript(BatchProcessName.GetProviderDetails);
             script = Substitute.ReplaceTokensIn(script, x => x.Replace("${providerIDs}", string.Join(",", providerIDs)));
 
-            return Context.GetItems<ProviderDetails, IProviderDetails>(script, usingDetail, "UKPRN", "Name", "Location", "Street", "Town", "Postcode");
+            return Context.GetItems<ProviderDetails, IProviderDetails>(script, usingDetail, "Name");
         }
 
         /// <summary>
