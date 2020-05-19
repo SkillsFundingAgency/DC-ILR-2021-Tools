@@ -1,14 +1,15 @@
 ﻿if not exists(select schema_id from sys.schemas where name='Valid')
  exec('create schema Valid')
 go
- 
+
 if object_id('Valid.CollectionDetails','u') is not null
 begin
 	drop table Valid.CollectionDetails
 end
 go
- 
+
 create table Valid.CollectionDetails (
+    [UKPRN] int not null,
 	[Collection] varchar(3) not null,
 	[Year] varchar(4) not null,
 	FilePreparationDate date null
@@ -20,7 +21,7 @@ begin
 	drop table Valid.[Source]
 end
 go
- 
+
 create table Valid.[Source] (
 	ProtectiveMarking varchar(30) null,
 	UKPRN int not null,
@@ -39,8 +40,9 @@ begin
 	drop table Valid.SourceFile
 end
 go
- 
+
 create table Valid.SourceFile (
+    [UKPRN] int not null,
 	SourceFileName varchar(50) not null,
 	FilePreparationDate date null,
 	SoftwareSupplier varchar(40) null,
@@ -56,8 +58,8 @@ begin
 	drop table Valid.LearningProvider
 end
 go
- 
-create table Valid.LearningProvider ( 
+
+create table Valid.LearningProvider (
 	UKPRN int not null,
 	primary key clustered (
 		UKPRN asc
@@ -70,8 +72,9 @@ begin
 	drop table Valid.Learner
 end
 go
- 
+
 create table Valid.Learner (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	PrevLearnRefNumber varchar(12) null,
 	PrevUKPRN int null,
@@ -101,6 +104,7 @@ create table Valid.Learner (
 	TelNo varchar(18) null,
 	Email varchar(1000),
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc
 	)
 )
@@ -111,12 +115,14 @@ begin
 	drop table Valid.ContactPreference
 end
 go
- 
+
 create table Valid.ContactPreference (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	ContPrefType varchar(3) not null,
 	ContPrefCode int not null,
 	primary key (
+		UKPRN asc,
 		LearnRefNumber,
 		ContPrefType,
 		ContPrefCode
@@ -129,12 +135,14 @@ begin
 	drop table Valid.LLDDandHealthProblem
 end
 go
- 
+
 create table Valid.LLDDandHealthProblem (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	LLDDCat int not null,
-	PrimaryLLDD int null, 
+	PrimaryLLDD int null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		LLDDCat asc
 	)
@@ -146,11 +154,16 @@ begin
 	drop table Valid.LearnerFAM
 end
 go
- 
+
 create table Valid.LearnerFAM (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	LearnFAMType varchar(3) null,
 	LearnFAMCode int not null
+	--primary key clustered(
+	--	UKPRN asc,
+	--	LearnRefNumber asc
+	--)
 )
 go
 
@@ -164,12 +177,14 @@ begin
 	drop table Valid.ProviderSpecLearnerMonitoring
 end
 go
- 
+
 create table Valid.ProviderSpecLearnerMonitoring (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	ProvSpecLearnMonOccur varchar(1) not null,
 	ProvSpecLearnMon varchar(20) not null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		ProvSpecLearnMonOccur asc
 	)
@@ -181,13 +196,15 @@ begin
 	drop table Valid.LearnerEmploymentStatus
 end
 go
- 
+
 create table Valid.LearnerEmploymentStatus (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	EmpStat int null,
 	DateEmpStatApp date not null,
 	EmpId bigint,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		DateEmpStatApp asc
 	)
@@ -201,6 +218,7 @@ end
 go
 
 create table Valid.LearnerEmploymentStatusDenormTbl (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	EmpStat int null,
 	EmpId int null,
@@ -213,6 +231,7 @@ create table Valid.LearnerEmploymentStatusDenormTbl (
 	ESMCode_SEI int null,
 	ESMCode_SEM int null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		DateEmpStatApp asc
 	)
@@ -224,13 +243,15 @@ begin
 	drop table Valid.EmploymentStatusMonitoring
 end
 go
- 
-create table Valid.EmploymentStatusMonitoring ( 
+
+create table Valid.EmploymentStatusMonitoring (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	DateEmpStatApp date not null,
 	ESMType varchar(3) not null,
 	ESMCode int null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		DateEmpStatApp asc,
 		ESMType asc
@@ -243,12 +264,14 @@ begin
 	drop table Valid.LearnerHE
 end
 go
- 
+
 create table Valid.LearnerHE (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	UCASPERID varchar(10) null,
-	TTACCOM int null, 
+	TTACCOM int null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc
 	)
 )
@@ -259,12 +282,14 @@ begin
 	drop table Valid.LearnerHEFinancialSupport
 end
 go
- 
+
 create table Valid.LearnerHEFinancialSupport (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	FINTYPE int not null,
 	FINAMOUNT int not null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		FINTYPE asc
 	)
@@ -276,8 +301,9 @@ begin
 	drop table Valid.LearningDelivery
 end
 go
- 
+
 create table Valid.LearningDelivery (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	LearnAimRef varchar(8) not null,
 	AimType int not null,
@@ -309,8 +335,10 @@ create table Valid.LearningDelivery (
 	OutGrade varchar(6) null,
 	SWSupAimId varchar(36) null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
-		AimSeqNumber asc
+		AimSeqNumber asc,
+		FundModel asc
 	)
 )
 go
@@ -327,6 +355,7 @@ end
 go
 
 create table Valid.LearningDeliveryDenormTbl (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	LearnAimRef varchar(8) not null,
 	AimType int not null,
@@ -379,6 +408,7 @@ create table Valid.LearningDeliveryDenormTbl (
 	LDM3 varchar(5) null,
 	LDM4 varchar(5) null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		AimSeqNumber asc
 	)
@@ -390,18 +420,25 @@ begin
 	drop table Valid.LearningDeliveryFAM
 end
 go
- 
+
 create table Valid.LearningDeliveryFAM (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	AimSeqNumber int not null,
 	LearnDelFAMType varchar(3) not null,
 	LearnDelFAMCode varchar(5) not null,
 	LearnDelFAMDateFrom date null,
 	LearnDelFAMDateTo date null
+	--primary key clustered(	
+	--	UKPRN asc,
+	--	LearnRefNumber asc,
+	--	AimSeqNumber asc
+	--)
 )
 go
 
 create clustered index IX_Valid_LearningDeliveryFAM on Valid.LearningDeliveryFAM (
+	UKPRN asc,
 	LearnRefNumber asc,
 	AimSeqNumber asc,
 	LearnDelFAMType asc,
@@ -414,8 +451,9 @@ begin
 	drop table Valid.LearningDeliveryWorkPlacement
 end
 go
- 
+
 create table Valid.LearningDeliveryWorkPlacement (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	AimSeqNumber int not null,
 	WorkPlaceStartDate date not null,
@@ -423,6 +461,11 @@ create table Valid.LearningDeliveryWorkPlacement (
 	WorkPlaceHours int null,
 	WorkPlaceMode int not null,
 	WorkPlaceEmpId int null
+	--primary key clustered(	
+	--	UKPRN asc,
+	--	LearnRefNumber asc,
+	--	AimSeqNumber asc
+	--)
 )
 go
 
@@ -440,14 +483,21 @@ begin
 	drop table Valid.AppFinRecord
 end
 go
- 
+
 create table Valid.AppFinRecord (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	AimSeqNumber int not null,
 	AFinType varchar(3) not null,
 	AFinCode int not null,
 	AFinDate date not null,
 	AFinAmount int not null
+--primary key clustered(	
+--		UKPRN asc,
+--		LearnRefNumber asc,
+--		AimSeqNumber asc,
+--		AFinType asc
+--	)
 )
 go
 
@@ -463,13 +513,15 @@ begin
 	drop table Valid.ProviderSpecDeliveryMonitoring
 end
 go
- 
+
 create table Valid.ProviderSpecDeliveryMonitoring (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	AimSeqNumber int not null,
 	ProvSpecDelMonOccur varchar(1) not null,
 	ProvSpecDelMon varchar(20) not null,
 	primary key clustered (
+	UKPRN asc,
 		LearnRefNumber asc,
 		AimSeqNumber asc,
 		ProvSpecDelMonOccur asc
@@ -482,8 +534,9 @@ begin
 	drop table Valid.LearningDeliveryHE
 end
 go
- 
+
 create table Valid.LearningDeliveryHE (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	AimSeqNumber int not null,
 	NUMHUS varchar(20) null,
@@ -510,6 +563,7 @@ create table Valid.LearningDeliveryHE (
 	ELQ int null,
 	HEPostCode varchar(8) null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc,
 		AimSeqNumber asc
 	)
@@ -521,11 +575,13 @@ begin
 	drop table Valid.LearnerDestinationandProgression
 end
 go
- 
+
 create table Valid.LearnerDestinationandProgression (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	ULN bigint not null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc
 	)
 )
@@ -536,18 +592,27 @@ begin
 	drop table Valid.DPOutcome
 end
 go
- 
+
 create table Valid.DPOutcome (
+    [UKPRN] int not null,
 	LearnRefNumber varchar(12) not null,
 	OutType varchar(3) not null,
 	OutCode int not null,
 	OutStartDate date not null,
 	OutEndDate date null,
 	OutCollDate date not null
+	--primary key clustered(
+	--	UKPRN asc,
+	--	LearnRefNumber asc,
+	--	OutType asc,
+	--	OutCode asc,
+	--	OutStartDate asc
+	--)
 )
 go
 
 create clustered index IX_Valid_DPOutcome on Valid.DPOutcome (
+	UKPRN asc,
 	LearnRefNumber asc,
 	OutType asc,
 	OutCode asc,
@@ -560,11 +625,17 @@ begin
 	drop table Valid.[File]
 end
 go
- 
+
 create table Valid.[File] (
+	[UKPRN] int not null,
 	[FileName] varchar(55)
+	primary key(
+		[FileName] asc
+	)
 )
 
 INSERT INTO Valid.[File]
-	SELECT [FileName]
-	FROM Input.[File]
+	SELECT 
+	(SELECT TOP(1) UKPRN FROM dbo.LearningProvider) as UKPRN,
+	[FileName]
+	FROM dbo.[File]
