@@ -11,6 +11,7 @@ using System;
 using System.Composition;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Tiny.Framework.Contracts.FlowControl;
 using Tiny.Framework.Utilities;
@@ -116,7 +117,14 @@ namespace EasyOPA.Provider
 
                 var batchList = Batches.GetBatch(BatchProcessName.BuildSourceDataStore, buildSchema.Year);
                 var s = batchList.Scripts.ElementAt(1).Command;
-                s = s.Replace("originalFileName", Path.GetFileNameWithoutExtension(fromInputFile));
+                if (s.Contains("ILR"))
+                {
+                    s = Regex.Replace(s, @"[A-Z]\w+-[0-9]\w+-[0-9]\w+-[0-9]\w+-[0-9]\w+-[0-9]\w+", Path.GetFileNameWithoutExtension(fromInputFile));
+                }
+                else
+                {
+                    s = s.Replace("originalFileName", Path.GetFileNameWithoutExtension(fromInputFile));
+                }
                 batchList.Scripts.ElementAt(1).Command = s;
 
                 Emitter.Publish(batchList.Description);

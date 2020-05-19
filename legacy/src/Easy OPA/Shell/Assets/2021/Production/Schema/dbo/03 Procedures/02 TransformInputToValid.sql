@@ -7,6 +7,7 @@ go
 create procedure dbo.TransformInputToValid_AppFinRecord as
 begin
 	insert into Valid.AppFinRecord (
+	UKPRN,
 		LearnRefNumber,
 		AimSeqNumber,
 		AFinType,
@@ -14,7 +15,9 @@ begin
 		AFinDate,
 		AFinAmount
 	)
-	select 	AFR.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	AFR.LearnRefNumber,
 			AFR.AimSeqNumber,
 			AFR.AFinType,
 			AFR.AFinCode,
@@ -39,11 +42,15 @@ go
 create procedure dbo.TransformInputToValid_CollectionDetails as
 begin
 	insert into Valid.CollectionDetails (
+	UKPRN,
 		[Collection],
 		[Year],
 		FilePreparationDate
 	)
-	select 	[Collection],
+	select 	
+	
+			(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	[Collection],
 			[Year],
 			FilePreparationDate
 	from	Input.CollectionDetails
@@ -59,11 +66,14 @@ go
 create procedure dbo.TransformInputToValid_ContactPreference as
 begin
 	insert into Valid.ContactPreference (
+	UKPRN,
 		LearnRefNumber,
 		ContPrefType,
 		ContPrefCode
 	)
-	select 	CP.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	CP.LearnRefNumber,
 			CP.ContPrefType,
 			CP.ContPrefCode
 	from	Input.ContactPreference as CP
@@ -80,6 +90,7 @@ go
 create procedure dbo.TransformInputToValid_DPOutcome as
 begin
 	insert into Valid.DPOutcome (
+	UKPRN,
 		LearnRefNumber,
 		OutType,
 		OutCode,
@@ -87,7 +98,9 @@ begin
 		OutEndDate,
 		OutCollDate
 	)
-	select 	DPO.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	DPO.LearnRefNumber,
 			DPO.OutType,
 			DPO.OutCode,
 			DPO.OutStartDate,
@@ -110,12 +123,15 @@ go
 create procedure dbo.TransformInputToValid_EmploymentStatusMonitoring as
 begin
 	insert into Valid.EmploymentStatusMonitoring (
+	UKPRN,
 		LearnRefNumber,
 		DateEmpStatApp,
 		ESMType,
 		ESMCode
 	)
-	select 	distinct
+	select 	
+	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			ESM.LearnRefNumber,
 			ESM.DateEmpStatApp,
 			ESM.ESMType,
@@ -137,6 +153,7 @@ go
 create procedure dbo.TransformInputToValid_Learner as
 begin
 	insert into Valid.Learner (
+	UKPRN,
 		LearnRefNumber,
 		PrevLearnRefNumber,
 		PrevUKPRN,
@@ -166,7 +183,9 @@ begin
 		TelNo,
 		Email
 	)
-	select 	L.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	L.LearnRefNumber,
 			L.PrevLearnRefNumber,
 			L.PrevUKPRN,
 			L.PMUKPRN,
@@ -208,10 +227,12 @@ go
 create procedure dbo.TransformInputToValid_LearnerDestinationandProgression as
 begin
 	insert into Valid.LearnerDestinationandProgression (
+	UKPRN,
 		LearnRefNumber,
 		ULN
 	)
 	select 	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			LDP.LearnRefNumber,
 			LDP.ULN
 	from	Input.LearnerDestinationandProgression as LDP
@@ -229,12 +250,14 @@ go
 create procedure dbo.TransformInputToValid_LearnerEmploymentStatus as
 begin
 	insert into Valid.LearnerEmploymentStatus (
+	UKPRN,
 		LearnRefNumber,
 		EmpStat,
 		DateEmpStatApp,
 		EmpId
 	)
 	select 	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			LES.LearnRefNumber,
 			LES.EmpStat,
 			LES.DateEmpStatApp,
@@ -253,11 +276,14 @@ go
 create procedure dbo.TransformInputToValid_LearnerFAM as
 begin
 	insert into Valid.LearnerFAM (
+	UKPRN,
 		LearnRefNumber,
 		LearnFAMType,
 		LearnFAMCode
 	)
-	select 	CAST(LFAM.LearnRefNumber as varchar(12)),
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	CAST(LFAM.LearnRefNumber as varchar(12)),
 			LFAM.LearnFAMType,
 			LFAM.LearnFAMCode
 	from	Input.LearnerFAM as LFAM
@@ -274,11 +300,14 @@ go
 create procedure dbo.TransformInputToValid_LearnerHE as
 begin
 	insert into Valid.LearnerHE (
+	UKPRN,
 		LearnRefNumber,
 		UCASPERID,
 		TTACCOM
 	)
-	select 	l.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	l.LearnRefNumber,
 			lhe.UCASPERID,
 			lhe.TTACCOM
 	from	Input.LearnerHE as lhe
@@ -296,11 +325,14 @@ go
 create procedure dbo.TransformInputToValid_LearnerHEFinancialSupport as
 begin
 	insert into Valid.LearnerHEFinancialSupport (
+	UKPRN,
 		LearnRefNumber,
 		FINTYPE,
 		FINAMOUNT
 	)
-	select 	LearnerHEFinancialSupport.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LearnerHEFinancialSupport.LearnRefNumber,
 			LearnerHEFinancialSupport.FINTYPE,
 			LearnerHEFinancialSupport.FINAMOUNT
 	from	Input.LearnerHEFinancialSupport
@@ -322,6 +354,7 @@ go
 create procedure dbo.TransformInputToValid_LearningDelivery as
 begin
 	insert into Valid.LearningDelivery (
+	UKPRN,
 		LearnRefNumber,
 		LearnAimRef,
 		AimType,
@@ -353,6 +386,7 @@ begin
 		SWSupAimId
 	)
 	select 	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			LD.LearnRefNumber,
 			LD.LearnAimRef,
 			LD.AimType,
@@ -396,6 +430,7 @@ go
 create procedure dbo.TransformInputToValid_LearningDeliveryFAM as
 begin
 	insert into Valid.LearningDeliveryFAM (
+	UKPRN,
 		LearnRefNumber,
 		AimSeqNumber,
 		LearnDelFAMType,
@@ -403,7 +438,9 @@ begin
 		LearnDelFAMDateFrom,
 		LearnDelFAMDateTo
 	)
-	select 	LearningDeliveryFAM.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LearningDeliveryFAM.LearnRefNumber,
 			LearningDeliveryFAM.AimSeqNumber,
 			LearningDeliveryFAM.LearnDelFAMType,
 			LearningDeliveryFAM.LearnDelFAMCode,
@@ -428,6 +465,7 @@ go
 create procedure dbo.TransformInputToValid_LearningDeliveryHE as
 begin
 	insert into Valid.LearningDeliveryHE (
+	UKPRN,
 		LearnRefNumber,
 		AimSeqNumber,
 		NUMHUS,
@@ -454,7 +492,9 @@ begin
 		ELQ,
 		HEPostCode
 	)
-	select 	LDHE.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LDHE.LearnRefNumber,
 			LDHE.AimSeqNumber,
 			LDHE.NUMHUS,
 			LDHE.SSN,
@@ -496,6 +536,7 @@ go
 create procedure dbo.TransformInputToValid_LearningDeliveryWorkPlacement as
 begin
 	insert into Valid.LearningDeliveryWorkPlacement (
+	UKPRN,
 		LearnRefNumber,
 		AimSeqNumber,
 		WorkPlaceStartDate,
@@ -504,7 +545,9 @@ begin
 		WorkPlaceMode,
 		WorkPlaceEmpId
 	)
-	select 	LDWP.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LDWP.LearnRefNumber,
 			LDWP.AimSeqNumber,
 			LDWP.WorkPlaceStartDate,
 			LDWP.WorkPlaceEndDate,
@@ -545,11 +588,14 @@ go
 create procedure dbo.TransformInputToValid_LLDDandHealthProblem as
 begin
 	insert into Valid.LLDDandHealthProblem (
+	UKPRN,
 		LearnRefNumber,
 		LLDDCat,
 		PrimaryLLDD
 	)
-	select 	LLDDandHealthProblem.LearnRefNumber,
+	select 	
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LLDDandHealthProblem.LearnRefNumber,
 			LLDDandHealthProblem.LLDDCat,
 			LLDDandHealthProblem.PrimaryLLDD
 	from	Input.LLDDandHealthProblem
@@ -569,12 +615,14 @@ go
 create procedure dbo.TransformInputToValid_ProviderSpecDeliveryMonitoring as
 begin
 	insert into Valid.ProviderSpecDeliveryMonitoring (
+	UKPRN,
 		LearnRefNumber,
 		AimSeqNumber,
 		ProvSpecDelMonOccur,
 		ProvSpecDelMon
 	)
 	select 	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			PSDM.LearnRefNumber,
 			PSDM.AimSeqNumber,
 			PSDM.ProvSpecDelMonOccur,
@@ -596,11 +644,13 @@ go
 create procedure dbo.TransformInputToValid_ProviderSpecLearnerMonitoring as
 begin
 	insert into Valid.ProviderSpecLearnerMonitoring (
+	UKPRN,
 		LearnRefNumber,
 		ProvSpecLearnMonOccur,
 		ProvSpecLearnMon
 	)
 	select 	distinct
+				(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
 			PSLM.LearnRefNumber,
 			PSLM.ProvSpecLearnMonOccur,
 			PSLM.ProvSpecLearnMon
@@ -649,11 +699,25 @@ go
  
 create procedure dbo.TransformInputToValid_SourceFile as
 begin
-	insert into Valid.SourceFile (
-		SourceFileName
-		)
-	select 	SourceFileName
-				from	Input.SourceFile
+	insert into Invalid.SourceFile (
+		SourceFile_Id,
+		SourceFileName,
+		FilePreparationDate,
+		SoftwareSupplier,
+		SoftwarePackage,
+		Release,
+		SerialNo,
+		[DateTime]
+	)
+	select	SourceFile_Id,
+			SourceFileName,
+			FilePreparationDate,
+			SoftwareSupplier,
+			SoftwarePackage,
+			Release,
+			SerialNo,
+			[DateTime]
+	from	Input.SourceFile
 end
 go
 
@@ -667,6 +731,7 @@ go
 create procedure dbo.TransformInputToValid_LearningDeliveryDenormTbl as
 begin
 	insert Valid.LearningDeliveryDenormTbl (
+	UKPRN,
 		LearnRefNumber,
 		LearnAimRef,
 		AimType,
@@ -719,7 +784,9 @@ begin
 		LDM3,
 		LDM4
 	)
-	select	LearnRefNumber,
+	select	
+					(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LearnRefNumber,
 			LearnAimRef,
 			AimType,
 			AimSeqNumber,
@@ -787,6 +854,7 @@ go
 create procedure dbo.TransformInputToValid_LearnerEmploymentStatusDenormTbl as
 begin
 	insert Valid.LearnerEmploymentStatusDenormTbl (
+	UKPRN,
 		LearnRefNumber,
 		EmpStat,
 		EmpId,
@@ -799,7 +867,9 @@ begin
 		ESMCode_SEI,
 		ESMCode_SEM
 	)
-	select	LearnRefNumber,
+	select	
+					(SELECT TOP(1) UKPRN FROM Input.LearningProvider) as UKPRN,
+	LearnRefNumber,
 			EmpStat,
 			EmpId,
 			DateEmpStatApp,
