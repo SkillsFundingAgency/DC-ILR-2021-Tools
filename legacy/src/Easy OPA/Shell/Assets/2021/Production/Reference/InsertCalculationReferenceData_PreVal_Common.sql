@@ -29,7 +29,7 @@ select	distinct
 		LSF.FundingCategory,
 		LSF.SmallBusinessIncentive,
 		LS.StandardCode
-from	${runmode.inputsource}.LearningDelivery
+from	Valid.LearningDelivery
 			INNER JOIN ReferenceInput.LARS_LARSStandard LS
 				ON LS.StandardCode = LearningDelivery.StdCode
 			INNER JOIN ReferenceInput.LARS_LARSStandardFunding LSF
@@ -87,7 +87,7 @@ insert into Reference.LARS_LearningDelivery (
 		--LLD.UnemployedOnly,
 		--LLD.UnitType,
 		LLD.EffectiveFrom
-	from ${runmode.inputsource}.LearningDelivery
+	from Valid.LearningDelivery
 			inner join ReferenceInput.[LARS_LARSLearningDelivery] LLD
 				on LLD.LearnAimRef = LearningDelivery.LearnAimRef
 go
@@ -104,7 +104,7 @@ select	distinct
 		lscc.EffectiveFrom,
 		lscc.EffectiveTo,
 		ls.StandardCode
-from	${runmode.inputsource}.LearningDelivery
+from	Valid.LearningDelivery
 			inner join ReferenceInput.LARS_LARSStandard ls
 				on ls.StandardCode = LearningDelivery.StdCode
 			inner join ReferenceInput.[LARS_LARSStandardCommonComponent] lscc

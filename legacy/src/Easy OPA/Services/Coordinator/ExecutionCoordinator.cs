@@ -277,7 +277,7 @@ namespace EasyOPA.Abstract
                 var _inYear = usingSession.InputDataSource.OperatingYear;
 
                 ProcessingDataStore.Prepare(inContext, forThisProvider, _inYear, initalise);
-                SourceData.Clone(inContext, forThisProvider, _inYear);
+                //SourceData.Clone(inContext, forThisProvider, _inYear);
             }
         }
 
@@ -386,12 +386,12 @@ namespace EasyOPA.Abstract
         public void SetLearnerCounts(IConnectionDetail forConnection, ILearningProvider usingProvider)
         {
             var valids = GetSchemaLearnerCount(forConnection, "valid");
-            var invalids = GetSchemaLearnerCount(forConnection, "invalid");
+            //var invalids = GetSchemaLearnerCount(forConnection, "invalid");
 
             Emitter.Publish(Indentation.FirstLevel, $"{valids} valid record(s) created");
-            Emitter.Publish(Indentation.FirstLevel, $"{invalids} invalid record(s) created");
+            //Emitter.Publish(Indentation.FirstLevel, $"{invalids} invalid record(s) created");
 
-            Monitor.SetLearnerCounts(invalids, usingProvider.LearnerCount, valids);
+            Monitor.SetLearnerCounts(valids, usingProvider.LearnerCount, valids);
         }
 
         /// <summary>
