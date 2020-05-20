@@ -14,19 +14,19 @@ begin
 		AFinDate,
 		AFinAmount
 	)
-	select 	AFR.LearnRefNumber,
-			AFR.AimSeqNumber,
+	select 	Learner.LearnRefNumber,
+			LearningDelivery.AimSeqNumber,
 			AFR.AFinType,
 			AFR.AFinCode,
 			AFR.AFinDate,
 			AFR.AFinAmount
-	from	Input.AppFinRecord as AFR
-				inner join Input.LearningDelivery
-					on LearningDelivery.LearningDelivery_Id = AFR.LearningDelivery_Id
-				inner join Input.Learner
-					on Learner.Learner_Id = LearningDelivery.Learner_Id
+	from	dbo.AppFinRecord as AFR
+				inner join dbo.LearningDelivery
+					on LearningDelivery.PK_LearningDelivery = AFR.FK_LearningDelivery
+				inner join dbo.Learner
+					on Learner.PK_Learner = LearningDelivery.FK_Learner
 				inner join dbo.ValidLearners
-					on Learner.Learner_Id = ValidLearners.Learner_Id
+					on Learner.PK_Learner = ValidLearners.Learner_Id
 	end
 go
  
@@ -46,7 +46,7 @@ begin
 	select 	[Collection],
 			[Year],
 			FilePreparationDate
-	from	Input.CollectionDetails
+	from	dbo.CollectionDetails
 end
 go
  
@@ -63,11 +63,14 @@ begin
 		ContPrefType,
 		ContPrefCode
 	)
-	select 	CP.LearnRefNumber,
+	select 	Learner.LearnRefNumber,
 			CP.ContPrefType,
 			CP.ContPrefCode
-	from	Input.ContactPreference as CP
-				join dbo.ValidLearners as vl on vl.Learner_Id = CP.Learner_Id
+	from	dbo.ContactPreference as CP
+				join dbo.ValidLearners as vl on vl.Learner_Id = CP.FK_Learner
+				inner join dbo.Learner
+					on Learner.PK_Learner = CP.FK_Learner
+
 end
 go
  
@@ -87,17 +90,18 @@ begin
 		OutEndDate,
 		OutCollDate
 	)
-	select 	DPO.LearnRefNumber,
+	select 	dp.LearnRefNumber,
 			DPO.OutType,
 			DPO.OutCode,
 			DPO.OutStartDate,
 			DPO.OutEndDate,
 			DPO.OutCollDate
-	from	Input.DPOutcome as DPO
-				inner join Input.LearnerDestinationandProgression as dp
-					on dp.LearnerDestinationandProgression_Id = dpo.LearnerDestinationandProgression_Id
+	from	dbo.DPOutcome as DPO
+				inner join dbo.LearnerDestinationandProgression as dp
+					on dp.PK_LearnerDestinationandProgression = dpo.FK_LearnerDestinationandProgression
 				inner join dbo.ValidLearnerDestinationandProgressions as vdp
-					on dpo.LearnerDestinationandProgression_Id = vdp.LearnerDestinationandProgression_Id
+					on dpo.FK_LearnerDestinationandProgression = vdp.LearnerDestinationandProgression_Id
+
 end
 go
  
@@ -116,15 +120,17 @@ begin
 		ESMCode
 	)
 	select 	distinct
-			ESM.LearnRefNumber,
-			ESM.DateEmpStatApp,
+			Learner.LearnRefNumber,
+			LES.DateEmpStatApp,
 			ESM.ESMType,
 			ESM.ESMCode
-	from	Input.EmploymentStatusMonitoring as ESM
-				inner join Input.LearnerEmploymentStatus LES
-					on ESM.LearnerEmploymentStatus_Id = LES.LearnerEmploymentStatus_Id
+	from	dbo.EmploymentStatusMonitoring as ESM
+				inner join dbo.LearnerEmploymentStatus LES
+					on ESM.FK_LearnerEmploymentStatus = LES.PK_LearnerEmploymentStatus
 				inner join dbo.ValidLearners as VL
-					on VL.Learner_Id = LES.Learner_Id
+					on VL.Learner_Id = LES.FK_Learner
+				inner join dbo.Learner
+					on Learner.PK_Learner = LES.FK_Learner
 end
 go
  
@@ -194,8 +200,8 @@ begin
 			L.AddLine4,
 			L.TelNo,
 			L.Email
-	from	Input.Learner as L
-				join dbo.ValidLearners as vl on vl.Learner_Id = L.Learner_Id
+	from	dbo.Learner as L
+				join dbo.ValidLearners as vl on vl.Learner_Id = L.PK_Learner
 end
 go
  
@@ -214,9 +220,9 @@ begin
 	select 	distinct
 			LDP.LearnRefNumber,
 			LDP.ULN
-	from	Input.LearnerDestinationandProgression as LDP
+	from	dbo.LearnerDestinationandProgression as LDP
 				join dbo.ValidLearnerDestinationandProgressions as vdp
-					on LDP.LearnerDestinationandProgression_Id = vdp.LearnerDestinationandProgression_Id
+					on LDP.PK_LearnerDestinationandProgression = vdp.LearnerDestinationandProgression_Id
 end
 go
  
@@ -235,12 +241,15 @@ begin
 		EmpId
 	)
 	select 	distinct
-			LES.LearnRefNumber,
+			Learner.LearnRefNumber,
 			LES.EmpStat,
 			LES.DateEmpStatApp,
 			LES.EmpId
-	from	Input.LearnerEmploymentStatus as LES
-				join dbo.ValidLearners as vl on vl.Learner_Id = LES.Learner_Id
+	from	dbo.LearnerEmploymentStatus as LES
+				join dbo.ValidLearners as vl on vl.Learner_Id = LES.FK_Learner
+				inner join dbo.Learner
+					on Learner.PK_Learner = LES.FK_Learner
+
 end
 go
  
@@ -257,11 +266,13 @@ begin
 		LearnFAMType,
 		LearnFAMCode
 	)
-	select 	CAST(LFAM.LearnRefNumber as varchar(12)),
+	select 	CAST(Learner.LearnRefNumber as varchar(12)),
 			LFAM.LearnFAMType,
 			LFAM.LearnFAMCode
-	from	Input.LearnerFAM as LFAM
-				join dbo.ValidLearners as vl on vl.Learner_Id = LFAM.Learner_Id
+	from	dbo.LearnerFAM as LFAM
+				join dbo.ValidLearners as vl on vl.Learner_Id = LFAM.FK_Learner
+				inner join dbo.Learner
+					on Learner.PK_Learner = LFAM.FK_Learner
 end
 go
  
@@ -281,9 +292,9 @@ begin
 	select 	l.LearnRefNumber,
 			lhe.UCASPERID,
 			lhe.TTACCOM
-	from	Input.LearnerHE as lhe
-				inner join Input.Learner as l on lhe.Learner_Id = l.Learner_Id
-				inner join dbo.ValidLearners as vl on lhe.Learner_Id = vl.Learner_Id
+	from	dbo.LearnerHE as lhe
+				inner join dbo.Learner as l on lhe.FK_Learner = l.PK_Learner
+				inner join dbo.ValidLearners as vl on lhe.FK_Learner = vl.Learner_Id
 end
 go
  
@@ -300,16 +311,16 @@ begin
 		FINTYPE,
 		FINAMOUNT
 	)
-	select 	LearnerHEFinancialSupport.LearnRefNumber,
+	select 	Learner.LearnRefNumber,
 			LearnerHEFinancialSupport.FINTYPE,
 			LearnerHEFinancialSupport.FINAMOUNT
-	from	Input.LearnerHEFinancialSupport
-				inner join Input.LearnerHE
-					on LearnerHEFinancialSupport.LearnerHE_Id = LearnerHE.LearnerHE_Id
-				inner join Input.Learner
-					on Learner.Learner_Id = LearnerHE.Learner_Id
+	from	dbo.LearnerHEFinancialSupport
+				inner join dbo.LearnerHE
+					on LearnerHEFinancialSupport.FK_LearnerHE = LearnerHE.PK_LearnerHE
+				inner join dbo.Learner
+					on Learner.PK_Learner = LearnerHE.FK_Learner
 				inner join dbo.ValidLearners
-					on LearnerHE.Learner_Id = ValidLearners.Learner_Id
+					on LearnerHE.FK_Learner = ValidLearners.Learner_Id
 end
 go
  
@@ -353,7 +364,7 @@ begin
 		SWSupAimId
 	)
 	select 	distinct
-			LD.LearnRefNumber,
+			Learner.LearnRefNumber,
 			LD.LearnAimRef,
 			LD.AimType,
 			LD.AimSeqNumber,
@@ -382,8 +393,10 @@ begin
 			LD.AchDate,
 			LD.OutGrade,
 			LD.SWSupAimId
-	from	Input.LearningDelivery as LD
-				join dbo.ValidLearners as vl on vl.Learner_Id = LD.Learner_Id
+	from	dbo.LearningDelivery as LD
+				join dbo.ValidLearners as vl on vl.Learner_Id = LD.FK_Learner
+				inner join dbo.Learner
+					on Learner.PK_Learner = LD.FK_Learner
 end
 go
  
@@ -403,19 +416,19 @@ begin
 		LearnDelFAMDateFrom,
 		LearnDelFAMDateTo
 	)
-	select 	LearningDeliveryFAM.LearnRefNumber,
-			LearningDeliveryFAM.AimSeqNumber,
+	select 	Learner.LearnRefNumber,
+			LearningDelivery.AimSeqNumber,
 			LearningDeliveryFAM.LearnDelFAMType,
 			LearningDeliveryFAM.LearnDelFAMCode,
 			LearningDeliveryFAM.LearnDelFAMDateFrom,
 			LearningDeliveryFAM.LearnDelFAMDateTo
-	from	Input.LearningDeliveryFAM
-				inner join Input.LearningDelivery
-					on LearningDeliveryFAM.LearningDelivery_Id = LearningDelivery.LearningDelivery_Id
-				inner join Input.Learner
-					on LearningDelivery.Learner_Id = Learner.Learner_Id
+	from	dbo.LearningDeliveryFAM
+				inner join dbo.LearningDelivery
+					on LearningDeliveryFAM.FK_LearningDelivery= LearningDelivery.PK_LearningDelivery
+				inner join dbo.Learner
+					on LearningDelivery.FK_Learner = Learner.PK_Learner
 				inner join dbo.ValidLearners
-					on Learner.Learner_Id = ValidLearners.Learner_Id
+					on Learner.PK_Learner = ValidLearners.Learner_Id
 end
 go
  
@@ -454,8 +467,8 @@ begin
 		ELQ,
 		HEPostCode
 	)
-	select 	LDHE.LearnRefNumber,
-			LDHE.AimSeqNumber,
+	select 	Learner.LearnRefNumber,
+			LD.AimSeqNumber,
 			LDHE.NUMHUS,
 			LDHE.SSN,
 			LDHE.QUALENT3,
@@ -479,11 +492,13 @@ begin
 			LDHE.DOMICILE,
 			LDHE.ELQ,
 			LDHE.HEPostCode
-	from	Input.LearningDeliveryHE as LDHE
-				inner join Input.LearningDelivery as LD
-					on LDHE.LearningDelivery_Id = LD.LearningDelivery_Id
+	from	dbo.LearningDeliveryHE as LDHE
+				inner join dbo.LearningDelivery as LD
+					on LDHE.FK_LearningDelivery = LD.PK_LearningDelivery
+				inner join dbo.Learner
+					on LD.FK_Learner = Learner.PK_Learner
 				inner join dbo.ValidLearners as VL
-					on VL.Learner_Id = LD.Learner_Id
+					on VL.Learner_Id = LD.FK_Learner
 end
 go
  
@@ -504,18 +519,20 @@ begin
 		WorkPlaceMode,
 		WorkPlaceEmpId
 	)
-	select 	LDWP.LearnRefNumber,
-			LDWP.AimSeqNumber,
+	select 	Learner.LearnRefNumber,
+			LD.AimSeqNumber,
 			LDWP.WorkPlaceStartDate,
 			LDWP.WorkPlaceEndDate,
 			LDWP.WorkPlaceHours,
 			LDWP.WorkPlaceMode,
 			LDWP.WorkPlaceEmpId
-	from	Input.LearningDeliveryWorkPlacement as LDWP
-				inner join Input.LearningDelivery as LD
-					on LDWP.LearningDelivery_Id = LD.LearningDelivery_Id
+	from	dbo.LearningDeliveryWorkPlacement as LDWP
+				inner join dbo.LearningDelivery as LD
+					on LDWP.FK_LearningDelivery = LD.PK_LearningDelivery
+				inner join dbo.Learner
+					on LD.FK_Learner = Learner.PK_Learner
 				inner join dbo.ValidLearners as VL
-					on VL.Learner_Id = LD.Learner_Id
+					on VL.Learner_Id = LD.FK_Learner
 	where LDWP.WorkPlaceEmpId is not null
 end
 go
@@ -532,7 +549,7 @@ begin
 		UKPRN
 	)
 	select 	UKPRN
-	from	Input.LearningProvider
+	from	dbo.LearningProvider
 end
 go
  
@@ -549,14 +566,14 @@ begin
 		LLDDCat,
 		PrimaryLLDD
 	)
-	select 	LLDDandHealthProblem.LearnRefNumber,
+	select 	Learner.LearnRefNumber,
 			LLDDandHealthProblem.LLDDCat,
 			LLDDandHealthProblem.PrimaryLLDD
-	from	Input.LLDDandHealthProblem
-				inner join Input.Learner
-					on LLDDandHealthProblem.Learner_Id = Learner.Learner_Id
+	from	dbo.LLDDandHealthProblem
+				inner join dbo.Learner
+					on LLDDandHealthProblem.FK_Learner = Learner.PK_Learner
 				inner join dbo.ValidLearners
-					on LLDDandHealthProblem.Learner_Id = ValidLearners.Learner_Id	
+					on LLDDandHealthProblem.FK_Learner = ValidLearners.Learner_Id	
 end
 go
  
@@ -575,15 +592,17 @@ begin
 		ProvSpecDelMon
 	)
 	select 	distinct
-			PSDM.LearnRefNumber,
-			PSDM.AimSeqNumber,
+			Learner.LearnRefNumber,
+			LD.AimSeqNumber,
 			PSDM.ProvSpecDelMonOccur,
 			PSDM.ProvSpecDelMon
-	from	Input.ProviderSpecDeliveryMonitoring as PSDM
-				inner join Input.LearningDelivery as LD
-					on PSDM.LearningDelivery_Id = LD.LearningDelivery_Id
+	from	dbo.ProviderSpecDeliveryMonitoring as PSDM
+				inner join dbo.LearningDelivery as LD
+					on PSDM.FK_LearningDelivery = LD.PK_LearningDelivery
 				inner join dbo.ValidLearners as VL
-					on VL.Learner_Id = LD.Learner_Id
+					on VL.Learner_Id = LD.FK_Learner
+				inner join dbo.Learner
+					on LD.FK_Learner = Learner.PK_Learner
 end
 go
  
@@ -601,11 +620,13 @@ begin
 		ProvSpecLearnMon
 	)
 	select 	distinct
-			PSLM.LearnRefNumber,
+			Learner.LearnRefNumber,
 			PSLM.ProvSpecLearnMonOccur,
 			PSLM.ProvSpecLearnMon
-	from	Input.ProviderSpecLearnerMonitoring as PSLM
-				join dbo.ValidLearners as vl on vl.Learner_Id = PSLM.Learner_Id
+	from	dbo.ProviderSpecLearnerMonitoring as PSLM
+				join dbo.ValidLearners as vl on vl.Learner_Id = PSLM.FK_Learner
+				inner join dbo.Learner
+					on PSLM.FK_Learner = Learner.PK_Learner
 end
 go
  
@@ -637,7 +658,7 @@ begin
 			[DateTime],
 			ReferenceData,
 			ComponentSetVersion
-	from	Input.[Source]
+	from	dbo.[Source]
 end
 go
  
@@ -653,7 +674,7 @@ begin
 		SourceFileName
 		)
 	select 	SourceFileName
-				from	Input.SourceFile
+				from	dbo.SourceFile
 end
 go
 
