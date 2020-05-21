@@ -217,6 +217,7 @@
     <Content Include="Assets\2021\Local\CreateFileTable.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\2021\Local\InsertToValid.sql" />
     <Content Include="Assets\2021\Production\Rulebases\FM25Periodisation\FM25 Periodisation.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
