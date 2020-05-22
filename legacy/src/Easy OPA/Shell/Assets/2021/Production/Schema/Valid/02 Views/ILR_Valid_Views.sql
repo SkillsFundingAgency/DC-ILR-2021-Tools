@@ -7,7 +7,8 @@ go
 
 create view Valid.LearnerDenorm
 as
-	select	l.LearnRefNumber,
+	select	l.UKPRN,
+			l.LearnRefNumber,
 			l.PrevLearnRefNumber,
 			l.PrevUKPRN,
 			l.PMUKPRN,
@@ -140,7 +141,8 @@ go
 
 create view Valid.LearnerEmploymentStatusDenorm
 as
-	select	les.LearnRefNumber,
+	select	les.UKPRN,
+			les.LearnRefNumber,
 			les.EmpStat,
 			les.EmpId,
 			les.DateEmpStatApp,
@@ -190,7 +192,8 @@ go
 
 create view Valid.LearningDeliveryDenorm
 as
-	select	ld.LearnRefNumber,
+	select	ld.UKPRN,
+			ld.LearnRefNumber,
 			ld.LearnAimRef,
 			ld.AimType,
 			ld.AimSeqNumber,
@@ -360,7 +363,8 @@ go
 
 create view Valid.TrailblazerApprenticeshipFinancialRecord
 as
-	select	LearnRefNumber,
+	select	UKPRN,
+			LearnRefNumber,
 			AimSeqNumber,
 			AFinType as TBFinType,
 			AFinCode as TBFinCode,
