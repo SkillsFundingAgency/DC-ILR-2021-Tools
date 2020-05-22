@@ -12,40 +12,44 @@ BEGIN
     SET NOCOUNT ON
 
 	UPDATE Valid.AppFinRecord
-		SET AFinDate = DATEADD(YEAR,1,AFinDate)
-	PRINT('Updated date AppFinRecord')
+		SET AFinDate = DATEADD(YEAR,1,AFinDate);
+	PRINT('Updated date AppFinRecord');
+
+	UPDATE Valid.Learner
+		SET DateOfBirth = DATEADD(YEAR,1,DateOfBirth);
+	PRINT ('Updated date Learner');
 	
 	UPDATE Valid.LearnerEmploymentStatus
-		SET DateEmpStatApp = DATEADD(YEAR,1,DateEmpStatApp)
-	PRINT('Updated dates LearnerEmploymentStatus')
-
+		SET DateEmpStatApp = DATEADD(YEAR,1,DateEmpStatApp);
+	PRINT('Updated dates LearnerEmploymentStatus');
+	
 	UPDATE [Valid].[DPOutcome]
 		SET OutCollDate = DATEADD(YEAR,1,OutCollDate)
 			,OutEndDate = DATEADD(YEAR,1,OutEndDate)
 			,OutStartDate = DATEADD(YEAR,1,OutStartDate);
-    PRINT('Updated dates DPOutcome')
+    PRINT('Updated dates DPOutcome');
 
 	UPDATE [Valid].EmploymentStatusMonitoring
 		SET DateEmpStatApp = DATEADD(YEAR,1,DateEmpStatApp);
-	PRINT('Updated dates EmploymentStatusMontoring')
+	PRINT('Updated dates EmploymentStatusMontoring');
 
 	UPDATE [Valid].LearningDelivery
 		SET [LearnStartDate]	   = DATEADD(YEAR,1,[LearnStartDate])
 			,[OrigLearnStartDate]  = DATEADD(YEAR,1,[OrigLearnStartDate])
 			,[LearnPlanEndDate]	   = DATEADD(YEAR,1,[LearnPlanEndDate])
 			,[LearnActEndDate]	   = DATEADD(YEAR,1,[LearnActEndDate])
-			,[AchDate]			   = DATEADD(YEAR,1,[AchDate])
-	PRINT('Updated dates LearningDelivery')
+			,[AchDate]			   = DATEADD(YEAR,1,[AchDate]);
+	PRINT('Updated dates LearningDelivery');
 
 	UPDATE [Valid].LearningDeliveryFAM
 		SET LearnDelFAMDateFrom = DATEADD(YEAR,1,LearnDelFAMDateFrom)
-			,LearnDelFAMDateTo	 = DATEADD(YEAR,1,LearnDelFAMDateTo)
-	PRINT('Updated dates LearningDeliveryFam')
+			,LearnDelFAMDateTo	 = DATEADD(YEAR,1,LearnDelFAMDateTo);
+	PRINT('Updated dates LearningDeliveryFam');
 
 	UPDATE [Valid].LearningDeliveryWorkPlacement
 		SET WorkPlaceStartDate = DATEADD(YEAR,1,WorkPlaceStartDate)
-			,WorkPlaceEndDate = DATEADD(YEAR,1,WorkPlaceEndDate)
-	PRINT('Updated dates LearningDeliveryWorkPlacement')
+			,WorkPlaceEndDate = DATEADD(YEAR,1,WorkPlaceEndDate);
+	PRINT('Updated dates LearningDeliveryWorkPlacement');
 
 
 END
