@@ -353,7 +353,27 @@ BEGIN
 	 SET NOCOUNT ON
 	DECLARE @output nvarchar(max)
 	--ProviderSpecDeliveryMonitoring
-	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[ProviderSpecDeliveryMonitoring] ([UKPRN],[LearnRefNumber],[AimSeqNumber],[ProvSpecDelMonOccur],[ProvSpecDelMon]) SELECT [UKPRN],[LearnRefNumber],[AimSeqNumber],[ProvSpecDelMonOccur],[ProvSpecDelMon] FROM [Valid].[ProviderSpecDeliveryMonitoring]'+ CHAR(13)
+	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[ProviderSpecDeliveryMonitoring] ([UKPRN],[LearnRefNumber],[AimSeqNumber],[ProvSpecDelMonOccur],[ProvSpecDelMon]) SELECT [UKPRN],[LearnRefNumber],[AimSeqNumber],[ProvSpecDelMonOccur],[ProvSpecDelMon] FROM ['+@schema+'].[ProviderSpecDeliveryMonitoring]'+ CHAR(13)
+	exec(@output)
+END
+GO
+
+if object_id('[Valid].[InsertIntoValidProviderSpecLearnerMonitoring]','p') is not null
+begin
+	drop procedure [Valid].[InsertIntoValidProviderSpecLearnerMonitoring]
+end
+go
+
+CREATE PROCEDURE [Valid].[InsertIntoValidProviderSpecLearnerMonitoring]
+(
+	@schema varchar(20)
+)
+AS
+BEGIN
+	 SET NOCOUNT ON
+	DECLARE @output nvarchar(max)
+	--ProviderSpecLearnerMonitoring
+	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[ProviderSpecLearnerMonitoring] ([UKPRN],[LearnRefNumber],[ProvSpecLearnMonOccur],[ProvSpecLearnMon]) SELECT [UKPRN],[LearnRefNumber],[ProvSpecLearnMonOccur],[ProvSpecLearnMon] FROM ['+@schema+'].[ProviderSpecLearnerMonitoring]'+ CHAR(13)
 	exec(@output)
 END
 GO
@@ -372,7 +392,7 @@ AS
 BEGIN
 	 SET NOCOUNT ON
 	DECLARE @output nvarchar(max)
-	--ProviderSpecDeliveryMonitoring
+	--Source
 	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[Source] ([ProtectiveMarking],[UKPRN],[SoftwareSupplier],[SoftwarePackage],[Release],[SerialNo],[DateTime],[ReferenceData],[ComponentSetVersion]) SELECT [ProtectiveMarking],[UKPRN],[SoftwareSupplier],[SoftwarePackage],[Release],[SerialNo],[DateTime],[ReferenceData],[ComponentSetVersion] FROM ['+@schema+'].[Source]'+ CHAR(13)
 	exec(@output)
 END
@@ -392,7 +412,7 @@ AS
 BEGIN
 	 SET NOCOUNT ON
 	DECLARE @output nvarchar(max)
-	--ProviderSpecDeliveryMonitoring
+	--SourceFile
 	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[SourceFile] ([UKPRN],[SourceFileName],[FilePreparationDate],[SoftwareSupplier],[SoftwarePackage],[Release],[SerialNo],[DateTime]) SELECT [UKPRN],[SourceFileName],[FilePreparationDate],[SoftwareSupplier],[SoftwarePackage],[Release],[SerialNo],[DateTime] FROM ['+@schema+'].[SourceFile]'+ CHAR(13)
 	exec(@output)
 END
@@ -413,27 +433,50 @@ CREATE PROCEDURE [Valid].[InsertIntoValid]
 AS
 BEGIN
 	exec [Valid].[InsertIntoValidAppFinRecord] @schema = @sche
+	print('Finised Inserting into AppFinRecord')
 	exec [Valid].[InsertIntoValidCollectionDetails] @schema = @sche
+	print('Finised Inserting into CollectionDetails')
 	exec [Valid].[InsertIntoValidContactPreference] @schema = @sche
+	print('Finised Inserting into ContactPreference')
 	exec [Valid].[InsertIntoValidDPOutcome] @schema = @sche
+	print('Finised Inserting into DPOutcome`')
 	exec [Valid].[InsertIntoValidEmploymentStatusMonitoring] @schema = @sche
+	print('Finised Inserting into EmploymentStatusMonitoring`')
 	exec [Valid].[InsertIntoValidLearner] @schema = @sche
+	print('Finised Inserting into Learner')
 	exec [Valid].[InsertIntoValidLearnerDestinationandProgression] @schema = @sche
+	print('Finised Inserting into LearnerDestinationandProgression')
 	exec [Valid].[InsertIntoValidLearnerEmploymentStatus] @schema = @sche
+	print('Finised Inserting into LearnerEmploymentStatus')
 	exec [Valid].[InsertIntoValidLearnerFAM] @schema = @sche
+	print('Finised Inserting into LearnerFAM')
 	exec [Valid].[InsertIntoValidLearnerHE] @schema = @sche
+	print('Finised Inserting into LearnerHE')
 	exec [Valid].[InsertIntoValidLearnerHEFinancialSupport] @schema = @sche
+	print('Finised Inserting into LearnerHEFinancialSupport')
 	exec [Valid].[InsertIntoValidLearningDelivery] @schema = @sche
+	print('Finised Inserting into LearningDelivery')
 	exec [Valid].[InsertIntoValidLearningDeliveryFAM] @schema = @sche
+	print('Finised Inserting into LearningDeliveryFAM')
 	exec [Valid].[InsertIntoValidLearningDeliveryHE] @schema = @sche
+	print('Finised Inserting into LearningDeliveryHE')
 	exec [Valid].[InsertIntoValidLearningDeliveryWorkPlacement] @schema = @sche
+	print('Finised Inserting into LearningDeliveryWorkPlacement')
 	exec [Valid].[InsertIntoValidLearningProvider] @schema = @sche
+	print('Finised Inserting into LearningProvider')
 	exec [Valid].[InsertIntoValidLLDandHealtProblem] @schema = @sche
+	print('Finised Inserting into LLDandHealdthProblem')
 	exec [Valid].[InsertIntoValidProviderSpecDeliveryMonitoring] @schema = @sche
-	exec [Valid].[InsertIntoValidProviderSpecDeliveryMonitoring] @schema = @sche
+	print('Finised Inserting into ProviderSpecDeliveryMonitoring')
+	exec [Valid].[InsertIntoValidProviderSpecLearnerMonitoring] @schema = @sche
+	print('Finised Inserting into ProviderSpecLearnerMonitoring')
 	exec [Valid].[InsertIntoValidSource] @schema = @sche
+	print('Finised Inserting into Source')
 	exec [Valid].[InsertIntoValidSourceFile] @schema = @sche
+	print('Finised Inserting into SourceFile')
 	EXEC [dbo].[TransformInputToValid_LearnerEmploymentStatusDenormTbl]
+	print('Finised Inserting into LearnerEmploymentStatusDenormTbl')
 	EXEC [dbo].[TransformInputToValid_LearningDeliveryDenormTbl]
+	print('Finised Inserting into LearningDeliveryDenormTbl')
 END
 GO
