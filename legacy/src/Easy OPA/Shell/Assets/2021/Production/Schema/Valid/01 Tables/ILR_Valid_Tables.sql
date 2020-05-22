@@ -230,13 +230,21 @@ create table Valid.LearnerEmploymentStatusDenormTbl (
 	ESMCode_PEI int null,
 	ESMCode_SEI int null,
 	ESMCode_SEM int null,
-	primary key clustered (
+	primary key CLUSTERED (
 		UKPRN asc,
 		LearnRefNumber asc,
 		DateEmpStatApp asc
 	)
+	
 )
 go
+
+-- create clustered index IX_Valid_LearnerEmploymentStatusDenormTbl on Valid.LearnerEmploymentStatusDenormTbl (
+-- 		UKPRN asc,
+-- 		LearnRefNumber asc,
+-- 		DateEmpStatApp asc
+-- 	)
+-- go
 
 if object_id('Valid.EmploymentStatusMonitoring','u') is not null
 begin
@@ -414,6 +422,13 @@ create table Valid.LearningDeliveryDenormTbl (
 	)
 )
 go
+
+-- create clustered index IX_Valid_LearningDeliveryDenormTbl on Valid.LearningDeliveryDenormTbl(
+-- 		UKPRN asc,
+-- 		LearnRefNumber asc,
+-- 		AimSeqNumber asc
+-- )
+-- go
 
 if object_id('Valid.LearningDeliveryFAM','u') is not null
 begin

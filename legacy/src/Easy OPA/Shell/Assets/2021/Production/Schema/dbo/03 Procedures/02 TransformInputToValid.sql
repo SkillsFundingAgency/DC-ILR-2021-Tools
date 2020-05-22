@@ -804,7 +804,7 @@ begin
 		LDM4
 	)
 	select	
-	(SELECT TOP(1) UKPRN FROM dbo.LearningProvider) AS UKPRN,
+	UKPRN,
 	LearnRefNumber,
 			LearnAimRef,
 			AimType,
@@ -887,7 +887,7 @@ begin
 		ESMCode_SEM
 	)
 	select	
-	(SELECT TOP(1) UKPRN FROM dbo.LearningProvider) AS UKPRN,
+	UKPRN,
 	LearnRefNumber,
 			EmpStat,
 			EmpId,
