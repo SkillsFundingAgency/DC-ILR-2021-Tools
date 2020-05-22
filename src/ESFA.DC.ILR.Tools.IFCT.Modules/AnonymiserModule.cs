@@ -2,6 +2,7 @@
 using Autofac;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
+using ESFA.DC.ILR.Tools.IFCT.Anonymise.ReferenceProviders;
 using Loose;
 
 namespace ESFA.DC.ILR.Tools.IFCT.Modules
@@ -13,8 +14,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.Modules
             // Interface for the year Anonymiser entrypoint
             containerBuilder.RegisterType<Anonymiser>().As<IAnonymise<Message>>();
 
-            // Single instance of the logger so that it records across class instances
+            // Single instance of the logger and ref providers so that they record / provide across class instances
             containerBuilder.RegisterType<AnonymiseLog>().As<IAnonymiseLog>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<ULNProvider>().As<IReferenceProvider<long>>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<LearnerReferenceProvider>().As<IReferenceProvider<string>>().InstancePerLifetimeScope();
 
             // Register any classes from ESFA.DC.ILR.Tools.IFCT.Anonymise that implement IAnonymise<T> - These anonymise by class
             containerBuilder.RegisterAssemblyTypes(typeof(Anonymiser).Assembly)
