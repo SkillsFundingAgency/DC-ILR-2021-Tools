@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
 {
-    public class FieldUpdateProperties<T, DT>
-        where T : class
+    public class FieldUpdateProperties<TClass, TField>
+        where TClass : class
     {
-        public FieldUpdateProperties(bool shouldUpdateField, Expression<Func<T, DT>> selectorFunc, Func<DT, DT> upliftRule)
+        public FieldUpdateProperties(bool shouldUpdateField, Expression<Func<TClass, TField>> selectorFunc, Func<TField, TField> upliftRule)
         {
             ShouldUpdateField = shouldUpdateField;
             Selector = selectorFunc;
@@ -18,10 +16,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
 
         public bool ShouldUpdateField { get; }
 
-        public Expression<Func<T, DT>> Selector { get; }
+        public Expression<Func<TClass, TField>> Selector { get; }
 
-        public Func<T, DT> CompiledSelector { get; }
+        public Func<TClass, TField> CompiledSelector { get; }
 
-        public Func<DT, DT> UpliftRule { get; }
+        public Func<TField, TField> UpliftRule { get; }
     }
 }
