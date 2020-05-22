@@ -14,7 +14,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Modules
             // Interface for the year Anonymiser entrypoint
             containerBuilder.RegisterType<Anonymiser>().As<IAnonymise<Message>>();
 
-            // Single instance of the logger and ref providers so that they record / provide across class instances
+            // Lifetime scope instance of the logger and ref providers so that they record / provide across class instances during the processing of a single file.
             containerBuilder.RegisterType<AnonymiseLog>().As<IAnonymiseLog>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<ULNProvider>().As<IReferenceProvider<long>>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<LearnerReferenceProvider>().As<IReferenceProvider<string>>().InstancePerLifetimeScope();
