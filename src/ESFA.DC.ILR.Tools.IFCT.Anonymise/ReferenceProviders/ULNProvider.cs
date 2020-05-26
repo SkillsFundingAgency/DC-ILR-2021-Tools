@@ -8,7 +8,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.ReferenceProviders
     {
         private readonly IAnonymiseLog _anonymiseLog;
         private readonly Dictionary<long, long> _references = new Dictionary<long, long>(1024);
-        private int ulnGeneratorCount = 0;
+        private int _ulnGeneratorCount = 0;
 
         public ULNProvider(IAnonymiseLog anonymiseLog)
         {
@@ -34,7 +34,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Anonymise.ReferenceProviders
             newValue = -1;
             while (newValue < 0)
             {
-                newValue = ULN(++ulnGeneratorCount);
+                newValue = ULN(++_ulnGeneratorCount);
             }
 
             _references.Add(prevValue, newValue);

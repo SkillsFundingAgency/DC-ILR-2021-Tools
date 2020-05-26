@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Common\ESFA.DC.ILR.Tools.IFCT.Common.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.IFCT.Interface\ESFA.DC.ILR.Tools.IFCT.Interface.csproj" />
     <ProjectReference Include="..\ESFA.DC.ILR.Tools.ILR.Model.Loose\ESFA.DC.ILR.Tools.ILR.Model.Loose.csproj" />
   </ItemGroup>
