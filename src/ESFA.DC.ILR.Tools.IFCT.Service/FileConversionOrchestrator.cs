@@ -138,19 +138,25 @@ namespace ESFA.DC.ILR.Tools.IFCT.Service
                 }
 
                 // Write out the anonymisation lookup details (LRN and ULN)
-                using (var targetStream = await _fileService.OpenWriteStreamAsync(targetFileReference + ".CSV", targetFileContainer, new System.Threading.CancellationToken()))
+                if (_anonymiseLog?.Log.Any() == true)
                 {
-                    var newLineBytes = Encoding.ASCII.GetBytes(Environment.NewLine);
-                    foreach (var logEntry in _anonymiseLog.Log)
+                    using (var targetStream = await _fileService.OpenWriteStreamAsync(
+                        targetFileReference + ".CSV",
+                        targetFileContainer,
+                        new System.Threading.CancellationToken()))
                     {
-                        var reportLine = $"{logEntry.FieldName} {logEntry.OldValue} {logEntry.NewValue}";
-                        var reportLineBytes = Encoding.ASCII.GetBytes(reportLine);
-                        targetStream.Write(reportLineBytes, 0, reportLineBytes.Length);
-                        targetStream.Write(newLineBytes, 0, newLineBytes.Length);
-                    }
+                        var newLineBytes = Encoding.ASCII.GetBytes(Environment.NewLine);
+                        foreach (var logEntry in _anonymiseLog.Log)
+                        {
+                            var reportLine = $"{logEntry.FieldName} {logEntry.OldValue} {logEntry.NewValue}";
+                            var reportLineBytes = Encoding.ASCII.GetBytes(reportLine);
+                            targetStream.Write(reportLineBytes, 0, reportLineBytes.Length);
+                            targetStream.Write(newLineBytes, 0, newLineBytes.Length);
+                        }
 
-                    await targetStream.FlushAsync();
-                    _anonymiseLog.Clear();
+                        await targetStream.FlushAsync();
+                        _anonymiseLog.Clear();
+                    }
                 }
 
                 _messengerService.Send(_validationErrorHandler.ErrorRaised ?

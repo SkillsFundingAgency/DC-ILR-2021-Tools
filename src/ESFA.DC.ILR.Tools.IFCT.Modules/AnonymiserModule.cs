@@ -12,6 +12,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.Modules
         protected override void Load(ContainerBuilder containerBuilder)
         {
             // Interface for the year Anonymiser entrypoint
+            containerBuilder.RegisterType<AnonymiserConfiguration>().As<IAnonymiserConfiguration>();
             containerBuilder.RegisterType<Anonymiser>().As<IAnonymise<Message>>();
 
             // Lifetime scope instance of the logger and ref providers so that they record / provide across class instances during the processing of a single file.

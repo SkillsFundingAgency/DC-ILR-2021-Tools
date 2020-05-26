@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise.Anonymisers;
-using ESFA.DC.ILR.Tools.IFCT.Anonymise.Interface;
 using ESFA.DC.ILR.Tools.IFCT.Anonymise.ReferenceProviders;
 using FluentAssertions;
 using Xunit;

@@ -54,6 +54,7 @@
                 <Label Grid.Column="1" Grid.Row="1" Content="{Binding TargetFolderName}" FontSize="14"/>
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <CheckBox Content="Uplift Dates" IsChecked="{Binding UpliftDates}" IsEnabled="{Binding CanSelectFileFolder}"  />
+                    <CheckBox Content="Anonymise Data" IsChecked="{Binding AnonymiseData}" IsEnabled="{Binding CanSelectFileFolder}"  />
                 </StackPanel>
                 <Button Grid.Column="0" Grid.Row="3" Content="Process File" FontSize="14" Margin="0,5"
                         Command="{Binding ProcessFileCommand}" IsEnabled="{Binding CanStartProcessing}"

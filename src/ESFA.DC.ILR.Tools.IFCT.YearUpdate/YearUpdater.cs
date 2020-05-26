@@ -7,12 +7,10 @@ namespace ESFA.DC.ILR.Tools.IFCT.YearUpdate
 {
     public class YearUpdater : AbstractProcess<Loose.Message>
     {
-        private readonly IYearUpdateConfiguration _yearUpdateConfiguration;
         private readonly IModelRecurser _modelRecurser;
 
-        public YearUpdater(IYearUpdateConfiguration yearUpdateConfiguration, IModelRecurser modelRecurser)
+        public YearUpdater(IModelRecurser modelRecurser)
         {
-            _yearUpdateConfiguration = yearUpdateConfiguration;
             _modelRecurser = modelRecurser;
         }
 

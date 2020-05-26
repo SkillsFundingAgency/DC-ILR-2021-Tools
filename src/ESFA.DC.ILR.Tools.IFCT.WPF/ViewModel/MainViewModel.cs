@@ -27,6 +27,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
         private string _sourceFileName = FilenamePlaceholder;
         private string _targetFolderName = FoldernamePlaceholder;
         private bool _upliftDates = true;
+        private bool _anonymiseData = true;
         private bool _canSelectFileFolder = true;
         private bool _canStartProcessing = false;
         private string _progressIndicator = string.Empty;
@@ -76,6 +77,16 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             set
             {
                 _upliftDates = value;
+                RaisePropertyChanged();
+            }
+        }
+        
+        public bool AnonymiseData
+        {
+            get =>_anonymiseData;
+            set
+            {
+                _anonymiseData = value;
                 RaisePropertyChanged();
             }
         }
@@ -155,7 +166,7 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
         public void HandleTaskProgressMessage(TaskProgressMessage taskProgressMessage)
         {
             ProgressIndicator = taskProgressMessage.TaskName;
-            ProgressCounter = taskProgressMessage.CurrentTask; ;
+            ProgressCounter = taskProgressMessage.CurrentTask;
         }
 
         public async Task ProcessFileAction()
@@ -167,7 +178,8 @@ namespace ESFA.DC.ILR.Tools.IFCT.WPF.ViewModel
             // Re-create the Configuration with memory source added for options set from the UI
             var memOptions = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("DateUplift:Default", UpliftDates ? "true" : "false")
+                new KeyValuePair<string, string>("DateUplift:Default", UpliftDates ? "true" : "false"),
+                new KeyValuePair<string, string>("Anonymisation:Default", AnonymiseData ? "true" : "false")
             };
 
             var configBuilder = new ConfigurationBuilder();
