@@ -81,9 +81,11 @@ end
 go
 
 create table Rulebase.FM25_Cases (
+	UKPRN int,
 	LearnRefNumber varchar(12),
 	CaseData xml not null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc
 	)
 )

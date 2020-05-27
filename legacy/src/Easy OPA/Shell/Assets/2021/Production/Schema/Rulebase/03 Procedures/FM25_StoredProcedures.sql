@@ -27,12 +27,14 @@ create procedure Rulebase.FM25_Insert_Cases
 as 
 begin
 	insert into Rulebase.FM25_Cases (
+		UKPRN,
 		LearnRefNumber,
 		CaseData
 	)
-	select	controller.LearnRefNumber,
+	select controller.UKPRN,
+			controller.LearnRefNumber,
 							-- global
-			CONVERT (xml,	(select	lp.UKPRN as [@UKPRN],
+			CONVERT (xml,	(select	globalLearner.UKPRN as [@UKPRN],
 									LARS_Current_Version.CurrentVersion as [@LARSVersion],
 									Org_Current_Version.CurrentVersion as [@OrgVersion],
 									areaCost.FundingFactorValue as [@AreaCostFactor1618],
@@ -64,6 +66,7 @@ begin
 													OutType as [@OutType]
 											from	Valid.DPOutcome
 											where	LearnRefNumber = l.LearnRefNumber
+											AND UKPRN =l.UKPRN
 											for xml path('DPOutcome'), type),
 											(select	EffectiveFrom as [@EffectiveFrom],
 													EffectiveTo as [@EffectiveTo],
@@ -98,6 +101,7 @@ begin
 															LearnDelFAMDateTo as [@LearnDelFAMDateTo]
 													from	Valid.LearningDeliveryFAM
 													where	LearnRefNumber = ld.LearnRefNumber
+													AND UKPRN = ld.UKPRN
 													and		AimSeqNumber = ld.AimSeqNumber
 													for xml path('LearningDeliveryFAM'), type),
 													-- learning delivery lars validity
@@ -106,65 +110,69 @@ begin
 															StartDate as [@ValidityStartDate]
 													from	Reference.LARS_Validity
 													where	LearnAimRef = ld.LearnAimRef
+													AND UKPRN = ld.UKPRN
 													for xml path('LearningDeliveryLARSValidity'), type)
 											from	Valid.LearningDelivery as ld
 														left join Reference.LARS_LearningDelivery as lld
 															on lld.LearnAimRef = ld.LearnAimRef
 											where	ld.LearnRefNumber = l.LearnRefNumber
+											AND ld.UKPRN = l.UKPRN
 											for xml path('LearningDelivery'), type)
 									from	Valid.Learner as l
 												join Valid.LearnerDenorm as learnDenorm
 													on l.LearnRefNumber = learnDenorm.LearnRefNumber
-
-												
+													and l.UKPRN = learnDenorm.UKPRN
 												left join Reference.FM25_PostcodeDisadvantage as pd
 													on pd.Postcode = l.Postcode
 													and pd.EffectiveTo is null
 									where	l.LearnRefNumber = globalLearner.LearnRefNumber
+									AND l.UKPRN = globalLearner.UKPRN
 									for xml path('Learner'), type)
 							from	Valid.Learner as globalLearner
-										cross join Valid.LearningProvider as lp
+										--cross join Valid.LearningProvider as lp
 										cross join Reference.LARS_Current_Version			
 										cross join Reference.Org_Current_Version
 										left join Reference.Org_Funding as areaCost
-											on areaCost.UKPRN = lp.UKPRN
+											on areaCost.UKPRN = globalLearner.UKPRN
 											and areaCost.FundingFactorType = 'EFA 16-19'
 											and areaCost.FundingFactor = 'HISTORIC AREA COST FACTOR'
 											and areaCost.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as disadProportion
-											on disadProportion.UKPRN = lp.UKPRN
+											on disadProportion.UKPRN = globalLearner.UKPRN
 											and disadProportion.FundingFactorType = 'EFA 16-19'
 											and disadProportion.FundingFactor = 'HISTORIC DISADVANTAGE FUNDING PROPORTION'
 											and disadProportion.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as disadLevel3
-											on disadLevel3.UKPRN = lp.UKPRN
+											on disadLevel3.UKPRN = globalLearner.UKPRN
 											and disadLevel3.FundingFactorType = 'EFA 16-19'
 											and disadLevel3.FundingFactor = 'HISTORIC LEVEL 3 PROGRAMME MATHS AND ENGLISH PROPORTION'
 											and disadLevel3.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as progProp
-											on progProp.UKPRN = lp.UKPRN
+											on progProp.UKPRN = globalLearner.UKPRN
 											and progProp.FundingFactorType = 'EFA 16-19'
 											and progProp.FundingFactor = 'HISTORIC LARGE PROGRAMME PROPORTION'
 											and progProp.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as progCostFact
-											on progCostFact.UKPRN = lp.UKPRN
+											on progCostFact.UKPRN = globalLearner.UKPRN
 											and progCostFact.FundingFactorType = 'EFA 16-19'
 											and progCostFact.FundingFactor = 'HISTORIC PROGRAMME COST WEIGHTING FACTOR'
 											and progCostFact.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as retFact
-											on retFact.UKPRN = lp.UKPRN
+											on retFact.UKPRN = globalLearner.UKPRN
 											and retFact.FundingFactorType = 'EFA 16-19'
 											and retFact.FundingFactor = 'HISTORIC RETENTION FACTOR'
 											and retFact.EffectiveFrom = '01-Aug-2020'
 										left join Reference.Org_Funding as specialRes
-											on specialRes.UKPRN = lp.UKPRN
+											on specialRes.UKPRN = globalLearner.UKPRN
 											and specialRes.FundingFactorType = 'EFA 16-19'
 											and specialRes.FundingFactor = 'SPECIALIST RESOURCES'
 											-- and specialRes.EffectiveFrom = '01-Aug-2013' <= this is the only funding factor that doesn't have an annual renewal??
 							where	globalLearner.LearnRefNumber = controller.LearnRefNumber
+							AND globalLearner.UKPRN = controller.UKPRN
 							for xml path ('global'), type))
 					from	(select	distinct
-									LearnRefNumber
+									LearnRefNumber,
+									UKPRN
 							from	Valid.LearningDelivery
 							where	FundModel = 25
 					) as controller
@@ -208,6 +216,7 @@ end
 go
 
 create procedure [Rulebase].[FM25_Insert_Learner] (
+	@UKPRN int,
 	@AcadMonthPayment int,
 	@AcadProg bit,
 	@ActualDaysILCurrYear int,
@@ -240,6 +249,7 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 ) as
 begin
 	insert into Rulebase.FM25_Learner (
+		UKPRN,
 		LearnRefNumber,
 		AcadMonthPayment,
 		AcadProg,
@@ -270,6 +280,7 @@ begin
 		TLevelStudent,
 		PrvHistL3ProgMathEngProp
 	) values (
+		@UKPRN,
 		@LearnRefNumber,
 		@AcadMonthPayment,
 		@AcadProg,

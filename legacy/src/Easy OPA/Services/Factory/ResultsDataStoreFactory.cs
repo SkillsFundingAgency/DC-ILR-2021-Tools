@@ -72,7 +72,7 @@ namespace EasyOPA.Factory
             CreateSchemaFor(
                 forTarget,
                 batch.Scripts.AsSafeReadOnlyList(),
-                x => Token.DoSecondaryPass(x, inYear, forTarget, usingContext.ReturnPeriod, ilrFileName));
+                x => Token.DoSecondaryPass(x, inYear, forTarget, usingContext.ReturnPeriod, ilrFileName, forProvider.ToString()));
         }
 
         /// <summary>

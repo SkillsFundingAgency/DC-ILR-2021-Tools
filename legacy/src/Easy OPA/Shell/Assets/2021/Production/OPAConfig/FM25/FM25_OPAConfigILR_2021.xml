@@ -42,6 +42,9 @@ Rulebase Version: ILR EFA Calculation 1617, Version 1617.04
     <OPAResult StoredProcName="Rulebase.FM25_Insert_Learner"
                TopLevelEntityName="Learner"
                DBConnectionID="ILR">
+      <ResultQueryParameterMap AttributeName="UKPRN"
+                               ParameterName="UKPRN"
+                               EntityName="global" />
       <ResultQueryParameterMap AttributeName="LearnRefNumber"
                                ParameterName="LearnRefNumber"
                                EntityName="Learner" />
