@@ -81,9 +81,11 @@ end
 go
 
 create table Rulebase.FM25_Cases (
+	UKPRN int,
 	LearnRefNumber varchar(12),
 	CaseData xml not null,
 	primary key clustered (
+		UKPRN asc,
 		LearnRefNumber asc
 	)
 )
@@ -111,6 +113,7 @@ end
 go
 
 create table Rulebase.FM25_Learner (
+UKPRN int,
 	LearnRefNumber varchar(12),
 	AcadMonthPayment int,
 	AcadProg bit,
@@ -141,6 +144,7 @@ create table Rulebase.FM25_Learner (
 	TLevelStudent bit,
 	PrvHistL3ProgMathEngProp decimal(10, 5),
 	primary key clustered (
+	UKPRN asc,
 		LearnRefNumber asc
 	)
 )
