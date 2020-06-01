@@ -64,7 +64,7 @@ SELECT DISTINCT
 
 --FROM [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LearningDelivery] L
 FROM ReferenceInput.[LARS_LARSLearningDelivery] L
-INNER JOIN (SELECT DISTINCT LearnAimRef FROM Input.LearningDelivery) LD ON L.LearnAimRef = LD.LearnAimRef
+INNER JOIN (SELECT DISTINCT LearnAimRef FROM Valid.LearningDelivery) LD ON L.LearnAimRef = LD.LearnAimRef
 --INNER JOIN  [${UoD.FullyQualified}].[${LARS.schemaname}].LARS_LARSAnnualValue AV on L.LearnAimRef = AV.LearnAimRef
 INNER JOIN  ReferenceInput.LARS_LARSAnnualValue AV on L.LearnAimRef = AV.LearnAimRef
 --INNER JOIN  [${UoD.FullyQualified}].[${LARS.schemaname}].[LARS_LARSSection96] S96 ON L.LearnAimRef=S96.LearnAimRef

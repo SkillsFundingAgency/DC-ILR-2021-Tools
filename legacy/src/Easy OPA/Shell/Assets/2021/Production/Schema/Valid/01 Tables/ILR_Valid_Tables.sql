@@ -423,6 +423,69 @@ create table Valid.LearningDeliveryDenormTbl (
 )
 go
 
+if object_id('Valid.LearnerDenormTbl','U') is not null
+begin
+	drop table Valid.LearnerDenormTbl
+end
+go
+
+create table Valid.LearnerDenormTbl (
+UKPRN int not null,	
+LearnRefNumber varchar(12) not null,	
+PrevLearnRefNumber varchar(12) null,	
+PrevUKPRN int null,	
+PMUKPRN int null,	
+CampId varchar(8) null,	
+ULN bigint not null,	
+FamilyName varchar(100) null,	
+GivenNames varchar(100) null,	
+DateOfBirth date null,	
+Ethnicity int not null,	
+Sex varchar(1) not null,	
+LLDDHealthProb int not null,	
+NINumber varchar(9) null,	
+PriorAttain int null,	
+Accom int null,	
+ALSCost int null,	
+PlanLearnHours int null,	
+PlanEEPHours int null,	
+MathGrade varchar(4) null,	
+EngGrade varchar(4) null,	
+PostcodePrior varchar(8) null,	
+Postcode varchar(8) null,	
+AddLine1 varchar(50) null,
+AddLine2 varchar(50) null,
+AddLine3 varchar(50) null,
+AddLine4 varchar(50) null,
+TelNo varchar(18) null,	
+Email varchar(1000) null,	
+LSR1 int null,	
+LSR2 int null,	
+LSR3 int null,	
+LSR4 int null,	
+NLM1 int null,	
+NLM2 int null,	
+PPE1 int null,	
+PPE2 int null,	
+EDF1 int null,	
+EDF2 int null,	
+EHC int null,	
+ECF int null,	
+HNS int null,	
+DLA int null,	
+MCF int null,	
+SEN int null,	
+FME int null,	
+ProvSpecLearnMon_A varchar(20) null,	
+ProvSpecLearnMon_B varchar(20) null,	
+
+	primary key clustered (
+		UKPRN asc,
+		LearnRefNumber asc
+	)
+)
+go
+
 -- create clustered index IX_Valid_LearningDeliveryDenormTbl on Valid.LearningDeliveryDenormTbl(
 -- 		UKPRN asc,
 -- 		LearnRefNumber asc,

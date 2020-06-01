@@ -606,5 +606,10 @@ namespace EasyOPA.Coordinator
 
             return GetAtom<bool>(usingCommand, inThisContext);
         }
+
+        public void ExecuteCommand(string command, IConnectionDetail context)
+        {
+            UsingConnection(context, x => RunCommand(command, x));
+        }
     }
 }

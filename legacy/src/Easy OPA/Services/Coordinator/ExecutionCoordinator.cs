@@ -188,7 +188,11 @@ namespace EasyOPA.Abstract
                     .Where(x => x.IsSelectedForProcessing);
 
                 Monitor.SetProviderCount(providers.Count());
-
+                
+                //INTPUT FOR THE REFERECE DATA
+                PostValidation.TransformInput(inContext, usingSession.InputDataSource.OperatingYear);
+                
+                
                 providers.ForEach(usingProvider =>
                 {
                     Monitor.IncrementPosition();
@@ -203,14 +207,16 @@ namespace EasyOPA.Abstract
                         {
                             // start the log
                             StartLog(usingSession, usingProvider, inContext);
+                            // writes current UKPRN
+                            WriteOutUKPRN(usingProvider.ID, inContext);
                             // build
                             PrepareRun(usingSession, inContext, usingProvider.ID, firstInRun);
                             // validate
-                            RunRulebaseSubset(TypeOfRulebaseOperation.Validation, usingSession.RulesToRun, inContext);
+                            RunRulebaseSubset(TypeOfRulebaseOperation.Validation, usingSession.RulesToRun, inContext, usingProvider.ID);
                             // transform
                             TransformInput(inContext, usingSession.InputDataSource.OperatingYear, usingProvider);
                             // calculate
-                            RunRulebaseSubset(TypeOfRulebaseOperation.Calculation, usingSession.RulesToRun, inContext);
+                            RunRulebaseSubset(TypeOfRulebaseOperation.Calculation, usingSession.RulesToRun, inContext, usingProvider.ID);
                             // complete
                             #region Needs new story to re-work this
                             CompleteRun(usingSession, inContext, usingProvider.ID);
@@ -264,6 +270,36 @@ namespace EasyOPA.Abstract
             Emitter.Publish(CommonLocalised.LineDivider);
         }
 
+        public void WriteOutUKPRN(int UKPRN, IContainSessionContext containerSessionContext)
+        {
+            // create table or trumcate
+            Emitter.Publish($"Creating UKPRN table");
+            try
+            {
+                string createTable = $"IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UKPRNForProcedures]') AND type in (N'U')) DROP TABLE [dbo].[UKPRNForProcedures] CREATE TABLE [dbo].[UKPRNForProcedures] ([UKPRN] [int] NOT NULL) ON [PRIMARY]";
+                RunSafe.Try(() => Coordinate.ExecuteCommand(createTable, containerSessionContext.ProcessingLocation));
+                Emitter.Publish("Table created sucessfully");
+            }
+            catch (Exception e)
+            {
+                Emitter.Publish($"Failed to create table: {e.Message}");
+                throw;
+            }
+            // insert ukprn
+            Emitter.Publish($"Writeing out {UKPRN}");
+            try
+            {
+                string insertUKPRN = $"INSERT INTO [dbo].[UKPRNForProcedures] ([UKPRN]) VALUES ({UKPRN})";
+                RunSafe.Try(() => Coordinate.ExecuteCommand(insertUKPRN, containerSessionContext.ProcessingLocation));
+                Emitter.Publish("Writing out sucessful");
+            }
+            catch (Exception e)
+            {
+                Emitter.Publish($"Failed to insert UKPRN {UKPRN} into table: {e.Message}");
+                throw;
+            }
+        }
+
         /// <summary>
         /// Prepares the run.
         /// </summary>
@@ -287,7 +323,7 @@ namespace EasyOPA.Abstract
         /// <param name="thisOperation">this operation.</param>
         /// <param name="rulesToRun">(the) rules to run</param>
         /// <param name="inContext">in context.</param>
-        public void RunRulebaseSubset(TypeOfRulebaseOperation thisOperation, IReadOnlyCollection<IRulebaseConfiguration> rulesToRun, IContainSessionContext inContext)
+        public void RunRulebaseSubset(TypeOfRulebaseOperation thisOperation, IReadOnlyCollection<IRulebaseConfiguration> rulesToRun, IContainSessionContext inContext, int UKPRN)
         {
             using (Timing.BeginScope($"{thisOperation} rules"))
             {
@@ -310,7 +346,7 @@ namespace EasyOPA.Abstract
 
                     if (It.IsInRange(rule.ExecutionType, TypeOfRulebaseExecution.OPA))
                     {
-                        var count = GetInsertCaseCount(inContext.ProcessingLocation, rule);
+                        var count = GetInsertCaseCount(inContext.ProcessingLocation, rule, UKPRN);
                         Emitter.Publish(Indentation.FirstLevel, $"{count} case(s) created");
                         Monitor.SetCaseCount(rule.ShortName, count);
                     }
@@ -354,11 +390,11 @@ namespace EasyOPA.Abstract
         /// <param name="detail">The detail.</param>
         /// <param name="shortName">The short name.</param>
         /// <returns>the count</returns>
-        public int GetInsertCaseCount(IConnectionDetail detail, IRulebaseConfiguration rule)
+        public int GetInsertCaseCount(IConnectionDetail detail, IRulebaseConfiguration rule, int UKPRN)
         {
             Emitter.Publish(Indentation.FirstLevel, rule.InsertCount.Description);
-
-            return Coordinate.GetAtom<int>(rule.InsertCount.Command, detail);
+            string command = rule.InsertCount.Command.Replace("{ukprn}", UKPRN.ToString());
+            return Coordinate.GetAtom<int>(command, detail);
         }
 
         /// <summary>
@@ -371,7 +407,7 @@ namespace EasyOPA.Abstract
         {
             using (Timing.BeginScope($"Tramsformation of input and second pass data enrichment"))
             {
-                PostValidation.TransformInput(inContext, forYear);
+                //PostValidation.TransformInput(inContext, forYear);
 
                 // update session counts (interaction feedback)
                 SetLearnerCounts(inContext.ProcessingLocation, andProvider);

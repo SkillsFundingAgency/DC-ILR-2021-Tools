@@ -13,7 +13,9 @@ go
 create procedure Rulebase.FM25_Get_Cases as 
 begin
 	select	CaseData
-	from	Rulebase.FM25_Cases
+	from	Rulebase.FM25_Cases C
+	JOIN dbo.UKPRNForProcedures UFP
+	ON UFP.UKPRN = C.UKPRN
 end	
 go
 
@@ -119,7 +121,7 @@ begin
 											AND ld.UKPRN = l.UKPRN
 											for xml path('LearningDelivery'), type)
 									from	Valid.Learner as l
-												join Valid.LearnerDenorm as learnDenorm
+												join Valid.LearnerDenormTbl as learnDenorm
 													on l.LearnRefNumber = learnDenorm.LearnRefNumber
 													and l.UKPRN = learnDenorm.UKPRN
 												left join Reference.FM25_PostcodeDisadvantage as pd
@@ -171,9 +173,11 @@ begin
 							AND globalLearner.UKPRN = controller.UKPRN
 							for xml path ('global'), type))
 					from	(select	distinct
-									LearnRefNumber,
-									UKPRN
-							from	Valid.LearningDelivery
+									ld.LearnRefNumber,
+									ld.UKPRN
+							from	Valid.LearningDelivery ld
+							join [dbo].UKPRNForProcedures ufp
+								on ufp.UKPRN = ld.UKPRN
 							where	FundModel = 25
 					) as controller
 end
