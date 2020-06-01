@@ -306,15 +306,19 @@ go
 
 CREATE PROCEDURE [Valid].[InsertIntoValidLearningProvider]
 (
-	@schema varchar(20)
+	@schema varchar(20),
+	@FModel varchar(2) = NULL
 )
 AS
 BEGIN
 	 SET NOCOUNT ON
 	DECLARE @output nvarchar(max)
 	--LearningProvider
-	SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT [UKPRN] FROM ['+@schema+'].[LearningProvider]'+ CHAR(13)
-	exec(@output)
+	IF @FModel = NULL
+		SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT [UKPRN] FROM ['+@schema+'].[LearningProvider]' + CHAR(13)
+	ELSE
+		SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT DISTINCT lp.[UKPRN] FROM ['+@schema+'].[LearningProvider] lp join ['+@schema+'].LearningDelivery ld on ld.[UKPRN] = lp.[UKPRN] WHERE ld.FundModel = '+ @FModel + CHAR(13)
+	select @output
 END
 GO
 
@@ -428,10 +432,13 @@ go
 
 CREATE PROCEDURE [Valid].[InsertIntoValid]
 (
-	@sche varchar(20)
+	@sche varchar(20),
+	@FundingModel varchar(2) = NULL
 )
 AS
 BEGIN
+	exec [Valid].[InsertIntoValidLearningProvider] @schema = @sche, @FModel = @FundingModel
+	print('Finised Inserting into LearningProvider')
 	exec [Valid].[InsertIntoValidAppFinRecord] @schema = @sche
 	print('Finised Inserting into AppFinRecord')
 	exec [Valid].[InsertIntoValidCollectionDetails] @schema = @sche
@@ -462,8 +469,6 @@ BEGIN
 	print('Finised Inserting into LearningDeliveryHE')
 	exec [Valid].[InsertIntoValidLearningDeliveryWorkPlacement] @schema = @sche
 	print('Finised Inserting into LearningDeliveryWorkPlacement')
-	exec [Valid].[InsertIntoValidLearningProvider] @schema = @sche
-	print('Finised Inserting into LearningProvider')
 	exec [Valid].[InsertIntoValidLLDandHealtProblem] @schema = @sche
 	print('Finised Inserting into LLDandHealdthProblem')
 	exec [Valid].[InsertIntoValidProviderSpecDeliveryMonitoring] @schema = @sche
@@ -478,5 +483,6 @@ BEGIN
 	print('Finised Inserting into LearnerEmploymentStatusDenormTbl')
 	EXEC [dbo].[TransformInputToValid_LearningDeliveryDenormTbl]
 	print('Finised Inserting into LearningDeliveryDenormTbl')
+	EXEC [dbo].[TransformInputToValid_LearnerDenormTbl]
 END
 GO
