@@ -94,5 +94,7 @@ namespace EasyOPA.Coordinator
         /// <param name="usingStoreName">using the name of the store.</param>
         /// <param name="inThisContext">in this context.</param>
         void DropDataStore(string usingStoreName, IConnectionDetail inThisContext);
+
+        void ExecuteCommand(string command, IConnectionDetail context);
     }
 }
