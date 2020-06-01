@@ -208,7 +208,7 @@ namespace EasyOPA.Abstract
                             // start the log
                             StartLog(usingSession, usingProvider, inContext);
                             // writes current UKPRN
-                            WirteOutUKPRN(usingProvider.ID, inContext);
+                            WriteOutUKPRN(usingProvider.ID, inContext);
                             // build
                             PrepareRun(usingSession, inContext, usingProvider.ID, firstInRun);
                             // validate
@@ -270,7 +270,7 @@ namespace EasyOPA.Abstract
             Emitter.Publish(CommonLocalised.LineDivider);
         }
 
-        public void WirteOutUKPRN(int UKPRN, IContainSessionContext containerSessionContext)
+        public void WriteOutUKPRN(int UKPRN, IContainSessionContext containerSessionContext)
         {
             // create table or trumcate
             Emitter.Publish($"Creating UKPRN table");
