@@ -5,27 +5,25 @@ insert into Reference.Lot (
 	TenderSpecificationReference
 )
 select	distinct
-		Lot.CalcMethod,
+		eer.CalcMethod,
 		Lot.LotReference,
-		Lot.TenderSpecificationReference
-from	${ESF_Contract_Reference_Data.FQ}.dbo.Lot
-			inner merge join [${ESF_Contract_Reference_Data.servername}].[${ESF_Contract_Reference_Data.databasename}].[dbo].[ContractAllocation]
-				on Lot.TenderSpecificationReference = ContractAllocation.TenderSpecReference
-				and Lot.LotReference = ContractAllocation.LotReference
-			inner join ${runmode.inputsource}.LearningDelivery
-				on ContractAllocation.ContractAllocationNumber = LearningDelivery.ConRefNumber
+		eer.TenderSpecReference
+from	ReferenceInput.[FCS_FcsContractAllocation] Lot
+		inner join ReferenceInput.FCS_EsfEligibilityRule eer
+			on eer.Id = Lot.EsfEligibilityRule_Id
+		inner join Valid.LearningDelivery
+			on Lot.ContractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
 --truncate table Reference.ContractAllocation
 insert into Reference.ContractAllocation
 select	distinct
-		ContractAllocation.ContractAllocationNumber,
-		ContractAllocation.LotReference,
-		ContractAllocation.TenderSpecReference
-from	${ESF_Contract_Reference_Data.FQ}.dbo.ContractAllocation
-			inner merge join [${ESF_Contract_Reference_Data.servername}].[${ESF_Contract_Reference_Data.databasename}].[dbo].[EligibilityRule]
-				on EligibilityRule.TenderSpecificationReference = ContractAllocation.TenderSpecReference
-				and EligibilityRule.LotReference = ContractAllocation.LotReference
-			inner join ${runmode.inputsource}.LearningDelivery
-				on ContractAllocation.ContractAllocationNumber = LearningDelivery.ConRefNumber
+		fca.ContractAllocationNumber,
+		fca.LotReference,
+		fca.TenderSpecReference
+from	ReferenceInput.[FCS_FcsContractAllocation] fca
+			inner join ReferenceInput.FCS_EsfEligibilityRule eer
+				on eer.Id = fca.EsfEligibilityRule_Id
+			inner join Valid.LearningDelivery ld
+				on fca.ContractAllocationNumber = ld.ConRefNumber
 go
