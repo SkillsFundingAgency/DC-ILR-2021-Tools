@@ -6,16 +6,15 @@ insert into Reference.DeliverableCodeMappings (
 	DeliverableName
 )
 select	distinct
-		DeliverableCodeMappings.ExternalDeliverableCode,
-		DeliverableCodeMappings.FCSDeliverableCode,
-		DeliverableCodeMappings.FundingStreamPeriodCode,
-		DeliverableCodeMappings.DeliverableName
-from	${FCS-Contracts.FQ}.dbo.DeliverableCodeMappings
-			inner merge join [${FCS-Contracts.servername}].[${FCS-Contracts.databasename}].[dbo].[vw_ContractDescription]
-				on DeliverableCodeMappings.FundingStreamPeriodCode = vw_ContractDescription.fundingStreamPeriodCode
-				and DeliverableCodeMappings.FCSDeliverableCode = vw_ContractDescription.deliverableCode
+		cd.ExternalDeliverableCode,
+		cd.DeliverableCode,
+		ca.FundingStreamPeriodCode,
+		cd.DeliverableDescription
+from	ReferenceInput.[FCS_FcsContractDeliverable] cd
+			inner join ReferenceInput.FCS_FcsContractAllocation ca
+				on ca.Id = cd.FCS_FcsContractAllocation_Id
 			inner join Valid.LearningDelivery
-				on vw_ContractDescription.contractAllocationNumber = LearningDelivery.ConRefNumber
+				on ca.ContractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
 --truncate table Reference.vw_ContractDescription
@@ -39,11 +38,8 @@ select	distinct
 from	ReferenceInput.FCS_FcsContractAllocation FCA
 		INNER JOIN ReferenceInput.FCS_FcsContractDeliverable FCD
 			on FCD.FCS_FcsContractAllocation_Id = FCA.Id
-			inner merge join [${FCS-Contracts.servername}].[${FCS-Contracts.databasename}].[dbo].[DeliverableCodeMappings]
-				on DeliverableCodeMappings.FundingStreamPeriodCode = FCA.fundingStreamPeriodCode
-				and DeliverableCodeMappings.FCSDeliverableCode = FCD.deliverableCode
-			inner join Valid.LearningDelivery
-				on FCA.contractAllocationNumber = LearningDelivery.ConRefNumber
+		inner join Valid.LearningDelivery
+			on FCA.contractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
 truncate table Reference.AEC_LatestInYearEarningHistory
