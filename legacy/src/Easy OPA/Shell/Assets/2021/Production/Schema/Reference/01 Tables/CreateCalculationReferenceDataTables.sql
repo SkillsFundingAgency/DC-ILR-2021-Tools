@@ -564,6 +564,27 @@ create clustered index IX_vw_ContractDescription on Reference.vw_ContractDescrip
 )
 go
 
+if object_id ('Reference.PostcodeSpecialistResourceRefData', 'u') is not null
+begin
+	drop table Reference.PostcodeSpecialistResourceRefData
+end
+go
+
+create table Reference.PostcodeSpecialistResourceRefData (
+	UKPRN bigint not null,
+	PostcodeSpecResEffectiveFrom date not null,
+	PostcodeSpecResEffectiveTo date,
+	PostcodeSpecResPostcode varchar(10),
+	PostcodeSpecResSpecialistResources varchar(1),
+)
+go
+
+create clustered index IX_PostcodeSpecialistResourceRefData on Reference.PostcodeSpecialistResourceRefData (
+	PostcodeSpecResPostcode,
+	UKPRN
+)
+go
+
 if object_id ('Reference.AEC_LatestInYearEarningHistory', 'u') is not null
 begin
 	drop table Reference.AEC_LatestInYearEarningHistory
