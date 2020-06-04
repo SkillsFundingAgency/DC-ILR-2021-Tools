@@ -299,8 +299,8 @@ create procedure Rulebase.FM35_Insert_LearningDelivery (
 	@UnweightedRateFromLARS decimal(10,5),
 	@WeightedRateFromESOL decimal(10,5),
 	@WeightedRateFromLARS decimal(10,5),
-	@ReservedUpliftFactor1 decimap(10,5),
-	@ReservedUpliftRate1 decimap(10,5)
+	@ReservedUpliftFactor1 decimal(10,5),
+	@ReservedUpliftRate1 decimal(10,5)
 ) as
 begin
 	set nocount on
@@ -381,7 +381,7 @@ begin
 		WeightedRateFromESOL,
 		WeightedRateFromLARS,
 		ReservedUpliftFactor1,
-		ReservedUpliftFactor1
+		ReservedUpliftRate1
 	) values (
 		@LearnRefNumber,
 		@AimSeqNumber,
