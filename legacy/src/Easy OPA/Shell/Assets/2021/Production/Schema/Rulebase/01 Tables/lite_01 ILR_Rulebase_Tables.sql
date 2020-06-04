@@ -413,7 +413,9 @@ create table Rulebase.FM35_LearningDelivery (
 	UnWeightedRateFromESOL decimal(10,5),
 	UnweightedRateFromLARS decimal(10,5),
 	WeightedRateFromESOL decimal(10,5),
-	WeightedRateFromLARS decimal(10,5)
+	WeightedRateFromLARS decimal(10,5),
+	ReservedUpliftFactor1 decimal(10,5),
+	ReservedUpliftRate1 decimal(10,5)
 	primary key clustered (
 		LearnRefNumber asc,
 		AimSeqNumber asc

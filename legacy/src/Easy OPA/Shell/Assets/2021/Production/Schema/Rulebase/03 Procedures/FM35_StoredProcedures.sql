@@ -82,6 +82,8 @@ begin
                                                     ld.EmpOutcome as [@EmpOutcome],
                                                     lars_ld.EnglPrscID as [@EnglPrscID],
                                                     lars_ld.EnglandFEHEStatus as [@EnglandFEHEStatus],
+													ld.FundModel as [@FundModel],
+													ld.DelLocPostCode as [@DelLocPostCode],
                                                     ld.FworkCode as [@FworkCode],
                                                     lars_ld.FrameworkCommonComponent as [@FrameworkCommonComponent],
                                                     lars_fa.FrameworkComponentType as [@FrameworkComponentType],
@@ -129,7 +131,7 @@ begin
                                                             EffectiveTo as [@AreaCosEffectiveTo]
 													from	Reference.SFA_PostcodeAreaCost
 													where	Postcode = ld.DelLocPostCode
-													for xml path ('SFA_PostcodeAreaCost'), type)
+													for xml path ('SFA_PostcodeAreaCost'), type)											
                                             from	Valid.LearningDeliveryDenormTbl as ld
 														left join Reference.LARS_LearningDelivery as lars_ld 
 															on lars_ld.LearnAimRef = ld.LearnAimRef
@@ -143,7 +145,14 @@ begin
                                             for xml path ('LearningDelivery'), type)
 									from	Valid.Learner as l
 									where	l.LearnRefNumber = globalLearner.LearnRefNumber
-									for xml path ('Learner'), type)
+									for xml path ('Learner'), type),
+									(SELECT PostcodeSpecResEffectiveFrom as [@PostcodeSpecResEffectiveFrom],
+											PostcodeSpecResEffectiveTo as [@PostcodeSpecResEffectiveTo],
+											PostcodeSpecResPostcode as [@PostcodeSpecResPostcode],
+											PostcodeSpecResSpecialistResources as [@PostcodeSpecResSpecialistResources]
+									FROM Reference.PostcodeSpecialistResourceRefData
+									WHERE UKPRN = @UKPRN
+									for xml path ('Postcode_Specialist_Resource_RefData'), type)
 							from	Valid.Learner as globalLearner
 								cross join Reference.LARS_Current_Version as lv
 								cross join Reference.Org_Current_Version as ov
@@ -289,7 +298,9 @@ create procedure Rulebase.FM35_Insert_LearningDelivery (
 	@UnWeightedRateFromESOL decimal(10,5),
 	@UnweightedRateFromLARS decimal(10,5),
 	@WeightedRateFromESOL decimal(10,5),
-	@WeightedRateFromLARS decimal(10,5)
+	@WeightedRateFromLARS decimal(10,5),
+	@ReservedUpliftFactor1 decimal(10,5),
+	@ReservedUpliftRate1 decimal(10,5)
 ) as
 begin
 	set nocount on
@@ -368,7 +379,9 @@ begin
 		UnWeightedRateFromESOL,
 		UnweightedRateFromLARS,
 		WeightedRateFromESOL,
-		WeightedRateFromLARS
+		WeightedRateFromLARS,
+		ReservedUpliftFactor1,
+		ReservedUpliftRate1
 	) values (
 		@LearnRefNumber,
 		@AimSeqNumber,
@@ -444,7 +457,9 @@ begin
 		@UnWeightedRateFromESOL,
 		@UnweightedRateFromLARS,
 		@WeightedRateFromESOL,
-		@WeightedRateFromLARS
+		@WeightedRateFromLARS,
+		@ReservedUpliftFactor1,
+		@ReservedUpliftRate1
 	)
 end
 go

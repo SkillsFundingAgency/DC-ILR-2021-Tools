@@ -2939,6 +2939,14 @@
           <Source>WeightedRateFromLARS</Source>
           <Destination>WeightedRateFromLARS</Destination>
         </ColumnMapping>
+        <ColumnMapping>
+          <Source>ReservedUpliftFactor1</Source>
+          <Destination>ReservedUpliftFactor1</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>ReservedUpliftRate1</Source>
+          <Destination>ReservedUplftRate1</Destination>
+        </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
     <TableMapping>

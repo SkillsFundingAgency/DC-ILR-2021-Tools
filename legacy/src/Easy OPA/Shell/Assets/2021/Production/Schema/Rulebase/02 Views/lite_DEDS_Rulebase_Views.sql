@@ -287,7 +287,9 @@ as
 			sld.UnWeightedRateFromESOL,
 			sld.UnweightedRateFromLARS,
 			sld.WeightedRateFromESOL,
-			sld.WeightedRateFromLARS
+			sld.WeightedRateFromLARS,
+			sld.ReservedUpliftFactor1,
+			sld.ReservedUpliftRate1
 	from	Rulebase.FM35_LearningDelivery as sld
 				cross join (select UKPRN from Rulebase.FM35_global) as g
 go

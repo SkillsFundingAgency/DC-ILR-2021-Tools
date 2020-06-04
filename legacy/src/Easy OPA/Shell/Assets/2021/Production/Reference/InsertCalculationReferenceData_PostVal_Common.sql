@@ -83,3 +83,21 @@ from	Valid.Learner
 				on pd.Postcodes_Postcode_Id = p.Id
 go
 
+truncate table Reference.PostcodeSpecialistResourceRefData
+insert into Reference.PostcodeSpecialistResourceRefData (
+	UKPRN
+	PostcodeSpecResEffectiveFrom,
+	PostcodeSpecResEffectiveTo,
+	PostcodeSpecResPostcode,
+	PostcodeSpecResSpecialistResources
+)
+SELECT
+	psr.UKPRN,
+	psr.EffectiveFrom,
+	psr.EffectiveTo,
+	psr.Postcode,
+	psr.SpecialistResources
+FROM Valid.Learner l
+	INNER JOIN [ReferenceInput].Organisations_PostcodesSpecialistResources psr
+		ON psr.UKPRN = l.UKPRN
+GO
