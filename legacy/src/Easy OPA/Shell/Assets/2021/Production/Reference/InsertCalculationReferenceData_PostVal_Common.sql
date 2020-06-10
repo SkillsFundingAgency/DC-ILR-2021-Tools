@@ -12,6 +12,19 @@ from	Valid.Learner
 				on PFRD_PC_Disadvantage.Postcodes_Postcode_Id = pc.Id
 go
 
+truncate table Reference.LargeEmployers
+insert into Reference.LargeEmployers
+select	distinct
+		eed.EffectiveFrom,
+		eed.EffectiveTo,
+		ee.ERN
+from	Valid.LearnerEmploymentStatus
+			inner join ReferenceInput.Employers_Employer ee
+				on ee.ERN = LearnerEmploymentStatus.EmpId
+			inner join ReferenceInput.Employers_LargeEmployerEffectiveDates eed
+				on eed.Employers_Employer_Id = ee.Id
+go
+
 truncate table Reference.LARS_Funding
 insert into Reference.LARS_Funding
 select	distinct
@@ -85,7 +98,7 @@ go
 
 truncate table Reference.PostcodeSpecialistResourceRefData
 insert into Reference.PostcodeSpecialistResourceRefData (
-	UKPRN
+	UKPRN,
 	PostcodeSpecResEffectiveFrom,
 	PostcodeSpecResEffectiveTo,
 	PostcodeSpecResPostcode,
@@ -101,3 +114,19 @@ FROM Valid.Learner l
 	INNER JOIN [ReferenceInput].Organisations_PostcodesSpecialistResources psr
 		ON psr.UKPRN = l.UKPRN
 GO
+
+truncate table Reference.Org_Funding
+insert into Reference.Org_Funding
+select	distinct
+		oof.EffectiveFrom,
+		oof.EffectiveTo,
+		oof.OrgFundFactor,
+		oof.OrgFundFactType,
+		oof.OrgFundFactValue,
+		oo.UKPRN
+from	Valid.LearningProvider lp
+inner join ReferenceInput.Organisations_Organisation oo
+on lp.UKPRN = oo.UKPRN
+			inner join ReferenceInput.[Organisations_OrganisationFunding] oof
+				on oof.Organisations_Organisation_Id = oo.Id
+go
