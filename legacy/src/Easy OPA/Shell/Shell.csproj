@@ -847,27 +847,6 @@
     <None Include="Assets\2021\Production\Reference\12 Version.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PostVal_Common_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PostVal_HubOnly_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PreVal_Common_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertCalculationReferenceData_PreVal_HubOnly_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PostVal_HubOnly_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PreVal_Common_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\2021\Production\Reference\InsertOtherReferenceData_PreVal_HubOnly_Working.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Assets\2021\Production\Reference\lite_InsertCalculationEFAReferenceData_Working.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
