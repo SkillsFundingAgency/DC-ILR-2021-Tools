@@ -1044,6 +1044,7 @@ begin
 	exec dbo.TransformInputToValid_SourceFile
 
 	--Insert to these tables at the end so that dependencies are in place.
+	exec dbo.TransformInputToValid_LearnerDenormTbl
 	exec dbo.TransformInputToValid_LearningDeliveryDenormTbl
 	exec dbo.TransformInputToValid_LearnerEmploymentStatusDenormTbl 
 
