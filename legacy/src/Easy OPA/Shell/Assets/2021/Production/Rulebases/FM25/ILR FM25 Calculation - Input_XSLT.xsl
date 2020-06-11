@@ -127,9 +127,9 @@
             <xsl:if test="string(boolean($var_Level3ProgMathsandEnglishProportion)) != 'false'">
               <attribute>
                 <xsl:attribute name="id">Level3ProgMathsandEnglishProportion</xsl:attribute>
-                <boolean-val>
+                <number-val>
                   <xsl:value-of select="string($var_Level3ProgMathsandEnglishProportion)"/>
-                </boolean-val>
+                </number-val>
               </attribute>
             </xsl:if>
             <entity>
