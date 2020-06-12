@@ -327,7 +327,7 @@ namespace EasyOPA.ViewModel
                     Prepared.DepositRulebaseArtefacts,
                     Prepared.SelectedReturnPeriod);
 
-                await Rulebase.Run(session, context);
+                await Rulebase.Run(session, context, Boolean.Parse(Prepared.SaveResults));
             }
         }
 

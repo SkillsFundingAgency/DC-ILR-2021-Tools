@@ -88,6 +88,7 @@ namespace EasyOPA.Manager
         private string _dbName; 
         private string _dbUser;
         private string _dbPassword;
+        private string _saveResults;
 
         /// <summary>
         /// Gets or sets the SQL instance.
@@ -149,6 +150,21 @@ namespace EasyOPA.Manager
             set
             {
                 if (SetPropertyValue(ref _dbPassword, value))
+                {
+                    Asset.SetInstanceName(value);
+                }
+            }
+        }
+
+        public  string SaveResults
+        {
+            get
+            {
+                return _saveResults ?? (_saveResults = Asset.SaveResults);
+            }
+            set
+            {
+                if (SetPropertyValue(ref _saveResults, value))
                 {
                     Asset.SetInstanceName(value);
                 }

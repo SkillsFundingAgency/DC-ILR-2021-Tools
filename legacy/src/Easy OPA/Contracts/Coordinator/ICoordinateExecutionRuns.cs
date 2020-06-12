@@ -15,6 +15,6 @@ namespace EasyOPA.Coordinator
         /// <param name="usingSession">using session.</param>
         /// <param name="inContext">in context.</param>
         /// <returns>the currently running task</returns>
-        Task Run(IContainSessionConfiguration usingSession, IContainSessionContext inContext);
+        Task Run(IContainSessionConfiguration usingSession, IContainSessionContext inContext, bool saveReuslts);
     }
 }

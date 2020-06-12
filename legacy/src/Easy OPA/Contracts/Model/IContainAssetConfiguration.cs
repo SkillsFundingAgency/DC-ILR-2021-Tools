@@ -28,6 +28,8 @@ namespace EasyOPA.Model
         string DBUser { get; }
 
         string DBPassword { get; }
+
+        string SaveResults { get; }
         
         /// <summary>
         /// Gets the timeout in minutes.

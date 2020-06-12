@@ -47,6 +47,9 @@ namespace EasyOPA.Model
         [DataMember]
         public string InstanceName { get; set; }
 
+        [DataMember]
+        public string SaveResults { get; set; }
+
         /// <summary>
         /// Gets the timeout in minutes.
         /// </summary>
