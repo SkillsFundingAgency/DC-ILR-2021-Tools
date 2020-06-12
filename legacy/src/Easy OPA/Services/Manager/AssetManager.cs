@@ -62,6 +62,8 @@ namespace EasyOPA.Manager
         public string DBUser => Configured.DBUser;
 
         public string DBPassword => Configured.DBPassword;
+
+        public string SaveResults => Configured.SaveResults;
         /// <summary>
         /// Gets the connection timeout.
         /// </summary>

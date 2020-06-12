@@ -26,6 +26,8 @@ namespace EasyOPA.Manager
 
         string DBPassword { get; }
 
+        string SaveResults { get; }
+
         /// <summary>
         /// Gets or sets a value indicating whether this instance is valid SQL instance.
         /// </summary>

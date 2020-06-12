@@ -162,9 +162,9 @@ namespace EasyOPA.Abstract
         /// <returns>
         /// the currently running task
         /// </returns>
-        public async Task Run(IContainSessionConfiguration usingSession, IContainSessionContext inContext)
+        public async Task Run(IContainSessionConfiguration usingSession, IContainSessionContext inContext, bool saveResults)
         {
-            await Handler.RunOperation<Localised>(() => RunRules(usingSession, inContext));
+            await Handler.RunOperation<Localised>(() => RunRules(usingSession, inContext, saveResults));
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace EasyOPA.Abstract
         /// <param name="usingSession">using session.</param>
         /// <param name="inContext">in context.</param>
         /// <returns>the currently running task</returns>
-        public void RunRules(IContainSessionConfiguration usingSession, IContainSessionContext inContext)
+        public void RunRules(IContainSessionConfiguration usingSession, IContainSessionContext inContext, bool saveResults)
         {
             using (Timing.BeginScope("This processing run"))
             {
@@ -188,11 +188,11 @@ namespace EasyOPA.Abstract
                     .Where(x => x.IsSelectedForProcessing);
 
                 Monitor.SetProviderCount(providers.Count());
-                
+
                 //INTPUT FOR THE REFERECE DATA
                 PostValidation.TransformInput(inContext, usingSession.InputDataSource.OperatingYear);
-                
-                
+
+
                 providers.ForEach(usingProvider =>
                 {
                     Monitor.IncrementPosition();
@@ -218,9 +218,10 @@ namespace EasyOPA.Abstract
                             // calculate
                             RunRulebaseSubset(TypeOfRulebaseOperation.Calculation, usingSession.RulesToRun, inContext, usingProvider.ID);
                             // complete
-                            #region Needs new story to re-work this
-                            CompleteRun(usingSession, inContext, usingProvider.ID);
-                            #endregion
+                            if (saveResults == true)
+                            {
+                                CompleteRun(usingSession, inContext, usingProvider.ID);
+                            }
                             // report
                             RunReport(usingSession, inContext);
                         }
