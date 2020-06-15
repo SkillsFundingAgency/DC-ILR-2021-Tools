@@ -6,11 +6,11 @@ select	coalesce(cast((
 						cast(OutStartDate as date) OutStartDate,
 						cast(OutEndDate as date) OutEndDate,
 						cast(OutCollDate as date) OutCollDate 
-				from	Clone.DPOutcome 
+				from	Valid.DPOutcome 
 				where	UKPRN = ${providerID} 
 				and		FK_LearnerDestinationandProgression = PK_LearnerDestinationandProgression 
 				for xml path('DPOutcome'), type, elements) 
-	from	Clone.LearnerDestinationandProgression
+	from	Valid.LearnerDestinationandProgression
 	where	UKPRN = ${providerID}
 	for xml path('LearnerDestinationandProgression'), type, elements
 ) as varchar(max)), '')
