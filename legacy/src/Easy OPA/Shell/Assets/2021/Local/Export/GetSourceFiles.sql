@@ -6,7 +6,7 @@ select cast((
 					Release,
 					SerialNo,
 					[DateTime]
-			from	Clone.SourceFile
+			from	Valid.SourceFile
 			where	UKPRN = ${providerID}
 			for xml path('SourceFile'), type, elements) 
 	for xml path('SourceFiles'), type, elements

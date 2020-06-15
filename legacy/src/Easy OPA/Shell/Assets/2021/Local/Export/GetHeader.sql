@@ -2,7 +2,7 @@ select cast((
 	select (	select	[Collection],
 						[Year],
 						cast(FilePreparationDate as date) as FilePreparationDate
-				from	Clone.CollectionDetails
+				from	Valid.CollectionDetails
 				where	UKPRN = ${providerID}
 				for xml path('CollectionDetails'), type, elements),
 			(	select	ProtectiveMarking,
@@ -14,7 +14,7 @@ select cast((
 						[DateTime],
 						ReferenceData,
 						ComponentSetVersion
-				from	Clone.[Source]
+				from	Valid.[Source]
 				where	UKPRN = ${providerID}
 				for xml path('Source'), type, elements)
 	for xml path('Header'), type, elements
