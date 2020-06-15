@@ -8,9 +8,9 @@ select	coalesce(cast((
 						cast(OutCollDate as date) OutCollDate 
 				from	Valid.DPOutcome 
 				where	UKPRN = ${providerID} 
-				and		FK_LearnerDestinationandProgression = PK_LearnerDestinationandProgression 
+				and		LearnRefNumber = ldap.LearnRefNumber
 				for xml path('DPOutcome'), type, elements) 
-	from	Valid.LearnerDestinationandProgression
+	from	Valid.LearnerDestinationandProgression ldap
 	where	UKPRN = ${providerID}
 	for xml path('LearnerDestinationandProgression'), type, elements
 ) as varchar(max)), '')

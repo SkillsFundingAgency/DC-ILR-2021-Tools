@@ -58,9 +58,9 @@ select coalesce(cast((
 									ESMCode 
 							from	Valid.EmploymentStatusMonitoring
 							where	UKPRN = ${providerID} 
-							and		FK_LearnerEmploymentStatus = PK_LearnerEmploymentStatus
+							and		LearnRefNumber = les.LearnRefNumber
 							for xml path('EmploymentStatusMonitoring'), type, elements)
-				from	Valid.LearnerEmploymentStatus
+				from	Valid.LearnerEmploymentStatus les
 				where	UKPRN = ${providerID} 
 				and		LearnRefNumber = l.LearnRefNumber
 				for xml path('LearnerEmploymentStatus'), type, elements),
@@ -70,9 +70,9 @@ select coalesce(cast((
 									FINAMOUNT 
 							from	Valid.LearnerHEFinancialSupport
 							where	UKPRN = ${providerID} 
-							and		FK_LearnerHE = PK_LearnerHE 
+							and		LearnRefNumber = lhe.LearnRefNumber 
 							for xml path('LearnerHEFinancialSupport'), type, elements)
-				from	Valid.LearnerHE
+				from	Valid.LearnerHE lhe
 				where	UKPRN = ${providerID} 
 				and		LearnRefNumber = l.LearnRefNumber
 				for xml path('LearnerHE'), type, elements),
@@ -111,7 +111,7 @@ select coalesce(cast((
 									cast(LearnDelFAMDateTo as date) as LearnDelFAMDateTo 
 							from	Valid.LearningDeliveryFAM
 							where	UKPRN = ${providerID} 
-							and		FK_LearningDelivery = ld.PK_LearningDelivery 
+							and		LearnRefNumber = ld.LearnRefNumber
 							and		AimSeqNumber = ld.AimSeqNumber
 							for xml path('LearningDeliveryFAM'), type, elements),
 						(	select	cast(WorkPlaceStartDate as date) as WorkPlaceStartDate, 
@@ -121,7 +121,7 @@ select coalesce(cast((
 									WorkPlaceEmpId 
 							from	Valid.LearningDeliveryWorkPlacement
 							where	UKPRN = ${providerID} 
-							and		FK_LearningDelivery = ld.PK_LearningDelivery 
+							and		LearnRefNumber = ld.LearnRefNumber
 							and		AimSeqNumber = ld.AimSeqNumber
 							for xml path('LearningDeliveryWorkPlacement'), type, elements),
 						(	select	AFinType,
@@ -130,14 +130,14 @@ select coalesce(cast((
 									AFinAmount 
 							from	Valid.AppFinRecord
 							where	UKPRN = ${providerID} 
-							and		FK_LearningDelivery = ld.PK_LearningDelivery 
+							and		LearnRefNumber = ld.LearnRefNumber
 							and		AimSeqNumber = ld.AimSeqNumber
 							for xml path('AppFinRecord'), type, elements),
 						(	select	ProvSpecDelMonOccur,
 									ProvSpecDelMon 
 							from	Valid.ProviderSpecDeliveryMonitoring
 							where	UKPRN = ${providerID} 
-							and		FK_LearningDelivery = ld.PK_LearningDelivery 
+							and		LearnRefNumber = ld.LearnRefNumber
 							and		AimSeqNumber = ld.AimSeqNumber
 							for xml path('ProviderSpecDeliveryMonitoring'), type, elements),
 						(	select	NUMHUS,
@@ -165,7 +165,7 @@ select coalesce(cast((
 									HEPostCode 
 							from	Valid.LearningDeliveryHE
 							where	UKPRN = ${providerID} 
-							and		FK_LearningDelivery = ld.PK_LearningDelivery 
+							and		LearnRefNumber = ld.LearnRefNumber
 							and		AimSeqNumber = ld.AimSeqNumber
 							for xml path('LearningDeliveryHE'), type, elements)
 				from	Valid.LearningDelivery as ld
