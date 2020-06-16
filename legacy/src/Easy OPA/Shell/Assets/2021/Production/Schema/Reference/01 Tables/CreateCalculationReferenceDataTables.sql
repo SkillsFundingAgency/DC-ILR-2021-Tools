@@ -548,8 +548,8 @@ go
 
 create table Reference.vw_ContractDescription (
 	contractAllocationNumber nvarchar(100),
-	contractEndDate nvarchar(100),
-	contractStartDate nvarchar(100),
+	contractEndDate datetime,
+	contractStartDate datetime,
 	deliverableCode int,
 	fundingStreamPeriodCode nvarchar(100),
 	learningRatePremiumFactor decimal(13,2),
