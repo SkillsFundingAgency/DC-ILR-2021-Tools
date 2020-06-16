@@ -1,4 +1,4 @@
---truncate table Reference.DeliverableCodeMappings
+truncate table Reference.DeliverableCodeMappings
 insert into Reference.DeliverableCodeMappings (
 	ExternalDeliverableCode,
 	FCSDeliverableCode,
@@ -17,7 +17,7 @@ from	ReferenceInput.[FCS_FcsContractDeliverable] cd
 				on ca.ContractAllocationNumber = LearningDelivery.ConRefNumber
 go
 
---truncate table Reference.vw_ContractDescription
+truncate table Reference.vw_ContractDescription
 insert into Reference.vw_ContractDescription (
 	contractAllocationNumber,
 	contractEndDate,
