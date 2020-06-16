@@ -65,42 +65,42 @@ as
     from ( select 
 		UKPRN,
 		LearnRefNumber,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 1 then LearnFAMCode else null end as LSR1,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 2 then LearnFAMCode else null end as LSR2,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 3 then LearnFAMCode else null end as LSR3,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 4 then LearnFAMCode else null end as LSR4
-     from Valid.LearnerFAM
-     where LearnFAMType = 'LSR') as LSRs
-    group by
-	 UKPRN,
-     LearnRefNumber) as LSR
-  on LSR.LearnRefNumber = l.LearnRefNumber
-  and LSR.UKPRN = l.UKPRN
-  left join ( select 
-	UKPRN,
-	LearnRefNumber,
-     max(NLM1) as NLM1,
-     max(NLM2) as NLM2
-    from ( select 
-	UKPRN,
-	LearnRefNumber,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 1 then LearnFAMCode else null end as NLM1,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 2 then LearnFAMCode else null end as NLM2
-     from Valid.LearnerFAM
-     where LearnFAMType = 'NLM') as NLMs
-    group by UKPRN,
-     LearnRefNumber) as NLM
-  on NLM.LearnRefNumber = l.LearnRefNumber
-  and NLM.UKPRN = l.UKPRN
-  left join ( select UKPRN,
-	 LearnRefNumber,
-     max(PPE1) as PPE1,
-     max(PPE2) as PPE2
-    from ( select 
-	  UKPRN,
-	  LearnRefNumber,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 1 then LearnFAMCode else null end as PPE1,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 2 then LearnFAMCode else null end as PPE2
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnFAMCode else null end as LSR1,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnFAMCode else null end as LSR2,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 3 then LearnFAMCode else null end as LSR3,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 4 then LearnFAMCode else null end as LSR4
+     from Valid.LearnerFAM								 
+     where LearnFAMType = 'LSR') as LSRs				 
+    group by											 
+	 UKPRN,												 
+     LearnRefNumber) as LSR								 
+  on LSR.LearnRefNumber = l.LearnRefNumber				 
+  and LSR.UKPRN = l.UKPRN								 
+  left join ( select 									 
+	UKPRN,												 
+	LearnRefNumber,										 
+     max(NLM1) as NLM1,									 
+     max(NLM2) as NLM2									 
+    from ( select 										 
+	UKPRN,												 
+	LearnRefNumber,										 
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnFAMCode else null end as NLM1,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnFAMCode else null end as NLM2
+     from Valid.LearnerFAM								 
+     where LearnFAMType = 'NLM') as NLMs				 
+    group by UKPRN,										 
+     LearnRefNumber) as NLM								 
+  on NLM.LearnRefNumber = l.LearnRefNumber				 
+  and NLM.UKPRN = l.UKPRN								 
+  left join ( select UKPRN,								 
+	 LearnRefNumber,									 
+     max(PPE1) as PPE1,									 
+     max(PPE2) as PPE2									 
+    from ( select 										 
+	  UKPRN,											 
+	  LearnRefNumber,									 
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnFAMCode else null end as PPE1,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnFAMCode else null end as PPE2
      from Valid.LearnerFAM
      where LearnFAMType = 'PPE') as PPEs
     group by UKPRN,
@@ -113,8 +113,8 @@ as
      max(EDF2) as EDF2
     from ( select UKPRN,
 		LearnRefNumber,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 1 then LearnFAMCode else null end as EDF1,
-      case row_number() over (partition by LearnRefNumber order by LearnRefNumber) when 2 then LearnFAMCode else null end as EDF2
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnFAMCode else null end as EDF1,
+      case row_number() over (partition by LearnRefNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnFAMCode else null end as EDF2
      from Valid.LearnerFAM
      where LearnFAMType = 'EDF') as EDFs
     group by UKPRN,
