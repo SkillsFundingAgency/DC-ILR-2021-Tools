@@ -412,6 +412,8 @@
                                     select="@GuidedLearningHours"/>
                       <xsl:variable name="var_PHours"
                                     select="@PHours"/>
+                      <xsl:variable name="var_DelLocPostCode"
+                                    select="@DelLocPostCode" />
                       <instance>
                         <xsl:attribute name="id">
                           <xsl:value-of select="generate-id(.)"/>
@@ -560,6 +562,14 @@
                             </number-val>
                           </attribute>
                         </xsl:if>
+                        <xsl:if test="string(boolean($var_DelLocPostCode)) != 'false'">
+                          <attribute>
+                            <xsl:attribute name="id">DelLocPostCode</xsl:attribute>
+                            <text-val>
+                              <xsl:value-of select="string($var_DelLocPostCode)"/>
+                            </text-val>
+                          </attribute>
+                        </xsl:if>
                         <entity>
                           <xsl:attribute name="id">
                             <xsl:value-of select="generate-id(.)"/>
@@ -665,6 +675,62 @@
                       </instance>
                     </xsl:for-each>
                   </entity>
+                </instance>
+              </xsl:for-each>
+            </entity>
+            <entity>
+              <xsl:attribute name="id">
+                <xsl:value-of select="generate-id(.)"/>
+              </xsl:attribute>
+              <xsl:attribute name="id">Postcode_Specialist_Resource_RefData</xsl:attribute>
+              <xsl:attribute name="complete">
+                <xsl:value-of select="string(((normalize-space('true') = 'true') or (normalize-space('true') = '1')))"/>
+              </xsl:attribute>
+              <xsl:for-each select="Postcode_Specialist_Resource_RefData">
+                <xsl:variable name="var_PostcodeSpecResEffectiveFrom"
+                            select="@PostcodeSpecResEffectiveFrom"/>
+                <xsl:variable name="var_PostcodeSpecResEffectiveTo"
+                              select="@PostcodeSpecResEffectiveTo"/>
+                <xsl:variable name="var_PostcodeSpecResPostcode"
+                              select="@PostcodeSpecResPostcode"/>
+                <xsl:variable name="var_PostcodeSpecResSpecialistResources"
+                              select="@PostcodeSpecResSpecialistResources"/>
+                <instance>
+                  <xsl:attribute name="id">
+                    <xsl:value-of select="generate-id(.)"/>
+                  </xsl:attribute>
+                  <xsl:if test="string(boolean($var_PostcodeSpecResEffectiveFrom)) != 'false'">
+                    <attribute>
+                      <xsl:attribute name="id">PostcodeSpecResEffectiveFrom</xsl:attribute>
+                      <date-val>
+                        <xsl:value-of select="string($var_PostcodeSpecResEffectiveFrom)"/>
+                      </date-val>
+                    </attribute>
+                  </xsl:if>
+                  <xsl:if test="string(boolean($var_PostcodeSpecResEffectiveTo)) != 'false'">
+                    <attribute>
+                      <xsl:attribute name="id">PostcodeSpecResEffectiveTo</xsl:attribute>
+                      <date-val>
+                        <xsl:value-of select="string($var_PostcodeSpecResEffectiveTo)"/>
+                      </date-val>
+                    </attribute>
+                  </xsl:if>
+                  <xsl:if test="string(boolean($var_PostcodeSpecResPostcode)) != 'false'">
+                    <attribute>
+                      <xsl:attribute name="id">PostcodeSpecResPostcode</xsl:attribute>
+                      <text-val>
+                        <xsl:value-of select="string($var_PostcodeSpecResPostcode)"/>
+                      </text-val>
+                    </attribute>
+                  </xsl:if>
+                  <xsl:if test="string(boolean($var_PostcodeSpecResSpecialistResources)) != 'false'">
+                    <attribute>
+                      <xsl:attribute name="id">PostcodeSpecResSpecialistResources</xsl:attribute>
+                      <text-val>
+                        <xsl:value-of select="string($var_PostcodeSpecResSpecialistResources)"/>
+                      </text-val>
+                    </attribute>
+                  </xsl:if>
                 </instance>
               </xsl:for-each>
             </entity>
