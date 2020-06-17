@@ -367,10 +367,10 @@ as
 									max(LDM4) as LDM4
 							from	(	select	LearnRefNumber,
 												AimSeqNumber,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber) when 1 then LearnDelFAMCode else null end  as LDM1,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber) when 2 then LearnDelFAMCode else null end  as LDM2,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber) when 3 then LearnDelFAMCode else null end  as LDM3,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber) when 4 then LearnDelFAMCode else null end  as LDM4
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnDelFAMCode else null end  as LDM1,
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnDelFAMCode else null end  as LDM2,
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 3 then LearnDelFAMCode else null end  as LDM3,
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 4 then LearnDelFAMCode else null end  as LDM4
 										from	Valid.LearningDeliveryFAM
 										where	LearnDelFAMType = 'LDM') as LDMs
 							group by
