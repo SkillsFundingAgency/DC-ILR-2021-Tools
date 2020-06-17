@@ -294,8 +294,8 @@ as
 									max(HHS2) as HHS2
 							from	(	select	LearnRefNumber,
 												AimSeqNumber,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber, AimSeqNumber) when 1 then LearnDelFAMCode else null end  as HHS1,
-												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber, AimSeqNumber) when 2 then LearnDelFAMCode else null end  as HHS2
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, AimSeqNumber, UKPRN) when 1 then LearnDelFAMCode else null end  as HHS1,
+												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, AimSeqNumber, UKPRN) when 2 then LearnDelFAMCode else null end  as HHS2
 										from	Valid.LearningDeliveryFAM
 										where	LearnDelFAMType = 'HHS') as HHSs
 							group by
