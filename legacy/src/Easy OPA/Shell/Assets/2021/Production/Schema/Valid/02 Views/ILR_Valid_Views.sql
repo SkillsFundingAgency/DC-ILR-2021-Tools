@@ -182,30 +182,37 @@ as
 	from	Valid.LearnerEmploymentStatus as les
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_BSI
 					on EmpStatMon_BSI.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_BSI.UKPRN=les.UKPRN
 					and EmpStatMon_BSI.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_BSI.ESMType = 'BSI'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_EII
 					on EmpStatMon_EII.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_EII.UKPRN = les.UKPRN
 					and EmpStatMon_EII.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_EII.ESMType = 'EII'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_LOE
 					on EmpStatMon_LOE.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_LOE.UKPRN=les.UKPRN
 					and EmpStatMon_LOE.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_LOE.ESMType = 'LOE'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_LOU
 					on EmpStatMon_LOU.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_LOU.UKPRN=les.UKPRN
 					and EmpStatMon_LOU.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_LOU.ESMType = 'LOU'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_PEI
 					on EmpStatMon_PEI.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_PEI.UKPRN=les.UKPRN
 					and EmpStatMon_PEI.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_PEI.ESMType = 'PEI'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_SEI
 					on EmpStatMon_SEI.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_SEI.UKPRN=les.UKPRN
 					and EmpStatMon_SEI.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_SEI.ESMType = 'SEI'
 				left join Valid.EmploymentStatusMonitoring as EmpStatMon_SEM
 					on EmpStatMon_SEM.LearnRefNumber=les.LearnRefNumber
+					and EmpStatMon_SEM.UKPRN=les.UKPRN
 					and EmpStatMon_SEM.DateEmpStatApp = les.DateEmpStatApp
 					and EmpStatMon_SEM.ESMType = 'SEM'
 go
@@ -272,11 +279,13 @@ as
 			LDM.LDM4
 	from	Valid.LearningDelivery as ld
 				left join (	select	LearnRefNumber,
+									UKPRN,
 									AimSeqNumber,
 									max(HEM1) as HEM1,
 									max(HEM2) as HEM2,
 									max(HEM3) as HEM3
 							from	(	select	LearnRefNumber,
+												UKPRN,
 												AimSeqNumber,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber, AimSeqNumber) when 1 then LearnDelFAMCode else null end  as HEM1,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber order by LearnRefNumber, AimSeqNumber) when 2 then LearnDelFAMCode else null end  as HEM2,
@@ -285,14 +294,18 @@ as
 										where	LearnDelFAMType = 'HEM') as HEMs
 							group by
 									LearnRefNumber,
+									UKPRN,
 									AimSeqNumber) as HEM
 					on HEM.LearnRefNumber = ld.LearnRefNumber
+					and HEM.UKPRN = ld.UKPRN
 					and HEM.AimSeqNumber = ld.AimSeqNumber
-				left join (	select	LearnRefNumber, 
+				left join (	select	LearnRefNumber,
+									UKPRN,
 									AimSeqNumber,
 									max(HHS1) as HHS1,
 									max(HHS2) as HHS2
 							from	(	select	LearnRefNumber,
+												UKPRN,
 												AimSeqNumber,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, AimSeqNumber, UKPRN) when 1 then LearnDelFAMCode else null end  as HHS1,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, AimSeqNumber, UKPRN) when 2 then LearnDelFAMCode else null end  as HHS2
@@ -300,72 +313,90 @@ as
 										where	LearnDelFAMType = 'HHS') as HHSs
 							group by
 									LearnRefNumber,
+									UKPRN,
 									AimSeqNumber) as HHS
 					on HHS.LearnRefNumber = ld.LearnRefNumber
+					and HHS.UKPRN = ld.UKPRN
 					and HHS.AimSeqNumber = ld.AimSeqNumber
 				left join Valid.LearningDeliveryFAM as LDFAM_SOF 
 					on ld.LearnRefNumber = LDFAM_SOF.LearnRefNumber
+					and ld.UKPRN = LDFAM_SOF.UKPRN
 					and ld.AimSeqNumber = LDFAM_SOF.AimSeqNumber
 					and LDFAM_SOF.LearnDelFAMType = 'SOF'
 				left join Valid.LearningDeliveryFAM as LDFAM_EEF 
 					on ld.LearnRefNumber = LDFAM_EEF.LearnRefNumber
+					and ld.UKPRN = LDFAM_EEF.UKPRN
 					and ld.AimSeqNumber = LDFAM_EEF.AimSeqNumber
 					and LDFAM_EEF.LearnDelFAMType = 'EEF'
 				left join Valid.LearningDeliveryFAM as LDFAM_RES 
 					on ld.LearnRefNumber = LDFAM_RES.LearnRefNumber
+					and ld.UKPRN = LDFAM_RES.UKPRN
 					and ld.AimSeqNumber = LDFAM_RES.AimSeqNumber
 					and LDFAM_RES.LearnDelFAMType = 'RES'
 				left join Valid.LearningDeliveryFAM as LDFAM_ADL 
 					on  ld.LearnRefNumber = LDFAM_ADL.LearnRefNumber
+					and ld.UKPRN = LDFAM_ADL.UKPRN
 					and ld.AimSeqNumber = LDFAM_ADL.AimSeqNumber
 					and LDFAM_ADL.LearnDelFAMType = 'ADL'
 				left join Valid.LearningDeliveryFAM as LDFAM_FFI 
 					on  ld.LearnRefNumber = LDFAM_FFI.LearnRefNumber
+					and ld.UKPRN = LDFAM_FFI.UKPRN
 					and ld.AimSeqNumber = LDFAM_FFI.AimSeqNumber
 					and LDFAM_FFI.LearnDelFAMType = 'FFI'
 				left join Valid.LearningDeliveryFAM as LDFAM_WPP 
 					on ld.LearnRefNumber = LDFAM_WPP.LearnRefNumber
+					and ld.UKPRN = LDFAM_WPP.UKPRN
 					and ld.AimSeqNumber = LDFAM_WPP.AimSeqNumber
 					and LDFAM_WPP.LearnDelFAMType = 'WPP'
 				left join Valid.LearningDeliveryFAM as LDFAM_POD 
 					on ld.LearnRefNumber = LDFAM_POD.LearnRefNumber
+					and ld.UKPRN = LDFAM_POD.UKPRN
 					and ld.AimSeqNumber = LDFAM_POD.AimSeqNumber
 					and LDFAM_POD.LearnDelFAMType = 'POD'
 				left join Valid.LearningDeliveryFAM as LDFAM_ASL 
 					on ld.LearnRefNumber = LDFAM_ASL.LearnRefNumber
+					and ld.UKPRN = LDFAM_ASL.UKPRN
 					and ld.AimSeqNumber = LDFAM_ASL.AimSeqNumber
 					and LDFAM_ASL.LearnDelFAMType = 'ASL'
 				left join Valid.LearningDeliveryFAM as LDFAM_FLN 
 					on ld.LearnRefNumber = LDFAM_FLN.LearnRefNumber
+					and ld.UKPRN = LDFAM_FLN.UKPRN
 					and ld.AimSeqNumber = LDFAM_FLN.AimSeqNumber
 					and LDFAM_FLN.LearnDelFAMType = 'FLN'
 				left join Valid.LearningDeliveryFAM as LDFAM_NSA 
 					on ld.LearnRefNumber = LDFAM_NSA.LearnRefNumber
+					and ld.UKPRN = LDFAM_NSA.UKPRN
 					and ld.AimSeqNumber = LDFAM_NSA.AimSeqNumber
 					and LDFAM_NSA.LearnDelFAMType = 'NSA'
 				left join Valid.ProviderSpecDeliveryMonitoring as ProvSpecMon_A
 					on ProvSpecMon_A.LearnRefNumber=ld.LearnRefNumber
+					and ProvSpecMon_A.UKPRN = ld.UKPRN
 					and ProvSpecMon_A.AimSeqNumber=ld.AimSeqNumber
 					and ProvSpecMon_A.ProvSpecDelMonOccur = 'A'
 				left join Valid.ProviderSpecDeliveryMonitoring as ProvSpecMon_B
 					on ProvSpecMon_B.LearnRefNumber=ld.LearnRefNumber
+					and ProvSpecMon_B.UKPRN = ld.UKPRN
 					and ProvSpecMon_B.AimSeqNumber=ld.AimSeqNumber
 					and ProvSpecMon_B.ProvSpecDelMonOccur = 'B'
 				left join Valid.ProviderSpecDeliveryMonitoring as ProvSpecMon_C
 					on ProvSpecMon_C.LearnRefNumber=ld.LearnRefNumber
+					and ProvSpecMon_C.UKPRN = ld.UKPRN
 					and ProvSpecMon_C.AimSeqNumber=ld.AimSeqNumber
 					and ProvSpecMon_C.ProvSpecDelMonOccur = 'C'
 				left join Valid.ProviderSpecDeliveryMonitoring as ProvSpecMon_D
 					on ProvSpecMon_D.LearnRefNumber=ld.LearnRefNumber
+					and ProvSpecMon_D.UKPRN = ld.UKPRN
 					and ProvSpecMon_D.AimSeqNumber=ld.AimSeqNumber
 					and ProvSpecMon_D.ProvSpecDelMonOccur = 'D' 
 				left join (	select	LearnRefNumber,
+									UKPRN,
 									AimSeqNumber,
 									max(LDM1) as LDM1,
 									max(LDM2) as LDM2,
 									max(LDM3) as LDM3,
 									max(LDM4) as LDM4
 							from	(	select	LearnRefNumber,
+												UKPRN,
 												AimSeqNumber,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 1 then LearnDelFAMCode else null end  as LDM1,
 												case row_number() over (partition by LearnRefNumber, AimSeqNumber, UKPRN order by LearnRefNumber, UKPRN) when 2 then LearnDelFAMCode else null end  as LDM2,
@@ -375,8 +406,10 @@ as
 										where	LearnDelFAMType = 'LDM') as LDMs
 							group by
 									LearnRefNumber,
+									UKPRN,
 									AimSeqNumber) as LDM
 					on LDM.LearnRefNumber=ld.LearnRefNumber
+					and LDM.UKPRN = ld.UKPRN
 					and LDM.AimSeqNumber = ld.AimSeqNumber
 go
 
