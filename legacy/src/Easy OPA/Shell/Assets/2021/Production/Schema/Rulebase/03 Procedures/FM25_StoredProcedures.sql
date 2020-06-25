@@ -59,7 +59,7 @@ begin
 									  FROM
 										Reference.PostcodeSpecialistResourceRefData
 									  WHERE
-										UKPRN = cntrl.UKPRN
+										UKPRN = controller.UKPRN
 										for xml path ('Postcode_Specialist_Resource_RefData'),
 										type
 									),
