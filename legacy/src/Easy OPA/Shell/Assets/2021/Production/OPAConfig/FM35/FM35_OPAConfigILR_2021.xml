@@ -235,8 +235,8 @@
       <ResultQueryParameterMap AttributeName="UnweightedRateFromLARS" ParameterName="UnweightedRateFromLARS" EntityName="LearningDelivery" />
       <ResultQueryParameterMap AttributeName="WeightedRateFromESOL" ParameterName="WeightedRateFromESOL" EntityName="LearningDelivery" />
       <ResultQueryParameterMap AttributeName="WeightedRateFromLARS" ParameterName="WeightedRateFromLARS" EntityName="LearningDelivery" />
-      <ResultQueryParameterMap AttrubuteName="ReservedUpliftFactor1" ParameterName="ReservedUpliftFactor1" EntityName="LearningDelivery" />
-      <ResultQueryParameterMap AttrubuteName="ReservedUpliftRate1" ParameterName="ReservedUpliftRate1" EntityName="LearningDelivery" />
+      <ResultQueryParameterMap AttributeName="ReservedUpliftFactor1" ParameterName="ReservedUpliftFactor1" EntityName="LearningDelivery" />
+      <ResultQueryParameterMap AttributeName="ReservedUpliftRate1" ParameterName="ReservedUpliftRate1" EntityName="LearningDelivery" />
     </OPAResult>
   </OPAResults>
 </OPAMapping>
