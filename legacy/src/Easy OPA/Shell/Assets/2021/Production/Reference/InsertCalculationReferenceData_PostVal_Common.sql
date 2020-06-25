@@ -109,10 +109,10 @@ SELECT
 	psr.EffectiveFrom,
 	psr.EffectiveTo,
 	psr.Postcode,
-	psr.SpecialistResources
-FROM Valid.Learner l
+	psr.SpecialistResources 
+FROM [Valid].[LearningProvider] lp
 	INNER JOIN [ReferenceInput].Organisations_PostcodesSpecialistResources psr
-		ON psr.UKPRN = l.UKPRN
+		ON psr.UKPRN = lp.UKPRN
 GO
 
 truncate table Reference.Org_Funding

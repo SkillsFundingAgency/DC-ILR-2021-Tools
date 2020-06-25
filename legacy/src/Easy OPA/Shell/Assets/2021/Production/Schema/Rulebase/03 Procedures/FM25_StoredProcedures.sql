@@ -49,6 +49,20 @@ begin
 										then 'true' 
 										else 'false'
 									end as [@SpecialistResources],
+									-- Postcode Specialist Resources
+									(
+									  SELECT
+										PostcodeSpecResEffectiveFrom as [@PostcodeSpecResEffectiveFrom],
+										PostcodeSpecResEffectiveTo as [@PostcodeSpecResEffectiveTo],
+										PostcodeSpecResPostcode as [@PostcodeSpecResPostcode],
+										PostcodeSpecResSpecialistResources as [@PostcodeSpecResSpecialistResources]
+									  FROM
+										Reference.PostcodeSpecialistResourceRefData
+									  WHERE
+										UKPRN = cntrl.UKPRN
+										for xml path ('Postcode_Specialist_Resource_RefData'),
+										type
+									),
 									-- learner
 									(select	l.LearnRefNumber as [@LearnRefNumber],
 											l.ULN as [@ULN],
@@ -80,6 +94,7 @@ begin
 											(select	ld.LearnAimRef as [@LearnAimRef],
 													ld.AimType as [@AimType],
 													ld.AimSeqNumber as [@AimSeqNumber],
+													ld.DelLocPostCode as [@DelLocPostCode],
 													ld.FundModel as [@FundModel],
 													ld.ProgType as [@ProgType],
 													ld.LearnStartDate as [@LearnStartDate],
