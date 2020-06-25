@@ -378,21 +378,6 @@
                                     select="@PriorLearnFundAdj"/>
                       <xsl:variable name="var_OtherFundAdj"
                                     select="@OtherFundAdj"/>
-
-                      <!--<xsl:variable name="var_LrnDelFAM_EEF"
-                                                          select="@LrnDelFAM_EEF"/>
-                                            <xsl:variable name="var_LrnDelFAM_FFI"
-                                                          select="@LrnDelFAM_FFI"/>
-                                            <xsl:variable name="var_LrnDelFAM_LDM1"
-                                                          select="@LrnDelFAM_LDM1"/>
-                                            <xsl:variable name="var_LrnDelFAM_LDM2"
-                                                          select="@LrnDelFAM_LDM2"/>
-                                            <xsl:variable name="var_LrnDelFAM_LDM3"
-                                                          select="@LrnDelFAM_LDM3"/>
-                                            <xsl:variable name="var_LrnDelFAM_LDM4"
-                                                          select="@LrnDelFAM_LDM4"/>
-                                            <xsl:variable name="var_LrnDelFAM_RES"
-                                                          select="@LrnDelFAM_RES"/>-->
                       <instance>
                         <xsl:attribute name="id">
                           <xsl:value-of select="generate-id(.)"/>
@@ -574,62 +559,6 @@
                           </attribute>
                         </xsl:if>
 
-                        <!--<xsl:if test="string(boolean($var_LrnDelFAM_EEF)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_EEF</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_EEF)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_FFI)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_FFI</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_FFI)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_LDM1)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_LDM1</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_LDM1)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_LDM2)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_LDM2</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_LDM2)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_LDM3)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_LDM3</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_LDM3)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_LDM4)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_LDM4</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_LDM4)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_LrnDelFAM_RES)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">LrnDelFAM_RES</xsl:attribute>
-                                                        <number-val>
-                                                            <xsl:value-of select="string($var_LrnDelFAM_RES)"/>
-                                                        </number-val>
-                                                    </attribute>
-                                                </xsl:if>-->
                         <entity>
                           <xsl:attribute name="id">
                             <xsl:value-of select="generate-id(.)"/>
