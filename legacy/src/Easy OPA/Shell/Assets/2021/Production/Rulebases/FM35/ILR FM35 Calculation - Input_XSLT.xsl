@@ -512,9 +512,9 @@
                         <xsl:if test="string(boolean($var_FundModel)) != 'false'">
                           <attribute>
                             <xsl:attribute name="id">FundModel</xsl:attribute>
-                            <text-val>
+                            <number-val>
                               <xsl:value-of select="string($var_FundModel)"/>
-                            </text-val>
+                            </number-val>
                           </attribute>
                         </xsl:if>
                         <xsl:if test="string(boolean($var_DelLocPostCode)) != 'false'">
