@@ -112,13 +112,6 @@ select
                 ld.PwayCode as [@PwayCode],
                 ld.PriorLearnFundAdj as [@PriorLearnFundAdj],
                 ld.OtherFundAdj as [@OtherFundAdj],
-                --ld.LDFAM_EEF as [@LrnDelFAM_EEF],
-                --ld.LDFAM_FFI as [@LrnDelFAM_FFI],
-                --ld.LDM1 as [@LrnDelFAM_LDM1],
-                --ld.LDM2 as [@LrnDelFAM_LDM2],
-                --ld.LDM3 as [@LrnDelFAM_LDM3],
-                --ld.LDM4 as [@LrnDelFAM_LDM4],
-                --ld.LDFAM_RES as [@LrnDelFAM_RES],
                 (
                   select
                     LearnDelFAMType as [@LearnDelFAMType],
@@ -193,7 +186,7 @@ select
               where
                 ld.LearnRefNumber = l.LearnRefNumber
                 and ld.UKPRN = l.UKPRN
-                and ld.FundModel = 35 for xml path ('LearningDelivery'),
+				for xml path ('LearningDelivery'),
                 type
             )
           from
@@ -234,7 +227,7 @@ from
       Valid.LearningDelivery as filterLD
       inner join [dbo].UKPRNForProcedures p on p.UKPRN = filterLD.UKPRN
     where
-      filterLD.FundModel = 35
+      filterLD.FundModel IN (35, 81)
   ) as cntrl
 end
 go
