@@ -86,7 +86,6 @@ select
               select
                 les.EmpId as [@EmpId],
                 les.DateEmpStatApp as [@DateEmpStatApp],
-                1 as [@AgreeId],
                 les.EmpStat as [@EMPStat],
                 lesd.ESMCode_SEM as [@EmpStatMon_SEM]
               from
@@ -392,12 +391,11 @@ go
     @LearnDelSecondProv1618Pay decimal(12, 5) = null,
     @LearnDelSEMContWaiver bit = null,
     @LearnDelSFAContribPct decimal(12, 5) = null,
+    @LearnDelESFAContribPct decimal(12, 5) = null,
     @LearnSuppFund bit = null,
     @LearnSuppFundCash decimal(12, 5) = null,
     @MathEngBalPayment decimal(12, 5) = null,
-    @MathEngBalPct decimal(12, 5) = null,
     @MathEngOnProgPayment decimal(12, 5) = null,
-    @MathEngOnProgPct decimal(12, 5) = null,
     @ProgrammeAimBalPayment decimal(12, 5) = null,
     @ProgrammeAimCompletionPayment decimal(12, 5) = null,
     @ProgrammeAimOnProgPayment decimal(12, 5) = null,
@@ -719,6 +717,7 @@ insert into
     LearnDelSecondProv1618Pay,
     LearnDelSEMContWaiver,
     LearnDelSFAContribPct,
+    LearnDelESFAContribPct,
     LearnSuppFund,
     LearnSuppFundCash,
     MathEngBalPayment,
@@ -840,6 +839,13 @@ select
   max(
     case
       AttributeName
+      when 'LearnDelESFAContribPct' then Value
+      else null
+    end
+  ) as LearnDelESFAContribPct,
+  max(
+    case
+      AttributeName
       when 'LearnSuppFund' then Value
       else null
     end
@@ -861,24 +867,10 @@ select
   max(
     case
       AttributeName
-      when 'MathEngBalPct' then Value
-      else null
-    end
-  ) as MathEngBalPct,
-  max(
-    case
-      AttributeName
       when 'MathEngOnProgPayment' then Value
       else null
     end
   ) as MathEngOnProgPayment,
-  max(
-    case
-      AttributeName
-      when 'MathEngOnProgPct' then Value
-      else null
-    end
-  ) as MathEngOnProgPct,
   max(
     case
       AttributeName
@@ -1129,7 +1121,6 @@ go
     @PriceEpisode1618FUTotEarnings decimal(12, 5) = null,
     @PriceEpisodeActualEndDate date = null,
     @PriceEpisodeActualEndDateIncEPA date = null,
-    @PriceEpisodeAgreeId varchar(6) = null,
     @PriceEpisodeAimSeqNumber bigint = null,
     @PriceEpisodeActualInstalments int = null,
     @PriceEpisodeApplic1618FrameworkUpliftCompElement decimal(12, 5) = null,
@@ -1183,6 +1174,7 @@ go
     @PriceEpisodeSecondEmp1618Pay decimal(12, 5) = null,
     @PriceEpisodeSecondProv1618Pay decimal(12, 5) = null,
     @PriceEpisodeSFAContribPct decimal(12, 5) = null,
+    @PriceEpisodeESFAContribPct decimal(12, 5) = null,
     @PriceEpisodeTotProgFunding decimal(12, 5) = null
   ) as begin
 set
@@ -1201,7 +1193,6 @@ insert into
     PriceEpisode1618FUTotEarnings,
     PriceEpisodeActualEndDate,
     PriceEpisodeActualEndDateIncEPA,
-    PriceEpisodeAgreeId,
     PriceEpisodeAimSeqNumber,
     PriceEpisodeActualInstalments,
     PriceEpisodeApplic1618FrameworkUpliftCompElement,
@@ -1249,7 +1240,6 @@ values
     @PriceEpisode1618FUTotEarnings,
     @PriceEpisodeActualEndDate,
     @PriceEpisodeActualEndDateIncEPA,
-    @PriceEpisodeAgreeId,
     @PriceEpisodeAimSeqNumber,
     @PriceEpisodeActualInstalments,
     @PriceEpisodeApplic1618FrameworkUpliftCompElement,
@@ -1384,6 +1374,7 @@ insert into
     PriceEpisodeSecondEmp1618Pay,
     PriceEpisodeSecondProv1618Pay,
     PriceEpisodeSFAContribPct,
+    PriceEpisodeESFAContribPct,
     PriceEpisodeTotProgFunding
   )
 select
@@ -1531,6 +1522,13 @@ select
       else null
     end
   ) as PriceEpisodeSFAContribPct,
+  max(
+    case
+      AttributeName
+      when 'PriceEpisodeESFAContribPct' then Value
+      else null
+    end
+  ) as PriceEpisodeESFAContribPct,
   max(
     case
       AttributeName
