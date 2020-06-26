@@ -444,8 +444,6 @@
                                                           select="@EmpId"/>
                                             <xsl:variable name="var_DateEmpStatApp"
                                                           select="@DateEmpStatApp"/>
-                                            <xsl:variable name="var_AgreeId"
-                                                          select="@AgreeId"/>
                                             <xsl:variable name="var_EMPStat"
                                                           select="@EMPStat"/>
                                             <xsl:variable name="var_EmpStatMon_SEM"
@@ -468,14 +466,6 @@
                                                         <date-val>
                                                             <xsl:value-of select="string($var_DateEmpStatApp)"/>
                                                         </date-val>
-                                                    </attribute>
-                                                </xsl:if>
-                                                <xsl:if test="string(boolean($var_AgreeId)) != 'false'">
-                                                    <attribute>
-                                                        <xsl:attribute name="id">AgreeId</xsl:attribute>
-                                                        <text-val>
-                                                            <xsl:value-of select="string($var_AgreeId)"/>
-                                                        </text-val>
                                                     </attribute>
                                                 </xsl:if>
                                                 <xsl:if test="string(boolean($var_EMPStat)) != 'false'">
