@@ -58,10 +58,6 @@
           <Destination>PriceEpisodeActualEndDateIncEPA</Destination>
         </ColumnMapping>
         <ColumnMapping>
-          <Source>PriceEpisodeAgreeId</Source>
-          <Destination>PriceEpisodeAgreeId</Destination>
-        </ColumnMapping>
-        <ColumnMapping>
           <Source>PriceEpisodeAimSeqNumber</Source>
           <Destination>PriceEpisodeAimSeqNumber</Destination>
         </ColumnMapping>
@@ -291,6 +287,10 @@
         <ColumnMapping>
           <Source>PriceEpisodeSFAContribPct</Source>
           <Destination>PriceEpisodeSFAContribPct</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>PriceEpisodeESFAContribPct</Source>
+          <Destination>PriceEpisodeESFAContribPct</Destination>
         </ColumnMapping>
         <ColumnMapping>
           <Source>PriceEpisodeTotProgFunding</Source>
@@ -673,6 +673,10 @@
           <Destination>LearnDelSFAContribPct</Destination>
         </ColumnMapping>
         <ColumnMapping>
+          <Source>LearnDelESFAContribPct</Source>
+          <Destination>LearnDelESFAContribPct</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
           <Source>LearnSuppFund</Source>
           <Destination>LearnSuppFund</Destination>
         </ColumnMapping>
@@ -685,16 +689,8 @@
           <Destination>MathEngBalPayment</Destination>
         </ColumnMapping>
         <ColumnMapping>
-          <Source>MathEngBalPct</Source>
-          <Destination>MathEngBalPct</Destination>
-        </ColumnMapping>
-        <ColumnMapping>
           <Source>MathEngOnProgPayment</Source>
           <Destination>MathEngOnProgPayment</Destination>
-        </ColumnMapping>
-        <ColumnMapping>
-          <Source>MathEngOnProgPct</Source>
-          <Destination>MathEngOnProgPct</Destination>
         </ColumnMapping>
         <ColumnMapping>
           <Source>ProgrammeAimBalPayment</Source>

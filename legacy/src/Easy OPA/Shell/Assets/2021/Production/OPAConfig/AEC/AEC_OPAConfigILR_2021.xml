@@ -191,6 +191,14 @@
           <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
         </ChangePoint>
       </ResultQueryParameterMap>
+      <ResultQueryParameterMap AttributeName="LearnDelESFAContribPct" ParameterName="LearnDelESFAContribPct" EntityName="LearningDelivery">
+        <ChangePoint ParentAttributeIDColumn="LearnDelESFAContribPct" StoredProcName="Rulebase.AEC_Insert_LearningDelivery_PeriodisedValues">
+          <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
+          <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
+          <ChangePointParameterMap AttributeName="AimSeqNumber" ParemeterName="AimSeqNumber" />
+          <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
+        </ChangePoint>
+      </ResultQueryParameterMap>
       <ResultQueryParameterMap AttributeName="LearnSuppFund" ParameterName="LearnSuppFund" EntityName="LearningDelivery">
         <ChangePoint ParentAttributeIDColumn="LearnSuppFund" StoredProcName="Rulebase.AEC_Insert_LearningDelivery_PeriodisedValues">
           <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
@@ -215,24 +223,8 @@
           <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
         </ChangePoint>
       </ResultQueryParameterMap>
-      <ResultQueryParameterMap AttributeName="MathEngBalPct" ParameterName="MathEngBalPct" EntityName="LearningDelivery">
-        <ChangePoint ParentAttributeIDColumn="MathEngBalPct" StoredProcName="Rulebase.AEC_Insert_LearningDelivery_PeriodisedValues">
-          <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
-          <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
-          <ChangePointParameterMap AttributeName="AimSeqNumber" ParemeterName="AimSeqNumber" />
-          <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
-        </ChangePoint>
-      </ResultQueryParameterMap>
       <ResultQueryParameterMap AttributeName="MathEngOnProgPayment" ParameterName="MathEngOnProgPayment" EntityName="LearningDelivery">
         <ChangePoint ParentAttributeIDColumn="MathEngOnProgPayment" StoredProcName="Rulebase.AEC_Insert_LearningDelivery_PeriodisedValues">
-          <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
-          <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
-          <ChangePointParameterMap AttributeName="AimSeqNumber" ParemeterName="AimSeqNumber" />
-          <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
-        </ChangePoint>
-      </ResultQueryParameterMap>
-      <ResultQueryParameterMap AttributeName="MathEngOnProgPct" ParameterName="MathEngOnProgPct" EntityName="LearningDelivery">
-        <ChangePoint ParentAttributeIDColumn="MathEngOnProgPct" StoredProcName="Rulebase.AEC_Insert_LearningDelivery_PeriodisedValues">
           <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
           <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
           <ChangePointParameterMap AttributeName="AimSeqNumber" ParemeterName="AimSeqNumber" />
@@ -332,7 +324,6 @@
       <ResultQueryParameterMap AttributeName="PriceEpisode1618FUTotEarnings" ParameterName="PriceEpisode1618FUTotEarnings" EntityName="ApprenticeshipPriceEpisode" />
       <ResultQueryParameterMap AttributeName="PriceEpisodeActualEndDateIncEPA" ParameterName="PriceEpisodeActualEndDateIncEPA" EntityName="ApprenticeshipPriceEpisode" />
       <ResultQueryParameterMap AttributeName="PriceEpisodeActualEndDate" ParameterName="PriceEpisodeActualEndDate" EntityName="ApprenticeshipPriceEpisode" />
-      <ResultQueryParameterMap AttributeName="PriceEpisodeAgreeId" ParameterName="PriceEpisodeAgreeId" EntityName="ApprenticeshipPriceEpisode" />
       <ResultQueryParameterMap AttributeName="PriceEpisodeAimSeqNumber" ParameterName="PriceEpisodeAimSeqNumber" EntityName="ApprenticeshipPriceEpisode" />
       <ResultQueryParameterMap AttributeName="PriceEpisodeActualInstalments" ParameterName="PriceEpisodeActualInstalments" EntityName="ApprenticeshipPriceEpisode" />
       <ResultQueryParameterMap AttributeName="PriceEpisodeApplic1618FrameworkUpliftCompElement" ParameterName="PriceEpisodeApplic1618FrameworkUpliftCompElement" EntityName="ApprenticeshipPriceEpisode" />
@@ -521,6 +512,14 @@
       </ResultQueryParameterMap>
       <ResultQueryParameterMap AttributeName="PriceEpisodeSFAContribPct" ParameterName="PriceEpisodeSFAContribPct" EntityName="ApprenticeshipPriceEpisode">
         <ChangePoint ParentAttributeIDColumn="PriceEpisodeSFAContribPct" StoredProcName="Rulebase.AEC_Insert_ApprenticeshipPriceEpisode_PeriodisedValues">
+          <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
+          <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
+          <ChangePointParameterMap AttributeName="PriceEpisodeIdentifier" ParemeterName="PriceEpisodeIdentifier" />
+          <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
+        </ChangePoint>
+      </ResultQueryParameterMap>
+      <ResultQueryParameterMap AttributeName="PriceEpisodeESFAContribPct" ParameterName="PriceEpisodeESFAContribPct" EntityName="ApprenticeshipPriceEpisode">
+        <ChangePoint ParentAttributeIDColumn="PriceEpisodeESFAContribPct" StoredProcName="Rulebase.AEC_Insert_ApprenticeshipPriceEpisode_PeriodisedValues">
           <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
           <ChangePointParameterMap EntityName="Learner" AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
           <ChangePointParameterMap AttributeName="PriceEpisodeIdentifier" ParemeterName="PriceEpisodeIdentifier" />

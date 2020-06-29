@@ -665,12 +665,11 @@ as
 			aldp.LearnDelSecondProv1618Pay,
 			aldp.LearnDelSEMContWaiver,
 			aldp.LearnDelSFAContribPct,
+			aldp.LearnDelESFAContribPct,
 			aldp.LearnSuppFund,
 			aldp.LearnSuppFundCash,
 			aldp.MathEngBalPayment,
-			aldp.MathEngBalPct,
 			aldp.MathEngOnProgPayment,
-			aldp.MathEngOnProgPct,
 			aldp.ProgrammeAimBalPayment,
 			aldp.ProgrammeAimCompletionPayment,
 			aldp.ProgrammeAimOnProgPayment,
@@ -757,7 +756,6 @@ as
 			aape.PriceEpisode1618FUTotEarnings,
 			aape.PriceEpisodeActualEndDateIncEPA,
 			aape.PriceEpisodeActualEndDate,
-			aape.PriceEpisodeAgreeId,
 			aape.PriceEpisodeAimSeqNumber,
 			aape.PriceEpisodeActualInstalments,
 			aape.PriceEpisodeApplic1618FrameworkUpliftCompElement,
@@ -826,6 +824,7 @@ as
 			apep.PriceEpisodeSecondEmp1618Pay,
 			apep.PriceEpisodeSecondProv1618Pay,
 			apep.PriceEpisodeSFAContribPct,
+			apep.PriceEpisodeESFAContribPct,
 			apep.PriceEpisodeTotProgFunding
 	from	Rulebase.AEC_ApprenticeshipPriceEpisode_Period as apep
 				cross join (select top 1 UKPRN from Rulebase.AEC_global) as g
