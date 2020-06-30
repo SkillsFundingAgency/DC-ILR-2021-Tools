@@ -104,7 +104,9 @@ select
       from
         [Valid].[LearningProvider]
         cross join [Reference].[LARS_Current_Version]
-        cross join [Reference].[SFA_PostcodeAreaCost_Current_Version] for xml path ('global'),
+        cross join [Reference].[SFA_PostcodeAreaCost_Current_Version]
+        where UKPRN = ControllingTable.UKPRN
+        for xml path ('global'),
         type
     )
   )

@@ -134,7 +134,8 @@ select
         )
       from
         Valid.LearningProvider
-        cross join Reference.LARS_Current_Version for xml path ('global'),
+        cross join Reference.LARS_Current_Version
+        where UKPRN = Filter_LearningDelivery.UKPRN for xml path ('global'),
         type
     )
   )
