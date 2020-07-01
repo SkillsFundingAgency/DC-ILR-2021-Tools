@@ -403,6 +403,7 @@ go
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
     primary key clustered (
+      UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       AttributeName asc
