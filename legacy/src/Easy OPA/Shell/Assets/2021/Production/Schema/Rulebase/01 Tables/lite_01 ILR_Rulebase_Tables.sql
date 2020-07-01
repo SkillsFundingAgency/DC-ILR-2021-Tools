@@ -31,7 +31,7 @@ go
     LearnRefNumber varchar(12),
     [Period] int,
     LnrOnProgPay decimal(10, 5),
-    primary key clustered (LearnRefNumber asc, [Period] asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, [Period] asc)
   )
 go
   if object_id(
@@ -56,7 +56,7 @@ go
     Period_10 decimal(15, 5),
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
-    primary key clustered (LearnRefNumber asc, AttributeName asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, AttributeName asc)
   )
 go
   if object_id('Rulebase.FM25_Cases', 'u') is not null begin drop table Rulebase.FM25_Cases
@@ -144,7 +144,7 @@ go
     LearnRefNumber varchar(12),
     [Period] int,
     ALBSeqNum int,
-    primary key clustered (LearnRefNumber asc, [Period] asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, [Period] asc)
   )
 go
   if object_id('Rulebase.ALB_Learner_PeriodisedValues', 'u') is not null begin drop table Rulebase.ALB_Learner_PeriodisedValues
@@ -166,7 +166,7 @@ go
     Period_10 decimal(15, 5),
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
-    primary key clustered (LearnRefNumber asc, AttributeName asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, AttributeName asc)
   )
 go
   if object_id('Rulebase.ALB_LearningDelivery', 'u') is not null begin drop table Rulebase.ALB_LearningDelivery
@@ -190,7 +190,7 @@ go
     FundLine varchar(50),
     LiabilityDate date,
     ApplicProgWeightFact varchar(1),
-    ApplicFactDate date primary key clustered (LearnRefNumber asc, AimSeqNumber asc)
+    ApplicFactDate date primary key clustered (UKPRN asc, LearnRefNumber asc, AimSeqNumber asc)
   )
 go
   if object_id('Rulebase.ALB_LearningDelivery_Period', 'u') is not null begin drop table Rulebase.ALB_LearningDelivery_Period
@@ -205,6 +205,7 @@ go
     AreaUpliftBalPayment decimal(12, 5),
     ALBCode int,
     ALBSupportPayment decimal(12, 5) primary key clustered (
+        UKPRM asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       [Period] asc
@@ -235,6 +236,7 @@ go
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
     primary key clustered (
+        UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       AttributeName asc
@@ -343,7 +345,7 @@ go
     WeightedRateFromESOL decimal(10, 5),
     WeightedRateFromLARS decimal(10, 5),
     ReservedUpliftFactor1 decimal(10, 5),
-    ReservedUpliftRate1 decimal(10, 5) primary key clustered (LearnRefNumber asc, AimSeqNumber asc)
+    ReservedUpliftRate1 decimal(10, 5) primary key clustered (UKPRN asc, LearnRefNumber asc, AimSeqNumber asc)
   )
 go
   if object_id('Rulebase.FM35_LearningDelivery_Period', 'u') is not null begin drop table Rulebase.FM35_LearningDelivery_Period
@@ -373,6 +375,7 @@ go
     OnProgPayPctTrans decimal(10, 5),
     TransInstPerPeriod int,
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       [Period] asc
@@ -486,7 +489,7 @@ go
     ApplicFundValDate date,
     YoungAppFirstPayment decimal(10, 5),
     YoungAppPayment decimal(10, 5),
-    primary key clustered (LearnRefNumber asc, AimSeqNumber asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, AimSeqNumber asc)
   )
 go
   if object_id('Rulebase.TBL_LearningDelivery_Period', 'u') is not null begin drop table Rulebase.TBL_LearningDelivery_Period
@@ -512,6 +515,7 @@ go
     YoungAppPayment decimal(10, 5),
     YoungAppSecondPayment decimal(10, 5),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       [Period] asc
@@ -542,6 +546,7 @@ go
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       AttributeName asc
@@ -619,7 +624,7 @@ go
     PlannedTotalDaysIL int,
     SecondIncentiveThresholdDate date,
     ThresholdDays int,
-    primary key clustered (LearnRefNumber asc, AimSeqNumber asc)
+    primary key clustered (UKPRN asc, LearnRefNumber asc, AimSeqNumber asc)
   )
 go
   if object_id('Rulebase.AEC_LearningDelivery_Period', 'u') is not null begin drop table Rulebase.AEC_LearningDelivery_Period
@@ -658,6 +663,7 @@ go
     ProgrammeAimProgFundIndMinCoInvest decimal(12, 5),
     ProgrammeAimTotProgFund decimal(12, 5),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       [Period] asc
@@ -688,6 +694,7 @@ go
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       AttributeName asc
@@ -718,6 +725,7 @@ go
     Period_11 varchar(255),
     Period_12 varchar(255),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AimSeqNumber asc,
       AttributeName asc
@@ -755,6 +763,7 @@ go
     HistoricUptoEndDateOutput date,
     HistoricVirtualTNP3EndofThisYearOutput decimal(12, 5),
     HistoricVirtualTNP4EndofThisYearOutput decimal(12, 5) primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       AppIdentifierOutput asc
     )
@@ -808,7 +817,7 @@ go
     TNP2 decimal(12, 5),
     TNP3 decimal(12, 5),
     TNP4 decimal(12, 5),
-    primary key (LearnRefNumber, PriceEpisodeIdentifier)
+    primary key (UKPRN, LearnRefNumber, PriceEpisodeIdentifier)
   )
 go
   if object_id(
@@ -876,6 +885,7 @@ go
     Period_11 decimal(15, 5),
     Period_12 decimal(15, 5),
     primary key clustered (
+    UKPRN asc,
       LearnRefNumber asc,
       PriceEpisodeIdentifier asc,
       AttributeName asc
