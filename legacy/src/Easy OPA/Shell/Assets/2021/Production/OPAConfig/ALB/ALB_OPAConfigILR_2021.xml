@@ -16,10 +16,15 @@
       <ResultQueryParameterMap AttributeName="UKPRN" ParameterName="UKPRN" EntityName="global" />
       <ResultQueryParameterMap AttributeName="LearnRefNumber" ParameterName="LearnRefNumber" EntityName="Learner" />
       <ResultQueryParameterMap AttributeName="ALBSeqNum" ParameterName="ALBSeqNum" EntityName="Learner">
-        <ChangePoint ParentAttributeIDColumn="ALBSeqNum" StoredProcName="Rulebase.ALB_Insert_Learner_PeriodisedValues">
-          <ChangePointParameterMap AttributeName="AttributeName" ParemeterName="AttributeName" />
-          <ChangePointParameterMap AttributeName="LearnRefNumber" ParemeterName="LearnRefNumber" />
-          <Period SP_ParameterPrefix="Period_" NumOfPeriods="12" PeriodStartDate="${PeriodStartDate}" />
+        <ChangePoint ParentAttributeIDColumn="ALBSeqNum"
+                                     StoredProcName="Rulebase.ALB_Insert_Learner_PeriodisedValues">
+          <ChangePointParameterMap AttributeName="AttributeName"
+                                   ParemeterName="AttributeName" />
+          <ChangePointParameterMap AttributeName="LearnRefNumber"
+                                   ParemeterName="LearnRefNumber" />
+          <Period SP_ParameterPrefix="Period_"
+                  NumOfPeriods="12"
+                  PeriodStartDate="${PeriodStartDate}" />
         </ChangePoint>
       </ResultQueryParameterMap>
     </OPAResult>

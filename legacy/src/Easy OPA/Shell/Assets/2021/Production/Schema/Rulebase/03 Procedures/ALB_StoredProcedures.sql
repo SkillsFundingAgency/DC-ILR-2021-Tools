@@ -7,7 +7,9 @@ set
 select
   CaseData
 from
-  [Rulebase].[ALB_Cases]
+  [Rulebase].[ALB_Cases] C
+  JOIN dbo.UKPRNForProcedures UFP
+	ON UFP.UKPRN = C.UKPRN
 end
 go
   if object_id('[Rulebase].[ALB_Insert_Cases]', 'p') is not null begin drop procedure [Rulebase].[ALB_Insert_Cases]
@@ -122,6 +124,7 @@ from
     where
       [FundModel] = 99
   ) as [Filter_LearningDelivery] on [Filter_LearningDelivery].[LearnRefNumber] = [ControllingTable].[LearnRefNumber]
+  and [Filter_LearningDelivery].UKPRN = [ControllingTable].UKPRN
 end
 go
   if object_id('[Rulebase].[ALB_Insert_global]', 'p') is not null begin drop procedure [Rulebase].[ALB_Insert_global]
