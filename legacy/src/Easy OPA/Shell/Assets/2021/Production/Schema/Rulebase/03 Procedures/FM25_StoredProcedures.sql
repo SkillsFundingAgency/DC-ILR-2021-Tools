@@ -142,7 +142,7 @@ begin
 												left join Reference.FM25_PostcodeDisadvantage as pd
 													on pd.Postcode =
 													CASE
-														WHEN l.Postcode = 'ZZ99 9ZZ' THEN l.PostcodePrior
+														WHEN pd.Postcode = 'ZZ99 9ZZ' THEN l.PostcodePrior
 														ELSE  l.Postcode
 													END
 													and pd.EffectiveTo is null
