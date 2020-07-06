@@ -7,7 +7,7 @@ select
 from
   Rulebase.ESF_Cases C
 	JOIN dbo.UKPRNForProcedures UFP
-	ON UFP.UKPRN = C.UKPRNs
+	ON UFP.UKPRN = C.UKPRN
 end
 go
   if object_id('Rulebase.ESF_Insert_Cases', 'p') is not null begin drop procedure Rulebase.ESF_Insert_Cases
