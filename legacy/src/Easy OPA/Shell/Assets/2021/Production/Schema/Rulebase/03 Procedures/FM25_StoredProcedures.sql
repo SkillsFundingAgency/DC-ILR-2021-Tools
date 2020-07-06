@@ -140,11 +140,7 @@ begin
 													on l.LearnRefNumber = learnDenorm.LearnRefNumber
 													and l.UKPRN = learnDenorm.UKPRN
 												left join Reference.FM25_PostcodeDisadvantage as pd
-													on pd.Postcode =
-													CASE
-														WHEN pd.Postcode = 'ZZ99 9ZZ' THEN l.PostcodePrior
-														ELSE  l.Postcode
-													END
+													on pd.Postcode = l.Postcode
 													and pd.EffectiveTo is null
 									where	l.LearnRefNumber = globalLearner.LearnRefNumber
 									AND l.UKPRN = globalLearner.UKPRN
