@@ -315,9 +315,9 @@ BEGIN
 	DECLARE @output nvarchar(max)
 	--LearningProvider
 	IF @FModel is NULL
-		SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT [UKPRN] FROM ['+@schema+'].[LearningProvider]' + CHAR(13)
+		SELECT @output = COALESCE(@output,'') + 'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT [UKPRN] FROM ['+@schema+'].[LearningProvider]' + CHAR(13)
 	ELSE
-		SELECT @output = COALESCE(@output,'') + N'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT DISTINCT lp.[UKPRN] FROM ['+@schema+'].[LearningProvider] lp join ['+@schema+'].LearningDelivery ld on ld.[UKPRN] = lp.[UKPRN] WHERE ld.FundModel = '+ @FModel + CHAR(13)
+		SELECT @output = COALESCE(@output,'') + 'INSERT INTO [Valid].[LearningProvider] ([UKPRN]) SELECT DISTINCT lp.[UKPRN] FROM ['+@schema+'].[LearningProvider] lp join ['+@schema+'].LearningDelivery ld on ld.[UKPRN] = lp.[UKPRN] WHERE ld.FundModel = '+ @FModel + CHAR(13)
 	exec(@output)
 END
 GO

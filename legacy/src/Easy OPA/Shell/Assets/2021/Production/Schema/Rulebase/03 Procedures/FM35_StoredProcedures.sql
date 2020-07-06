@@ -7,7 +7,9 @@ set
 select
   CaseData
 from
-  Rulebase.FM35_Cases
+  Rulebase.FM35_Cases C
+	JOIN dbo.UKPRNForProcedures UFP
+	ON UFP.UKPRN = C.UKPRN
 end
 go
   if object_id('Rulebase.FM35_Insert_Cases', 'p') is not null begin drop procedure Rulebase.FM35_Insert_Cases
