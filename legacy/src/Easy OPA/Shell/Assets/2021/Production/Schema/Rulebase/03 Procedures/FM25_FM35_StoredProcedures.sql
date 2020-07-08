@@ -43,15 +43,13 @@ select
             type
         )
       from
-        Valid.LearningProvider as VLP for xml path ('global'),
+        Valid.LearningProvider as VLP where VLP.UKPRN = ControllingTable.UKPRN for xml path ('global'),
         type
     )
   )
 from
   (SELECT l.UKPRN, l.LearnRefNumber FROM Valid.Learner l inner join [dbo].UKPRNForProcedures p on l.UKPRN = p.UKPRN) as ControllingTable
-  inner join [dbo].UKPRNForProcedures p on ControllingTable.UKPRN = p.UKPRN
-  inner join Rulebase.FM25_Learner as FM25L on ControllingTable.LearnRefNumber = FM25L.LearnRefNumber
-  and ControllingTable.UKPRN = FM25L.UKPRN
+  INNER JOIN Rulebase.FM25_Learner FM25L on FM25L.LearnRefNumber = ControllingTable.LearnRefNumber and FM25L.UKPRN = ControllingTable.UKPRN
 end
 go
   if object_id('Rulebase.FM25_FM35_Insert_global', 'p') is not null begin drop procedure Rulebase.FM25_FM35_Insert_global
