@@ -5,7 +5,9 @@ go
 select
   CaseData
 from
-  Rulebase.TBL_Cases
+  Rulebase.TBL_Cases C
+  JOIN dbo.UKPRNForProcedures P
+  on P.UKPRN = C.UKPRN
 end
 go
   if object_id('Rulebase.TBL_Insert_Cases', 'p') is not null begin drop procedure Rulebase.TBL_Insert_Cases
@@ -129,7 +131,9 @@ select
           from
             Valid.Learner
           where
-            Learner.LearnRefNumber = Filter_LearningDelivery.LearnRefNumber for xml path ('Learner'),
+            Learner.LearnRefNumber = Filter_LearningDelivery.LearnRefNumber 
+			and Learner.UKPRN = Filter_LearningDelivery.UKPRN
+			for xml path ('Learner'),
             type
         )
       from
@@ -549,7 +553,7 @@ select
 from
   (
     select
-      UKPRN,
+      PeriodValue.UKPRN,
       LearnRefNumber,
       AimSeqNumber,
       AttributeName,
@@ -570,8 +574,10 @@ from
           Period_10,
           Period_11,
           Period_12
-        )
-      ) as PeriodValue
+        ) 
+      )  as PeriodValue
+	  join dbo.UKPRNForProcedures U
+	  on PeriodValue.UKPRN = U.UKPRN
   ) as TBLPeriodValues
 group by
   TBLPeriodValues.UKPRN,
