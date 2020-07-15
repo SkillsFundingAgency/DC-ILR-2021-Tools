@@ -136,12 +136,16 @@ begin
 											AND ld.UKPRN = l.UKPRN
 											for xml path('LearningDelivery'), type)
 									from	Valid.Learner as l
-												join Valid.LearnerDenormTbl as learnDenorm
-													on l.LearnRefNumber = learnDenorm.LearnRefNumber
-													and l.UKPRN = learnDenorm.UKPRN
-												left join Reference.FM25_PostcodeDisadvantage as pd
-													on pd.Postcode = l.Postcode
-													and pd.EffectiveTo is null
+											join Valid.LearnerDenormTbl as learnDenorm
+		on l.LearnRefNumber = learnDenorm.LearnRefNumber
+		and l.UKPRN = learnDenorm.UKPRN
+	left join Reference.FM25_PostcodeDisadvantage as pd
+		on pd.Postcode =
+		CASE
+			WHEN l.PostcodePrior = 'ZZ99 9ZZ' OR l.PostcodePrior = NULL THEN l.Postcode
+			ELSE  l.PostcodePrior
+		END
+		and pd.EffectiveTo is null
 									where	l.LearnRefNumber = globalLearner.LearnRefNumber
 									AND l.UKPRN = globalLearner.UKPRN
 									for xml path('Learner'), type)
