@@ -47,7 +47,9 @@ Rulebase Version: ILR EFA Calculation 1617, Version 1617.04
       <ResultQueryParameterMap AttributeName="RateBand" ParameterName="RateBand" EntityName="Learner" />
       <ResultQueryParameterMap AttributeName="RetentNew" ParameterName="RetentNew" EntityName="Learner" />
       <ResultQueryParameterMap AttributeName="StartFund" ParameterName="StartFund" EntityName="Learner" />
-      <ResultQueryParameterMap AttributeName="ThresholdDays" ParameterName="ThresholdDays" EntityName="Learner" />
+      <ResultQueryParameterMap AttributeName="ThresholdDays " ParameterName="ThresholdDays" EntityName="Learner" />
+      <ResultQueryParameterMap AttributeName="L3MathsEnglish1Year" ParameterName="L3MathsEnglish1Year" EntityName="Learner" />
+      <ResultQueryParameterMap AttributeName="L3MathsEnglish2Year" ParameterName="L3MathsEnglish2Year" EntityName="Learner" />
       <ResultQueryParameterMap AttributeName="TLevelStudent" ParameterName="TLevelStudent" EntityName="Learner" />
       <ResultQueryParameterMap AttributeName="PrvHistL3ProgMathEngProp" ParameterName="PrvHistL3ProgMathEngProp" EntityName="Learner" />
     </OPAResult>

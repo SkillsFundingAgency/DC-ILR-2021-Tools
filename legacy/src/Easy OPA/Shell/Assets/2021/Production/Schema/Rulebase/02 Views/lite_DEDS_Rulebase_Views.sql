@@ -484,6 +484,8 @@ as
 			el.RetentNew,
 			el.StartFund,
 			el.ThresholdDays,
+			el.L3MathsEnglish1Year,
+			el.L3MathsEnglish2Year,
 			el.TLevelStudent,
 			el.PrvHistL3ProgMathEngProp
 	from	Rulebase.FM25_Learner as el

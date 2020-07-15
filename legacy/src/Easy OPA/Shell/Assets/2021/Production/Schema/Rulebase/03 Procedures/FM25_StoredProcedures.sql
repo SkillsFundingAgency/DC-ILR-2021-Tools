@@ -267,6 +267,8 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 	@RetentNew decimal(10,5),
 	@StartFund bit,
 	@ThresholdDays int,
+	@L3MathsEnglish1Year int,
+	@L3MathsEnglish2Year int,
 	@TLevelStudent bit,
 	@PrvHistL3ProgMathEngProp decimal(10,5)
 ) as
@@ -300,6 +302,8 @@ begin
 		RetentNew,
 		StartFund,
 		ThresholdDays,
+		L3MathsEnglish1Year,
+		L3MathsEnglish2Year,
 		TLevelStudent,
 		PrvHistL3ProgMathEngProp
 	) values (
@@ -331,6 +335,8 @@ begin
 		@RetentNew,
 		@StartFund,
 		@ThresholdDays,
+		@L3MathsEnglish1Year,
+		@L3MathsEnglish2Year,
 		@TLevelStudent,
 		@PrvHistL3ProgMathEngProp
 	)
