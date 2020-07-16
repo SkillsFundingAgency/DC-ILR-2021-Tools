@@ -484,10 +484,10 @@ as
 			el.RetentNew,
 			el.StartFund,
 			el.ThresholdDays,
-			el.L3MathsEnglish1Year,
-			el.L3MathsEnglish2Year,
 			el.TLevelStudent,
-			el.PrvHistL3ProgMathEngProp
+			el.PrvHistL3ProgMathEngProp,
+			el.L3MathsEnglish1Year,
+			el.L3MathsEnglish2Year
 	from	Rulebase.FM25_Learner as el
 				cross join (select top 1 UKPRN from Rulebase.FM25_global) as g
 go

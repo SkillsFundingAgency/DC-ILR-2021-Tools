@@ -1318,6 +1318,14 @@
           <Source>PrvHistL3ProgMathEngProp</Source>
           <Destination>PrvHistL3ProgMathEngProp</Destination>
         </ColumnMapping>
+        <ColumnMapping>
+          <Source>L3MathsEnglish1Year</Source>
+          <Destination>L3MathsEnglish1Year</Destination>
+        </ColumnMapping>
+        <ColumnMapping>
+          <Source>L3MathsEnglish2Year</Source>
+          <Destination>L3MathsEnglish2Year</Destination>
+        </ColumnMapping>
       </ColumnMappings>
     </TableMapping>
     <TableMapping>

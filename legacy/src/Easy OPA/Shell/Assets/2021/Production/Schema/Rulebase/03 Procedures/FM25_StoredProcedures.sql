@@ -267,10 +267,10 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 	@RetentNew decimal(10,5),
 	@StartFund bit,
 	@ThresholdDays int,
-	@L3MathsEnglish1Year int,
-	@L3MathsEnglish2Year int,
 	@TLevelStudent bit,
-	@PrvHistL3ProgMathEngProp decimal(10,5)
+	@PrvHistL3ProgMathEngProp decimal(10,5),
+	@L3MathsEnglish1Year decimal(10,5),
+	@L3MathsEnglish2Year decimal(10,5)
 ) as
 begin
 	insert into Rulebase.FM25_Learner (
@@ -302,10 +302,10 @@ begin
 		RetentNew,
 		StartFund,
 		ThresholdDays,
-		L3MathsEnglish1Year,
-		L3MathsEnglish2Year,
 		TLevelStudent,
-		PrvHistL3ProgMathEngProp
+		PrvHistL3ProgMathEngProp,
+		L3MathsEnglish1Year,
+		L3MathsEnglish2Year
 	) values (
 		@UKPRN,
 		@LearnRefNumber,
@@ -335,10 +335,10 @@ begin
 		@RetentNew,
 		@StartFund,
 		@ThresholdDays,
-		@L3MathsEnglish1Year,
-		@L3MathsEnglish2Year,
 		@TLevelStudent,
-		@PrvHistL3ProgMathEngProp
+		@PrvHistL3ProgMathEngProp,
+		@L3MathsEnglish1Year,
+		@L3MathsEnglish2Year
 	)
 end
 go
