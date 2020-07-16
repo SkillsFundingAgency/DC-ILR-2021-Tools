@@ -629,167 +629,170 @@ go
 insert into
   Rulebase.FM35_LearningDelivery_Period
 select
-  UKPRN,
-  LearnRefNumber,
-  AimSeqNumber,
-  [Period],
-  max(
-    case
-      AttributeName
-      when 'AchievePayment' then [Value]
-      else null
-    end
-  ) AchievePayment,
-  max(
-    case
-      AttributeName
-      when 'AchievePayPct' then [Value]
-      else null
-    end
-  ) AchievePayPct,
-  max(
-    case
-      AttributeName
-      when 'AchievePayPctTrans' then [Value]
-      else null
-    end
-  ) AchievePayPctTrans,
-  max(
-    case
-      AttributeName
-      when 'BalancePayment' then [Value]
-      else null
-    end
-  ) BalancePayment,
-  max(
-    case
-      AttributeName
-      when 'BalancePaymentUncapped' then [Value]
-      else null
-    end
-  ) BalancePaymentUncapped,
-  max(
-    case
-      AttributeName
-      when 'BalancePct' then [Value]
-      else null
-    end
-  ) BalancePct,
-  max(
-    case
-      AttributeName
-      when 'BalancePctTrans' then [Value]
-      else null
-    end
-  ) BalancePctTrans,
-  max(
-    case
-      AttributeName
-      when 'EmpOutcomePay' then [Value]
-      else null
-    end
-  ) EmpOutcomePay,
-  max(
-    case
-      AttributeName
-      when 'EmpOutcomePct' then [Value]
-      else null
-    end
-  ) EmpOutcomePct,
-  max(
-    case
-      AttributeName
-      when 'EmpOutcomePctTrans' then [Value]
-      else null
-    end
-  ) EmpOutcomePctTrans,
-  max(
-    case
-      AttributeName
-      when 'InstPerPeriod' then [Value]
-      else null
-    end
-  ) InstPerPeriod,
-  max(
-    case
-      AttributeName
-      when 'LearnSuppFund' then [Value]
-      else null
-    end
-  ) LearnSuppFund,
-  max(
-    case
-      AttributeName
-      when 'LearnSuppFundCash' then [Value]
-      else null
-    end
-  ) LearnSuppFundCash,
-  max(
-    case
-      AttributeName
-      when 'OnProgPayment' then [Value]
-      else null
-    end
-  ) OnProgPayment,
-  max(
-    case
-      AttributeName
-      when 'OnProgPaymentUncapped' then [Value]
-      else null
-    end
-  ) OnProgPaymentUncapped,
-  max(
-    case
-      AttributeName
-      when 'OnProgPayPct' then [Value]
-      else null
-    end
-  ) OnProgPayPct,
-  max(
-    case
-      AttributeName
-      when 'OnProgPayPctTrans' then [Value]
-      else null
-    end
-  ) OnProgPayPctTrans,
-  max(
-    case
-      AttributeName
-      when 'TransInstPerPeriod' then [Value]
-      else null
-    end
-  ) TransInstPerPeriod
+ UnrequiredAlias.UKPRN,
+ LearnRefNumber,
+ AimSeqNumber,
+ [Period],
+ max(
+  case
+   AttributeName
+   when 'AchievePayment' then [Value]
+   else null
+  end
+ ) AchievePayment,
+ max(
+  case
+   AttributeName
+   when 'AchievePayPct' then [Value]
+   else null
+  end
+ ) AchievePayPct,
+ max(
+  case
+   AttributeName
+   when 'AchievePayPctTrans' then [Value]
+   else null
+  end
+ ) AchievePayPctTrans,
+ max(
+  case
+   AttributeName
+   when 'BalancePayment' then [Value]
+   else null
+  end
+ ) BalancePayment,
+ max(
+  case
+   AttributeName
+   when 'BalancePaymentUncapped' then [Value]
+   else null
+  end
+ ) BalancePaymentUncapped,
+ max(
+  case
+   AttributeName
+   when 'BalancePct' then [Value]
+   else null
+  end
+ ) BalancePct,
+ max(
+  case
+   AttributeName
+   when 'BalancePctTrans' then [Value]
+   else null
+  end
+ ) BalancePctTrans,
+ max(
+  case
+   AttributeName
+   when 'EmpOutcomePay' then [Value]
+   else null
+  end
+ ) EmpOutcomePay,
+ max(
+  case
+   AttributeName
+   when 'EmpOutcomePct' then [Value]
+   else null
+  end
+ ) EmpOutcomePct,
+ max(
+  case
+   AttributeName
+   when 'EmpOutcomePctTrans' then [Value]
+   else null
+  end
+ ) EmpOutcomePctTrans,
+ max(
+  case
+   AttributeName
+   when 'InstPerPeriod' then [Value]
+   else null
+  end
+ ) InstPerPeriod,
+ max(
+  case
+   AttributeName
+   when 'LearnSuppFund' then [Value]
+   else null
+  end
+ ) LearnSuppFund,
+ max(
+  case
+   AttributeName
+   when 'LearnSuppFundCash' then [Value]
+   else null
+  end
+ ) LearnSuppFundCash,
+ max(
+  case
+   AttributeName
+   when 'OnProgPayment' then [Value]
+   else null
+  end
+ ) OnProgPayment,
+ max(
+  case
+   AttributeName
+   when 'OnProgPaymentUncapped' then [Value]
+   else null
+  end
+ ) OnProgPaymentUncapped,
+ max(
+  case
+   AttributeName
+   when 'OnProgPayPct' then [Value]
+   else null
+  end
+ ) OnProgPayPct,
+ max(
+  case
+   AttributeName
+   when 'OnProgPayPctTrans' then [Value]
+   else null
+  end
+ ) OnProgPayPctTrans,
+ max(
+  case
+   AttributeName
+   when 'TransInstPerPeriod' then [Value]
+   else null
+  end
+ ) TransInstPerPeriod
 from
-  (
-    select
-      UKPRN,
-      LearnRefNumber,
-      AimSeqNumber,
-      AttributeName,
-      cast(substring(PeriodValue.[Period], 8, 2) as int) as [Period],
-      PeriodValue.[Value]
-    from
-      Rulebase.FM35_LearningDelivery_PeriodisedValues unpivot (
-        [Value] for [Period] in (
-          Period_1,
-          Period_2,
-          Period_3,
-          Period_4,
-          Period_5,
-          Period_6,
-          Period_7,
-          Period_8,
-          Period_9,
-          Period_10,
-          Period_11,
-          Period_12
-        )
-      ) as PeriodValue
-  ) as UnrequiredAlias
+ (
+  select
+   UKPRN,
+   LearnRefNumber,
+   AimSeqNumber,
+   AttributeName,
+   cast(substring(PeriodValue.[Period], 8, 2) as int) as [Period],
+   PeriodValue.[Value]
+  from
+   Rulebase.FM35_LearningDelivery_PeriodisedValues pv unpivot (
+    [Value] for [Period] in (
+     Period_1,
+     Period_2,
+     Period_3,
+     Period_4,
+     Period_5,
+     Period_6,
+     Period_7,
+     Period_8,
+     Period_9,
+     Period_10,
+     Period_11,
+     Period_12
+    )
+   ) as PeriodValue
+   
+ ) as UnrequiredAlias
+ JOIN dbo.UKPRNForProcedures ufp
+   on ufp.UKPRN = UnrequiredAlias.UKPRN
 group by
-  UKPRN,
-  LearnRefNumber,
-  AimSeqNumber,
-  [Period]
+ UnrequiredAlias.UKPRN,
+ LearnRefNumber,
+ AimSeqNumber,
+ [Period]
 end
 go

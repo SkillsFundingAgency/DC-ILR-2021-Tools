@@ -627,6 +627,8 @@ create table Rulebase.FM25_Learner (
 	ThresholdDays int null,
 	TLevelStudent bit,
     PrvHistL3ProgMathEngProp decimal(10, 5),
+	L3MathsEnglish1Year decimal(10,5) null,
+	L3MathsEnglish2Year decimal(10,5) null,
 	primary key clustered (
 		UKPRN asc,
 		LearnRefNumber asc

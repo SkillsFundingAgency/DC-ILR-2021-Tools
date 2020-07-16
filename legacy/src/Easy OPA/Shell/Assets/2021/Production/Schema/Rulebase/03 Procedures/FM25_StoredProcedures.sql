@@ -136,12 +136,16 @@ begin
 											AND ld.UKPRN = l.UKPRN
 											for xml path('LearningDelivery'), type)
 									from	Valid.Learner as l
-												join Valid.LearnerDenormTbl as learnDenorm
-													on l.LearnRefNumber = learnDenorm.LearnRefNumber
-													and l.UKPRN = learnDenorm.UKPRN
-												left join Reference.FM25_PostcodeDisadvantage as pd
-													on pd.Postcode = l.Postcode
-													and pd.EffectiveTo is null
+											join Valid.LearnerDenormTbl as learnDenorm
+		on l.LearnRefNumber = learnDenorm.LearnRefNumber
+		and l.UKPRN = learnDenorm.UKPRN
+	left join Reference.FM25_PostcodeDisadvantage as pd
+		on pd.Postcode =
+		CASE
+			WHEN l.PostcodePrior = 'ZZ99 9ZZ' OR l.PostcodePrior = NULL THEN l.Postcode
+			ELSE  l.PostcodePrior
+		END
+		and pd.EffectiveTo is null
 									where	l.LearnRefNumber = globalLearner.LearnRefNumber
 									AND l.UKPRN = globalLearner.UKPRN
 									for xml path('Learner'), type)
@@ -264,7 +268,9 @@ create procedure [Rulebase].[FM25_Insert_Learner] (
 	@StartFund bit,
 	@ThresholdDays int,
 	@TLevelStudent bit,
-	@PrvHistL3ProgMathEngProp decimal(10,5)
+	@PrvHistL3ProgMathEngProp decimal(10,5),
+	@L3MathsEnglish1Year decimal(10,5),
+	@L3MathsEnglish2Year decimal(10,5)
 ) as
 begin
 	insert into Rulebase.FM25_Learner (
@@ -297,7 +303,9 @@ begin
 		StartFund,
 		ThresholdDays,
 		TLevelStudent,
-		PrvHistL3ProgMathEngProp
+		PrvHistL3ProgMathEngProp,
+		L3MathsEnglish1Year,
+		L3MathsEnglish2Year
 	) values (
 		@UKPRN,
 		@LearnRefNumber,
@@ -328,7 +336,9 @@ begin
 		@StartFund,
 		@ThresholdDays,
 		@TLevelStudent,
-		@PrvHistL3ProgMathEngProp
+		@PrvHistL3ProgMathEngProp,
+		@L3MathsEnglish1Year,
+		@L3MathsEnglish2Year
 	)
 end
 go
