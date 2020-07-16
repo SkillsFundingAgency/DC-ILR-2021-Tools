@@ -111,8 +111,8 @@ namespace EasyOPA.Provider
 
                     Emitter.Publish(Indentation.FirstLevel, CommonLocalised.Completed);
 
-                    //(!await Validator.IsValid(outputPath, schemaPath))
-                    //    .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.SchemaValidationFailed);
+                    (!await Validator.IsValid(outputPath, schemaPath))
+                        .AsGuard<OperationCanceledException, CommonLocalised>(CommonLocalised.SchemaValidationFailed);
                 }
             });
         }
