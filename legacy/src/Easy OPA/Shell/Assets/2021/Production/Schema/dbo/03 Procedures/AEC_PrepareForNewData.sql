@@ -1,7 +1,7 @@
- if object_id('dbo.AEC_PrepareForNewData', 'p') is not null begin drop procedure dbo.AEC_PrepareForNewData
+if object_id('dbo.AEC_PrepareForNewData', 'p') is not null begin drop procedure dbo.AEC_PrepareForNewData
 end
 go
- CREATE PROCEDURE [dbo].[AEC_PrepareForNewData] 
+CREATE PROCEDURE [dbo].[AEC_PrepareForNewData] 
 (   
 	@pCollectionReturnCode varchar(3)
 )
