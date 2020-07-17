@@ -81,7 +81,8 @@ select
               from
                 Reference.AEC_LatestInYearEarningHistory
               where
-                ULN = l.ULN for xml path ('HistoricEarningInput'),
+                ULN = l.ULN 
+                and UKPRN = l.UKPRN for xml path ('HistoricEarningInput'),
                 type
             ),
             (
@@ -732,7 +733,7 @@ insert into
     ProgrammeAimTotProgFund
   )
 select
-  UKPRN,
+  UnrequiredAlias.UKPRN,
   LearnRefNumber,
   AimSeqNumber,
   [Period],
@@ -940,8 +941,10 @@ from
         )
       ) as PeriodValue
   ) as UnrequiredAlias
+  join dbo.UKPRNForProcedures ufp
+	on UnrequiredAlias.UKPRN = ufp.UKPRN
 group by
-UKPRN,
+	UnrequiredAlias.UKPRN,
   LearnRefNumber,
   AimSeqNumber,
   [Period]
@@ -954,6 +957,7 @@ from
   Rulebase.AEC_LearningDelivery_Period as FirstPass
   inner join (
     select
+	  UnrequiredAlias.UKPRN,
       LearnRefNumber,
       AimSeqNumber,
       [Period],
@@ -974,6 +978,7 @@ from
     from
       (
         select
+		  UKPRN,
           LearnRefNumber,
           AimSeqNumber,
           AttributeName,
@@ -997,7 +1002,10 @@ from
             )
           ) as PeriodValue
       ) as UnrequiredAlias
+	  join dbo.UKPRNForProcedures ufp
+		on UnrequiredAlias.UKPRN = ufp.UKPRN
     group by
+	  UnrequiredAlias.UKPRN,
       LearnRefNumber,
       AimSeqNumber,
       [Period]
@@ -1378,7 +1386,7 @@ insert into
     PriceEpisodeTotProgFunding
   )
 select
-  UKPRN,
+  UnrequiredAlias.UKPRN,
   LearnRefNumber,
   PriceEpisodeIdentifier,
   [Period],
@@ -1563,8 +1571,10 @@ from
         )
       ) as PeriodValue
   ) as UnrequiredAlias
+  join dbo.UKPRNForProcedures ufp
+	on ufp.UKPRN = UnrequiredAlias.UKPRN
 group by
-UKPRN,
+UnrequiredAlias.UKPRN,
   LearnRefNumber,
   PriceEpisodeIdentifier,
   [Period]

@@ -107,8 +107,6 @@ select	distinct
 		aec.ULN,
 		aec.HistoricLearnDelProgEarliestACT2DateInput
 from	Valid.Learner as l
-			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AEC_LatestInYearEarningHistory as aec
-			--join [${DAS_EarningsHistoryRD.servername}].[${DAS_EarningsHistoryRD.databasename}].[${DAS_EarningsHistoryRD.schemaname}].AppsEarningHistory_ApprenticeshipEarningsHistory as aec
 			join ReferenceInput.AppsEarningHistory_ApprenticeshipEarningsHistory as aec
 				on	aec.ULN = l.ULN
 go
