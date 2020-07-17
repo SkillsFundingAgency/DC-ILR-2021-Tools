@@ -217,13 +217,6 @@
     <Content Include="Assets\2021\Local\AcademicYearUplift.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\2021\Local\AEC_History.sql" />
-    <Content Include="Assets\2021\Local\AEC_PrepareForNewData.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\2021\Local\Copy\IntoResultsArea_AEC.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\2021\Local\CreateFileTable.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
