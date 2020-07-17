@@ -7,7 +7,7 @@ GO
 
 CREATE PROCEDURE Rulebase.AEC_CopyHistory
 (  
-  @pCollectionReturnCode varchar(3)
+  @pCollectionReturnCode varchar(3)		--Period just ran (R01)
 )
 AS 
 BEGIN
