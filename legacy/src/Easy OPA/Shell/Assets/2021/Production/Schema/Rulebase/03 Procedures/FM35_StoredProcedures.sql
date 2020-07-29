@@ -64,7 +64,7 @@ select
                 EffectiveTo as [@EffectiveTo],
                 CASE
 					WHEN SpecialistResources = 1 THEN 'Y'
-					WHEN SpecialiseResources = 0 THEN 'N'
+					WHEN SpecialistResources = 0 THEN 'N'
 				END as [@SpecialistResources]
               from
                 Reference.CampusIdentifier_SpecialistResources
