@@ -62,7 +62,10 @@ select
               select
                 EffectiveFrom as [@EffectiveFrom],
                 EffectiveTo as [@EffectiveTo],
-                SpecialistResources as [@SpecialistResources]
+                CASE
+					WHEN SpecialistResources = 1 THEN 'Y'
+					WHEN SpecialiseResources = 0 THEN 'N'
+				END as [@SpecialistResources]
               from
                 Reference.CampusIdentifier_SpecialistResources
               where
