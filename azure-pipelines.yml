@@ -1,7 +1,3 @@
-  SourceFolder: '$(build.sourcesdirectory)\src'
-
-
-
 #name: $(GitVersion_NuGetVersion)
 name: ${{ parameters.VersionNumberMajor }}.${{ parameters.VersionNumberMinor }}.$(Rev:r)
 
