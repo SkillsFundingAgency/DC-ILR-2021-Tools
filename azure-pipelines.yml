@@ -21,7 +21,12 @@ parameters:
   
 trigger:
   paths:
+    include:
+    - src/*   
+    - azure-pipelines.yml    
     exclude:
+    - legacy/*
+    - azure-pipelines.legacy.yml
     - Old
 
 resources:
