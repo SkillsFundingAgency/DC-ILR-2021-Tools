@@ -357,7 +357,7 @@ select	ls.FworkCode,
 		lsaf.FundableWithoutEmployer
 from	Valid.LearningDelivery
 			inner join ReferenceInput.LARS_LARSFrameworkDesktop ls
-				on ls.FworkCode = LearningDelivery.StdCode
+				on ls.FworkCode = LearningDelivery.FworkCode
 				and ls.ProgType = LearningDelivery.ProgType
 				and ls.PwayCode = LearningDelivery.PwayCode
 			inner join [ReferenceInput].[LARS_LARSFrameworkApprenticeshipFunding] lsaf
