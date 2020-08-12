@@ -13,18 +13,11 @@ parameters:
 - name: VersionNumberMajor
   displayName: 'Version Number : Major'
   type: string
-  default: '2020'
+  default: '2021'
 - name: VersionNumberMinor
   displayName: 'Version Number : Minor'
   type: string
-  default: '02'
-- name: BuildConfiguration
-  displayName: Release or Debug
-  type: string
-  default: Release
-  values:
-  - Release
-  - Debug
+  default: '1'
   
 trigger:
   paths:
@@ -152,7 +145,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)\src'
         Contents: |
-         **\*$(BuildConfiguration)*\*Interface.nupkg
+         **\*${{ parameters.BuildConfiguration }}*\*Interface.nupkg
          !**\packages\**
          !**\bin\x64\**
         TargetFolder: '$(build.artifactstagingdirectory)\Nuget\Interface'
@@ -164,7 +157,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)\src'
         Contents: |
-         **\*$(BuildConfiguration)*\*.nupkg
+         **\*${{ parameters.BuildConfiguration }}*\*.nupkg
          !**\packages\**
          !**\bin\x64\**
         TargetFolder: '$(build.artifactstagingdirectory)\Nuget\Packages'
@@ -176,7 +169,7 @@ stages:
       inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
-         src/**/*$(BuildConfiguration)*/*.nupkg
+         src/**/*${{ parameters.BuildConfiguration }}*/*.nupkg
          !**/*Interface*
          !**/packages/**
          !**/bin/x64/**
@@ -186,14 +179,14 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy Console Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'src\$(ConsoleTool)\bin\$(BuildConfiguration)'  
+        SourceFolder: 'src\$(ConsoleTool)\bin\${{ parameters.BuildConfiguration }}'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
 
     - task: CopyFiles@2
       displayName: 'Copy WPF Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'src\$(WPFTool)\bin\$(BuildConfiguration)'  
+        SourceFolder: 'src\$(WPFTool)\bin\${{ parameters.BuildConfiguration }}'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
         OverWrite: true'  
@@ -243,7 +236,7 @@ stages:
       enabled: true
       inputs:
         testAssemblyVer2: |
-         **\$(BuildConfiguration)\*test*.dll
+         **\${{ parameters.BuildConfiguration }}\*test*.dll
          !**\obj\**
         configuration: '${{ parameters.BuildConfiguration }}'
         runInParallel: true
