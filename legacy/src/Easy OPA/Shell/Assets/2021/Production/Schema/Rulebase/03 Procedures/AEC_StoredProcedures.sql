@@ -81,8 +81,7 @@ select
               from
                 Reference.AEC_LatestInYearEarningHistory
               where
-                ULN = l.ULN 
-                and UKPRN = l.UKPRN for xml path ('HistoricEarningInput'),
+                ULN = l.ULN for xml path ('HistoricEarningInput'),
                 type
             ),
             (

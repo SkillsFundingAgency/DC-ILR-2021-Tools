@@ -95,7 +95,7 @@ insert into Reference.SFA_PostcodeDisadvantage (
 	Uplift
 )
 select	distinct
-		pd.Uplift,
+		dd.Uplift as Apprenticeship_Uplift,
 		pd.EffectiveFrom,
 		pd.EffectiveTo,
 		p.Postcode,
@@ -105,6 +105,8 @@ from	Valid.Learner
 				on p.PostCode = Learner.PostcodePrior
 			inner join [ReferenceInput].[Postcodes_SfaDisadvantage] as pd
 				on pd.Postcodes_Postcode_Id = p.Id
+			left join [ReferenceInput].Postcodes_DasDisadvantage as dd
+				on dd.Postcodes_Postcode_Id = p.Id
 go
 
 truncate table Reference.PostcodeSpecialistResourceRefData
