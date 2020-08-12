@@ -160,18 +160,6 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy NugetPackages Files - Artifact NugetPackages Directory'
       inputs:
-        SourceFolder: '$(build.sourcesdirectory)\src'
-        Contents: |
-         **\*${{ parameters.BuildConfiguration }}*\*.nupkg
-         !**\packages\**
-         !**\bin\x64\**
-        TargetFolder: '$(build.artifactstagingdirectory)\Nuget\Packages'
-        CleanTargetFolder: true
-        flattenFolders: true
-
-    - task: CopyFiles@2
-      displayName: 'Copy NugetPackages Files - Artifact NugetPackages Directory'
-      inputs:
         SourceFolder: '$(build.sourcesdirectory)/src'
         Contents: |
          src/**/*${{ parameters.BuildConfiguration }}*/*.nupkg
@@ -230,7 +218,7 @@ stages:
         CODESIGNCERT: $(CodeSignCertificatePFX)
       inputs:
         filePath: 'DFE_Code_Signing.ps1'
-        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication" -FileFilter "ILR*"'
+        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication" -FileFilter "ESFA.DC*"'
         workingDirectory: '$(build.ArtifactStagingDirectory)'
 
 #********************************************************************************
