@@ -104,11 +104,11 @@ stages:
     #********************************************************************************
     # Copy Files into Aftifact Folder before test.
     #********************************************************************************
-
     - task: CopyFiles@2
       displayName: 'Copy Scripts File to Scripts Folder'
       enabled: false
       inputs:
+        SourceFolder: '$(build.sourcesdirectory)/legacy/src'
         Contents: 'GenerateZipFilename.ps1'
         TargetFolder: '$(build.ArtifactStagingDirectory)\Scripts'
         flattenFolders: true
@@ -117,7 +117,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy Nuget Interface Packages Files - Artifact NugetInterface Directory'
       inputs:
-        SourceFolder: '$(build.sourcesdirectory)/src'
+        SourceFolder: '$(build.sourcesdirectory)/legacy/src'
         Contents: |
          **/legacy/*$(BuildConfiguration)*/*Interface*.nupkg
          !**/packages/**
@@ -128,7 +128,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy NugetPackages Files - Artifact NugetPackages Directory'
       inputs:
-        SourceFolder: '$(build.sourcesdirectory)/src'
+        SourceFolder: '$(build.sourcesdirectory)/legacy/src'
         Contents: |
          **/legacy/*$(BuildConfiguration)*/*.nupkg
          !**/*Interface*
