@@ -17,7 +17,14 @@ parameters:
   displayName: 'Version Number : Minor'
   type: string
   default: '02'
-
+- name: BuildConfiguration
+  displayName: Release or Debug
+  type: string
+  default: Release
+  values:
+  - Release
+  - Debug
+  
 trigger:
   paths:
     exclude:
