@@ -107,9 +107,9 @@ stages:
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: 'legacy\src\**\*.sln'
+        restoreSolution: '**\legacy\src\Easy OPA\*.sln'
         vstsFeed: '$(Nuget.Feed)'
-        noCache: true
+        #noCache: true
 
 #********************************************************************************
 # Set Assemblt to Build Number
@@ -128,13 +128,13 @@ stages:
     - task: MSBuild@1
       displayName: 'Build Solution'
       inputs:
-        solution: 'legacy\src\**\*.sln'
+        solution: '**\legacy\src\Easy OPA\*.sln'
         platform: '$(Build.Platform)'
         configuration: '${{ parameters.BuildConfiguration }}'
-        msbuildArguments: '-p:version=$(Build.BuildNumber) -p:FileVersion=$(Build.BuildNumber)'
+        msbuildArguments: '/p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
         clean: true
         maximumCpuCount: true
-        restoreNugetPackages: false
+        restoreNugetPackages: true
         logProjectEvents: true
         createLogFile: true
 
