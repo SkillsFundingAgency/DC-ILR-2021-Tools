@@ -107,7 +107,7 @@ stages:
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: '\legacysrc\**\*.sln'
+        restoreSolution: '\legacy\src\**\*.sln'
         vstsFeed: '$(Nuget.Feed)'
         noCache: true
 
