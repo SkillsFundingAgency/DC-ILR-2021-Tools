@@ -168,9 +168,9 @@ stages:
 
 
     - task: CopyFiles@2
-      displayName: 'Copy WPF Application File to Artifact Folder'
+      displayName: 'Copy EPOA Shell Application File to Artifact Folder'
       inputs:
-        SourceFolder: 'src\$(EPOAShell)\bin\${{ parameters.BuildConfiguration }}'  
+        SourceFolder: '$(build.sourcesdirectory)/legacy/src/$(EPOAShell)/bin/${{ parameters.BuildConfiguration }}'  
         Contents: '**\!(*.pdb)'
         TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
         OverWrite: true'  
