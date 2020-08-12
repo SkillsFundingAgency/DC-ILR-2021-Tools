@@ -209,7 +209,7 @@ stages:
 # Application Signing execution begins here
 #********************************************************************************
     - task: PowerShell@2
-      displayName: 'CodeSign DfE DesktopApplications'
+      displayName: 'CodeSign DfE DesktopApplications - EasyOPA'
       enabled: true  
       env:
         CODESIGNPASSWORD: $(CodeSignPwdDfE)
@@ -218,7 +218,28 @@ stages:
         filePath: 'DFE_Code_Signing.ps1'
         arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication" -FileFilter "EasyOPA*"'
         workingDirectory: '$(build.ArtifactStagingDirectory)'
-
+        
+    - task: PowerShell@2
+      displayName: 'CodeSign DfE DesktopApplications - ESFA'
+      enabled: true  
+      env:
+        CODESIGNPASSWORD: $(CodeSignPwdDfE)
+        CODESIGNCERT: $(CodeSignCertificatePFX)
+      inputs:
+        filePath: 'DFE_Code_Signing.ps1'
+        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication" -FileFilter "ESFA*"'
+        workingDirectory: '$(build.ArtifactStagingDirectory)'
+        
+    - task: PowerShell@2
+      displayName: 'CodeSign DfE DesktopApplications - XML2SQL'
+      enabled: true  
+      env:
+        CODESIGNPASSWORD: $(CodeSignPwdDfE)
+        CODESIGNCERT: $(CodeSignCertificatePFX)
+      inputs:
+        filePath: 'DFE_Code_Signing.ps1'
+        arguments: '-StartFolder "$(build.ArtifactStagingDirectory)\DesktopApplication" -FileFilter "XML2SQL*"'
+        workingDirectory: '$(build.ArtifactStagingDirectory)'
 #********************************************************************************
 # Run Unit Tests
 #********************************************************************************
