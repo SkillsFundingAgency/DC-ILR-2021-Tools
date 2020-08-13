@@ -43,8 +43,6 @@ variables:
   value: 'dct-pkg'  
 - name: "Nuget.Version"
   value: '5.3.0'
-- name: ConsoleTool
-  value: 'ESFA.DC.ILR.Tools.IFCT.Console'
 - name: WPFTool
   value: 'ESFA.DC.ILR.Tools.IFCT.WPF'
   
@@ -168,13 +166,6 @@ stages:
          !**/bin/x64/**
         TargetFolder: '$(build.artifactstagingdirectory)/Nuget/Packages'
         flattenFolders: true
-
-    - task: CopyFiles@2
-      displayName: 'Copy Console Application File to Artifact Folder'
-      inputs:
-        SourceFolder: 'src\$(ConsoleTool)\bin\${{ parameters.BuildConfiguration }}'  
-        Contents: '**\!(*.pdb)'
-        TargetFolder: '$(build.ArtifactStagingDirectory)\DesktopApplication'
 
     - task: CopyFiles@2
       displayName: 'Copy WPF Application File to Artifact Folder'
