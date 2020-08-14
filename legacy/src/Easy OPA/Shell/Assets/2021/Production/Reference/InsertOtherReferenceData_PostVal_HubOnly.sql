@@ -109,4 +109,6 @@ select	distinct
 from	Valid.Learner as l
 			join ReferenceInput.AppsEarningHistory_ApprenticeshipEarningsHistory as aec
 				on	aec.ULN = l.ULN
+				where aec.LatestInYear = 1
+				and aec.ULN < 9999999999
 go
