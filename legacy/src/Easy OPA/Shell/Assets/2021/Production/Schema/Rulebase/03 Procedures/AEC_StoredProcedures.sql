@@ -96,7 +96,8 @@ select
                 and lesd.UKPRN = les.UKPRN
                 and lesd.DateEmpStatApp = les.DateEmpStatApp
               where
-                les.LearnRefNumber = l.LearnRefNumber for xml path ('LearnerEmploymentStatus'),
+                les.LearnRefNumber = l.LearnRefNumber
+                and les.UKPRN = l.UKPRN for xml path ('LearnerEmploymentStatus'),
                 type
             ),
             (
