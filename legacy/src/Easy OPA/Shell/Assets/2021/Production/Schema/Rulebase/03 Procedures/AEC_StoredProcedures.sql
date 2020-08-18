@@ -1011,6 +1011,7 @@ from
       [Period]
   ) as SecondPass on FirstPass.LearnRefNumber = SecondPass.LearnRefNumber
   and FirstPass.AimSeqNumber = SecondPass.AimSeqNumber
+  and FirstPass.UKPRN = SecondPass.UKPRN
   and FirstPass.[Period] = SecondPass.[Period]
 end
 go
